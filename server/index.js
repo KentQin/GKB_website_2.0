@@ -9,13 +9,15 @@ import webpackConfig from '../webpack.config';
 let app = express();
 
 const compiler = webpack(webpackConfig);
-
+// set up hot reload for reacjs
 app.use(webpackMiddleware(compiler, {
     hot: true,
     publicPath: webpackConfig.output.publicPath,
     noInfo: true
 }));
 app.use(webpackHotMiddleware(compiler));
+// load static files like css, pictures
+app.use(express.static(__dirname + '/public'));
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));

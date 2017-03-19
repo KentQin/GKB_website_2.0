@@ -1,5 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/App';
+import { Router, Route, browserHistory } from 'react-router';
 
-render(<App />, document.getElementById('app'));
+import App from './components/App';
+import Login from './components/login/loginPage';
+
+
+render((
+    <Router history={browserHistory}>
+        <Route path="/" component={Login}/>
+    </Router>
+), document.getElementById('app'));
+
+//render(<App />, document.getElementById('app'));
