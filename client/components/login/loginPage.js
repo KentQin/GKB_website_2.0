@@ -1,10 +1,11 @@
 import React from 'react';
+import '../../../public/css/style.css';
 import LoginForm from './loginForm';
 
 export default class LoginPage extends React.Component {
     render() {
         return (
-            <div className="row">
+            <div className="row loginPage">
                 <div className="col-md-2">
                     <p>wel to singup</p>
                 </div>

@@ -30,7 +30,7 @@ export default {
             {
                 test: /\.css$/,
                 include: [
-                    path.join(__dirname, 'style')
+                    path.join(__dirname, 'public/css')
                 ],
                 loaders: 'style-loader!css-loader'
             }

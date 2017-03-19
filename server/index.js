@@ -17,7 +17,7 @@ app.use(webpackMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 // load static files like css, pictures
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
