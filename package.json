@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "babel-node server/index.js",
+    "start": "nodemon --watch server --exec babel-node -- server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Junfu Qin",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.24.0"
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
     "express": "^4.15.2"
