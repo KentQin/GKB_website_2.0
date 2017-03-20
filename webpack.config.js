@@ -33,6 +33,13 @@ export default {
                     path.join(__dirname, 'public/css')
                 ],
                 loaders: 'style-loader!css-loader'
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif|woff)$/,
+                include: [
+                    path.join(__dirname, 'client/components/img')
+                ],
+                loader: ['url-loader?limit=8192']
             }
         ]
     },
