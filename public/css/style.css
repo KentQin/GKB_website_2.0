@@ -1,7 +1,45 @@
-.iam{
+/*
+    index.html
+ */
+.iam {
     border: solid 1px red;
 }
 
-p {
-    color: red;
+/*
+    LoginPage
+ */
+.loginPage {
+    margin-top: 10%;
+}
+
+.login-page-block {
+    text-align: center
+}
+.login-page-block>div {
+    display: inline-block;
+    border: 2px solid #fff;
+}
+/*
+    LoginForm
+ */
+.h-e-a-d-e-r-t-e-x-t {
+    width: 152px;
+    height: 27.9px;
+    font-family: Oxygen;
+    font-size: 25px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.7px;
+    margin-left: 8%;
+}
+
+/*
+    Input style [SingupPage LoginPage]
+ */
+.input-w-60{
+    width: 60% ;
+    margin-left: auto;
+    margin-right: auto;
 }
