@@ -5,12 +5,12 @@ class WelToSignup extends React.Component {
     render() {
         return (
             <div>
-                <h1>Welcome</h1>
+                <h1 className="welcome-title">Welcome</h1>
                 <label>This is the place for logo</label>
-                <div>
+                <div className="welcome-text">
                     <p>Some description</p>
                 </div>
-                <Link to="/signup" className="btn btn-default">Signup</Link>
+                <Link to="/signup" className="btn btn-default btn-welcome">Signup</Link>
             </div>
         );
     }
