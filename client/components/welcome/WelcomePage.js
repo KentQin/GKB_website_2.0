@@ -1,10 +1,15 @@
 import React from 'react';
+import WelcomeForm from './WelcomeForm';
 
 class LoginPage extends React.Component {
     render() {
         return (
-            <div className="container loginPage">
-                <h1>Hello from Welcome page</h1>
+            <div>
+                <div className="row centered">
+                    <div className="col-md-6 col-md-offset-3 email-sent-block">
+                        <WelcomeForm/>
+                    </div>
+                </div>
             </div>
         )
     }
