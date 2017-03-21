@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import axios from 'axios';
 
 class SignupForm extends React.Component {
 
@@ -23,8 +22,14 @@ class SignupForm extends React.Component {
 
     onSubmit(e) {
         e.preventDefault();
-        /*axios.post(URL,{jason data})*/
-        axios.post('api/users', { user: this.state });
+
+        // receive userSignupRequest from SingupPage, and send this.state to userSignupRequest
+        // in actual, userSignupRequest is a function, action creator,
+        // it will read this.state as param, and dispatch an action
+        console.log("Singup Form say: ", this.props );
+        console.log("Singup Form get: ", this.props.userSignupRequest, " from Signup Page");
+
+        this.props.userSignupRequest(this.state);
     }
 
     render() {
@@ -71,6 +76,10 @@ class SignupForm extends React.Component {
             </form>
         );
     }
+}
+
+SignupForm.propTypes = {
+    userSignupRequest: React.PropTypes.func.isRequired
 }
 
 export default SignupForm;
