@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+//import nodemailer from 'nodemailer';
 
 class ResetPwd extends React.Component{
     constructor(props) {
@@ -9,11 +10,39 @@ class ResetPwd extends React.Component{
         }
 
         this.onChange = this.onChange.bind(this);
-
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
+    }
+
+    onSubmit(e) {
+      // create reusable transporter object using the default SMTP transport
+      // let transporter = nodemailer.createTransport({
+      //   service: 'gmail',
+      //   auth: {
+      //       user: 'prajith.manian@gmail.com',
+      //       pass: 'prajith271990'
+      //   }
+      // });
+      //
+      // // I am doing this for using email api setup email data with unicode symbols
+      // let mailOptions = {
+      //     from: 'Prajith <prajith.manian@gmail.com>', // sender address
+      //     to: 'Ruoqiao Zhang <riolayre@gmail.com>', // list of receivers
+      //     subject: 'Hello ✔', // Subject line
+      //     text: 'Hello world ?', // plain text body
+      //     html: '<b>Hello world ?</b>' // html body
+      // };
+      //
+      // // send mail with defined transport object
+      // transporter.sendMail(mailOptions, (error, info) => {
+      //     if (error) {
+      //         return console.log(error);
+      //     }
+      //     console.log('Message %s sent: %s', info.messageId, info.response);
+      // });
     }
 
     render() {
@@ -30,7 +59,7 @@ class ResetPwd extends React.Component{
                         id="exampleInputEmail1"
                         placeholder="Email Address" />
                 </div>
-                <button type="submit" className="btn btn-default btn-login">Submit</button>
+                <button type="submit" className="btn btn-default btn-login" onClick={this.onSubmit}>Submit</button>
                 <div className="form-group">
                     <Link to="/login" >Return to Login</Link>
                 </div>
