@@ -38,7 +38,7 @@ app.post('/resetpwd', (req, res) => {
     console.log("Message for reset password ",req.body);
 });
 
-app.use('/api/user/signup',users);
+app.use('/api/user',users);
 
 console.log(app.listen(9000, () => console.log('Running on localhost:9000')));
 
