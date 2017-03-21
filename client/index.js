@@ -10,7 +10,7 @@ import LoginPage from './components/login/LoginPage';
 import SignupPage from './components/signup/SignupPage';
 import ResetPasswordPage from './components/resetpwd/ResetPasswordPage';
 import EmailSentPage from './components/resetpwd/EmailSentPage'
-
+import NewPwdPage from './components/newpassword/NewPwdPage';
 /*
 * createStore(reducer, [preloadedState], enhancer)
 * Here, set an empty func (state = {}) => state as reducer
@@ -32,6 +32,7 @@ render(
             <Route path="/signup" component={SignupPage}/>
             <Route path="/resetpassword" component={ResetPasswordPage}/>
             <Route path="/emailsentpage" component={EmailSentPage}/>
+            <Route path="/newpwd" component={NewPwdPage}/>
         </Router>
     </Provider>
 , document.getElementById('app'));

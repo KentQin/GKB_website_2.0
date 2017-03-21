@@ -5,6 +5,8 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
+import './database';
+import users from "./routes/users";
 
 let app = express();
 
@@ -23,5 +25,7 @@ app.use(express.static('public'));
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 })
+
+app.use('/api/users',users);
 
 console.log(app.listen(9000, () => console.log('Running on localhost:9000')));
