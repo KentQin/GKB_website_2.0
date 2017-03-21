@@ -37,7 +37,7 @@ class LoginForm extends React.Component {
                         type="text"
                         className="form-control input-w-60"
                         id="exampleInputEmail1"
-                        placeholder="Username/ Email" />
+                        placeholder="Email" />
                 </div>
                 <div className="form-group">
                     <input

@@ -10,20 +10,39 @@ router.post('/signup', (req, res) => {
     var user = {
         username_email: req.body.email,
         password: req.body.password
-    };
+    },
+        options = {upsert: true, new: true, setDefaultsOnInsert: true };
 
-    User.create(user,function(err,data){
+    User.create(user,options,function(err,data){
         console.log("Writing to db");
         if(err){
-            console.log(err);
+            console.log(err.statusCode);
         }else if(!data){
             console.log("Error saving");
         }else{
-            console.log("User Registered");
+            console.log("Registered");
         }
-        res.status(300).send();
+
     });
-    // const { errors, isValid } = validateInput(req.body);
+
+    // console.log("here");
+    // User.findOneAndUpdate(user,function(err,data){
+    //    console.log("Dupcheck");
+    //    if(err){
+    //        console.log(err.statusCode);
+    //    }else if(data){
+    //        console.log("Already exist")
+    //    }elsedata.save(function (err) {
+    //        if (err) {
+    //            console.log("Error saving");
+    //        } else {
+    //            console.log("Registered");
+    //        }
+    //
+    //    });
+    //
+    // });
+    // // const { errors, isValid } = validateInput(req.body);
     // if (!isValid) {
     //     res.status(400).json(errors);
     // }
