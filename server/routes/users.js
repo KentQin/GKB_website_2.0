@@ -1,50 +1,60 @@
 import express from 'express';
-import lodash from 'lodash';
-import validator from 'validator';
+import validateInput from '../shared/validations/signup'
+
+var User = require('./../models/user.js');
 
 let router = express.Router();
 
-function validateInput(data) {
-    let errors = {};
-
-    // if email is invalid push error
-    if (!validator.isEmail(data.email)){
-        errors.email = 'Email is invalid';
-    }
-    // if email is empty push error
-    if (validator.isEmpty(data.email)) {
-        errors.email = 'Email is required';
-    }
-    // if password is empty, push error
-    if (validator.isEmpty(data.password)) {
-        errors.password = 'Password is required';
-    }
-    if (!validator.equals(data.password,data.confirmPassword)) {
-        errors.confirmPassword = 'Password does not match';
-    }
-    // if confirmPassword is empty, push error
-    if (validator.isEmpty(data.confirmPassword)) {
-        errors.confirmPassword = 'Please confirm your password';
-    }
-
-    console.log("errors: ", errors);
-
-    return {
-        errors,
-        isValid: lodash.isEmpty(errors)
-    }
-
-}
-
-router.post('/', (req, res) => {
+router.post('/signup', (req, res) => {
     console.log("Server: router: users say: request body:  ",req.body);
-    const { errors, isValid } = validateInput(req.body);
-    if (!isValid) {
-        res.status(400).json(errors);
-    }
+
+    var user = {
+        username_email: req.body.email,
+        password: req.body.password
+    };
+
+    User.create(user,function(err,data){
+        console.log("Writing to db");
+        if(err){
+            console.log(err);
+        }else if(!data){
+            console.log("Error saving");
+        }else{
+            console.log("User Registered");
+        }
+        res.status(300).send();
+    });
+    // const { errors, isValid } = validateInput(req.body);
+    // if (!isValid) {
+    //     res.status(400).json(errors);
+    // }
+
 
 });
 
-//we need to get data from post request
+router.post('/login', (req, res) => {
+    console.log("Message for LoginForm ",req.body);
+    var user = {
+        email:req.body.username_email,
+        password: req.body.password
+    };
+
+    User.findOne(user,function(err,data){
+        console.log("Authentication going");
+        console.log(user.email+","+user.password);
+        if(err){
+            console.log(err);
+        }else if(!data){
+            console.log(data);
+            console.log("User doesnt exist");
+            res.send("Fail");
+        }else{
+            console.log("Logged in");
+            res.send("Success");
+        }
+
+    });
+});
+
 
 export default router;

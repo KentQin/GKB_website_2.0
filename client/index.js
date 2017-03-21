@@ -12,6 +12,8 @@ import ResetPasswordPage from './components/resetpwd/ResetPasswordPage';
 import EmailSentPage from './components/resetpwd/EmailSentPage';
 import InitialPage from './components/googleMaps/MapBox';
 
+import WelcomePage from './components/welcome/WelcomePage';
+import NewPwdPage from './components/newpassword/NewPwdPage';
 /*
 * createStore(reducer, [preloadedState], enhancer)
 * Here, set an empty func (state = {}) => state as reducer
@@ -34,6 +36,8 @@ render(
             <Route path="/resetpassword" component={ResetPasswordPage}/>
             <Route path="/emailsentpage" component={EmailSentPage}/>
             <Route path="/initialPage" component={InitialPage}/>
+            <Route path="/welcome" component={WelcomePage}/>
+            <Route path="/newpwd" component={NewPwdPage}/>
         </Router>
     </Provider>
 , document.getElementById('app'));
