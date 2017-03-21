@@ -8,7 +8,8 @@ class SignupForm extends React.Component {
         this.state = {
             email: '',
             password: '',
-            confrimPassword: ''
+            confirmPassword: '',
+            errors: {}
         }
 
         this.onChange = this.onChange.bind(this);
@@ -29,7 +30,13 @@ class SignupForm extends React.Component {
         console.log("Singup Form say: ", this.props );
         console.log("Singup Form get: ", this.props.userSignupRequest, " from Signup Page");
 
-        this.props.userSignupRequest(this.state);
+        this.props.userSignupRequest(this.state).then(
+            // after server response then...
+            // if successful
+            ()=>{},
+            // if server response any error message
+            ({response})=>{this.setState({error:response.data})}
+        );
     }
 
     render() {
@@ -61,9 +68,9 @@ class SignupForm extends React.Component {
                 </div>
                 <div className="form-group">
                     <input
-                        value={this.state.confrimPassword}
+                        value={this.state.confirmPassword}
                         onChange={this.onChange}
-                        name="confrimPassword"
+                        name="confirmPassword"
                         type="password"
                         className="form-control input-w-60"
                         id="exampleInputConfirm"

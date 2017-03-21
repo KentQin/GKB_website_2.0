@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
-//import nodemailer from 'nodemailer';
+import axios from 'axios';
+>>>>>>> 84229271dd6ffd08ccda8fe7a9993c4eb321eb04
 
 class ResetPwd extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            username_email: ''
+            email: ''
         }
 
         this.onChange = this.onChange.bind(this);
@@ -18,42 +19,20 @@ class ResetPwd extends React.Component{
     }
 
     onSubmit(e) {
-      // create reusable transporter object using the default SMTP transport
-      // let transporter = nodemailer.createTransport({
-      //   service: 'gmail',
-      //   auth: {
-      //       user: 'prajith.manian@gmail.com',
-      //       pass: 'prajith271990'
-      //   }
-      // });
-      //
-      // // I am doing this for using email api setup email data with unicode symbols
-      // let mailOptions = {
-      //     from: 'Prajith <prajith.manian@gmail.com>', // sender address
-      //     to: 'Ruoqiao Zhang <riolayre@gmail.com>', // list of receivers
-      //     subject: 'Hello ✔', // Subject line
-      //     text: 'Hello world ?', // plain text body
-      //     html: '<b>Hello world ?</b>' // html body
-      // };
-      //
-      // // send mail with defined transport object
-      // transporter.sendMail(mailOptions, (error, info) => {
-      //     if (error) {
-      //         return console.log(error);
-      //     }
-      //     console.log('Message %s sent: %s', info.messageId, info.response);
-      // });
+
+        e.preventDefault();
+        axios.post('/resetpwd', this.state);
     }
 
     render() {
         return (
-            <form className="form-horizontal">
+            <form className="form-horizontal" onSubmit={this.onSubmit}>
                 <h1 className="h-e-a-d-e-r-t-e-x-t">RESET PASSWORD</h1>
                 <div className="form-group">
                     <input
-                        value={this.state.username_email}
+                        value={this.state.email}
                         onChange={this.onChange}
-                        name="username_email"
+                        name="email"
                         type="text"
                         className="form-control input-w-60"
                         id="exampleInputEmail1"
