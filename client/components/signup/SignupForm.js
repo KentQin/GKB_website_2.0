@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import classnames from 'classnames';
+import validateInput from '../../../server/shared/validations/signup';
 
 class SignupForm extends React.Component {
 
@@ -21,32 +23,50 @@ class SignupForm extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    // client side validation,
+    // if any invalid input, setState
+    isValid() {
+        const {errors, isValid} = validateInput(this.state);
+
+        if (!isValid) {
+            this.setState({ errors });
+        }
+
+        return isValid;
+    }
+
     onSubmit(e) {
-        e.preventDefault();
 
         // receive userSignupRequest from SingupPage, and send this.state to userSignupRequest
         // in actual, userSignupRequest is a function, action creator,
         // it will read this.state as param, and dispatch an action
-        console.log("Singup Form say: ", this.props );
-        console.log("Singup Form get: ", this.props.userSignupRequest, " from Signup Page");
+        // console.log("Singup Form say: ", this.props );
+        // console.log("Singup Form get: ", this.props.userSignupRequest, " from Signup Page");
+        e.preventDefault();
 
-        this.props.userSignupRequest(this.state).then(
-            // after server response then...
-            // if successful
-            ()=>{},
-            // if server response any error message
-            ({response})=>{this.setState({error:response.data})}
-        );
+        // only when form info is valid, we make the request
+        if (this.isValid()) {
+            this.setState({errors: {} });
+            this.props.userSignupRequest(this.state).then(
+                // after server response then...
+                // if successful
+                ()=>{},
+                // if server response any error message, set it into state errors
+                (err)=>{
+                    this.setState({ errors: err.response.data})
+                });
+        }
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <form
                 onSubmit={this.onSubmit}
                 className="form-horizontal"
             >
                 <h1 className="h-e-a-d-e-r-t-e-x-t">SIGN UP</h1>
-                <div className="form-group">
+                <div className={classnames("form-group", { 'has-error': errors.email})}>
                     <input
                         value={this.state.email}
                         onChange={this.onChange}
@@ -55,8 +75,9 @@ class SignupForm extends React.Component {
                         className="form-control input-w-60"
                         id="exampleInputEmail1"
                         placeholder="Email Adress" />
+                    {errors.email && <span className="help-block">{errors.email}</span> }
                 </div>
-                <div className="form-group">
+                <div className={classnames("form-group", { 'has-error': errors.password})}>
                     <input
                         value={this.state.password}
                         onChange={this.onChange}
@@ -65,8 +86,9 @@ class SignupForm extends React.Component {
                         className="form-control input-w-60"
                         id="exampleInputPassword1"
                         placeholder="Password" />
+                    {errors.password && <span className="help-block">{errors.password}</span> }
                 </div>
-                <div className="form-group">
+                <div className={classnames("form-group", { 'has-error': errors.confirmPassword})}>
                     <input
                         value={this.state.confirmPassword}
                         onChange={this.onChange}
@@ -75,6 +97,7 @@ class SignupForm extends React.Component {
                         className="form-control input-w-60"
                         id="exampleInputConfirm"
                         placeholder="Confirm Password" />
+                    {errors.confirmPassword && <span className="help-block">{errors.confirmPassword}</span> }
                 </div>
                 <button type="submit" className="btn btn-default btn-login">Submit</button>
                 <div className="form-group">
