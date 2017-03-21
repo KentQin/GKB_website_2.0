@@ -6,8 +6,8 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
-
-import users from './routes/users';
+import './database';
+import users from "./routes/users";
 
 let app = express();
 
@@ -38,4 +38,8 @@ app.post('/resetpwd', (req, res) => {
     console.log("Message for reset password ",req.body);
 });
 
+app.use('/api/user',users);
+
 console.log(app.listen(9000, () => console.log('Running on localhost:9000')));
+
+
