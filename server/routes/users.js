@@ -7,6 +7,7 @@ let router = express.Router();
 
 router.post('/signup', (req, res) => {
     console.log("Server: router: users say: request body:  ",req.body);
+
     var user = {
         username_email: req.body.email,
         password: req.body.password
@@ -73,5 +74,6 @@ router.post('/login', (req, res) => {
 
     });
 });
+
 
 export default router;

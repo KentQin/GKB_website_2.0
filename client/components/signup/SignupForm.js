@@ -50,9 +50,11 @@ class SignupForm extends React.Component {
             this.props.userSignupRequest(this.state).then(
                 // after server response then...
                 // if successful
-                ()=>{},
+                (res) => {
+                    this.context.router.push('/welcome')
+                },
                 // if server response any error message, set it into state errors
-                (err)=>{
+                (err) => {
                     this.setState({ errors: err.response.data})
                 });
         }
@@ -111,5 +113,10 @@ class SignupForm extends React.Component {
 SignupForm.propTypes = {
     userSignupRequest: React.PropTypes.func.isRequired
 }
+
+SignupForm.contextTypes = {
+    router: React.PropTypes.object.isRequired
+}
+
 
 export default SignupForm;
