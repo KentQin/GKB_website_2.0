@@ -11,7 +11,15 @@ class WelToSignup extends React.Component {
                     <img src={logo} className="logo"/>
                 </div>
                 <div className="welcome-text">
-                    <p>Some description</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam.
+                    </p>
+                    <br/>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur.
+                    </p>
                 </div>
                 <Link to="/signup" className="btn btn-default btn-welcome">Signup</Link>
             </div>

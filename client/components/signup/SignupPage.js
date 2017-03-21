@@ -23,11 +23,11 @@ class SignupPage extends React.Component {
                         <WelToLogin />
                     </div>
 
-                    <div className="col-md-5 login-page-block">
+                    <div className="col-md-5 login-page-block login-block">
                         <SignupFrom userSignupRequest={userSignupRequest}/>
 
                     </div>
-                    <div className="col-md-4 login-page-block">
+                    <div className="col-md-4 login-page-block login-block">
                         <OuterAuth />
                     </div>
                 </div>

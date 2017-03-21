@@ -1,8 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import * as firebase from "firebase";
-import googleLogin from '../img/btn-google-sign.png';
-import twitterLogin from '../img/btn-twitter-signin.png';
 
 
 class OuterAuth extends React.Component {
@@ -82,16 +80,18 @@ class OuterAuth extends React.Component {
             <form className="form-horizontal">
                 <h1 className="h-e-a-d-e-r-t-e-x-t" >Or...</h1>
                 <div className="form-group">
-                  <button type="submit" className="btn btn-default" onClick={this.loginGoogle}>
-                      <img src={googleLogin} className="auth-login-img"/>
+                  <button type="submit" className="btn btn-block btn-social btn-google" onClick={this.loginGoogle}>
+                      <span className="fa fa-google"></span> Sign in with Google
                   </button>
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-default" onClick={this.loginFacebook}>Sign in with Facebook</button>
+                    <button type="submit" className="btn btn-block btn-social btn-facebook" onClick={this.loginFacebook}>
+                        <span className="fa fa-facebook"></span> Sign in with Facebook
+                    </button>
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-default">
-                        <img src={twitterLogin} className="auth-login-img"/>
+                    <button type="submit" className="btn btn-block btn-social btn-twitter">
+                        <span className="fa fa-twitter"></span> Sign in with Twitter
                     </button>
                 </div>
 

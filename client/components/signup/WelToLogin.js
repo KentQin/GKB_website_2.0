@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
+import logo from '../img/welcome-icon.png';
 
 class WelToLogin extends React.Component {
     render() {
         return (
             <div>
                 <h1 className="welcome-title">Welcome</h1>
-                <label>This is the place for logo</label>
+                <div >
+                    <img src={logo} className="logo"/>
+                </div>
                 <div className="welcome-text">
                     <p>Already have an account?</p>
                 </div>

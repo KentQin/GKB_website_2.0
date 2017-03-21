@@ -4,8 +4,11 @@
     <list default="true" id="f1afd992-2819-40c3-92fe-0df670384338" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/index.js" afterPath="$PROJECT_DIR$/server/index.js" />
 =======
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/common/OuterAuth.js" afterPath="$PROJECT_DIR$/client/components/common/OuterAuth.js" />
@@ -19,6 +22,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/index.html" afterPath="$PROJECT_DIR$/server/index.html" />
 >>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+<<<<<<< HEAD
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
+=======
 >>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -62,6 +68,9 @@
             <state relative-caret-position="420">
               <caret line="44" column="12" lean-forward="false" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
 >>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+<<<<<<< HEAD
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
+=======
 >>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
               <folding />
             </state>
@@ -117,6 +126,9 @@
             <state relative-caret-position="60">
               <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
 >>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+<<<<<<< HEAD
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
+=======
 >>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -174,16 +186,22 @@
         <entry file="file://$PROJECT_DIR$/client/components/login/LoginForm.js">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="45">
               <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
             <state relative-caret-position="75">
               <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
 =======
             <state relative-caret-position="120">
               <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
 >>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+<<<<<<< HEAD
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
+=======
 >>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
               <folding />
             </state>
@@ -699,19 +717,28 @@
 =======
       <workItem from="1489977810072" duration="12255000" />
 >>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+<<<<<<< HEAD
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
+=======
 >>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="38693000" />
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
     <option name="totallyTimeSpent" value="33595000" />
 =======
     <option name="totallyTimeSpent" value="37753000" />
 >>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+<<<<<<< HEAD
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
+=======
 >>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
   </component>
   <component name="TodoView">
@@ -729,8 +756,11 @@
 =======
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <editor active="false" />
 =======
+=======
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
 >>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
     <editor active="true" />
 >>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
@@ -1080,6 +1110,18 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/client/components/common/OuterAuth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="90" lean-forward="false" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
     <entry file="file://$PROJECT_DIR$/client/components/login/WelToSignup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1107,6 +1149,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/signup/WelToLogin.js">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
         <state relative-caret-position="15">
@@ -1126,6 +1169,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
+=======
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="180">
+          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1489968040000" expanded="true" signature="106:458" ph="{...}" />
+            <marker date="1489968040000" expanded="true" signature="121:456" ph="{...}" />
+            <marker date="1489968040000" expanded="true" signature="152:439" ph="&lt;div/&gt;" />
+            <marker date="1489968040000" expanded="true" signature="265:345" ph="&lt;div/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
         <state relative-caret-position="60">
           <caret line="4" column="5" lean-forward="false" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
 =======
@@ -1153,6 +1214,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+=======
+<<<<<<< HEAD
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
 =======
 >>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
     <entry file="file://$PROJECT_DIR$/server/index.html">
@@ -1237,6 +1301,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/actions/signupAction.js">
+<<<<<<< HEAD
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/signup/SignupPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+=======
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="33" />
@@ -1257,6 +1336,9 @@
         <state relative-caret-position="60">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
 >>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+<<<<<<< HEAD
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
+=======
 >>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -1267,10 +1349,13 @@
     <entry file="file://$PROJECT_DIR$/client/components/common/OuterAuth.js">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="45">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
         <state relative-caret-position="-571">
           <caret line="27" column="67" lean-forward="false" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
           <folding>
@@ -1288,6 +1373,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-711">
           <caret line="61" column="19" lean-forward="false" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+          <folding />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
 >>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
         </state>
