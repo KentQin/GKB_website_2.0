@@ -10,6 +10,7 @@ import LoginPage from './components/login/LoginPage';
 import SignupPage from './components/signup/SignupPage';
 import ResetPasswordPage from './components/resetpwd/ResetPasswordPage';
 import EmailSentPage from './components/resetpwd/EmailSentPage'
+import WelcomePage from './components/welcome/WelcomePage';
 
 /*
 * createStore(reducer, [preloadedState], enhancer)
@@ -32,6 +33,7 @@ render(
             <Route path="/signup" component={SignupPage}/>
             <Route path="/resetpassword" component={ResetPasswordPage}/>
             <Route path="/emailsentpage" component={EmailSentPage}/>
+            <Route path="/welcome" component={WelcomePage}/>
         </Router>
     </Provider>
 , document.getElementById('app'));
