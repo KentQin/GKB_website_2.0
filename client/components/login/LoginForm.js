@@ -42,11 +42,11 @@ class LoginForm extends React.Component {
                         placeholder="Password" />
                 </div>
                 <div className="form-group">
-                    <label>
+                    <label className="btn-forgotPwd">
                         Forget Password?
                     </label>
                 </div>
-                <button type="submit" className="btn btn-default">Login</button>
+                <button type="submit" className="btn btn-default btn-login">Login</button>
             </form>
         );
     }

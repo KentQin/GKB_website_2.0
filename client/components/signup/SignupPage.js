@@ -19,11 +19,13 @@ class SignupPage extends React.Component {
         return (
             <div className="container loginPage">
                 <div className="row centered">
-                    <div className="col-md-4 login-page-block">
+                    <div className="col-md-3 login-page-block welcome-block">
                         <WelToLogin />
                     </div>
-                    <div className="col-md-4 login-page-block">
+
+                    <div className="col-md-5 login-page-block">
                         <SignupFrom userSignupRequest={userSignupRequest}/>
+
                     </div>
                     <div className="col-md-4 login-page-block">
                         <OuterAuth />

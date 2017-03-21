@@ -69,7 +69,7 @@ class SignupForm extends React.Component {
                         id="exampleInputConfirm"
                         placeholder="Confirm Password" />
                 </div>
-                <button type="submit" className="btn btn-default">Submit</button>
+                <button type="submit" className="btn btn-default btn-login">Submit</button>
                 <div className="form-group">
                     <Link to="/login" >Return to Login</Link>
                 </div>
