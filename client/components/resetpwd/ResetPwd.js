@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
->>>>>>> 84229271dd6ffd08ccda8fe7a9993c4eb321eb04
 
 class ResetPwd extends React.Component{
     constructor(props) {
@@ -21,7 +20,7 @@ class ResetPwd extends React.Component{
     onSubmit(e) {
 
         e.preventDefault();
-        axios.post('/resetpwd', this.state);
+        axios.post('/api/resetpwd', this.state);
     }
 
     render() {

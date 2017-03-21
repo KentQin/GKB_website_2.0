@@ -8,6 +8,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
 
 import users from './routes/users';
+import resetpwd from './routes/resetpwd'
 
 let app = express();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 
 // match url, then apply the middleware
 app.use('/api/users', users);
+app.use('/api/resetpwd', resetpwd);
 
 const compiler = webpack(webpackConfig);
 // set up hot reload for reacjs

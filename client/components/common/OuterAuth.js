@@ -29,15 +29,6 @@ class OuterAuth extends React.Component {
 
     loginFacebook(evt){
         evt.preventDefault();
-            // this.setState({ errors: {}}).then(
-            //     (res) => this.context.router.push('/signup'),
-            //     (err) => this.setState({ errors: err.response.data.errors})
-            // );
-            // var config = {
-            //   apiKey: "AIzaSyDrLq-l8Ae6iF9g2JR_aegLpD7mL6QPZVo",
-            //   authDomain: "gkbwebsite.firebaseapp.com"
-            // };
-            // firebase.initializeApp(config);
 
             var provider = new firebase.auth.FacebookAuthProvider();
 
@@ -59,13 +50,6 @@ class OuterAuth extends React.Component {
     loginGoogle(evt) {
           evt.preventDefault();
 
-          // var config = {
-          //   apiKey: "AIzaSyDrLq-l8Ae6iF9g2JR_aegLpD7mL6QPZVo",
-          //   authDomain: "gkbwebsite.firebaseapp.com"
-          // };
-          //
-          // firebase.initializeApp(config);
-
           var provider = new firebase.auth.GoogleAuthProvider();
           firebase.auth()
 
@@ -86,13 +70,6 @@ class OuterAuth extends React.Component {
 
     loginTwitter(evt) {
           evt.preventDefault();
-
-          // var config = {
-          //   apiKey: "AIzaSyDrLq-l8Ae6iF9g2JR_aegLpD7mL6QPZVo",
-          //   authDomain: "gkbwebsite.firebaseapp.com"
-          // };
-          //
-          // firebase.initializeApp(config);
 
           var provider = new firebase.auth.TwitterAuthProvider();
           firebase.auth()
@@ -127,7 +104,7 @@ class OuterAuth extends React.Component {
                     </button>
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-block btn-social btn-twitter">
+                    <button type="submit" className="btn btn-block btn-social btn-twitter" onClick={this.loginTwitter}>
                         <span className="fa fa-twitter"></span> Sign in with Twitter
                     </button>
                 </div>
