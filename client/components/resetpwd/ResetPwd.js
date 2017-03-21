@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
+import { Router, Route, browserHistory } from 'react-router';
 
 class ResetPwd extends React.Component{
     constructor(props) {
@@ -11,7 +12,6 @@ class ResetPwd extends React.Component{
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
     }
 
     onChange(e) {
@@ -19,8 +19,22 @@ class ResetPwd extends React.Component{
     }
 
     onSubmit(e) {
+
         e.preventDefault();
-        axios.post('/resetpwd', this.state);
+        //axios.post('/api/resetpwd', this.state);
+        this.props.resetpwdRequest(this.state).then(
+            // after server response then...
+            // if successful
+            (res) => {
+                console.log("I am here in resetpwdRequest");
+                //this.context.router.push('/emailsentpage')
+                browserHistory.push('/emailsentpage');
+            },
+            // if server response any error message, set it into state errors
+            (err) => {
+                // this.setState({ errors: err.response.data})
+                console.log("I am here in errors resetpwdRequest");
+            });
     }
 
     render() {
@@ -37,7 +51,7 @@ class ResetPwd extends React.Component{
                         id="exampleInputEmail1"
                         placeholder="Email Address" />
                 </div>
-                <button type="submit" className="btn btn-default btn-login">Submit</button>
+                <button type="submit" className="btn btn-default btn-login" onClick={this.onSubmit}>Submit</button>
                 <div className="form-group">
                     <Link to="/login" >Return to Login</Link>
                 </div>

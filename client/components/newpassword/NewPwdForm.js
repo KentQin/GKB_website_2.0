@@ -1,6 +1,7 @@
 import React from 'react';
 
 class NewPwdForm extends React.Component{
+
     constructor(props) {
         super(props);
         this.state = {
@@ -12,6 +13,16 @@ class NewPwdForm extends React.Component{
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        // console.log("login sends: ", this.state);
+        // axios.post('/api/users/login', this.state);
+    }
+
     render(){
         return(
             <form className="form-horizontal" onSubmit={this.onSubmit}>
@@ -20,6 +31,7 @@ class NewPwdForm extends React.Component{
                 <div className="form-group">
                     <input
                         value = {this.state.password}
+                        onChange={this.onChange}
                         name="new_password"
                         type="password"
                         className="form-control input-w-60"
