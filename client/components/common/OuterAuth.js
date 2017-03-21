@@ -1,8 +1,9 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import * as firebase from "firebase";
-import image from '../img/btn_google_signin.png';
-import image2 from '../img/btn-twitter-signin.png';
+import googleLogin from '../img/btn-google-sign.png';
+import twitterLogin from '../img/btn-twitter-signin.png';
+
 
 class OuterAuth extends React.Component {
 
@@ -82,7 +83,7 @@ class OuterAuth extends React.Component {
                 <h1 className="h-e-a-d-e-r-t-e-x-t" >Or...</h1>
                 <div className="form-group">
                   <button type="submit" className="btn btn-default" onClick={this.loginGoogle}>
-                      <img src={image} />
+                      <img src={googleLogin} className="auth-login-img"/>
                   </button>
                 </div>
                 <div className="form-group">
@@ -90,8 +91,7 @@ class OuterAuth extends React.Component {
                 </div>
                 <div className="form-group">
                     <button type="submit" className="btn btn-default">
-                        {/*<img src="btn-twitter-signin.png" />*/}
-                        <img src="https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-link.png" />
+                        <img src={twitterLogin} className="auth-login-img"/>
                     </button>
                 </div>
 

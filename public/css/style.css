@@ -60,6 +60,7 @@
     letter-spacing: -0.9px;
     text-align: center;
     color: #d2d6e4;
+    margin:auto;
 }
 
 .welcome-text{
@@ -75,6 +76,12 @@
     color: #dee1f3;
     padding: 30% 0;
 }
+
+.logo{
+    height:85px;
+    width:85px;
+}
+
 /*
     LoginForm
  */
@@ -146,3 +153,4 @@
 .btn-auth{
     margin:auto;
 }
+

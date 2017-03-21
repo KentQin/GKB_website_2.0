@@ -3,6 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="f1afd992-2819-40c3-92fe-0df670384338" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/index.js" afterPath="$PROJECT_DIR$/server/index.js" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/common/OuterAuth.js" afterPath="$PROJECT_DIR$/client/components/common/OuterAuth.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/login/LoginForm.js" afterPath="$PROJECT_DIR$/client/components/login/LoginForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/login/LoginPage.js" afterPath="$PROJECT_DIR$/client/components/login/LoginPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/login/WelToSignup.js" afterPath="$PROJECT_DIR$/client/components/login/WelToSignup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/signup/SignupForm.js" afterPath="$PROJECT_DIR$/client/components/signup/SignupForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/signup/SignupPage.js" afterPath="$PROJECT_DIR$/client/components/signup/SignupPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/signup/WelToLogin.js" afterPath="$PROJECT_DIR$/client/components/signup/WelToLogin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/index.html" afterPath="$PROJECT_DIR$/server/index.html" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,19 +35,51 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+<<<<<<< HEAD
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-711">
-              <caret line="61" column="19" lean-forward="false" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+            <state relative-caret-position="179">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginForm.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/login/LoginForm.js">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="24" selection-end-column="3" />
+=======
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="-711">
+              <caret line="61" column="19" lean-forward="false" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+=======
+            <state relative-caret-position="420">
+              <caret line="44" column="12" lean-forward="false" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginPage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/login/LoginPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="90">
+              <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="44" />
+              <folding>
+                <marker date="1489979184000" expanded="true" signature="191:770" ph="{...}" />
+                <marker date="1489979184000" expanded="true" signature="206:768" ph="{...}" />
+                <marker date="1489979184000" expanded="true" signature="237:752" ph="&lt;div/&gt;" />
+                <marker date="1489979184000" expanded="true" signature="291:733" ph="&lt;div/&gt;" />
+=======
             <state relative-caret-position="660">
               <caret line="44" column="38" lean-forward="false" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="51" />
               <folding />
@@ -45,16 +94,30 @@
               <caret line="69" column="22" lean-forward="false" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+=======
       <file leaf-file-name="LoginPage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/login/LoginPage.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="15">
               <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+=======
+            <state relative-caret-position="60">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -62,6 +125,18 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="34" selection-end-column="50" />
+              <folding>
+                <marker date="1489978273000" expanded="true" signature="72:1070" ph="{&quot;devtool&quot;: 'eval-source-map'...}" />
+                <marker date="1489978273000" expanded="true" signature="491:1018" ph="{...}" />
+                <marker date="1489978273000" expanded="true" signature="510:1012" ph="[...]" />
+                <marker date="1489978273000" expanded="true" signature="524:789" ph="{...}" />
+=======
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -89,21 +164,51 @@
               <caret line="12" column="72" lean-forward="false" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OuterAuth.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/common/OuterAuth.js">
+      <file leaf-file-name="LoginForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/login/LoginForm.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="45">
               <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="75">
+              <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+=======
+            <state relative-caret-position="120">
+              <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="SignupForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/signup/SignupForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-571">
+              <caret line="27" column="67" lean-forward="false" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SignupPage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/signup/SignupPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+=======
       <file leaf-file-name="btn-twitter-signin.png" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/img/btn-twitter-signin.png">
           <provider selected="true" editor-type-id="images">
@@ -116,9 +221,30 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signupAction.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/actions/signupAction.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".babelrc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.babelrc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,6 +283,26 @@
         <option value="$PROJECT_DIR$/server/css/text.css" />
         <option value="$PROJECT_DIR$/server/public/style.css" />
         <option value="$PROJECT_DIR$/server/public/css/style.css" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/server/index.html" />
+        <option value="$PROJECT_DIR$/client/components/login/loginPage.js" />
+        <option value="$PROJECT_DIR$/client/components/login/loginForm.js" />
+        <option value="$PROJECT_DIR$/client/components/login/welToSignup.js" />
+        <option value="$PROJECT_DIR$/client/components/common/OuterAuth.js" />
+        <option value="$PROJECT_DIR$/client/components/login/WelToSignup.js" />
+        <option value="$PROJECT_DIR$/client/components/signup/WelToLogin.js" />
+        <option value="$PROJECT_DIR$/client/components/login/LoginForm.js" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/.babelrc" />
+        <option value="$PROJECT_DIR$/public/css/sfsf.css" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/client/components/login/LoginPage.js" />
+        <option value="$PROJECT_DIR$/client/index.js" />
+        <option value="$PROJECT_DIR$/client/actions/signupAction.js" />
+        <option value="$PROJECT_DIR$/client/components/signup/SignupPage.js" />
+        <option value="$PROJECT_DIR$/client/components/signup/SignupForm.js" />
+        <option value="$PROJECT_DIR$/server/index.js" />
+=======
         <option value="$PROJECT_DIR$/server/index.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/client/components/login/loginPage.js" />
@@ -174,6 +320,7 @@
         <option value="$PROJECT_DIR$/server/index.html" />
         <option value="$PROJECT_DIR$/client/components/common/OuterAuth.js" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
       </list>
     </option>
   </component>
@@ -193,8 +340,15 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
+    <option name="x" value="430" />
+    <option name="y" value="53" />
+    <option name="width" value="1133" />
+    <option name="height" value="784" />
+=======
     <option name="width" value="1366" />
     <option name="height" value="768" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -265,6 +419,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="GKB_website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -353,6 +539,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="actions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -461,16 +687,32 @@
       <option name="presentableId" value="Default" />
       <updated>1489879846584</updated>
       <workItem from="1489879847841" duration="9240000" />
+<<<<<<< HEAD
+      <workItem from="1489897503839" duration="24355000" />
+=======
       <workItem from="1489897503839" duration="15760000" />
       <workItem from="1489977307463" duration="498000" />
+<<<<<<< HEAD
       <workItem from="1489977810072" duration="12396000" />
       <workItem from="1490055634243" duration="452000" />
       <workItem from="1490062181375" duration="347000" />
+=======
+      <workItem from="1489977810072" duration="12255000" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="38693000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="33595000" />
+=======
+    <option name="totallyTimeSpent" value="37753000" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -482,14 +724,32 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
+    <frame x="430" y="53" width="1133" height="784" extended-state="0" />
+=======
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
+<<<<<<< HEAD
     <editor active="false" />
+=======
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+    <editor active="true" />
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25256222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998565" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998565" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41907513" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18331806" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998565" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -563,7 +823,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1489978273000" expanded="true" signature="72:1070" ph="{&quot;devtool&quot;: 'eval-source-map'...}" />
+            <marker date="1489978273000" expanded="true" signature="491:1018" ph="{...}" />
+            <marker date="1489978273000" expanded="true" signature="510:1012" ph="[...]" />
+            <marker date="1489978273000" expanded="true" signature="524:789" ph="{...}" />
+          </folding>
+=======
           <folding />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
         </state>
       </provider>
     </entry>
@@ -623,7 +892,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+<<<<<<< HEAD
+            <marker date="1490056569000" expanded="true" signature="62902:62919" ph="..." />
+            <marker date="1490056569000" expanded="true" signature="62902:62950" ph="..." />
+=======
             <element signature="e#0#26#0" expanded="true" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
           </folding>
         </state>
       </provider>
@@ -633,7 +907,12 @@
         <state relative-caret-position="165">
           <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
           <folding>
+<<<<<<< HEAD
+            <marker date="1490056569000" expanded="true" signature="62902:62919" ph="..." />
+            <marker date="1490056569000" expanded="true" signature="62902:62950" ph="..." />
+=======
             <element signature="e#0#26#0" expanded="true" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
           </folding>
         </state>
       </provider>
@@ -646,6 +925,9 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/package.json">
+=======
     <entry file="file://$PROJECT_DIR$/client/components/login/WelToSignup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -664,6 +946,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webpack.config.js">
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -735,6 +1018,9 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/server/index.html">
+=======
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -764,6 +1050,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webpack.config.js">
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="32" column="41" lean-forward="false" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
@@ -784,6 +1071,20 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/client/components/common/OuterAuth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="90" lean-forward="false" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/login/WelToSignup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="76" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="76" />
+=======
     <entry file="file://$PROJECT_DIR$/client/components/signup/SignupForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1005">
@@ -798,39 +1099,107 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="12" column="72" lean-forward="false" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/signup/SignupPage.js">
+    <entry file="file://$PROJECT_DIR$/client/components/signup/WelToLogin.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="15">
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="180">
+          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1489968040000" expanded="true" signature="106:458" ph="{...}" />
+            <marker date="1489968040000" expanded="true" signature="121:456" ph="{...}" />
+            <marker date="1489968040000" expanded="true" signature="152:439" ph="&lt;div/&gt;" />
+            <marker date="1489968040000" expanded="true" signature="265:345" ph="&lt;div/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="5" lean-forward="false" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+=======
+        <state relative-caret-position="13">
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/client/components/common/GoogleSignIn.js" />
-    <entry file="file://$PROJECT_DIR$/server/index.html">
+=======
+    <entry file="file://$PROJECT_DIR$/client/components/common/GoogleSignIn.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="50" lean-forward="false" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+        <state relative-caret-position="240">
+          <caret line="18" column="15" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+=======
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
+    <entry file="file://$PROJECT_DIR$/server/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="50" lean-forward="false" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="34" selection-end-column="50" />
+          <folding>
+            <marker date="1489978273000" expanded="true" signature="72:1070" ph="{&quot;devtool&quot;: 'eval-source-map'...}" />
+            <marker date="1489978273000" expanded="true" signature="491:1018" ph="{...}" />
+            <marker date="1489978273000" expanded="true" signature="510:1012" ph="[...]" />
+            <marker date="1489978273000" expanded="true" signature="524:789" ph="{...}" />
+=======
     <entry file="file://$PROJECT_DIR$/client/components/login/WelToSignup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/public/css/sfsf.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="24" selection-end-column="3" />
+=======
     <entry file="file://$PROJECT_DIR$/client/components/img/btn-twitter-signin.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -840,14 +1209,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="44" column="38" lean-forward="false" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="51" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/login/LoginPage.js">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="44" />
+          <folding>
+            <marker date="1489979184000" expanded="true" signature="191:770" ph="{...}" />
+            <marker date="1489979184000" expanded="true" signature="206:768" ph="{...}" />
+            <marker date="1489979184000" expanded="true" signature="237:752" ph="&lt;div/&gt;" />
+            <marker date="1489979184000" expanded="true" signature="291:733" ph="&lt;div/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/login/LoginForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/actions/signupAction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/signup/SignupPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+=======
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="15">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+=======
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -856,8 +1266,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/common/OuterAuth.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="45">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="-571">
+          <caret line="27" column="67" lean-forward="false" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+=======
+        <state relative-caret-position="120">
+          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+>>>>>>> c7c6b5df1054e43cd08eab33f7aa1c1aaafb04b2
           <folding />
         </state>
       </provider>
@@ -866,6 +1288,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-711">
           <caret line="61" column="19" lean-forward="false" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+          <folding />
+>>>>>>> 4d34ef554268e4cf7b71a1c35290180ccbbef411
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
