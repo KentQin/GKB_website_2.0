@@ -16,6 +16,7 @@ app.use(webpackMiddleware(compiler, {
     noInfo: true
 }));
 app.use(webpackHotMiddleware(compiler));
+
 // load static files like css, pictures
 app.use(express.static('public'));
 
