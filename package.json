@@ -33,6 +33,7 @@
     "express": "^4.15.2",
     "firebase": "^3.7.2",
     "lodash": "^4.17.4",
+    "mongoose": "^4.9.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-google-login-component": "^0.5.2",
