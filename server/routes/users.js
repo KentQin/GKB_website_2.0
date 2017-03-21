@@ -3,7 +3,7 @@ import validateInput from '../shared/validations/signup'
 
 let router = express.Router();
 
-router.post('/', (req, res) => {
+router.post('/signup', (req, res) => {
     console.log("Server: router: users say: request body:  ",req.body);
     const { errors, isValid } = validateInput(req.body);
     if (!isValid) {
@@ -12,6 +12,8 @@ router.post('/', (req, res) => {
 
 });
 
-//we need to get data from post request
+router.post('/login', (req, res) => {
+    console.log("Message for LoginForm ",req.body);
+});
 
 export default router;
