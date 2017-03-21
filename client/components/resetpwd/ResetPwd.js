@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-class LoginForm extends React.Component {
-
+class ResetPwd extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            username_email: '',
-            password: ''
+            username_email: ''
         }
 
         this.onChange = this.onChange.bind(this);
@@ -21,7 +19,7 @@ class LoginForm extends React.Component {
     render() {
         return (
             <form className="form-horizontal">
-                <h1 className="h-e-a-d-e-r-t-e-x-t">LOGIN</h1>
+                <h1 className="h-e-a-d-e-r-t-e-x-t">RESET PASSWORD</h1>
                 <div className="form-group">
                     <input
                         value={this.state.username_email}
@@ -30,25 +28,15 @@ class LoginForm extends React.Component {
                         type="text"
                         className="form-control input-w-60"
                         id="exampleInputEmail1"
-                        placeholder="Username/ Email" />
+                        placeholder="Email Address" />
                 </div>
+                <button type="submit" className="btn btn-default btn-login">Submit</button>
                 <div className="form-group">
-                    <input
-                        value={this.state.password}
-                        onChange={this.onChange}
-                        name="password"
-                        type="password"
-                        className="form-control input-w-60"
-                        id="exampleInputPassword1"
-                        placeholder="Password" />
+                    <Link to="/login" >Return to Login</Link>
                 </div>
-                <div className="form-group">
-                    <Link to="/resetpassword" >Forget Password?</Link>
-                </div>
-                <button type="submit" className="btn btn-default btn-login">Login</button>
             </form>
         );
     }
 }
 
-export default LoginForm;
+export default ResetPwd;

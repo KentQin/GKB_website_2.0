@@ -1,3 +1,6 @@
+body{
+    background-color: aliceblue;
+}
 /*
     index.html
  */
@@ -8,10 +11,6 @@
 /*
     LoginPage
  */
-
-.loginPage {
-    margin-top: 10%;
-}
 
 .login-page-block {
     text-align: center;
@@ -60,6 +59,7 @@
     letter-spacing: -0.9px;
     text-align: center;
     color: #d2d6e4;
+    margin:auto;
 }
 
 .welcome-text{
@@ -73,8 +73,16 @@
     line-height: normal;
     letter-spacing: -0.5px;
     color: #dee1f3;
-    padding: 30% 0;
+    padding: 10% 0;
 }
+
+
+.logo{
+    height:85px;
+    width:85px;
+    margin:auto;
+}
+
 
 /*
     LoginForm
@@ -84,7 +92,6 @@
     margin-bottom:7%;
 }
 .h-e-a-d-e-r-t-e-x-t {
-    width: 152px;
     height: 27.9px;
     font-family: Oxygen;
     font-size: 25px;
@@ -110,6 +117,47 @@
 
 }
 
+/*
+    Forgot Password Page
+ */
+.reset-pwd-page-block {
+    text-align: center;
+    padding:0;
+}
+.reset-pwd-page-block>div {
+    display: inline-block;
+    margin:30% auto;
+}
+
+.reset-pwd-block>form{
+    margin:30% auto;
+}
+
+.reset-pwd-block{
+    background-color: white;
+}
+
+/*
+    Email Send Page
+ */
+.email-sent-block{
+    background-color: white;
+}
+
+.email-sent-block {
+    text-align: center;
+    padding:0;
+}
+.email-sent-block>div {
+    display: inline-block;
+    margin:30% auto;
+}
+
+.logo-email{
+    height:60px;
+    width:85px;
+    margin:auto;
+}
 /*
     Input style [SingupPage LoginPage]
  */
@@ -144,7 +192,20 @@
     margin-bottom:7%;
 }
 
+.btn-fb{
+    background-color: #3b5998;
+}
+
+
 .btn-auth{
     margin:auto;
 }
 
+.btn-block{
+    width:48%;
+    margin:auto;
+}
+
+.btn-social{
+    text-align: center;
+}

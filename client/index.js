@@ -8,7 +8,8 @@ import { createStore, applyMiddleware} from 'redux';
 import App from './components/App';
 import LoginPage from './components/login/LoginPage';
 import SignupPage from './components/signup/SignupPage';
-
+import ResetPasswordPage from './components/resetpwd/ResetPasswordPage';
+import EmailSentPage from './components/resetpwd/EmailSentPage'
 
 /*
 * createStore(reducer, [preloadedState], enhancer)
@@ -29,6 +30,8 @@ render(
             <Route path="/" component={LoginPage}/>
             <Route path="/login" component={LoginPage}/>
             <Route path="/signup" component={SignupPage}/>
+            <Route path="/resetpassword" component={ResetPasswordPage}/>
+            <Route path="/emailsentpage" component={EmailSentPage}/>
         </Router>
     </Provider>
 , document.getElementById('app'));
