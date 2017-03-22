@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 import * as firebase from "firebase";
 
 
@@ -8,9 +7,7 @@ class OuterAuth extends React.Component {
     constructor(props) {
         super(props);
         this.state ={
-            // identifier:'',
-            // password:'',
-            // errors: {}
+
         }
 
         this.loginFacebook = this.loginFacebook.bind(this);
@@ -22,7 +19,6 @@ class OuterAuth extends React.Component {
           authDomain: "gkbwebsite.firebaseapp.com"
         };
         firebase.initializeApp(this.config);
-        this.provider = new firebase.auth.FacebookAuthProvider();
         // this.onChange = this.onChange.bind(this);
         // this.isValid = this.isValid.bind(this);
     }

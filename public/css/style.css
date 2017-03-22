@@ -229,3 +229,16 @@ body{
     right: 50px;
     top:100px;
 }
+
+/*
+ *
+ */
+
+
+.googleMap{
+    width: 500px;
+    height: 500px;
+    position: relative;
+    border: solid red 10px;
+}
+

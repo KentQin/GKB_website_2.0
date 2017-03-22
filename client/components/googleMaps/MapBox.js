@@ -5,21 +5,25 @@ export default class MapBox extends React.Component {
     render() {
         return (
             <div>
+                <div className="testDiv">
 
-                <ReactMapboxGl
+                </div>
+                <div className="googleMap">
+                    <ReactMapboxGl
                     style="mapbox://styles/mapbox/streets-v8"
                     accessToken="pk.eyJ1IjoicHJhaml0aCIsImEiOiJjajBmZnM2c3kwMXJ4Mnd1aW9ua295ajBjIn0.SYAYhOfs2Aq9JvBIPtV4dw"
                     containerStyle={{
-                    height: "100vh",
-                    width: "100vw"
+                        height: "100vh",
+                        width: "100vw"
                     }}>
-                        <Layer
-                          type="symbol"
-                          id="marker"
-                          layout={{ "icon-image": "marker-15" }}>
-                          <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
-                        </Layer>
+                    <Layer
+                        type="symbol"
+                        id="marker"
+                        layout={{ "icon-image": "marker-15" }}>
+                        <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
+                    </Layer>
                 </ReactMapboxGl>
+                </div>
             </div>
         )
     }
