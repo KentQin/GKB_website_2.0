@@ -226,6 +226,7 @@ body{
 
 .btn-nav-login{
     position: absolute;
-    right: 50px;
-    top:100px;
+    right:50px;
+    top:50px;
+    z-index: +1;
 }
