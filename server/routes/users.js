@@ -8,23 +8,39 @@ let router = express.Router();
 router.post('/signup', (req, res) => {
     console.log("Server: router: users say: request body:  ",req.body);
 
+
     var user = {
-        username_email: req.body.email,
+        email: req.body.email,
         password: req.body.password
     },
         options = {upsert: true, new: true, setDefaultsOnInsert: true };
 
-    User.create(user,options,function(err,data){
-        console.log("Writing to db");
-        if(err){
-            console.log(err.statusCode);
-        }else if(!data){
-            console.log("Error saving");
-        }else{
-            console.log("Registered");
-        }
+    var email ={
+        email: req.body.email
+    };
 
+    User.find(email).count(function(err, count){
+        console.log( "Number of docs: ", count );
+        if(count === 0){
+            User.create(user,options,function(err,data){
+                console.log("Writing to db");
+                if(err){
+                    console.log(err.statusCode);
+                }else if(!data){
+                    console.log(res.statusCode);
+                    console.log("Error saving");
+                }else{
+                    console.log(res.statusCode);
+                    console.log("Registered");
+                }
+
+            });
+        }else{
+            console.log("Email address already taken");
+        }
     });
+
+
 
     // console.log("here");
     // User.findOneAndUpdate(user,function(err,data){
@@ -54,7 +70,7 @@ router.post('/signup', (req, res) => {
 router.post('/login', (req, res) => {
     console.log("Message for LoginForm ",req.body);
     var user = {
-        email:req.body.username_email,
+        email:req.body.email,
         password: req.body.password
     };
 

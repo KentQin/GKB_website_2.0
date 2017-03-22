@@ -223,3 +223,9 @@ body{
 .btn-social{
     text-align: center;
 }
+
+.btn-nav-login{
+    position: absolute;
+    right: 50px;
+    top:100px;
+}
