@@ -72,7 +72,21 @@ body{
     font-stretch: normal;
     line-height: normal;
     letter-spacing: -0.5px;
-    color: #dee1f3;
+    color: #d2d6e4;
+    padding: 10% 0;
+}
+
+.welcome-text-dark{
+    margin:auto;
+    width: 452px;
+    font-family: Oxygen;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    color: #1b2242;
     padding: 10% 0;
 }
 
@@ -208,4 +222,10 @@ body{
 
 .btn-social{
     text-align: center;
+}
+
+.btn-nav-login{
+    position: absolute;
+    right: 50px;
+    top:100px;
 }

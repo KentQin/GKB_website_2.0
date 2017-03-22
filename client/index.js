@@ -12,8 +12,8 @@ import ResetPasswordPage from './components/resetpwd/ResetPasswordPage';
 import EmailSentPage from './components/resetpwd/EmailSentPage';
 import InitialPage from './components/googleMaps/MapBox';
 
-import WelcomePage from './components/welcome/WelcomePage';
 import NewPwdPage from './components/newpassword/NewPwdPage';
+import WelcomePage from './components/welcome/WelcomePage';
 /*
 * createStore(reducer, [preloadedState], enhancer)
 * Here, set an empty func (state = {}) => state as reducer

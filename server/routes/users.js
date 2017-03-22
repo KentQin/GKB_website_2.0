@@ -8,24 +8,59 @@ let router = express.Router();
 router.post('/signup', (req, res) => {
     console.log("Server: router: users say: request body:  ",req.body);
 
+
     var user = {
-        username_email: req.body.email,
+        email: req.body.email,
         password: req.body.password
+    },
+        options = {upsert: true, new: true, setDefaultsOnInsert: true };
+
+    var email ={
+        email: req.body.email
     };
 
-    User.create(user,function(err,data){
-        console.log("Writing to db");
-        if(err){
-            console.log(err);
-        }else if(!data){
-            console.log("Error saving");
-            //res.status(400).json(errors);
+    User.find(email).count(function(err, count){
+        console.log( "Number of docs: ", count );
+        if(count === 0){
+            User.create(user,options,function(err,data){
+                console.log("Writing to db");
+                if(err){
+                    console.log(err.statusCode);
+                }else if(!data){
+                    console.log(res.statusCode);
+                    console.log("Error saving");
+                }else{
+                    console.log(res.statusCode);
+                    console.log("Registered");
+                    res.status(200).json({ success:{} });
+                }
+
+            });
         }else{
-            console.log("User Registered");
-            res.status(200).json({ success:{} });
+            console.log("Email address already taken");
         }
     });
-    // const { errors, isValid } = validateInput(req.body);
+
+
+
+    // console.log("here");
+    // User.findOneAndUpdate(user,function(err,data){
+    //    console.log("Dupcheck");
+    //    if(err){
+    //        console.log(err.statusCode);
+    //    }else if(data){
+    //        console.log("Already exist")
+    //    }elsedata.save(function (err) {
+    //        if (err) {
+    //            console.log("Error saving");
+    //        } else {
+    //            console.log("Registered");
+    //        }
+    //
+    //    });
+    //
+    // });
+    // // const { errors, isValid } = validateInput(req.body);
     // if (!isValid) {
     //     res.status(400).json(errors);
     // }
@@ -36,7 +71,7 @@ router.post('/signup', (req, res) => {
 router.post('/login', (req, res) => {
     console.log("Message for LoginForm ",req.body);
     var user = {
-        email:req.body.username_email,
+        email:req.body.email,
         password: req.body.password
     };
 
