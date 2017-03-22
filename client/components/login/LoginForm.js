@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
-import axios from 'axios';
+import classnames from 'classnames';
+import validateInput from '../../../server/shared/validations/login';
+
 
 class LoginForm extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            username_email: '',
-            password: ''
+            email: '',
+            password: '',
+            errors: {}
         }
 
         this.onChange = this.onChange.bind(this);
@@ -19,27 +22,57 @@ class LoginForm extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    isValid() {
+        const {errors, isValid} = validateInput(this.state);
+
+        if (!isValid) {
+            this.setState({ errors });
+        }
+
+        return isValid;
+    }
+
     onSubmit(e) {
         e.preventDefault();
         console.log("login sends: ", this.state);
-        axios.post('/api/users/login', this.state);
+        // only when form info is valid, we make the request
+        if (this.isValid()) {
+            this.setState({errors: {} });
+            console.log("Login page: ", this.props.userLoginRequest);
+            this.props.userLoginRequest(this.state).then(
+                // after server response then...
+                // if successful
+                (res) => {
+                    this.context.router.push('/welcome')
+                },
+                // if server response any error message, set it into state errors
+                (err) => {
+                    console.log("Login Form: login failed");
+                    //console.log(err.response.data);
+                    this.setState({ errors: err.response.data});
+                    console.log("this.state.errors: ", this.state.errors);
+                });
+        }
     }
 
     render() {
+        const { errors } = this.state;
         return (
             <form className="form-horizontal" onSubmit={this.onSubmit}>
                 <h1 className="h-e-a-d-e-r-t-e-x-t">LOGIN</h1>
-                <div className="form-group">
+                {errors.login && <div className="has-error"><h4>{errors.login}</h4></div> }
+                <div className={classnames("form-group", { 'has-error': errors.email})}>
                     <input
-                        value={this.state.username_email}
+                        value={this.state.email}
                         onChange={this.onChange}
-                        name="username_email"
+                        name="email"
                         type="text"
                         className="form-control input-w-60"
                         id="exampleInputEmail1"
-                        placeholder="Username/ Email" />
+                        placeholder="Email" />
+                    {errors.email && <span className="help-block">{errors.email}</span> }
                 </div>
-                <div className="form-group">
+                <div className={classnames("form-group", { 'has-error': errors.email})}>
                     <input
                         value={this.state.password}
                         onChange={this.onChange}
@@ -48,6 +81,7 @@ class LoginForm extends React.Component {
                         className="form-control input-w-60"
                         id="exampleInputPassword1"
                         placeholder="Password" />
+                    {errors.password && <span className="help-block">{errors.password}</span> }
                 </div>
                 <div className="form-group">
                     <Link to="/resetpassword" >Forget Password?</Link>
@@ -56,6 +90,14 @@ class LoginForm extends React.Component {
             </form>
         );
     }
+}
+
+LoginForm.propTypes = {
+    userLoginRequest: React.PropTypes.func.isRequired
+}
+
+LoginForm.contextTypes = {
+    router: React.PropTypes.object.isRequired
 }
 
 export default LoginForm;

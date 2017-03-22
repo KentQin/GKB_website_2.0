@@ -19,10 +19,11 @@ router.post('/signup', (req, res) => {
             console.log(err);
         }else if(!data){
             console.log("Error saving");
+            //res.status(400).json(errors);
         }else{
             console.log("User Registered");
+            res.status(200).json({ success:{} });
         }
-        res.status(300).send();
     });
     // const { errors, isValid } = validateInput(req.body);
     // if (!isValid) {
@@ -40,17 +41,19 @@ router.post('/login', (req, res) => {
     };
 
     User.findOne(user,function(err,data){
-        console.log("Authentication going");
-        console.log(user.email+","+user.password);
+        let errors = {};
+        console.log("Auth step 1: Authentication going");
+        console.log("Auth step 2: ", user.email+","+user.password);
         if(err){
             console.log(err);
         }else if(!data){
             console.log(data);
-            console.log("User doesnt exist");
-            res.send("Fail");
+            console.log("Email does not exist or wrong password");
+            errors.login = "Email does not exist or wrong password";
+            res.status(400).json(errors);
         }else{
             console.log("Logged in");
-            res.send("Success");
+            res.status(200).json({ success:{} });
         }
 
     });
