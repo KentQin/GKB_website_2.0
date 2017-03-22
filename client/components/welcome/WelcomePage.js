@@ -1,7 +1,7 @@
 import React from 'react';
 import WelcomeForm from './WelcomeForm';
 
-class LoginPage extends React.Component {
+class WelcomePage extends React.Component {
     render() {
         return (
             <div>
@@ -15,4 +15,4 @@ class LoginPage extends React.Component {
     }
 }
 
-export default LoginPage;
+export default WelcomePage;
