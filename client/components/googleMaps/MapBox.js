@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-import WelcomePage from './../welcome/WelcomePage'
+import NavLogin from '../nav/NavLogin';
+import WelcomeForm from './../welcome/WelcomeForm'
+
 
 export default class MapBox extends React.Component {
     render() {
         return (
             <div>
-
+                {/*<NavLogin className="btn-nav-login"/>*/}
                 <ReactMapboxGl
                     style="mapbox://styles/mapbox/streets-v8"
                     accessToken="pk.eyJ1IjoicHJhaml0aCIsImEiOiJjajBmZnM2c3kwMXJ4Mnd1aW9ua295ajBjIn0.SYAYhOfs2Aq9JvBIPtV4dw"
@@ -15,7 +17,7 @@ export default class MapBox extends React.Component {
                     height: "100vh",
                     width: "100vw"
                     }}>
-                    <WelcomePage />
+                    <WelcomeForm />
                         <Layer
                           type="symbol"
                           id="marker"
