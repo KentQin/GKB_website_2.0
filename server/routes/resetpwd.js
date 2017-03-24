@@ -2,6 +2,7 @@ import express from 'express';
 import lodash from 'lodash';
 import validator from 'validator';
 import transporter from '../mailServer.js'
+import config from '../config'
 
 let router = express.Router();
 
@@ -27,6 +28,11 @@ function validateInput(data) {
 }
 
 router.post('/', (req, res) => {
+    if (config.dev) {
+      
+    } else {
+
+    }
     console.log("Server: router: users say: request body:  ",req.body);
     let email = req.body.email;
     const { errors, isValid } = validateInput(req.body);

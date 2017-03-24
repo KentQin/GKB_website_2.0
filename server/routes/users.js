@@ -12,17 +12,17 @@ router.post('/signup', (req, res) => {
     var user = {
         email: req.body.email,
         password: req.body.password
-    },
-        options = {upsert: true, new: true, setDefaultsOnInsert: true };
+    }
 
-    var email ={
+    var email = {
         email: req.body.email
-    };
+    }
 
     User.find(email).count(function(err, count){
+      let errors = {}
         console.log( "Number of docs: ", count );
         if(count === 0){
-            User.create(user,options,function(err,data){
+            User.create(user,function(err,data){
                 console.log("Writing to db");
                 if(err){
                     console.log(err.statusCode);
@@ -37,7 +37,9 @@ router.post('/signup', (req, res) => {
 
             });
         }else{
-            console.log("Email address already taken");
+            console.log("Email address exists");
+            errors.signup = "Email already exits";
+            res.status(400).json(errors);
         }
     });
 

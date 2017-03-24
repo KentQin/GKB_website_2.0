@@ -1,6 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import * as firebase from "firebase";
+import firebase from '../../../server/firebase';
+import Dropzone from '../DropZone'
 
 
 class OuterAuth extends React.Component {
@@ -16,15 +17,6 @@ class OuterAuth extends React.Component {
         this.loginFacebook = this.loginFacebook.bind(this);
         this.loginGoogle = this.loginGoogle.bind(this);
         this.loginTwitter = this.loginTwitter.bind(this);
-
-        this.config = {
-          apiKey: "AIzaSyDrLq-l8Ae6iF9g2JR_aegLpD7mL6QPZVo",
-          authDomain: "gkbwebsite.firebaseapp.com"
-        };
-        firebase.initializeApp(this.config);
-        this.provider = new firebase.auth.FacebookAuthProvider();
-        // this.onChange = this.onChange.bind(this);
-        // this.isValid = this.isValid.bind(this);
     }
 
     loginFacebook(evt){
@@ -107,6 +99,9 @@ class OuterAuth extends React.Component {
                     <button type="submit" className="btn btn-block btn-social btn-twitter" onClick={this.loginTwitter}>
                         <span className="fa fa-twitter"></span> Sign in with Twitter
                     </button>
+                </div>
+                <div className="form-group">
+                    <Dropzone />
                 </div>
 
             </form>
