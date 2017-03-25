@@ -7,11 +7,10 @@ let router = express.Router();
 
 router.post('/signup', (req, res) => {
     console.log("Server: router: users say: request body:  ",req.body);
-
-
     var user = {
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        accountType: 'local'
     }
 
     var email = {
@@ -42,32 +41,6 @@ router.post('/signup', (req, res) => {
             res.status(400).json(errors);
         }
     });
-
-
-
-    // console.log("here");
-    // User.findOneAndUpdate(user,function(err,data){
-    //    console.log("Dupcheck");
-    //    if(err){
-    //        console.log(err.statusCode);
-    //    }else if(data){
-    //        console.log("Already exist")
-    //    }elsedata.save(function (err) {
-    //        if (err) {
-    //            console.log("Error saving");
-    //        } else {
-    //            console.log("Registered");
-    //        }
-    //
-    //    });
-    //
-    // });
-    // // const { errors, isValid } = validateInput(req.body);
-    // if (!isValid) {
-    //     res.status(400).json(errors);
-    // }
-
-
 });
 
 router.post('/login', (req, res) => {
@@ -93,6 +66,44 @@ router.post('/login', (req, res) => {
             res.status(200).json({ success:{} });
         }
 
+    });
+});
+
+router.post('/loginSocial', (req, res) => {
+    console.log("Server: router: users say: request body:  ",req.body);
+    var user = {
+        email: req.body.email,
+        password: req.body.password,
+        accountType: req.body.accountType
+    }
+
+    var email = {
+        email: req.body.email
+    }
+
+    User.find(email).count(function(err, count){
+      let errors = {}
+        console.log( "Number of docs: ", count );
+        if(count === 0){
+            User.create(user,function(err,data){
+                console.log("Writing to db");
+                if(err){
+                    console.log(err.statusCode);
+                }else if(!data){
+                    console.log(res.statusCode);
+                    console.log("Error saving");
+                }else{
+                    console.log(res.statusCode);
+                    console.log("Registered");
+                    res.status(200).json({ success:{} });
+                }
+
+            });
+        }else{
+            console.log("Email address exists");
+            errors.signup = "Email already exits";
+            res.status(400).json(errors);
+        }
     });
 });
 
