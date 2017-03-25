@@ -7,7 +7,7 @@ class OuterAuth extends React.Component {
     constructor(props) {
         super(props);
         this.state ={
-
+            firebaseInitial: false
         }
 
         this.loginFacebook = this.loginFacebook.bind(this);
@@ -18,7 +18,17 @@ class OuterAuth extends React.Component {
           apiKey: "AIzaSyDrLq-l8Ae6iF9g2JR_aegLpD7mL6QPZVo",
           authDomain: "gkbwebsite.firebaseapp.com"
         };
+
+
+        if (firebase.apps.length) {
+            firebase.app().delete().then(() => {
+            });
+        }
+        console.log(firebase.apps.length);
+
         firebase.initializeApp(this.config);
+        console.log(firebase.apps.length);
+
         // this.onChange = this.onChange.bind(this);
         // this.isValid = this.isValid.bind(this);
     }
@@ -26,35 +36,51 @@ class OuterAuth extends React.Component {
     loginFacebook(evt){
         evt.preventDefault();
 
-            var provider = new firebase.auth.FacebookAuthProvider();
 
-            firebase.auth().signInWithPopup(provider)
+        var provider = new firebase.auth.FacebookAuthProvider();
 
-           .then(function(result) {
-              var token = result.credential.accessToken;
-              var user = result.user;
+        firebase.auth()
+            .signInWithPopup(provider)
+            .then(function(result) {
+                var token = result.credential.accessToken;
+                var user = result.user;
+                console.log(token);
+                console.log(user);
 
-              console.log(token)
-              console.log(user)
+                firebase.app().delete().then(() => {
+                    console.log("[DEFAULT] App is Gone Now");
+
+                });
+                this.setState({firebaseInitial : false});
+
            }).catch(function(error) {
-              console.log(error.code);
-              console.log(error.message);
+                console.log(error.code);
+                console.log(error.message);
+
            });
-            //browserHistory.push('/signup');
+
     }
 
     loginGoogle(evt) {
-          evt.preventDefault();
+        evt.preventDefault();
 
-          var provider = new firebase.auth.GoogleAuthProvider();
-          firebase.auth()
 
-         .signInWithPopup(provider).then(function(result) {
-            var token = result.credential.accessToken;
-            var user = result.user;
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth()
+            .signInWithPopup(provider)
+            .then(function(result) {
+                var token = result.credential.accessToken;
+                var user = result.user;
 
-            console.log(token)
-            console.log(JSON.stringify(user));
+                console.log(token)
+                console.log(JSON.stringify(user));
+
+                firebase.app().delete().then(() => {
+                    console.log("[DEFAULT] App is Gone Now");
+
+                });
+                this.setState({firebaseInitial : false});
+
          }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -62,27 +88,38 @@ class OuterAuth extends React.Component {
             console.log(error.code)
             console.log(error.message)
          });
+
     }
 
     loginTwitter(evt) {
-          evt.preventDefault();
+        evt.preventDefault();
 
-          var provider = new firebase.auth.TwitterAuthProvider();
-          firebase.auth()
 
-         .signInWithPopup(provider).then(function(result) {
-            var token = result.credential.accessToken;
-            var user = result.user;
+        var provider = new firebase.auth.TwitterAuthProvider();
+        firebase.auth()
+            .signInWithPopup(provider)
+            .then(function(result) {
+                var token = result.credential.accessToken;
+                var user = result.user;
 
-            console.log(token)
-            console.log(JSON.stringify(user));
-         }).catch(function(error) {
+                console.log(token)
+                console.log(JSON.stringify(user));
+
+                firebase.app().delete().then(() => {
+                    console.log("[DEFAULT] App is Gone Now");
+
+                });
+                this.setState({firebaseInitial : false});
+
+            }).catch(function(error) {
+
             var errorCode = error.code;
             var errorMessage = error.message;
 
             console.log(error.code)
             console.log(error.message)
-         });
+        });
+
     }
 
     render() {

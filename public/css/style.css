@@ -156,12 +156,14 @@ body{
  */
 .email-sent-block{
     background-color: white;
-}
-
-.email-sent-block {
+    margin:0;
     text-align: center;
     padding:0;
+    position: absolute;
+    left:25%;
+    top:25%;
 }
+
 .email-sent-block>div {
     display: inline-block;
     margin:auto;
@@ -226,6 +228,7 @@ body{
 
 .btn-nav-login{
     position: absolute;
+<<<<<<< HEAD
     right: 50px;
     top:100px;
 }
@@ -242,3 +245,55 @@ body{
     border: solid red 10px;
 }
 
+=======
+    right:50px;
+    top:50px;
+    z-index: +1;
+}
+
+
+/*
+    Welcome page(temp)
+ */
+.h-e-a-d-e-r-t-e-x-t-wel {
+    height: 27.9px;
+    font-family: Oxygen;
+    font-size: 25px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.7px;
+    margin-left: 8%;
+    margin-bottom: 8%;
+}
+
+.welcome-text-dark-wel{
+    margin:5% auto;
+    width: 452px;
+    font-family: Oxygen;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    color: #1b2242;
+}
+
+.email-sent-block-wel{
+    background-color: white;
+    margin:0;
+    text-align: center;
+    padding:0;
+    position: absolute;
+    left:25%;
+    top:25%;
+    z-index:+1;
+}
+
+.email-sent-block-wel>div {
+    display: inherit;
+    margin-bottom: 7%;
+}
+>>>>>>> e754c14b2350ae73406919ff9ebf712e501ff4ea
