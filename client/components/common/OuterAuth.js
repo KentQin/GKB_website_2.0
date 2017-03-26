@@ -18,7 +18,7 @@ class OuterAuth extends React.Component {
         this.onLoginFacebook = this.onLoginFacebook.bind(this);
         this.loginGoogle = this.loginGoogle.bind(this);
         this.loginTwitter = this.loginTwitter.bind(this);
-        this.callAction = this.temp.callAction(this);
+        this.callAction = this.callAction.bind(this);
     }
 
     callAction(user, type) {
@@ -106,7 +106,7 @@ class OuterAuth extends React.Component {
             console.log(token)
             console.log(JSON.stringify(user));
             object.callAction(user, 'twitter');
-            
+
          }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
