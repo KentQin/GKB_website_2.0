@@ -228,30 +228,6 @@ body{
 
 .btn-nav-login{
     position: absolute;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    right: 50px;
-    top:100px;
-}
-
-/*
- *
- */
-
-
-.googleMap{
-    width: 500px;
-    height: 500px;
-    position: relative;
-    border: solid red 10px;
-}
-
-=======
-=======
->>>>>>> c906cdf7624b9879e3a2a39cc19dcdc58e5eeea5
-=======
->>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
     right:50px;
     top:50px;
     z-index: +1;
@@ -302,12 +278,7 @@ body{
     display: inherit;
     margin-bottom: 7%;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> e754c14b2350ae73406919ff9ebf712e501ff4ea
-=======
-=======
->>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
+
 
 .drop-zone {
     margin: auto;
@@ -323,9 +294,9 @@ body{
 }
 
 .drop-zone-img {
-  height:85px;
-  width:85px;
-  margin:auto;
+    height:85px;
+    width:85px;
+    margin:auto;
 }
 
 .img-circle {
@@ -334,7 +305,3 @@ body{
     width:85px;
     margin:auto;
 }
-<<<<<<< HEAD
->>>>>>> c906cdf7624b9879e3a2a39cc19dcdc58e5eeea5
-=======
->>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3

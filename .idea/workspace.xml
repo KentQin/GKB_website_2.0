@@ -14,11 +14,8 @@
 =======
 >>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/googleMaps/MapBox.js" afterPath="$PROJECT_DIR$/client/components/googleMaps/MapBox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/welcome/WelcomeForm.js" afterPath="$PROJECT_DIR$/client/components/welcome/WelcomeForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/welcome/WelcomePage.js" afterPath="$PROJECT_DIR$/client/components/welcome/WelcomePage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.js" afterPath="$PROJECT_DIR$/client/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/database.js" afterPath="$PROJECT_DIR$/server/database.js" />
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -27,6 +24,8 @@
 >>>>>>> c906cdf7624b9879e3a2a39cc19dcdc58e5eeea5
 =======
 >>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
+=======
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,6 +62,7 @@
 <<<<<<< HEAD
 =======
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/database.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -134,10 +134,12 @@
           </provider>
         </entry>
       </file>
+=======
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
       <file leaf-file-name="MapBox.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/googleMaps/MapBox.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="240">
               <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -262,7 +264,7 @@
       <file leaf-file-name="WelcomePage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/welcome/WelcomePage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="105">
               <caret line="8" column="78" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="78" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -274,7 +276,7 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
+            <state relative-caret-position="330">
               <caret line="36" column="33" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="33" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -296,9 +298,48 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 >>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
             <state relative-caret-position="277">
               <caret line="278" column="21" lean-forward="false" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
+=======
+            <state relative-caret-position="113">
+              <caret line="168" column="16" lean-forward="true" selection-start-line="168" selection-start-column="16" selection-end-line="168" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WelToSignup.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/login/WelToSignup.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-15">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginPage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/login/LoginPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
               <folding />
 >>>>>>> e754c14b2350ae73406919ff9ebf712e501ff4ea
             </state>
@@ -306,6 +347,12 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>px</find>
+      <find>absolute</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -403,7 +450,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -430,7 +477,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
+              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -445,10 +492,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -465,6 +508,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="client" />
 >>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -495,6 +539,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+=======
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -520,6 +566,58 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="client" />
 >>>>>>> c906cdf7624b9879e3a2a39cc19dcdc58e5eeea5
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_website_2.0" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_website_2.0" />
+=======
+>>>>>>> c906cdf7624b9879e3a2a39cc19dcdc58e5eeea5
+=======
+>>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -534,44 +632,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="GKB_website_2.0" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_website_2.0" />
-=======
->>>>>>> c906cdf7624b9879e3a2a39cc19dcdc58e5eeea5
-=======
->>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -605,29 +665,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="newpassword" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nav" />
+              <option name="myItemId" value="login" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -674,6 +712,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+<<<<<<< HEAD
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="GKB_website_2.0" />
@@ -814,6 +853,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+=======
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -859,6 +903,7 @@
       <option name="filePath" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -880,6 +925,8 @@
 =======
 =======
 >>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
+=======
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -931,6 +978,7 @@
 =======
       <workItem from="1490142616927" duration="266000" />
       <workItem from="1490143104012" duration="14000" />
+<<<<<<< HEAD
       <workItem from="1490143143236" duration="3361000" />
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -939,10 +987,16 @@
 >>>>>>> c906cdf7624b9879e3a2a39cc19dcdc58e5eeea5
 =======
 >>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
+=======
+      <workItem from="1490143143236" duration="3513000" />
+      <workItem from="1490431262318" duration="1006000" />
+      <workItem from="1490497086308" duration="1512000" />
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -956,6 +1010,9 @@
 =======
 >>>>>>> 305c55e841b10ed43b233d40dc3a231074ca9df3
     <option name="totallyTimeSpent" value="3641000" />
+=======
+    <option name="totallyTimeSpent" value="6311000" />
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="692" extended-state="6" />
@@ -1072,6 +1129,177 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/server/database.js">
+<<<<<<< HEAD
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/initialPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/googleMaps/MapBox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/newpassword/NewPwdForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/welcome/WelcomeForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="53" lean-forward="false" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/welcome/WelcomePage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="78" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="36" column="33" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/nav/NavLogin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4170">
+          <caret line="278" column="21" lean-forward="false" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/initialPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/googleMaps/MapBox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/newpassword/NewPwdForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/welcome/WelcomeForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="53" lean-forward="false" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/welcome/WelcomePage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="78" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="36" column="33" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/nav/NavLogin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
         <state relative-caret-position="360">
@@ -1079,8 +1307,11 @@
 =======
         <state relative-caret-position="525">
           <caret line="35" column="24" lean-forward="false" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+<<<<<<< HEAD
 >>>>>>> e754c14b2350ae73406919ff9ebf712e501ff4ea
           <folding />
+=======
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
         </state>
       </provider>
     </entry>
@@ -1100,7 +1331,6 @@
 =======
         <state relative-caret-position="285">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1108,7 +1338,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1116,7 +1345,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="35" column="24" lean-forward="false" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1134,7 +1362,6 @@
 <<<<<<< HEAD
 =======
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1142,7 +1369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1150,7 +1376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="35" column="24" lean-forward="false" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1166,12 +1391,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/login/LoginForm.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -1511,6 +1736,10 @@
         <state relative-caret-position="277">
           <caret line="278" column="21" lean-forward="false" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
           <folding />
+=======
+        <state relative-caret-position="15">
+          <caret line="71" column="46" lean-forward="false" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
+>>>>>>> 50df58318abeb5e7302d1fcbc8e6908bd479950b
         </state>
       </provider>
     </entry>
@@ -1545,7 +1774,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
+        <state relative-caret-position="330">
           <caret line="36" column="33" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="33" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -1563,7 +1792,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/welcome/WelcomePage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="105">
           <caret line="8" column="78" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="78" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -1573,7 +1802,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/googleMaps/MapBox.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="240">
           <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -1581,14 +1810,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/welcome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/welcome.css" />
     <entry file="file://$PROJECT_DIR$/client/components/welcome/WelcomeForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1597,10 +1819,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/login/WelToSignup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/login/LoginPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="278" column="21" lean-forward="false" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
+        <state relative-caret-position="113">
+          <caret line="168" column="16" lean-forward="true" selection-start-line="168" selection-start-column="16" selection-end-line="168" selection-end-column="16" />
           <folding />
         </state>
       </provider>
