@@ -29,9 +29,9 @@ class SignupPage extends React.Component {
                         <SignupFrom userSignupRequest={userSignupRequest}/>
 
                     </div>
-                    <div className="col-md-4 login-page-block login-block">
-                        <OuterAuth userLoginSocialRequest={userLoginSocialRequest}/>
-                    </div>
+                    {/*<div className="col-md-4 login-page-block login-block">*/}
+                        {/*<OuterAuth userLoginSocialRequest={userLoginSocialRequest}/>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         )
