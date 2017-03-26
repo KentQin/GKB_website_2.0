@@ -19,9 +19,9 @@ class LoginPage extends React.Component {
                     <div className="col-md-5 login-page-block login-block">
                         <LoginForm userLoginRequest={userLoginRequest} />
                     </div>
-                    {/*<div className="col-md-4 login-page-block auth-block">*/}
-                        {/*<OuterAuth userLoginSocialRequest={userLoginSocialRequest}/>*/}
-                    {/*</div>*/}
+                    <div className="col-md-4 login-page-block auth-block">
+                        <OuterAuth userLoginSocialRequest={userLoginSocialRequest} />
+                    </div>
                 </div>
             </div>
         )
@@ -33,4 +33,4 @@ LoginPage.propTypes = {
     userLoginSocialRequest: React.PropTypes.func.isRequired
 }
 
-export default connect( (state)=>{ return{}}, { userLoginRequest }) (LoginPage);
+export default connect( (state)=>{ return{}}, { userLoginRequest, userLoginSocialRequest }) (LoginPage);
