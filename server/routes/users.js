@@ -1,5 +1,5 @@
 import express from 'express';
-import validateInput from '../shared/validations/signup'
+import jwt from 'jsonwebtoken';
 
 var User = require('./../models/user.js');
 
@@ -62,8 +62,15 @@ router.post('/login', (req, res) => {
             errors.login = "Email does not exist or wrong password";
             res.status(400).json(errors);
         }else{
+            // if verify the user, send credential token to client
+            // jwt.sign(payload, secret)
+            // payload: an object, can be decoded on client
+            // secret: for encrypt the token and verify
+            const token = jwt.sign({
+                email: user.email
+            }, 'secretkeyforjsonwebtoken');
             console.log("Logged in");
-            res.status(200).json({ success:{} });
+            res.json({token});
         }
 
     });
