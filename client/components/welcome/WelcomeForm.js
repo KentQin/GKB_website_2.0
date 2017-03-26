@@ -2,9 +2,10 @@ import React from 'react';
 
 class WelcomeForm extends React.Component{
     render(){
+        const {user} = this.props.login
         return(
             <div className="col-md-6 col-md-offset-3 email-sent-block-wel">
-                <h1 className="h-e-a-d-e-r-t-e-x-t-wel">WELCOME!</h1>
+                <h1 className="h-e-a-d-e-r-t-e-x-t-wel">WELCOME! {user.email}</h1>
                 <div className="welcome-text-dark-wel">
                     <p>Before we begin, please set your public username.
                         This username will be visible to all users on our platform.</p>
@@ -20,6 +21,10 @@ class WelcomeForm extends React.Component{
             </div>
         );
     }
+}
+
+WelcomeForm.propTypes = {
+    login: React.PropTypes.object.isRequired
 }
 
 export default WelcomeForm;

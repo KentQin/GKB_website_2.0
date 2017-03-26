@@ -16,8 +16,8 @@ export function userLoginRequest(userData) {
         return axios.post('/api/users/login', userData).then(res =>{
             const token = res.data.token;
             console.log('token: ' ,token);
-            // get token from server side
-            localStorage.setItem('jwtToken', token);
+            // get token from server side, and store the token into session storage
+            sessionStorage.setItem('loginToken', token);
             setAuthorizationToken(token);
             // decode token, get user msg from it
             console.log('decode: ',jwt.decode(token));

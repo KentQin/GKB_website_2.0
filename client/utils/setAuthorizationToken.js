@@ -2,8 +2,9 @@ import axios from 'axios';
 
 /*
 * When we add the token
-* 1. login --> here
-* 2. reload page --> client/index page
+* 1. login - done
+* 2. signup
+* 2. reload page --> client/index page - done
 */
 export default function setAuthorizaitonToken(token) {
     if (token) {

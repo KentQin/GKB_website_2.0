@@ -15,7 +15,7 @@ import setAuthorizationToken from './utils/setAuthorizationToken';
 import rootReduce from './reducer/rootReducer';
 import jwt from 'jsonwebtoken';
 import { setCurrentUser } from './actions/loginAction';
-import userProfile from './components/test/userProfile';
+import UserProfile from './components/test/UserProfile';
 /*
 * createStore(reducer, [preloadedState], enhancer)
 * Here, set an empty func (state = {}) => state as reducer
@@ -36,9 +36,9 @@ const store = createStore(
     )
 )
 
-if (localStorage.jwtToken) {
-    setAuthorizationToken(localStorage.jwtToken);
-    store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
+if (sessionStorage.loginToken) {
+    setAuthorizationToken(sessionStorage.loginToken);
+    store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginToken)));
 }
 
 
@@ -52,7 +52,7 @@ render(
             <Route path="/emailsentpage" component={EmailSentPage}/>
             <Route path="/welcome" component={InitialPage}/>
             <Route path="/newpwd" component={NewPwdPage}/>
-            <Route path="/userProfile" component={userProfile}/>
+            <Route path="/userProfile" component={UserProfile}/>
         </Router>
     </Provider>
 , document.getElementById('app'));

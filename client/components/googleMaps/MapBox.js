@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-import NavLogin from '../nav/NavLogin';
 import WelcomeForm from './../welcome/WelcomeForm'
+import { connect } from 'react-redux';
 
 
-export default class MapBox extends React.Component {
+class MapBox extends React.Component {
     render() {
+        // const { user } = this.props.login;
+        // console.log('this.props.login: ',user);
         return (
             <div>
                 {/*<NavLogin className="btn-nav-login"/>*/}
@@ -18,7 +20,7 @@ export default class MapBox extends React.Component {
                         width: "100vw"
                     }}>
 
-                    <WelcomeForm />
+                    <WelcomeForm login={this.props.login}/>
                         <Layer
                           type="symbol"
                           id="marker"
@@ -31,3 +33,16 @@ export default class MapBox extends React.Component {
         )
     }
 }
+
+MapBox.propTypes = {
+    login: React.PropTypes.object.isRequired
+}
+
+function mapStateToProps(state) {
+    console.log('mapStateToProps: ',state.login);
+    return {
+        login: state.login
+    };
+}
+
+export default connect(mapStateToProps)(MapBox);
