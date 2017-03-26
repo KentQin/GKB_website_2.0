@@ -68,6 +68,7 @@ class SignupForm extends React.Component {
                 className="form-horizontal"
             >
                 <h1 className="h-e-a-d-e-r-t-e-x-t">SIGN UP</h1>
+                {errors.signup && <span className={classnames("help-block", { 'has-error': errors.signup})} >{errors.signup}</span> }
                 <div className={classnames("form-group", { 'has-error': errors.email})}>
                     <input
                         value={this.state.email}

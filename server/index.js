@@ -9,6 +9,8 @@ import webpackConfig from '../webpack.config';
 import users from './routes/users';
 import resetpwd from './routes/resetpwd';
 import './database';
+import './firebase';
+import config from './config'
 
 let app = express();
 
@@ -42,4 +44,8 @@ app.post('/resetpwd', (req, res) => {
 
 app.use('/api/users',users);
 
-console.log(app.listen(9000, () => console.log('Running on localhost:9000')));
+if (config.dev) {
+  console.log(app.listen(9000, () => console.log('Running on localhost:9000')));
+} else {
+  console.log(app.listen(80, () => console.log('Running on server which is public.')));
+}

@@ -60,7 +60,7 @@ class LoginForm extends React.Component {
         return (
             <form className="form-horizontal" onSubmit={this.onSubmit}>
                 <h1 className="h-e-a-d-e-r-t-e-x-t">LOGIN</h1>
-                {errors.login && <div className="has-error"><h4>{errors.login}</h4></div> }
+                {errors.login && <span className={classnames("help-block", { 'has-error': errors.login})} >{errors.login}</span> }
                 <div className={classnames("form-group", { 'has-error': errors.email})}>
                     <input
                         value={this.state.email}

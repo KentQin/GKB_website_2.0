@@ -1,35 +1,54 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import * as firebase from "firebase";
+import firebase from '../../../server/firebase';
+import Dropzone from '../DropZone'
 
 
 class OuterAuth extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state ={
-            // identifier:'',
-            // password:'',
-            // errors: {}
+        this.state = {
+            email:'',
+            password:'',
+            accountType: '',
+            errors: {}
         }
 
-        this.loginFacebook = this.loginFacebook.bind(this);
+        this.onLoginFacebook = this.onLoginFacebook.bind(this);
         this.loginGoogle = this.loginGoogle.bind(this);
         this.loginTwitter = this.loginTwitter.bind(this);
-
-        this.config = {
-          apiKey: "AIzaSyDrLq-l8Ae6iF9g2JR_aegLpD7mL6QPZVo",
-          authDomain: "gkbwebsite.firebaseapp.com"
-        };
-        firebase.initializeApp(this.config);
-        this.provider = new firebase.auth.FacebookAuthProvider();
-        // this.onChange = this.onChange.bind(this);
-        // this.isValid = this.isValid.bind(this);
+        this.callAction = this.callAction.bind(this);
     }
 
-    loginFacebook(evt){
+    callAction(user, type) {
+
+      this.setState({
+        email: user.email,
+        password: '',
+        accountType: type
+      });
+
+      this.props.userLoginSocialRequest(this.state).then(
+          // after server response then...
+          // if successful
+          (res) => {
+              //this.context.router.push('/welcome')
+              console.log("you are here");
+              this.context.router.push('/welcome')
+          },
+          // if server response any error message, set it into state errors
+          (err) => {
+              this.setState({ errors: err.response.data})
+              console.log("you are here err");
+          });
+    }
+
+    onLoginFacebook(evt){
+
         evt.preventDefault();
 
+            var object = this;
             var provider = new firebase.auth.FacebookAuthProvider();
 
             firebase.auth().signInWithPopup(provider)
@@ -38,8 +57,10 @@ class OuterAuth extends React.Component {
               var token = result.credential.accessToken;
               var user = result.user;
 
-              console.log(token)
-              console.log(user)
+              console.log(token);
+              console.log(user.email);
+              object.callAction(user, 'facebook');
+
            }).catch(function(error) {
               console.log(error.code);
               console.log(error.message);
@@ -50,6 +71,7 @@ class OuterAuth extends React.Component {
     loginGoogle(evt) {
           evt.preventDefault();
 
+          var object = this;
           var provider = new firebase.auth.GoogleAuthProvider();
           firebase.auth()
 
@@ -59,6 +81,8 @@ class OuterAuth extends React.Component {
 
             console.log(token)
             console.log(JSON.stringify(user));
+            object.callAction(user, 'google');
+
          }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -71,6 +95,7 @@ class OuterAuth extends React.Component {
     loginTwitter(evt) {
           evt.preventDefault();
 
+          var object = this;
           var provider = new firebase.auth.TwitterAuthProvider();
           firebase.auth()
 
@@ -80,6 +105,8 @@ class OuterAuth extends React.Component {
 
             console.log(token)
             console.log(JSON.stringify(user));
+            object.callAction(user, 'twitter');
+
          }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -99,7 +126,7 @@ class OuterAuth extends React.Component {
                   </button>
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-block btn-social btn-facebook" onClick={this.loginFacebook}>
+                    <button type="submit" className="btn btn-block btn-social btn-facebook" onClick={this.onLoginFacebook}>
                         <span className="fa fa-facebook"></span> Sign in with Facebook
                     </button>
                 </div>
@@ -108,10 +135,21 @@ class OuterAuth extends React.Component {
                         <span className="fa fa-twitter"></span> Sign in with Twitter
                     </button>
                 </div>
+                <div className="form-group">
+                    <Dropzone />
+                </div>
 
             </form>
-    );
+        );
     }
+}
+
+OuterAuth.propTypes = {
+    userLoginSocialRequest: React.PropTypes.func.isRequired
+}
+
+OuterAuth.contextTypes = {
+    router: React.PropTypes.object.isRequired
 }
 
 export default OuterAuth;

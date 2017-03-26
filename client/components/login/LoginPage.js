@@ -4,10 +4,11 @@ import WelToSignup from './WelToSignup';
 import OuterAuth from '../common/OuterAuth';
 import { connect } from 'react-redux';
 import { userLoginRequest } from '../../actions/loginAction';
+import { userLoginSocialRequest } from '../../actions/loginActionSocial'
 
 class LoginPage extends React.Component {
     render() {
-        const { userLoginRequest } = this.props;
+        const { userLoginRequest, userLoginSocialRequest } = this.props;
         return (
             <div className="container loginPage">
                 <div className="row centered">
@@ -18,7 +19,7 @@ class LoginPage extends React.Component {
                         <LoginForm userLoginRequest={userLoginRequest} />
                     </div>
                     <div className="col-md-4 login-page-block auth-block">
-                        <OuterAuth />
+                        <OuterAuth userLoginSocialRequest={userLoginSocialRequest} />
                     </div>
                 </div>
             </div>
@@ -27,7 +28,8 @@ class LoginPage extends React.Component {
 }
 
 LoginPage.propTypes = {
-    userLoginRequest: React.PropTypes.func.isRequired
+    userLoginRequest: React.PropTypes.func.isRequired,
+    userLoginSocialRequest: React.PropTypes.func.isRequired
 }
 
-export default connect( (state)=>{ return{}}, { userLoginRequest }) (LoginPage);
+export default connect( (state)=>{ return{}}, { userLoginRequest, userLoginSocialRequest }) (LoginPage);
