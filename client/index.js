@@ -15,6 +15,7 @@ import setAuthorizationToken from './utils/setAuthorizationToken';
 import rootReduce from './reducer/rootReducer';
 import jwt from 'jsonwebtoken';
 import { setCurrentUser } from './actions/loginAction';
+import userProfile from './components/test/userProfile';
 /*
 * createStore(reducer, [preloadedState], enhancer)
 * Here, set an empty func (state = {}) => state as reducer
@@ -51,6 +52,7 @@ render(
             <Route path="/emailsentpage" component={EmailSentPage}/>
             <Route path="/welcome" component={InitialPage}/>
             <Route path="/newpwd" component={NewPwdPage}/>
+            <Route path="/userProfile" component={userProfile}/>
         </Router>
     </Provider>
 , document.getElementById('app'));

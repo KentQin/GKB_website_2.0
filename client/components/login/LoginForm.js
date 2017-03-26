@@ -44,6 +44,7 @@ class LoginForm extends React.Component {
                 // if successful
                 (res) => {
                     //this.context.router.push('/welcome')
+                    this.context.router.push('/userProfile')
                 },
                 // if server response any error message, set it into state errors
                 (err) => {
