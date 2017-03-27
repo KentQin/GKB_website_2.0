@@ -26,8 +26,6 @@ import UserProfile from './components/test/UserProfile';
 * */
 
 
-
-
 const store = createStore(
     rootReduce,
     compose(
