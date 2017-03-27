@@ -11,9 +11,7 @@ import SignupPage from './components/signup/SignupPage';
 import ResetPasswordPage from './components/resetpwd/ResetPasswordPage';
 import EmailSentPage from './components/resetpwd/EmailSentPage';
 import NewPwdPage from './components/newpassword/NewPwdPage';
-import WelcomePage from './components/welcome/WelcomePage';
 import InitialPage from './components/googleMaps/MapBox'
-import Modalx from './components/modal/ModalxPage';
 /*
 * createStore(reducer, [preloadedState], enhancer)
 * Here, set an empty func (state = {}) => state as reducer
@@ -37,7 +35,6 @@ render(
             <Route path="/emailsentpage" component={EmailSentPage}/>
             <Route path="/welcome" component={InitialPage}/>
             <Route path="/newpwd" component={NewPwdPage}/>
-            <Route path="/modal" component={Modalx}/>
         </Router>
     </Provider>
 , document.getElementById('app'));

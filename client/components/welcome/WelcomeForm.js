@@ -1,6 +1,29 @@
 import React from 'react';
+import LoginPage from './../login/LoginPage';
 
 class WelcomeForm extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            errors: {}
+        }
+
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+
+    onSubmit(){
+        e.preventDefault();
+        var loginmodal = <LoginPage id="login-modal"/>;
+    }
+
     render(){
         return(
             <div className="col-md-6 col-md-offset-3 email-sent-block-wel">
@@ -16,7 +39,7 @@ class WelcomeForm extends React.Component{
                         id="exampleInputEmail1"
                         placeholder="Public Username" />
                 </div>
-                <button type="submit" className="btn btn-default btn-login" onClick={this.onSubmit}>Submit</button>
+                <button type="submit" className="btn btn-default btn-login">Submit</button>
             </div>
         );
     }

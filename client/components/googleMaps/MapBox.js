@@ -2,7 +2,8 @@ import React from 'react';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import NavLogin from '../nav/NavLogin';
 import WelcomeForm from './../welcome/WelcomeForm'
-
+import M from './../modal/M'
+import LoginPage from './../login/LoginPage'
 
 export default class MapBox extends React.Component {
     render() {
@@ -17,6 +18,7 @@ export default class MapBox extends React.Component {
                     height: "100vh",
                     width: "100vw"
                     }}>
+
                     <WelcomeForm />
                         <Layer
                           type="symbol"
