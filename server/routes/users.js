@@ -87,7 +87,8 @@ router.post('/login', (req, res) => {
             // secret: for encrypt the token and verify
             // success, then send token back
             const token = jwt.sign({
-                email: user.email
+                email: user.email,
+                userName: 'GKB User'
             }, 'secretkeyforjsonwebtoken');
             console.log("Logged in");
             res.json({token});
@@ -110,30 +111,35 @@ router.post('/loginSocial', (req, res) => {
         email: req.body.email
     }
 
-    User.find(email).count(function(err, count){
-      let errors = {}
-        console.log( "Number of docs: ", count );
-        if(count === 0){
-            User.create(user,function(err,data){
-                console.log("Writing to db");
-                if(err){
-                    console.log(err.statusCode);
-                }else if(!data){
-                    console.log(res.statusCode);
-                    console.log("Error saving");
-                }else{
-                    console.log(res.statusCode);
-                    console.log("Registered");
-                    res.status(200).json({ success:{} });
-                }
+    const token = jwt.sign({
+        email: user.email
+    }, 'secretkeyforjsonwebtoken');
+    res.json({token});
 
-            });
-        }else{
-            console.log("Email address exists");
-            errors.signup = "Email already exits";
-            res.status(400).json(errors);
-        }
-    });
+    // User.find(email).count(function(err, count){
+    //   let errors = {}
+    //     console.log( "Number of docs: ", count );
+    //     if(count === 0){
+    //         User.create(user,function(err,data){
+    //             console.log("Writing to db");
+    //             if(err){
+    //                 console.log(err.statusCode);
+    //             }else if(!data){
+    //                 console.log(res.statusCode);
+    //                 console.log("Error saving");
+    //             }else{
+    //                 console.log(res.statusCode);
+    //                 console.log("Registered");
+    //                 res.status(200).json({ success:{} });
+    //             }
+    //
+    //         });
+    //     }else{
+    //         console.log("Email address exists");
+    //         errors.signup = "Email already exits";
+    //         res.status(400).json(errors);
+    //     }
+    // });
 });
 
 router.post('/addName', (req, res) => {
@@ -141,7 +147,6 @@ router.post('/addName', (req, res) => {
     const user = {
         userName: req.body.userName,
         email: req.body.email,
-        password: req.body.password
     };
 
 
@@ -153,13 +158,13 @@ router.post('/addName', (req, res) => {
     // 然后为该用户添加用户名
 
     // 如果添加成功返回如下信息(我暂时comment out了，只需要copy过去就好的)
-    /*
+
     const token = jwt.sign({
         email: user.email,
         userName: user.userName
     }, 'secretkeyforjsonwebtoken');
     res.json({token});
-    */
+
 });
 
 

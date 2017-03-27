@@ -11,7 +11,15 @@ export function setCurrentUser(user) {
     }
 }
 
-export function userLoginRequest(userData) {
+export function logout() {
+    return dispatch => {
+        sessionStorage.removeItem('loginToken');
+        setAuthorizationToken(false);
+        dispatch(setCurrentUser({}));
+    }
+}
+
+export function login(userData) {
     return dispatch => {
         return axios.post('/api/users/login', userData).then(res =>{
             const token = res.data.token;

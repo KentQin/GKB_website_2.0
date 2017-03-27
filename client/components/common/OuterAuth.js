@@ -24,24 +24,24 @@ class OuterAuth extends React.Component {
     callAction(user, type) {
 
       this.setState({
-        email: user.email,
-        password: '',
-        accountType: type
-      });
+            email: user.email,
+            password: '',
+            accountType: type
+        });
 
-      this.props.userLoginSocialRequest(this.state).then(
-          // after server response then...
-          // if successful
-          (res) => {
-              //this.context.router.push('/welcome')
-              console.log("you are here");
-              this.context.router.push('/welcome')
-          },
-          // if server response any error message, set it into state errors
-          (err) => {
-              this.setState({ errors: err.response.data})
-              console.log("you are here err");
-          });
+        this.props.userLoginSocialRequest(this.state).then(
+            // after server response then...
+            // if successful
+            (res) => {
+                //this.context.router.push('/welcome')
+                console.log("Outer Auth success");
+                this.context.router.push('/welcome')
+            },
+            // if server response any error message, set it into state errors
+            (err) => {
+                this.setState({ errors: err.response.data})
+                console.log("Outer Auth fail");
+            });
     }
 
     onLoginFacebook(evt){
