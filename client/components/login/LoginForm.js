@@ -38,8 +38,8 @@ class LoginForm extends React.Component {
         // only when form info is valid, we make the request
         if (this.isValid()) {
             this.setState({errors: {} });
-            console.log("Login page: ", this.props.userLoginRequest);
-            this.props.userLoginRequest(this.state).then(
+            console.log("Login page: ", this.props.login);
+            this.props.login(this.state).then(
                 // after server response then...
                 // if successful
                 (res) => {
@@ -93,8 +93,11 @@ class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes = {
-    userLoginRequest: React.PropTypes.func.isRequired
+    login: React.PropTypes.func.isRequired
 }
 
+LoginForm.contextTypes = {
+    router: React.PropTypes.object.isRequired
+}
 
 export default LoginForm;

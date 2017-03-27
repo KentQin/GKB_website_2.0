@@ -17,11 +17,11 @@ router.post('/signup', (req, res) => {
         email: req.body.email
     }
 
-    console.log('Server: You Signup');
-    const token = jwt.sign({
-        email: user.email
-    }, 'secretkeyforjsonwebtoken');
-    res.json({token});
+    // console.log('Server: You Signup');
+    // const token = jwt.sign({
+    //     email: user.email
+    // }, 'secretkeyforjsonwebtoken');
+    // res.json({token});
 
 
     User.find(email).count(function(err, count){
@@ -61,12 +61,12 @@ router.post('/login', (req, res) => {
         password: req.body.password
     };
 
-    console.log('Server: You Logged in');
-    const token = jwt.sign({
-        email: user.email,
-        userName: 'GKB User'
-    }, 'secretkeyforjsonwebtoken');
-    res.json({token});
+    // console.log('Server: You Logged in');
+    // const token = jwt.sign({
+    //     email: user.email,
+    //     userName: 'GKB User'
+    // }, 'secretkeyforjsonwebtoken');
+    // res.json({token});
 
 
     User.findOne(user,function(err,data){
