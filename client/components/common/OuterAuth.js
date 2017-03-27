@@ -34,13 +34,13 @@ class OuterAuth extends React.Component {
             // if successful
             (res) => {
                 //this.context.router.push('/welcome')
-                console.log("you are here");
+                console.log("Outer Auth success");
                 this.context.router.push('/welcome')
             },
             // if server response any error message, set it into state errors
             (err) => {
                 this.setState({ errors: err.response.data})
-                console.log("you are here err");
+                console.log("Outer Auth fail");
             });
     }
 
