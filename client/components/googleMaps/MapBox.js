@@ -5,6 +5,24 @@ import { connect } from 'react-redux';
 
 
 class MapBox extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showWelcomeForm: true
+        }
+
+        this.hideWelcomeForm = this.hideWelcomeForm.bind(this);
+    }
+
+    hideWelcomeForm(){
+        this.setState({
+            showWelcomeForm: false
+        })
+    }
+
+
+
     render() {
         // const { user } = this.props.login;
         // console.log('this.props.login: ',user);
@@ -20,7 +38,9 @@ class MapBox extends React.Component {
                         width: "100vw"
                     }}>
 
-                    <WelcomeForm login={this.props.login}/>
+                    {this.state.showWelcomeForm && <WelcomeForm login={this.props.login} hideWelcomeForm={this.hideWelcomeForm}/>}
+
+
                         <Layer
                           type="symbol"
                           id="marker"

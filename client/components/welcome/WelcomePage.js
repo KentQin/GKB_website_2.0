@@ -4,15 +4,14 @@ import WelcomeForm from './WelcomeForm';
 
 class WelcomePage extends React.Component {
 
+
     render() {
-        // const { user } = this.props.login;
-        // console.log('this.props.login: ',user);
 
         return (
             <div>
                 <div className="row centered">
                     <div className="col-md-6 col-md-offset-3 email-sent-block">
-                        <WelcomeForm login={this.props.login}/>
+                        <WelcomeForm login={this.props.login}  />
                     </div>
                 </div>
             </div>
