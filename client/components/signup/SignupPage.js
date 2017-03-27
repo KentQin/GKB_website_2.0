@@ -19,7 +19,7 @@ class SignupPage extends React.Component {
         console.log("Singup Page send: ",{ userSignupRequest }," to Signup From");
 
         return (
-            <div className="container loginPage">
+            <div className="container loginPage float_on_the_map">
                 <div className="row centered">
                     <div className="col-md-3 login-page-block welcome-block">
                         <WelToLogin />

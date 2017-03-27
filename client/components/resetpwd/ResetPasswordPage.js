@@ -9,7 +9,7 @@ class ResetPasswordPage extends React.Component{
 
         const { resetpwdRequest } = this.props;
         return(
-           <div className="ResetPasswordPage">
+           <div className="ResetPasswordPage float_on_the_map ">
                <div className="row centered">
                    <div className="col-md-2">
                    </div>

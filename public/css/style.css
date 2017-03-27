@@ -274,11 +274,24 @@ body{
     z-index:+1;
 }
 
+
 .email-sent-block-wel>div {
     display: inherit;
     margin-bottom: 7%;
 }
 
+
+.float_on_the_map{
+    text-align: center;
+    position: absolute;
+    left: 0; top: 10%; right: 0; bottom: 0;
+    margin: auto;
+    z-index:+1;
+}
+
+.float_on_the_map>div {
+    display: inherit;
+}
 
 .drop-zone {
     margin: auto;

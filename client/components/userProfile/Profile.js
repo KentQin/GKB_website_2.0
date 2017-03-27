@@ -10,10 +10,10 @@ class Profile extends React.Component {
     }
 
     render(){
-        const {user} = this.props.login;
+        const { user } = this.props.login;
         return(
             <div className="col-md-6 col-md-offset-3 email-sent-block-wel">
-                <h1>WELCOME! {user.email}</h1>
+                <h1>WELCOME! { user.userName }</h1>
                 <h2>Your profile should be here, coming soon</h2>
             </div>
         )

@@ -1,8 +1,15 @@
 import React from 'react';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-import WelcomeForm from '../welcome/WelcomeForm'
+import LoginPage from '../login/LoginPage';
+import SignupPage from '../signup/SignupPage';
+import ResetPasswordPage from '../resetpwd/ResetPasswordPage';
+import EmailSentPage from '../resetpwd/EmailSentPage';
+import NewPwdPage from '../newpassword/NewPwdPage';
+import WelcomePage from '../welcome/WelcomePage'
+import HomePage from '../home/HomePage'
+
 import Profile from '../userProfile/Profile';
-import { connect } from 'react-redux';
 
 
 class MapBox extends React.Component {
@@ -10,27 +17,24 @@ class MapBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showWelcomeForm: true,
-            showProfile: false
+
         }
 
-        this.hideWelcomeFormShowProfile = this.hideWelcomeFormShowProfile.bind(this);
+        //this.hideWelcomeFormShowProfile = this.hideWelcomeFormShowProfile.bind(this);
     }
 
-    hideWelcomeFormShowProfile(){
-        this.setState({
-            showWelcomeForm: false,
-            showProfile: true
-        })
-    }
+    // hideWelcomeFormShowProfile(){
+    //     this.setState({
+    //     })
+    // }
 
     // in componentWillMount stage, if justSignup, let user add username, or go to profile
-    componentWillMount(){
-        const { justSignup } = this.props.login;
-        if (!justSignup){
-            this.hideWelcomeFormShowProfile();
-        }
-    }
+    // componentWillMount(){
+    //     const { justSignup } = this.props.login;
+    //     if (!justSignup){
+    //         this.hideWelcomeFormShowProfile();
+    //     }
+    // }
 
     render() {
 
@@ -48,8 +52,17 @@ class MapBox extends React.Component {
                         width: "100vw"
                     }}>
 
-                    {this.state.showWelcomeForm && <WelcomeForm login={this.props.login} hideWelcomeFormShowProfile={this.hideWelcomeFormShowProfile} />}
-                    {this.state.showProfile && <Profile login={this.props.login} /> }
+
+                    <Router history={browserHistory}>
+                        <Route path="/" component={HomePage}/>
+                            <Route path="home" component={HomePage}/>
+                            <Route path="login" component={LoginPage}/>
+                            <Route path="signup" component={SignupPage}/>
+                            <Route path="resetpassword" component={ResetPasswordPage}/>
+                            <Route path="emailsentpage" component={EmailSentPage}/>
+                            <Route path="welcome" component={WelcomePage}/>
+                            <Route path="newpwd" component={NewPwdPage}/>
+                    </Router>
 
                         <Layer
                           type="symbol"
@@ -64,15 +77,4 @@ class MapBox extends React.Component {
     }
 }
 
-MapBox.propTypes = {
-    login: React.PropTypes.object.isRequired
-}
-
-function mapStateToProps(state) {
-    console.log('mapStateToProps: ',state.login);
-    return {
-        login: state.login
-    };
-}
-
-export default connect(mapStateToProps)(MapBox);
+export default MapBox;

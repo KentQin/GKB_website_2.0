@@ -11,7 +11,7 @@ class LoginPage extends React.Component {
     render() {
         const { userLoginRequest, userLoginSocialRequest } = this.props;
         return (
-            <div className="container loginPage">
+            <div className="container loginPage float_on_the_map">
                 <div className="row centered">
                     <div className="col-md-3 login-page-block welcome-block">
                         <WelToSignup />
@@ -33,4 +33,4 @@ LoginPage.propTypes = {
     userLoginSocialRequest: React.PropTypes.func.isRequired
 }
 
-export default connect( (state)=>{ return{}}, { userLoginRequest, userLoginSocialRequest }) (LoginPage);
+export default connect(null, { userLoginRequest, userLoginSocialRequest }) (LoginPage);
