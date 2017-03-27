@@ -52,7 +52,6 @@ class MapBox extends React.Component {
                         width: "100vw"
                     }}>
 
-
                     <Router history={browserHistory}>
                         <Route path="/" component={HomePage}/>
                             <Route path="home" component={HomePage}/>
@@ -63,6 +62,7 @@ class MapBox extends React.Component {
                             <Route path="welcome" component={WelcomePage}/>
                             <Route path="newpwd" component={NewPwdPage}/>
                     </Router>
+
 
                         <Layer
                           type="symbol"

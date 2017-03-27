@@ -280,6 +280,51 @@ body{
     margin-bottom: 7%;
 }
 
+@media screen and (max-width:500px){
+    .col-md-3{
+        width:100%;
+        padding:0;
+        margin:0;
+    }
+
+    .col-md-5{
+        width:100%;
+        padding:0;
+        margin:0;
+    }
+
+    .col-md-4{
+        width:100%;
+        padding:0;
+        margin:0;
+    }
+
+    .col-md-6{
+        width:100%;
+    }
+
+    .col-md-offset-3{
+        width:100%;
+    }
+
+
+    .welcome-title{
+        width:25%;
+    }
+
+    .login-page-block{
+        width:100%;
+    }
+
+    .welcome-block{
+        width:100%;
+    }
+
+    .email-sent-block-wel{
+        width:100%;
+    }
+}
+
 
 .float_on_the_map{
     text-align: center;
@@ -317,4 +362,85 @@ body{
     height:85px;
     width:85px;
     margin:auto;
+}
+
+/*
+    User profile, Side bar
+ */
+.profile-section{
+    height:300px;
+    padding:30px;
+    border-bottom: rgba(255,255,255,0.75);
+}
+
+.profile-att{
+    width:100%
+}
+
+.center-text{
+    margin:auto;
+    padding:0;
+    font-family: Oxygen;
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.7px;
+    color: #dee1f3;
+    text-align: center;
+}
+
+a.list-group-item{
+    color:white;
+    background-color: rgba(10, 19, 58, 0.93);
+}
+
+a.list-group-item:hover {
+    color:white;
+    background-color: rgba(24, 35, 85, 0.44);
+}
+
+.list-group-item{
+    border:none;
+}
+
+
+.btn-on-map{
+    position:absolute;
+    top:10%;
+    right:10%;
+    z-index: +1;
+}
+
+.modal-backdrop{
+    z-index:0;
+}
+
+.sidebar{
+    background-color: rgba(10, 19, 58, 0.93);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+    padding:0;
+}
+
+.sidebar-icon{
+    float:left;
+    margin-left:10%;
+    margin-right:10%;
+    width:30px;
+    height:30px;
+}
+
+.btn-fold-sidebar{
+    background-color: transparent;
+    color:white;
+    float:right;
+    border:none;
+}
+
+.btn-fold-sidebar:hover{
+    border:none;
+    color:white;
+    border-radius: 0;
+    background-color: transparent;
 }

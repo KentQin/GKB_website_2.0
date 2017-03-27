@@ -1,4 +1,6 @@
 import React from 'react';
+import ProfileContent from './ProfileContent';
+import Dropzone from '../DropZone';
 
 class Profile extends React.Component {
 
@@ -12,10 +14,23 @@ class Profile extends React.Component {
     render(){
         const { user } = this.props.login;
         return(
-            <div className="col-md-6 col-md-offset-3 email-sent-block-wel">
+            <div className="btn-on-map email-sent-block-wel">
                 <h1>WELCOME! { user.userName }</h1>
-                <h2>Your profile should be here, coming soon</h2>
+                <button className="btn btn-default" data-toggle="modal" data-target="#profile-modal">Profile</button>
+                <div className="modal"  id="profile-modal">
+                    <div className="col-md-3 sidebar">
+                        <button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>
+                        <div className="profile-section">
+                            <Dropzone />
+                            <div className="center-text">{user.email}</div>
+                        </div>
+                        <div className="profile-att">
+                            <ProfileContent />
+                        </div>
+                    </div>
+                </div>
             </div>
+
         )
     }
 
