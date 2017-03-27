@@ -16,13 +16,13 @@ router.post('/signup', (req, res) => {
     var email = {
         email: req.body.email
     }
-/*
+
     const token = jwt.sign({
         email: user.email
     }, 'secretkeyforjsonwebtoken');
     res.json({token});
-*/
 
+/*
     User.find(email).count(function(err, count){
       let errors = {}
         console.log( "Number of docs: ", count );
@@ -50,7 +50,7 @@ router.post('/signup', (req, res) => {
             errors.signup = "Email already exits";
             res.status(400).json(errors);
         }
-    });
+    });*/
 });
 
 router.post('/login', (req, res) => {
@@ -59,12 +59,13 @@ router.post('/login', (req, res) => {
         email:req.body.email,
         password: req.body.password
     };
-/*
+
     const token = jwt.sign({
         email: user.email
     }, 'secretkeyforjsonwebtoken');
     res.json({token});
-*/
+
+/*
     User.findOne(user,function(err,data){
         let errors = {};
         console.log("Auth step 1: Authentication going");
@@ -89,7 +90,7 @@ router.post('/login', (req, res) => {
             res.json({token});
         }
 
-    });
+    });*/
 });
 
 router.post('/loginSocial', (req, res) => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-import WelcomeForm from './../welcome/WelcomeForm'
+import WelcomeForm from '../welcome/WelcomeForm'
+import Profile from '../userProfile/Profile';
 import { connect } from 'react-redux';
 
 
@@ -9,23 +10,32 @@ class MapBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showWelcomeForm: true
+            showWelcomeForm: true,
+            showProfile: false
         }
 
-        this.hideWelcomeForm = this.hideWelcomeForm.bind(this);
+        this.hideWelcomeFormShowProfile = this.hideWelcomeFormShowProfile.bind(this);
     }
 
-    hideWelcomeForm(){
+    hideWelcomeFormShowProfile(){
         this.setState({
-            showWelcomeForm: false
+            showWelcomeForm: false,
+            showProfile: true
         })
     }
 
-
+    // in componentWillMount stage, if justSignup, let user add username, or go to profile
+    componentWillMount(){
+        const { justSignup } = this.props.login;
+        if (!justSignup){
+            this.hideWelcomeFormShowProfile();
+        }
+    }
 
     render() {
-        // const { user } = this.props.login;
-        // console.log('this.props.login: ',user);
+
+
+
         return (
             <div>
                 {/*<NavLogin className="btn-nav-login"/>*/}
@@ -38,8 +48,8 @@ class MapBox extends React.Component {
                         width: "100vw"
                     }}>
 
-                    {this.state.showWelcomeForm && <WelcomeForm login={this.props.login} hideWelcomeForm={this.hideWelcomeForm}/>}
-
+                    {this.state.showWelcomeForm && <WelcomeForm login={this.props.login} hideWelcomeFormShowProfile={this.hideWelcomeFormShowProfile} />}
+                    {this.state.showProfile && <Profile login={this.props.login} /> }
 
                         <Layer
                           type="symbol"
