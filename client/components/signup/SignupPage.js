@@ -42,4 +42,5 @@ SignupPage.propTypes = {
     userSignupRequest: React.PropTypes.func.isRequired,
     userLoginSocialRequest: React.PropTypes.func.isRequired
 }
+
 export default connect( (state)=>{ return{}}, { userSignupRequest,  userLoginSocialRequest}) (SignupPage);

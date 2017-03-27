@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { userLoginRequest } from '../../actions/loginAction';
 import { userLoginSocialRequest } from '../../actions/loginActionSocial'
 
+
 class LoginPage extends React.Component {
     render() {
         const { userLoginRequest, userLoginSocialRequest } = this.props;

@@ -14,7 +14,7 @@ var server = tunnel(config, function (error, server) {
     if(error){
         console.log("SSH connection error: " + error);
     }
-    mongoose.connect('mongodb://localhost:27017/mydb', function(err) {
+    mongoose.connect('mongodb://localhost/mydb', function(err) {
         if (err) {
             console.log(err);
             console.log("database not conencted");

@@ -8,20 +8,29 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
 import users from './routes/users';
 import resetpwd from './routes/resetpwd';
+import session from 'express-session';
+import cookieParser from 'cookie-parser';
 import './database';
 import './firebase';
 import config from './config'
 
 let app = express();
 
-// parse data from request body ==> use bodyParser middleware
+const compiler = webpack(webpackConfig);
 app.use(bodyParser.json());
 
-// match url, then apply the middleware
-app.use('/api/users', users);
-app.use('/api/resetpwd', resetpwd);
+app.use(cookieParser());
+app.use(session({
+    secret: '12345',
+    name: 'test-gkb',
+    cookie: {maxAge: 5*60*1000},
+    saveUnintialized: false,
+    resave: false
+}));
 
-const compiler = webpack(webpackConfig);
+// load static files like css, pictures
+app.use(express.static('public'));
+
 // set up hot reload for reacjs
 app.use(webpackMiddleware(compiler, {
     hot: true,
@@ -29,9 +38,15 @@ app.use(webpackMiddleware(compiler, {
     noInfo: true
 }));
 app.use(webpackHotMiddleware(compiler));
+// parse data from request body ==> use bodyParser middleware
 
-// load static files like css, pictures
-app.use(express.static('public'));
+// match url, then apply the middleware
+app.use('/api/users', users);
+app.use('/api/resetpwd', resetpwd);
+
+
+
+
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));

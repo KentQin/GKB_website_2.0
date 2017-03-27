@@ -23,7 +23,7 @@ export default function validateInput(data) {
 
     return {
         errors,
-        isValid: lodash.isEmpty(errors)
+        isValid: lodash.isEmpty(errors),
     }
 
 }

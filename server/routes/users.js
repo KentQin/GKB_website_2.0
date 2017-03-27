@@ -1,5 +1,5 @@
 import express from 'express';
-import validateInput from '../shared/validations/signup'
+import jwt from 'jsonwebtoken';
 
 var User = require('./../models/user.js');
 
@@ -16,6 +16,12 @@ router.post('/signup', (req, res) => {
     var email = {
         email: req.body.email
     }
+    /*
+    const token = jwt.sign({
+        email: user.email
+    }, 'secretkeyforjsonwebtoken');
+    res.json({token});
+    */
 
     User.find(email).count(function(err, count){
       let errors = {}
@@ -31,7 +37,11 @@ router.post('/signup', (req, res) => {
                 }else{
                     console.log(res.statusCode);
                     console.log("Registered");
-                    res.status(200).json({ success:{} });
+                    // success, then send token to client
+                    const token = jwt.sign({
+                        email: user.email
+                    }, 'secretkeyforjsonwebtoken');
+                    res.json({token});
                 }
 
             });
@@ -50,6 +60,13 @@ router.post('/login', (req, res) => {
         password: req.body.password
     };
 
+    /*
+    const token = jwt.sign({
+        email: user.email
+    }, 'secretkeyforjsonwebtoken');
+    res.json({token});
+    */
+
     User.findOne(user,function(err,data){
         let errors = {};
         console.log("Auth step 1: Authentication going");
@@ -62,8 +79,16 @@ router.post('/login', (req, res) => {
             errors.login = "Email does not exist or wrong password";
             res.status(400).json(errors);
         }else{
+            // if verify the user, send credential token to client
+            // jwt.sign(payload, secret)
+            // payload: an object, can be decoded on client
+            // secret: for encrypt the token and verify
+            // success, then send token back
+            const token = jwt.sign({
+                email: user.email
+            }, 'secretkeyforjsonwebtoken');
             console.log("Logged in");
-            res.status(200).json({ success:{} });
+            res.json({token});
         }
 
     });
