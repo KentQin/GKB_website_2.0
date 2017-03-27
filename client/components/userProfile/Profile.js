@@ -14,15 +14,14 @@ class Profile extends React.Component {
     render(){
         const { user } = this.props.login;
         return(
-            <div className="btn-on-map email-sent-block-wel">
-                <h1>WELCOME! { user.userName }</h1>
+            <div className="btn-on-map">
                 <button className="btn btn-default" data-toggle="modal" data-target="#profile-modal">Profile</button>
                 <div className="modal"  id="profile-modal">
                     <div className="col-md-3 sidebar">
                         <button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>
                         <div className="profile-section">
                             <Dropzone />
-                            <div className="center-text">{user.email}</div>
+                            <div className="center-text">{user.userName}</div>
                         </div>
                         <div className="profile-att">
                             <ProfileContent />
