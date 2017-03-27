@@ -1,5 +1,6 @@
 import { SET_CURRENT_USER_LOGIN } from '../actions/types';
 import { SET_CURRENT_USER_SIGNUP } from '../actions/types';
+import { SET_CURRENT_USER_ADD_NAME } from '../actions/types';
 import lodash from 'lodash';
 
 const initialState = {
@@ -10,12 +11,15 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
     switch (action.type) {
+
+        //called by login page
         case SET_CURRENT_USER_LOGIN:
             return {
                 //action object contains user
                 isAuthenticated: !lodash.isEmpty(action.user),
                 user: action.user
             }
+        // called by signup page
         case SET_CURRENT_USER_SIGNUP:
             return {
                 //action object contains user
@@ -23,6 +27,14 @@ export default (state = initialState, action = {}) => {
                 isAuthenticated: !lodash.isEmpty(action.user),
                 user: action.user
             }
+        // called by welcome page
+        case SET_CURRENT_USER_ADD_NAME:
+            return {
+                //action object contains user
+                isAuthenticated: !lodash.isEmpty(action.user),
+                user: action.user
+            }
+
         default: return state;
     }
 }

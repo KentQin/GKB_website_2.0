@@ -97,6 +97,7 @@ router.post('/login', (req, res) => {
 
 });
 
+
 router.post('/loginSocial', (req, res) => {
     console.log("Server: router: users say: request body:  ",req.body);
     var user = {
@@ -133,6 +134,32 @@ router.post('/loginSocial', (req, res) => {
             res.status(400).json(errors);
         }
     });
+});
+
+router.post('/addName', (req, res) => {
+
+    const user = {
+        userName: req.body.userName,
+        email: req.body.email,
+        password: req.body.password
+    };
+
+
+    console.log("User info from WelcomeForm:, ", user);
+
+    //write username into to db
+    // 所有的前段数据已经存在变量 user 中了
+    // 你可以根据 user.email 和 user.password 唯一对应上某个用户的注册记录
+    // 然后为该用户添加用户名
+
+    // 如果添加成功返回如下信息(我暂时comment out了，只需要copy过去就好的)
+    /*
+    const token = jwt.sign({
+        email: user.email,
+        userName: user.userName
+    }, 'secretkeyforjsonwebtoken');
+    res.json({token});
+    */
 });
 
 
