@@ -10,7 +10,8 @@ router.post('/signup', (req, res) => {
     var user = {
         email: req.body.email,
         password: req.body.password,
-        accountType: 'local'
+        accountType: 'local',
+        username:""
     }
 
     var email = {
@@ -88,9 +89,9 @@ router.post('/login', (req, res) => {
             // success, then send token back
             const token = jwt.sign({
                 email: user.email,
-                userName: 'GKB User'
+                userName: data.username
             }, 'secretkeyforjsonwebtoken');
-            console.log("Logged in");
+            console.log("Logged in " + data);
             res.json({token});
         }
 
@@ -149,19 +150,19 @@ router.post('/addName', (req, res) => {
         email: req.body.email,
     };
 
-    var users = {
+    var thisUser = {
         email: req.body.email
     }
 
     console.log("User info from WelcomeForm:, ", user);
 
-    User.findOneAndUpdate(user.email, {$set:{username:user.username}}, {new: true}, function(err, doc){
-        console.log("Finding");
+    User.findOneAndUpdate(thisUser, {$set:{username:user.username}}, {new: true}, function(err, doc){
+        console.log("Finding " + user.email);
         if(err){
             console.log("Something wrong when updating data!");
         }
 
-        console.log(doc);
+        console.log("Doc "+ doc);
         console.log("Username registered");
     });
     //write username into to db
@@ -173,7 +174,7 @@ router.post('/addName', (req, res) => {
 
     const token = jwt.sign({
         email: user.email,
-        userName: user.username
+        username: user.username
     }, 'secretkeyforjsonwebtoken');
     res.json({token});
 

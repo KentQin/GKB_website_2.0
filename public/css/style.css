@@ -8,6 +8,14 @@ body{
     border: solid 1px red;
 }
 
+.btn-close-float{
+    position:absolute;
+    top:5%;
+    right:3%;
+    z-index: +1;
+    font-size:24px;
+}
+
 /*
     LoginPage
  */
@@ -359,8 +367,8 @@ body{
 
 .img-circle {
     border-radius: 50%;
-    height:85px;
-    width:85px;
+    height:75px;
+    width:75px;
     margin:auto;
 }
 
@@ -409,7 +417,14 @@ a.list-group-item:hover {
 .btn-on-map{
     position:absolute;
     top:10%;
-    right:10%;
+    z-index: +1;
+    right:0;
+}
+
+.profile-btn-on-map{
+    position:absolute;
+    top:10%;
+    left:0;
     z-index: +1;
 }
 
@@ -421,14 +436,15 @@ a.list-group-item:hover {
     background-color: rgba(10, 19, 58, 0.93);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
     padding:0;
+    height:100%;
 }
 
 .sidebar-icon{
     float:left;
     margin-left:10%;
     margin-right:10%;
-    width:30px;
-    height:30px;
+    width:20px;
+    height:20px;
 }
 
 .btn-fold-sidebar{
@@ -437,6 +453,22 @@ a.list-group-item:hover {
     float:right;
     border:none;
 }
+
+.btn-unfold-sidebar{
+    background-color: rgba(10, 19, 58, 0.93);
+    color:white;
+    border:white;
+    border-width: medium;
+    height:100%
+}
+
+.btn-unfold-sidebar:hover{
+    border:none;
+    color:white;
+    border-radius: 0;
+    background-color: transparent;
+}
+
 
 .btn-fold-sidebar:hover{
     border:none;
