@@ -14,7 +14,7 @@ import MapBox from './components/googleMaps/MapBox'
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import rootReduce from './reducer/rootReducer';
 import jwt from 'jsonwebtoken';
-import { setCurrentUser } from './actions/loginAction';
+import { setCurrentUser } from './actions/authAction';
 /*
 * createStore(reducer, [preloadedState], enhancer)
 * Here, set an empty func (state = {}) => state as reducer

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Profile from '../userProfile/Profile'
+import Profile from '../userProfile/Profile';
+import NavBar from './NavBar';
+import { logout } from '../../actions/authAction'
 
 class HomePage extends React.Component {
 
@@ -30,7 +32,9 @@ class HomePage extends React.Component {
         return (
             <div className="container loginPage float_on_the_map">
                 <h1>Home Page</h1>
-                {this.state.showProfile && <Profile login = {this.props.login}/>}
+                <NavBar login = {this.props.login} logout={ this.props.logout} />
+                {this.state.showProfile && <Profile login = {this.props.login} />}
+
             </div>
         )
     }
@@ -47,4 +51,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps, { logout })(HomePage);
