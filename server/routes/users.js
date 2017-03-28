@@ -162,7 +162,7 @@ router.post('/addName', (req, res) => {
         }
 
         console.log(doc);
-        console.log("Username registered");s
+        console.log("Username registered");
     });
     //write username into to db
     // 所有的前段数据已经存在变量 user 中了
@@ -173,7 +173,7 @@ router.post('/addName', (req, res) => {
 
     const token = jwt.sign({
         email: user.email,
-        userName: user.userName
+        userName: user.username
     }, 'secretkeyforjsonwebtoken');
     res.json({token});
 
