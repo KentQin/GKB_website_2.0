@@ -34,6 +34,7 @@
     "express": "^4.15.2",
     "express-session": "^1.15.1",
     "firebase": "^3.7.2",
+    "fs": "0.0.1-security",
     "google-maps-react": "^1.0.19",
     "jsonwebtoken": "^7.3.0",
     "lodash": "^4.17.4",

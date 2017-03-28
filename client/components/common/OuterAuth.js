@@ -2,7 +2,7 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import firebase from '../../../server/firebase';
 import Dropzone from '../DropZone'
-
+import { connect } from 'react-redux';
 
 class OuterAuth extends React.Component {
 
@@ -12,6 +12,7 @@ class OuterAuth extends React.Component {
             email:'',
             password:'',
             accountType: '',
+            imageFile: '',
             errors: {}
         }
 
@@ -26,16 +27,22 @@ class OuterAuth extends React.Component {
       this.setState({
             email: user.email,
             password: '',
+            imageFile: user.photoURL,
             accountType: type
         });
 
         this.props.userLoginSocialRequest(this.state).then(
+            //const {user} = this.props.login;
             // after server response then...
             // if successful
             (res) => {
                 //this.context.router.push('/welcome')
-                console.log("Outer Auth success");
-                this.context.router.push('/welcome')
+                if (this.props.login.user.userName != null) {
+                  this.context.router.push('/home')
+                } else {
+                  console.log("Outer Auth success");
+                  this.context.router.push('/welcome')
+                }
             },
             // if server response any error message, set it into state errors
             (err) => {
@@ -58,7 +65,7 @@ class OuterAuth extends React.Component {
               var user = result.user;
 
               console.log(token);
-              console.log(user.email);
+              console.log(JSON.stringify(user));
               object.callAction(user, 'facebook');
 
            }).catch(function(error) {
@@ -145,11 +152,22 @@ class OuterAuth extends React.Component {
 }
 
 OuterAuth.propTypes = {
-    userLoginSocialRequest: React.PropTypes.func.isRequired
+    userLoginSocialRequest: React.PropTypes.func.isRequired,
+    login: React.PropTypes.object.isRequired
 }
 
 OuterAuth.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
 
-export default OuterAuth;
+function mapStateToProps(state) {
+    //console.log('mapStateToProps: ',state.login);
+    return {
+        login: state.login
+    };
+}
+
+//export default DropzoneDemo;
+export default connect(mapStateToProps, {})(OuterAuth);
+
+// export default OuterAuth;
