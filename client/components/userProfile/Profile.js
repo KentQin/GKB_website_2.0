@@ -17,8 +17,9 @@ class Profile extends React.Component {
         const { user } = this.props.login;
         const { userProfilePicUploadRequest } = this.props;
         return(
-            <div className="btn-on-map">
-                <button className="btn btn-default" data-toggle="modal" data-target="#profile-modal">Profile</button>
+            <div>
+                <button className="btn btn-default profile-btn-on-map  btn-unfold-sidebar"
+                        data-toggle="modal" data-target="#profile-modal"> 》</button>
                 <div className="modal"  id="profile-modal">
                     <div className="col-md-3 sidebar">
                         <button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>

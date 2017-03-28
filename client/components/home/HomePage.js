@@ -12,11 +12,18 @@ class HomePage extends React.Component {
             showProfile: false
         }
         this.showProfile = this.showProfile.bind(this);
+        this.hideProfile = this.hideProfile.bind(this);
     }
 
     showProfile(){
         this.setState({
             showProfile: true
+        })
+    }
+
+    hideProfile(){
+        this.setState({
+            showProfile: false
         })
     }
 
@@ -32,7 +39,7 @@ class HomePage extends React.Component {
         return (
             <div className="container loginPage float_on_the_map">
                 <h1>Home Page</h1>
-                <NavBar login = {this.props.login} logout={ this.props.logout} />
+                <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile}/>
                 {this.state.showProfile && <Profile login = {this.props.login} />}
 
             </div>

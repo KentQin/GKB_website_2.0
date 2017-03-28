@@ -10,7 +10,8 @@ router.post('/signup', (req, res) => {
     var user = {
         email: req.body.email,
         password: req.body.password,
-        accountType: 'local'
+        accountType: 'local',
+        username:""
     }
 
     var email = {
@@ -96,7 +97,7 @@ router.post('/login', (req, res) => {
                 accountType: user.accountType,
                 id: data._id
             }, 'secretkeyforjsonwebtoken');
-            console.log("Logged in");
+            console.log("Logged in " + data);
             res.json({token});
         }
 
@@ -173,7 +174,6 @@ router.post('/loginSocial', (req, res) => {
 router.post('/addName', (req, res) => {
 
     const user = {
-        //userName: req.body.userName,
         email: req.body.email,
         accountType: req.body.accountType
     };
@@ -195,13 +195,6 @@ router.post('/addName', (req, res) => {
             errors.login = "Account does not exist.";
             res.status(400).json(errors);
         }else{
-            // if verify the user, send credential token to client
-            // jwt.sign(payload, secret)
-            // payload: an object, can be decoded on client
-            // secret: for encrypt the token and verify
-            // success, then send token back
-            // data.userName = req.body.userName;
-            // data.save();
             User.findByIdAndUpdate(data._id, { $set: {userName: userName} }, {new: true}, function (err, model) {
               if (err) {
                 console.log("Adding UserNAme update error");
@@ -233,8 +226,6 @@ router.post('/addProfilePic', (req, res) => {
         id: req.body.id
     };
 
-
-
     var newPath = __dirname + "\\" + user.imageFile;
     console.log("newPath: " + newPath);
       // write file to uploads/fullsize folder
@@ -243,7 +234,6 @@ router.post('/addProfilePic', (req, res) => {
         //res.redirect("/uploads/fullsize/" + imageName);
         console.log("I think we are close");
       });
-    //const userName = req.body.userName;
 
     console.log("User info from WelcomeForm: ", user);
     console.log("user image: " + user.imageFile);

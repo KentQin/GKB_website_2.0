@@ -1,16 +1,18 @@
 import React from 'react';
 import EmailSent from './EmailSent';
+import LinkToHome from './../common/LinkToHome';
 
 class EmailSentPage extends React.Component{
     render(){
         return(
-            <div className="container loginPage float_on_the_map">
-                <div className="row centered ">
-                    <div className="col-md-6 col-md-offset-4 login-page-block email-sent-block">
+          <div className="container loginPage float_on_the_map">
+              <LinkToHome/>
+                <div className="row centered">
+                    <div className="col-md-6 col-md-offset-4 email-sent-block">
                         <EmailSent/>
                     </div>
-            </div>
-            </div>
+                </div>
+          </div>
         );
     }
 }

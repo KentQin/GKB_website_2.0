@@ -5,6 +5,7 @@ import OuterAuth from '../common/OuterAuth';
 import { connect } from 'react-redux';
 import { userSignupRequest } from '../../actions/signupAction';
 import { userLoginSocialRequest } from '../../actions/loginActionSocial'
+import LinkToHome from './../common/LinkToHome';
 
 class SignupPage extends React.Component {
     render() {
@@ -20,6 +21,7 @@ class SignupPage extends React.Component {
 
         return (
             <div className="container loginPage float_on_the_map">
+                <LinkToHome/>
                 <div className="row centered">
                     <div className="col-md-3 login-page-block welcome-block">
                         <WelToLogin />
