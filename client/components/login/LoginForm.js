@@ -96,8 +96,5 @@ LoginForm.propTypes = {
     userLoginRequest: React.PropTypes.func.isRequired
 }
 
-LoginForm.contextTypes = {
-    router: React.PropTypes.object.isRequired
-}
 
 export default LoginForm;
