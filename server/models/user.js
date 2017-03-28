@@ -7,7 +7,10 @@ var userSchema = new Schema({
     email: {type: String, require: true},
     password: {type: String, require: true},
     accountType: {type: String, require: true},
-    imageFile: {type: String}
+    imageFile: {type: Object},
+    contributions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element' }],
+    searchHistory: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element' }],
+    favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element'}]
 });
 
 module.exports = mongoose.model('User', userSchema);

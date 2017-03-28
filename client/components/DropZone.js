@@ -9,7 +9,7 @@ class DropzoneDemo extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        imageFile: '',
+        imageFile: {},
         preview: '',
         errors: {}
       }
@@ -37,14 +37,15 @@ class DropzoneDemo extends React.Component {
 
         this.setState({
           preview: acceptedFiles[0].preview,
-          imageFile: acceptedFiles[0].name
+          imageFile: acceptedFiles[0]
         }, function() {
           console.log("imageFile in setState callback: ", this.state);
           var toSend = {
             imageFile: this.state.imageFile,
             id: user.id
           }
-          this.props.userProfilePicUploadRequest(toSend).then(
+          var temp = acceptedFiles;
+          this.props.userProfilePicUploadRequest(temp).then(
               // after server response then...
               // if successful
               (res) => {
@@ -63,7 +64,7 @@ class DropzoneDemo extends React.Component {
       } else if (rejectedFiles[0]) {
         console.log("in rejected");
         this.setState({
-          errors: {invalid: 'Invalid File. Cannot upload Image.'}
+          errors: {invalid: 'Cannot upload Image. Invalid File or size more than 2MB'}
         });
       }
     }

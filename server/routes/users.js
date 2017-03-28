@@ -138,7 +138,7 @@ router.post('/loginSocial', (req, res) => {
                 if(err){
                     console.log(err.statusCode);
                 }else if(!newData){
-                    console.log(res.statusCode);
+                    console.log(err.statusCode);
                     console.log("Error saving");
                 }else{
                     console.log(res.statusCode);
@@ -153,8 +153,7 @@ router.post('/loginSocial', (req, res) => {
                     res.json({token});
                 }
 
-            });
-            res.status(400).json(errors);
+              });
         }else{
             //user already there.
             const token = jwt.sign({
@@ -220,39 +219,40 @@ router.post('/addName', (req, res) => {
 
 router.post('/addProfilePic', (req, res) => {
 
-    const user = {
-        //userName: req.body.userName,
-        imageFile: req.body.imageFile,
-        id: req.body.id
-    };
-
-    var newPath = __dirname + "\\" + user.imageFile;
-    console.log("newPath: " + newPath);
-      // write file to uploads/fullsize folder
-      require('fs').writeFile(newPath, "data", function (err) {
-        // let's see it
-        //res.redirect("/uploads/fullsize/" + imageName);
-        console.log("I think we are close");
-      });
-
-    console.log("User info from WelcomeForm: ", user);
-    console.log("user image: " + user.imageFile);
-
-    User.findByIdAndUpdate(user.id, { $set: {imageFile: user.imageFile} }, {new: true}, function (err, model) {
-      if (err) {
-        console.log("Adding imageFile update error");
-        errors.login = "Adding imageFile update error";
-        res.status(400).json(errors);
-      } else {
-          console.log("update success: " + model);
-          const token = jwt.sign({
-              email: model.email,
-              userName: model.userName,
-              id: model.id
-          }, 'secretkeyforjsonwebtoken');
-          res.json({token});
-      }
-    });
+    console.log("req body: ", req.body);
+    // const user = {
+    //     //userName: req.body.userName,
+    //     imageFile: req.body.imageFile,
+    //     id: req.body.id
+    // };
+    //
+    // var newPath = __dirname;
+    // console.log("newPath: " + newPath);
+    //   // write file to uploads/fullsize folder
+    //   require('fs').writeFile(newPath, user.imageFile, function (err) {
+    //     // let's see it
+    //     //res.redirect("/uploads/fullsize/" + imageName);
+    //     console.log("I think we are close");
+    //   });
+    //
+    // console.log("User info from WelcomeForm: ", user);
+    // console.log("user image: " + user.imageFile);
+    //
+    // User.findByIdAndUpdate(user.id, { $set: {imageFile: user.imageFile} }, {new: true}, function (err, model) {
+    //   if (err) {
+    //     console.log("Adding imageFile update error");
+    //     errors.login = "Adding imageFile update error";
+    //     res.status(400).json(errors);
+    //   } else {
+    //       console.log("update success: " + model);
+    //       const token = jwt.sign({
+    //           email: model.email,
+    //           userName: model.userName,
+    //           id: model.id
+    //       }, 'secretkeyforjsonwebtoken');
+    //       res.json({token});
+    //   }
+    // });
 });
 
 
