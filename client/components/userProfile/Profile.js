@@ -1,6 +1,8 @@
 import React from 'react';
 import ProfileContent from './ProfileContent';
 import Dropzone from '../DropZone';
+import {userProfilePicUploadRequest} from '../../actions/addUserProfilePicAction.js'
+import { connect } from 'react-redux'; 
 
 class Profile extends React.Component {
 
@@ -13,6 +15,7 @@ class Profile extends React.Component {
 
     render(){
         const { user } = this.props.login;
+        const { userProfilePicUploadRequest } = this.props;
         return(
             <div>
                 <button className="btn btn-default profile-btn-on-map  btn-unfold-sidebar"
@@ -21,7 +24,7 @@ class Profile extends React.Component {
                     <div className="col-md-3 sidebar">
                         <button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>
                         <div className="profile-section">
-                            <Dropzone />
+                            <Dropzone userProfilePicUploadRequest={userProfilePicUploadRequest}/>
                             <div className="center-text">{user.userName}</div>
                         </div>
                         <div className="profile-att">
@@ -37,7 +40,8 @@ class Profile extends React.Component {
 }
 
 Profile.propTypes = {
-    login: React.PropTypes.object.isRequired
+    login: React.PropTypes.object.isRequired,
+    userProfilePicUploadRequest: React.PropTypes.func.isRequired
 }
 
-export default Profile;
+export default connect( null, { userProfilePicUploadRequest}) (Profile);

@@ -34,7 +34,7 @@ class WelcomeForm extends React.Component{
             // after server response then...
             // if successful
             (res) => {
-                this.context.router.push('home')
+                this.context.router.push('/home')
             },
             // if server response any error message, set it into state errors
             (err) => {
