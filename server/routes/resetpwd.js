@@ -56,11 +56,13 @@ router.post('/', (req, res) => {
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 //return console.log(error);
+                console.log(error);
                 res.status(400).json(error);
+            }else {
+                console.log('Message %s sent: %s', info.messageId, info.response);
+                //res.status(300).send();
+                res.redirect('/emailsentpage');
             }
-            console.log('Message %s sent: %s', info.messageId, info.response);
-            //res.status(300).send();
-            res.redirect('/emailsentpage');
         });
         //res.status(300).send();
         //res.redirect('/emailsentpage');

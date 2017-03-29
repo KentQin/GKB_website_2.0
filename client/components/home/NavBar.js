@@ -24,7 +24,7 @@ class NavBar extends React.Component {
         const userNav =(
             <ul className="nav nav-pills btn-on-map">
                 <li role="presentation">
-                    <a href="#" onClick={this.logout} className="btn btn-default btn-welcome" data-dismiss="modal">Logout</a>
+                    <a href="#" onClick={this.logout} className="btn btn-default btn-nav" data-dismiss="modal">Logout</a>
                 </li>
             </ul>
         );
@@ -32,10 +32,10 @@ class NavBar extends React.Component {
         const guestNav =(
             <ul className="nav nav-pills btn-on-map">
                 <li role="presentation">
-                    <Link to="/signup" className="btn btn-default btn-welcome">Signup</Link>
+                    <Link to="/signup" className="btn btn-default btn-nav">Signup</Link>
                 </li>
                 <li role="presentation">
-                    <Link to="/login" className="btn btn-default btn-welcome">Login</Link>
+                    <Link to="/login" className="btn btn-default btn-nav">Login</Link>
                 </li>
             </ul>
         );

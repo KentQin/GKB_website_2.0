@@ -9,7 +9,7 @@ class ForgotPwd extends React.Component{
                 <div >
                     <img src={lockIcon} className="logo"/>
                 </div>
-                <div className="welcome-text">
+                <div className="welcome-text-pwd">
                     <p>Enter your email address and we'll send you a link to reset your password</p>
                 </div>
             </div>

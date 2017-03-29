@@ -135,9 +135,6 @@ class OuterAuth extends React.Component {
                         <span className="fa fa-twitter"></span> Sign in with Twitter
                     </button>
                 </div>
-                <div className="form-group">
-                    <Dropzone />
-                </div>
 
             </form>
         );
