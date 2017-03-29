@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import emailIcon from './img/email-icon.png';
+import defaultPhoto from './img/default.jpg';
 import classnames from 'classnames'
 import { connect } from 'react-redux';
 
@@ -81,7 +81,7 @@ class DropzoneDemo extends React.Component {
         if (user.imageFile != null) {
           imageSrc = user.imageFile;
         } else {
-          imageSrc = emailIcon;
+          imageSrc = defaultPhoto;
         }
       }
       return (
