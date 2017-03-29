@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import defaultPhoto from './img/default.jpg';
+import defaultPhoto from './img/default-profile-picture.jpg';
 import classnames from 'classnames'
 import { connect } from 'react-redux';
 
