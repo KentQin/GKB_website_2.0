@@ -10,4 +10,5 @@ var userSchema = new Schema({
     imageFile: {type: Object}
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('userModel', userSchema);
+//module.exports = mongoose.model('user', userSchema);

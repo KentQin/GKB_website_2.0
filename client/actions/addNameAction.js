@@ -21,7 +21,7 @@ export function addNameRequest(userData) {
             sessionStorage.setItem('loginToken', token);
             setAuthorizationToken(token);
             // decode token, get user msg from it
-            console.log('decode: ',jwt.decode(token));
+            console.log('decode add username: ',jwt.decode(token));
             // dispatch action 'setCurrentUser' to change state
             dispatch(setCurrentUser(jwt.decode(token)));
         });

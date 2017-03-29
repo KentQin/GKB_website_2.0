@@ -2,6 +2,7 @@ import axios from 'axios';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
 import { SET_CURRENT_USER_LOGIN } from '../actions/types';
+import { SET_CURRENT_USER_LOGOUT } from '../actions/types';
 
 // pure redux function, action creator
 export function setCurrentUser(user) {
@@ -11,11 +12,18 @@ export function setCurrentUser(user) {
     }
 }
 
+export function removeCurrentUser(user) {
+    return {
+        type: SET_CURRENT_USER_LOGOUT,
+        user
+    }
+}
+
 export function logout() {
     return dispatch => {
         sessionStorage.removeItem('loginToken');
         setAuthorizationToken(false);
-        dispatch(setCurrentUser({}));
+        dispatch(removeCurrentUser({}));
     }
 }
 

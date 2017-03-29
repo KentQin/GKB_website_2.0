@@ -1,5 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
+import { createUser } from '../seeders/creatUser';
 
 var User = require('./../models/user.js');
 
@@ -7,14 +8,27 @@ let router = express.Router();
 
 router.post('/signup', (req, res) => {
     console.log("Server: router: users say: request body:  ",req.body);
-    var user = {
+
+    const user = {
         email: req.body.email,
         password: req.body.password,
-        accountType: 'local'
-    }
+        accountType: 'local',
+        username:""
+    };
 
-    var email = {
-        email: req.body.email
+    //const userEmail = {email: req.body.email};
+
+    var error = {};
+    createUser(user,error,res);
+    if (true) {
+        console.log("TOKEN");
+        const token = jwt.sign({
+            email: user.email
+        }, 'secretkeyforjsonwebtoken');
+        res.json({token});
+    }
+    else {
+        res.status(400).json(error);
     }
 
     // console.log('Server: You Signup');
@@ -24,34 +38,34 @@ router.post('/signup', (req, res) => {
     // res.json({token});
 
 
-    User.find(email).count(function(err, count){
-      let errors = {}
-        console.log( "Number of docs: ", count );
-        if(count === 0){
-            User.create(user,function(err,data){
-                console.log("Writing to db");
-                if(err){
-                    console.log(err.statusCode);
-                }else if(!data){
-                    console.log(res.statusCode);
-                    console.log("Error saving");
-                }else{
-                    console.log(res.statusCode);
-                    console.log("Registered");
-                    // success, then send token to client
-                    const token = jwt.sign({
-                        email: user.email
-                    }, 'secretkeyforjsonwebtoken');
-                    res.json({token});
-                }
-
-            });
-        }else{
-            console.log("Email address exists");
-            errors.signup = "Email already exits";
-            res.status(400).json(errors);
-        }
-    });
+    // User.find(email).count(function(err, count){
+    //     let errors = {}
+    //     console.log( "Number of docs: ", count );
+    //     if(count === 0){
+    //         User.create(user,function(err,data){
+    //             console.log("Writing to db");
+    //             if(err){
+    //                 console.log(err.statusCode);
+    //             }else if(!data){
+    //                 console.log(res.statusCode);
+    //                 console.log("Error saving");
+    //             }else{
+    //                 console.log(res.statusCode);
+    //                 console.log("Registered");
+    //                 // success, then send token to client
+    //                 const token = jwt.sign({
+    //                     email: user.email
+    //                 }, 'secretkeyforjsonwebtoken');
+    //                 res.json({token});
+    //             }
+    //
+    //         });
+    //     }else{
+    //         console.log("Email address exists");
+    //         errors.signup = "Email already exits";
+    //         res.status(400).json(errors);
+    //     }
+    // });
 });
 
 router.post('/login', (req, res) => {
@@ -88,9 +102,9 @@ router.post('/login', (req, res) => {
             // success, then send token back
             const token = jwt.sign({
                 email: user.email,
-                userName: 'GKB User'
+                userName: data.username
             }, 'secretkeyforjsonwebtoken');
-            console.log("Logged in");
+            console.log("Logged in " + data);
             res.json({token});
         }
 
@@ -145,13 +159,25 @@ router.post('/loginSocial', (req, res) => {
 router.post('/addName', (req, res) => {
 
     const user = {
-        userName: req.body.userName,
+        username: req.body.userName,
         email: req.body.email,
     };
 
+    var thisUser = {
+        email: req.body.email
+    }
 
     console.log("User info from WelcomeForm:, ", user);
 
+    User.findOneAndUpdate(thisUser, {$set:{username:user.username}}, {new: true}, function(err, doc){
+        console.log("Finding " + user.email);
+        if(err){
+            console.log("Something wrong when updating data!");
+        }
+
+        console.log("Doc "+ doc);
+        console.log("Username registered");
+    });
     //write username into to db
     // 所有的前段数据已经存在变量 user 中了
     // 你可以根据 user.email 和 user.password 唯一对应上某个用户的注册记录
@@ -161,7 +187,7 @@ router.post('/addName', (req, res) => {
 
     const token = jwt.sign({
         email: user.email,
-        userName: user.userName
+        username: user.username
     }, 'secretkeyforjsonwebtoken');
     res.json({token});
 

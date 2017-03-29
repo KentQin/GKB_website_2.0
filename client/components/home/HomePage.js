@@ -12,6 +12,7 @@ class HomePage extends React.Component {
             showProfile: false
         }
         this.showProfile = this.showProfile.bind(this);
+        this.hideProfile = this.hideProfile.bind(this);
     }
 
     showProfile(){
@@ -20,19 +21,26 @@ class HomePage extends React.Component {
         })
     }
 
+    hideProfile(){
+        this.setState({
+            showProfile: false
+        })
+    }
+
     componentWillMount(){
         const { isAuthenticated } = this.props.login;
+        console.log('isAuthenticated: ',isAuthenticated);
         if (isAuthenticated){
             this.showProfile();
         }
     }
 
     render() {
-
+        console.log("navbar state:", this.state);
         return (
             <div className="container loginPage float_on_the_map">
                 <h1>Home Page</h1>
-                <NavBar login = {this.props.login} logout={ this.props.logout} />
+                <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile}/>
                 {this.state.showProfile && <Profile login = {this.props.login} />}
 
             </div>

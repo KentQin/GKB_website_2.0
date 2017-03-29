@@ -13,6 +13,7 @@ class NavBar extends React.Component {
     logout(e){
         e.preventDefault();
         //console.log(this.props);
+        this.props.hideProfile();
         this.props.logout();
     }
 
