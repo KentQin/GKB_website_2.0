@@ -30,19 +30,28 @@ class HomePage extends React.Component {
         })
     }
 
-    componentWillMount(){
-        const { isAuthenticated } = this.props.login;
-        if (isAuthenticated){
-            this.showProfile();
-        }
-    }
+    // componentWillMount(){
+    //     const { isAuthenticated } = this.props.login;
+    //     if (isAuthenticated){
+    //         this.showProfile();
+    //     }
+    // }
+    //
+    // componentWillReceiveProps(){
+    //     const { isAuthenticated } = this.props.login;
+    //     if (isAuthenticated){
+    //         this.showProfile();
+    //     }
+    // }
 
     render() {
 
+        const { isAuthenticated } = this.props.login;
+
         return (
             <div className="container loginPage float_on_the_map">
-                <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile} />
-                {this.state.showProfile && <Profile login = {this.props.login} />}
+                <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile} /
+                {isAuthenticated && <Profile login = {this.props.login} />}
                 <SearchBar searchBarRequest={this.props.searchBarRequest}/>
 
             </div>
@@ -62,4 +71,8 @@ function mapStateToProps(state) {
     };
 }
 
+<<<<<<< HEAD
 export default connect(mapStateToProps, { logout, searchBarRequest })(HomePage);
+=======
+export default connect(mapStateToProps, { logout })(HomePage);
+>>>>>>> 27d7f8399a7059720e24bb23dde76d2b80844e97

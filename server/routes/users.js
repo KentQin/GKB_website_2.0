@@ -26,7 +26,7 @@ router.post('/signup', (req, res) => {
 
 
     User.find(email).count(function(err, count){
-      let errors = {}
+        let errors = {}
         console.log( "Number of docs: ", count );
         if(count === 0){
             User.create(user,function(err,data){
@@ -117,10 +117,10 @@ router.post('/loginSocial', (req, res) => {
     }
 
     var newUser = {
-      email: req.body.email,
-      password: req.body.password,
-      accountType: req.body.accountType,
-      imageFile: req.body.imageFile
+        email: req.body.email,
+        password: req.body.password,
+        accountType: req.body.accountType,
+        imageFile: req.body.imageFile
     }
 
     User.findOne(user,function(err,data){
@@ -154,7 +154,7 @@ router.post('/loginSocial', (req, res) => {
                     res.json({token});
                 }
 
-              });
+            });
         }else{
             //user already there.
             const token = jwt.sign({
@@ -196,21 +196,21 @@ router.post('/addName', (req, res) => {
             res.status(400).json(errors);
         }else{
             User.findByIdAndUpdate(data._id, { $set: {userName: userName} }, {new: true}, function (err, model) {
-              if (err) {
-                console.log("Adding UserNAme update error");
-                errors.login = "Adding UserNAme update error";
-                res.status(400).json(errors);
-              } else {
-                  console.log("update success: " + model);
-                  const token = jwt.sign({
-                      email: user.email,
-                      userName: userName,
-                      accountType: user.accountType,
-                      id: model._id,
-                      imageFile: model.imageFile
-                  }, 'secretkeyforjsonwebtoken');
-                  res.json({token});
-              }
+                if (err) {
+                    console.log("Adding UserNAme update error");
+                    errors.login = "Adding UserNAme update error";
+                    res.status(400).json(errors);
+                } else {
+                    console.log("update success: " + model);
+                    const token = jwt.sign({
+                        email: user.email,
+                        userName: userName,
+                        accountType: user.accountType,
+                        id: model._id,
+                        imageFile: model.imageFile
+                    }, 'secretkeyforjsonwebtoken');
+                    res.json({token});
+                }
             });
         }
 

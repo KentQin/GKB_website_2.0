@@ -8,9 +8,12 @@ import EmailSentPage from '../resetpwd/EmailSentPage';
 import NewPwdPage from '../newpassword/NewPwdPage';
 import WelcomePage from '../welcome/WelcomePage'
 import HomePage from '../home/HomePage'
+<<<<<<< HEAD
 import {connect} from 'react-redux'
+=======
+import AccountSetting from '../userProfile/AccountSettingPage';
+>>>>>>> 27d7f8399a7059720e24bb23dde76d2b80844e97
 
-import Profile from '../userProfile/Profile';
 
 
 class MapBox extends React.Component {
@@ -73,6 +76,7 @@ class MapBox extends React.Component {
                             <Route path="welcome" component={WelcomePage}/>
                             <Route path="newpwd" component={NewPwdPage}/>
                             <Route path="newpwd(/:email)" component={NewPwdPage}/>
+                            <Route path="accountsetting" component={AccountSetting}/>7
                     </Router>
 
 

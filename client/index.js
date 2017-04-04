@@ -39,6 +39,40 @@ if (sessionStorage.loginToken) {
     store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginToken)));
 }
 
+window.addEventListener('storage', function(e) {
+    console.log('I heard storage changed');
+
+    const newSession = localStorage.getItem('getSessionStorage');
+
+    // 如果是已经登入的页面 写入当前的sessionstorage到localstorage
+    if(newSession && sessionStorage.loginToken) {
+        console.log('I am already login, I will write loginToken into localstorage');
+        const token = sessionStorage.getItem('loginToken');
+        localStorage.setItem('loginToken',token);
+        console.log('loginToken is in localstorage');
+        //localStorage.removeItem('getSessionStorage');
+        //console.log('getSessionStorage is removed from localstorage')
+    } else if (newSession && !sessionStorage.length){
+        console.log('I am the new tag')
+        const token = localStorage.getItem('loginToken');
+        localStorage.removeItem('getSessionStorage');
+        localStorage.removeItem('loginToken');
+        sessionStorage.setItem('loginToken',token)
+        localStorage.removeItem('loginToken');
+        setAuthorizationToken(sessionStorage.loginToken);
+        store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginToken)));
+    }
+});
+
+
+if(!sessionStorage.length) {
+// 这个调用能触发目标事件，从而达到共享数据的目的
+    localStorage.setItem('getSessionStorage',true)
+    console.log("set getSessionStorage")
+}
+
+
+
 
 render(
     <Provider store={store}>

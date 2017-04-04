@@ -517,3 +517,35 @@ a.list-group-item:hover {
     border-radius: 0;
     background-color: transparent;
 }
+
+
+/*
+    Account Setting Menu & Page
+ */
+.setting-menu{
+    float:left;
+}
+
+.setting-content{
+    float: right;
+}
+
+.profile-title{
+    float:left;
+}
+
+.profile-content{
+    float:right;
+}
+
+.setting-content-title{
+    float:left;
+}
+
+.setting-content-photo{
+    margin:10% 5% auto;
+}
+
+.setting-content-photo-area{
+    float:right;
+}
