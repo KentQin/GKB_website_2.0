@@ -73,7 +73,7 @@ class MapBox extends React.Component {
                             <Route path="welcome" component={WelcomePage}/>
                             <Route path="newpwd" component={NewPwdPage}/>
                             <Route path="newpwd(/:email)" component={NewPwdPage}/>
-                            <Route path="accountsetting" component={AccountSetting}/>7
+                            <Route path="accountsetting" component={AccountSetting}/>
                     </Router>
 
 

@@ -50,7 +50,8 @@ class HomePage extends React.Component {
 
         return (
             <div className="container loginPage float_on_the_map">
-                <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile} /
+                <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile} />
+
                 {isAuthenticated && <Profile login = {this.props.login} />}
                 <SearchBar searchBarRequest={this.props.searchBarRequest}/>
 
@@ -71,8 +72,4 @@ function mapStateToProps(state) {
     };
 }
 
-<<<<<<< HEAD
 export default connect(mapStateToProps, { logout, searchBarRequest })(HomePage);
-=======
-export default connect(mapStateToProps, { logout })(HomePage);
->>>>>>> 27d7f8399a7059720e24bb23dde76d2b80844e97

@@ -16,5 +16,5 @@ var userSchema = new Schema({
     favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element'}]
 });
 
-module.exports = mongoose.model('userModel', userSchema);
+module.exports = mongoose.model('user', userSchema);
 //module.exports = mongoose.model('user', userSchema);

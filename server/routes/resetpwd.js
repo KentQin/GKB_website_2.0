@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
 
         let mailOptions = {
             from: '<gkbofficial356@gmail.com>', // sender address
-            to: "gkbofficial356@gmail.com", // list of receivers
+            to: email, // list of receivers
             subject: 'Hello ✔', // Subject line
             text: 'Hello world ?', // plain text body
             // html: '<h2>Hi,</h2><br/><p>We have recently received a request to reset your password.</p><p>If you did not make this request, you can safely disregard this email</p>'
