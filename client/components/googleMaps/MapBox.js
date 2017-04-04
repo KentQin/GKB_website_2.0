@@ -8,11 +8,8 @@ import EmailSentPage from '../resetpwd/EmailSentPage';
 import NewPwdPage from '../newpassword/NewPwdPage';
 import WelcomePage from '../welcome/WelcomePage'
 import HomePage from '../home/HomePage'
-<<<<<<< HEAD
 import {connect} from 'react-redux'
-=======
 import AccountSetting from '../userProfile/AccountSettingPage';
->>>>>>> 27d7f8399a7059720e24bb23dde76d2b80844e97
 
 
 
