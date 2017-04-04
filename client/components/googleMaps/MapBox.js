@@ -8,8 +8,8 @@ import EmailSentPage from '../resetpwd/EmailSentPage';
 import NewPwdPage from '../newpassword/NewPwdPage';
 import WelcomePage from '../welcome/WelcomePage'
 import HomePage from '../home/HomePage'
+import AccountSetting from '../userProfile/AccountSettingPage';
 
-import Profile from '../userProfile/Profile';
 
 
 class MapBox extends React.Component {
@@ -61,6 +61,7 @@ class MapBox extends React.Component {
                             <Route path="emailsentpage" component={EmailSentPage}/>
                             <Route path="welcome" component={WelcomePage}/>
                             <Route path="newpwd" component={NewPwdPage}/>
+                            <Route path="accountsetting" component={AccountSetting}/>
                     </Router>
 
 
