@@ -1,6 +1,7 @@
 import { SET_CURRENT_USER_LOGIN } from '../actions/types';
 import { SET_CURRENT_USER_SIGNUP } from '../actions/types';
 import { SET_CURRENT_USER_ADD_NAME } from '../actions/types';
+import {SET_CURRENT_USER_SEARCH_BAR} from '../actions/types';
 import lodash from 'lodash';
 
 const initialState = {
@@ -29,6 +30,13 @@ export default (state = initialState, action = {}) => {
             }
         // called by welcome page
         case SET_CURRENT_USER_ADD_NAME:
+            return {
+                //action object contains user
+                isAuthenticated: !lodash.isEmpty(action.user),
+                user: action.user
+            }
+
+        case SET_CURRENT_USER_SEARCH_BAR:
             return {
                 //action object contains user
                 isAuthenticated: !lodash.isEmpty(action.user),

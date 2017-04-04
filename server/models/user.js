@@ -9,7 +9,10 @@ var userSchema = new Schema({
     accountType: {type: String, require: true},
     imageFile: {type: Object},
     contributions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element' }],
-    searchHistory: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element' }],
+    searchHistory: [{
+                      element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
+                      searchStr: { type: String }
+                   }],
     favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element'}]
 });
 

@@ -4,6 +4,7 @@ import Profile from '../userProfile/Profile';
 import NavBar from './NavBar';
 import { logout } from '../../actions/authAction';
 import SearchBar from './SearchBar';
+import { searchBarRequest } from '../../actions/searchBarAction';
 
 class HomePage extends React.Component {
 
@@ -42,7 +43,7 @@ class HomePage extends React.Component {
             <div className="container loginPage float_on_the_map">
                 <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile} />
                 {this.state.showProfile && <Profile login = {this.props.login} />}
-                <SearchBar/>
+                <SearchBar searchBarRequest={this.props.searchBarRequest}/>
 
             </div>
         )
@@ -51,7 +52,8 @@ class HomePage extends React.Component {
 
 
 HomePage.propTypes = {
-    login: React.PropTypes.object.isRequired
+    login: React.PropTypes.object.isRequired,
+    searchBarRequest: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -60,4 +62,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { logout })(HomePage);
+export default connect(mapStateToProps, { logout, searchBarRequest })(HomePage);

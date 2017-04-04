@@ -95,7 +95,8 @@ router.post('/login', (req, res) => {
                 email: user.email,
                 userName: data.userName,
                 accountType: user.accountType,
-                id: data._id
+                id: data._id,
+                imageFile: data.imageFile
             }, 'secretkeyforjsonwebtoken');
             console.log("Logged in " + data);
             res.json({token});
@@ -217,43 +218,90 @@ router.post('/addName', (req, res) => {
 });
 
 
-router.post('/addProfilePic', (req, res) => {
+import multer from 'multer'
+//var upload = multer({ dest: './uploads'});
+import crypto from 'crypto'
+import path from 'path'
 
-    console.log("req body: ", req.body);
-    // const user = {
-    //     //userName: req.body.userName,
-    //     imageFile: req.body.imageFile,
-    //     id: req.body.id
-    // };
-    //
-    // var newPath = __dirname;
-    // console.log("newPath: " + newPath);
-    //   // write file to uploads/fullsize folder
-    //   require('fs').writeFile(newPath, user.imageFile, function (err) {
-    //     // let's see it
-    //     //res.redirect("/uploads/fullsize/" + imageName);
-    //     console.log("I think we are close");
-    //   });
-    //
-    // console.log("User info from WelcomeForm: ", user);
-    // console.log("user image: " + user.imageFile);
-    //
-    // User.findByIdAndUpdate(user.id, { $set: {imageFile: user.imageFile} }, {new: true}, function (err, model) {
-    //   if (err) {
-    //     console.log("Adding imageFile update error");
-    //     errors.login = "Adding imageFile update error";
-    //     res.status(400).json(errors);
-    //   } else {
-    //       console.log("update success: " + model);
-    //       const token = jwt.sign({
-    //           email: model.email,
-    //           userName: model.userName,
-    //           id: model.id
-    //       }, 'secretkeyforjsonwebtoken');
-    //       res.json({token});
-    //   }
-    // });
+
+var storage = multer.diskStorage({
+  destination: 'F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images',
+  filename: function (req, file, cb) {
+    crypto.pseudoRandomBytes(16, function (err, raw) {
+      if (err) return cb(err)
+
+      cb(null, raw.toString('hex') + path.extname(file.originalname))
+    })
+  }
+})
+
+var upload = multer({ storage: storage })
+
+router.post('/addProfilePic/:userid', upload.single('photo'), function(req, res, next) {
+  console.log("object id: " + req.params.userid);
+  console.log("req.files: ", req.files);
+  console.log("req file: ", req.file);
+  var userId = req.params.userid;
+  //res.end(req.files);
+    User.findByIdAndUpdate(userId, { $set: {imageFile: req.file} }, {new: true}, function (err, model) {
+         if (err) {
+             console.log("Adding imageFile update error");
+             errors.login = "Adding imageFile update error";
+             res.status(400).json(errors);
+           } else {
+               console.log("update success: " + model);
+               const token = jwt.sign({
+                   email: model.email,
+                   userName: model.userName,
+                   id: model.id,
+                   imageFile: model.imageFile
+               }, 'secretkeyforjsonwebtoken');
+               //res.json({token});
+              res.end("sucess");
+              //res.end(model.imageFile);
+           }
+    });
 });
+
+// router.post('/addProfilePic', (req, res) => {
+//
+//     console.log("req body imageFile ", req.body.imageFile)
+//     console.log("req body id: ", req.body.id)
+//     console.log("REQ FILES: ", req.files);
+//     // const user = {
+//     //     //userName: req.body.userName,
+//     //     imageFile: req.body.imageFile,
+//     //     id: req.body.id
+//     // };
+//     //
+//     // var newPath = __dirname;
+//     // console.log("newPath: " + newPath);
+//     //   // write file to uploads/fullsize folder
+//     //   require('fs').writeFile(newPath, user.imageFile, function (err) {
+//     //     // let's see it
+//     //     //res.redirect("/uploads/fullsize/" + imageName);
+//     //     console.log("I think we are close");
+//     //   });
+//     //
+//     // console.log("User info from WelcomeForm: ", user);
+//     // console.log("user image: " + user.imageFile);
+//     //
+//     // User.findByIdAndUpdate(user.id, { $set: {imageFile: user.imageFile} }, {new: true}, function (err, model) {
+//     //   if (err) {
+//     //     console.log("Adding imageFile update error");
+//     //     errors.login = "Adding imageFile update error";
+//     //     res.status(400).json(errors);
+//     //   } else {
+//     //       console.log("update success: " + model);
+//     //       const token = jwt.sign({
+//     //           email: model.email,
+//     //           userName: model.userName,
+//     //           id: model.id
+//     //       }, 'secretkeyforjsonwebtoken');
+//     //       res.json({token});
+//     //   }
+//     // });
+// });
 
 
 export default router;

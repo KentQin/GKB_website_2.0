@@ -8,6 +8,7 @@ import EmailSentPage from '../resetpwd/EmailSentPage';
 import NewPwdPage from '../newpassword/NewPwdPage';
 import WelcomePage from '../welcome/WelcomePage'
 import HomePage from '../home/HomePage'
+import {connect} from 'react-redux'
 
 import Profile from '../userProfile/Profile';
 
@@ -37,16 +38,26 @@ class MapBox extends React.Component {
     // }
 
     render() {
-
-
-
+        const {user} = this.props.login
+        var lat, longt
+        if (user.coords != null) {
+            console.log("we are here in coords");
+            lat = (user.coords.lat)
+            longt = (user.coords.longt)
+        } else {
+            console.log("in else coords");
+            lat = 37.772537
+            longt = -122.420679
+        }
+        console.log("lat: " + lat + "longt: " + longt);
         return (
             <div>
                 {/*<NavLogin className="btn-nav-login"/>*/}
                 <ReactMapboxGl
                     style="mapbox://styles/mapbox/streets-v8"
                     accessToken="pk.eyJ1IjoicHJhaml0aCIsImEiOiJjajBmZnM2c3kwMXJ4Mnd1aW9ua295ajBjIn0.SYAYhOfs2Aq9JvBIPtV4dw"
-                    center={[-122.420679, 37.772537]}
+                    center={[longt, lat]}
+                    zoom={[13]}
                     containerStyle={{
                         height: "100vh",
                         width: "100vw"
@@ -61,6 +72,7 @@ class MapBox extends React.Component {
                             <Route path="emailsentpage" component={EmailSentPage}/>
                             <Route path="welcome" component={WelcomePage}/>
                             <Route path="newpwd" component={NewPwdPage}/>
+                            <Route path="newpwd(/:email)" component={NewPwdPage}/>
                     </Router>
 
 
@@ -68,7 +80,7 @@ class MapBox extends React.Component {
                           type="symbol"
                           id="marker"
                           layout={{ "icon-image": "marker-15" }}>
-                          <Feature coordinates={[-122.420679, 37.772537]}/>
+                          <Feature coordinates={[longt, lat]}/>
                         </Layer>
 
                 </ReactMapboxGl>
@@ -77,4 +89,14 @@ class MapBox extends React.Component {
     }
 }
 
-export default MapBox;
+MapBox.propTypes = {
+    login: React.PropTypes.object.isRequired,
+}
+
+function mapStateToProps(state) {
+    return {
+        login: state.login
+    };
+}
+
+export default connect(mapStateToProps, {})(MapBox);

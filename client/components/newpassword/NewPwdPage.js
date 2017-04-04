@@ -10,6 +10,7 @@ class NewPwdPage extends React.Component{
         const { changePswdRequest } = this.props;
         return(
             <div className="container loginPage float_on_the_map">
+                { this.props.params.email && <h2>Hello, {this.props.params.email}</h2>}
                 <LinkToHome/>
                 <div className="col-md-5 col-offset-md-3 email-sent-block">
                     <NewPwdForm changePswdRequest={changePswdRequest}/>
