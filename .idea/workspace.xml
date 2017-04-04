@@ -8,9 +8,22 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/userProfile/PasswordContent.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/userProfile/SetDefaultPhoto.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/googleMaps/MapBox.js" afterPath="$PROJECT_DIR$/client/components/googleMaps/MapBox.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/userProfile/ProfileContent.js" afterPath="$PROJECT_DIR$/client/components/userProfile/ProfileContent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/users.js" afterPath="$PROJECT_DIR$/server/routes/users.js" />
+>>>>>>> 8ff7dbf8bbc974d5b01b8490761ce4122302e385
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/DropZone.js" afterPath="$PROJECT_DIR$/client/components/DropZone.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/database.js" afterPath="$PROJECT_DIR$/server/database.js" />
+>>>>>>> 35a244fe776fb7c75e6d285ce14476808eab1f28
+>>>>>>> cab10819cd4661764b0c0b62605aa89e3e675911
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,6 +38,11 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
+<<<<<<< HEAD
+    <leaf>
+      <file leaf-file-name="LoginPage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/login/LoginPage.js">
+=======
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/style.css">
@@ -36,8 +54,19 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="HomePage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/home/HomePage.js">
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="Profile.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/userProfile/Profile.js">
+>>>>>>> 8ff7dbf8bbc974d5b01b8490761ce4122302e385
+=======
+      <file leaf-file-name="SearchBar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/home/SearchBar.js">
+>>>>>>> 35a244fe776fb7c75e6d285ce14476808eab1f28
+>>>>>>> cab10819cd4661764b0c0b62605aa89e3e675911
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="117">
               <caret line="43" column="16" lean-forward="false" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="82" />
@@ -73,8 +102,33 @@
       <file leaf-file-name="AccountSettingMenu.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/userProfile/AccountSettingMenu.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="120">
               <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <state relative-caret-position="1680">
+              <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="116" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="25" />
+=======
+            <state relative-caret-position="285">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+>>>>>>> 8ff7dbf8bbc974d5b01b8490761ce4122302e385
+=======
+            <state relative-caret-position="330">
+              <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+>>>>>>> 35a244fe776fb7c75e6d285ce14476808eab1f28
+>>>>>>> cab10819cd4661764b0c0b62605aa89e3e675911
               <folding />
             </state>
           </provider>
@@ -161,9 +215,16 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
+    <option name="x" value="219" />
+    <option name="y" value="23" />
+    <option name="width" value="1159" />
+    <option name="height" value="827" />
+=======
     <option name="y" value="23" />
     <option name="width" value="1366" />
     <option name="height" value="692" />
+>>>>>>> 8ff7dbf8bbc974d5b01b8490761ce4122302e385
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -409,27 +470,54 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1490610963080</updated>
+<<<<<<< HEAD
+      <workItem from="1490610964351" duration="13615000" />
+=======
       <workItem from="1490610964351" duration="778000" />
       <workItem from="1490615051270" duration="26000" />
       <workItem from="1490615099842" duration="568000" />
       <workItem from="1490616345137" duration="315000" />
       <workItem from="1490616858000" duration="3221000" />
       <workItem from="1490659916078" duration="502000" />
+<<<<<<< HEAD
+      <workItem from="1490666839382" duration="334000" />
+>>>>>>> 8ff7dbf8bbc974d5b01b8490761ce4122302e385
+=======
       <workItem from="1490666839382" duration="11731000" />
       <workItem from="1490698258623" duration="2798000" />
       <workItem from="1490748732515" duration="1376000" />
       <workItem from="1490750596243" duration="136000" />
+<<<<<<< HEAD
       <workItem from="1490751265073" duration="516000" />
       <workItem from="1491277603951" duration="12655000" />
       <workItem from="1491300969907" duration="6006000" />
+=======
+      <workItem from="1490751265073" duration="389000" />
+>>>>>>> 35a244fe776fb7c75e6d285ce14476808eab1f28
+>>>>>>> cab10819cd4661764b0c0b62605aa89e3e675911
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="40628000" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="13615000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="219" y="23" width="1159" height="827" extended-state="0" />
+=======
+    <option name="totallyTimeSpent" value="5744000" />
+=======
+    <option name="totallyTimeSpent" value="21840000" />
+>>>>>>> 35a244fe776fb7c75e6d285ce14476808eab1f28
+>>>>>>> cab10819cd4661764b0c0b62605aa89e3e675911
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="692" extended-state="6" />
+>>>>>>> 8ff7dbf8bbc974d5b01b8490761ce4122302e385
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24907063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -438,6 +526,17 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27891156" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24977618" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+=======
+>>>>>>> 8ff7dbf8bbc974d5b01b8490761ce4122302e385
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40333334" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -797,10 +896,39 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/client/components/userProfile/PasswordContent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="29" column="62" lean-forward="true" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="116" selection-end-column="22" />
+=======
+    <entry file="file://$PROJECT_DIR$/client/components/welcome/WelcomeForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+>>>>>>> 8ff7dbf8bbc974d5b01b8490761ce4122302e385
+=======
+    <entry file="file://$PROJECT_DIR$/client/components/userProfile/ProfileContent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+>>>>>>> 35a244fe776fb7c75e6d285ce14476808eab1f28
+>>>>>>> cab10819cd4661764b0c0b62605aa89e3e675911
           <folding />
         </state>
       </provider>

@@ -39,7 +39,7 @@
     "jsonwebtoken": "^7.3.0",
     "lodash": "^4.17.4",
     "mapbox-gl-style-spec": "^8.11.0",
-    "mongoose": "^4.7.1",
+    "mongoose": "^4.9.3",
     "nodemailer": "^3.1.8",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
