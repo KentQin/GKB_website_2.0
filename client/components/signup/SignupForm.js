@@ -11,7 +11,7 @@ class SignupForm extends React.Component {
             email: '',
             password: '',
             confirmPassword: '',
-            errors: {}
+            errors: {},
         }
 
         this.onChange = this.onChange.bind(this);

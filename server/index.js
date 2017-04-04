@@ -8,6 +8,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
 import users from './routes/users';
 import resetpwd from './routes/resetpwd';
+import changePswd from './routes/changePswd'
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import './database';
@@ -43,7 +44,7 @@ app.use(webpackHotMiddleware(compiler));
 // match url, then apply the middleware
 app.use('/api/users', users);
 app.use('/api/resetpwd', resetpwd);
-
+app.use('/api/changePswd', changePswd);
 
 
 

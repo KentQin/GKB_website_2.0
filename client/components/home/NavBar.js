@@ -12,6 +12,7 @@ class NavBar extends React.Component {
 
     logout(e){
         e.preventDefault();
+        this.props.hideProfile();
         //console.log(this.props);
         this.props.hideProfile();
         this.props.logout();
@@ -22,20 +23,20 @@ class NavBar extends React.Component {
         const { isAuthenticated } = this.props.login;
 
         const userNav =(
-            <ul className="nav nav-pills">
+            <ul className="nav nav-pills btn-on-map">
                 <li role="presentation">
-                    <a href="#" onClick={this.logout}>Logout</a>
+                    <a href="#" onClick={this.logout} className="btn btn-default btn-nav" data-dismiss="modal">Logout</a>
                 </li>
             </ul>
         );
 
         const guestNav =(
-            <ul className="nav nav-pills">
+            <ul className="nav nav-pills btn-on-map">
                 <li role="presentation">
-                    <Link to="/signup" className="btn btn-default btn-welcome">Signup</Link>
+                    <Link to="/signup" className="btn btn-default btn-nav">Signup</Link>
                 </li>
                 <li role="presentation">
-                    <Link to="/login" className="btn btn-default btn-welcome">Login</Link>
+                    <Link to="/login" className="btn btn-default btn-nav">Login</Link>
                 </li>
             </ul>
         );

@@ -1,6 +1,5 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
-import { createUser } from '../seeders/creatUser';
 
 var User = require('./../models/user.js');
 
@@ -8,27 +7,15 @@ let router = express.Router();
 
 router.post('/signup', (req, res) => {
     console.log("Server: router: users say: request body:  ",req.body);
-
-    const user = {
+    var user = {
         email: req.body.email,
         password: req.body.password,
         accountType: 'local',
         username:""
-    };
-
-    //const userEmail = {email: req.body.email};
-
-    var error = {};
-    createUser(user,error,res);
-    if (true) {
-        console.log("TOKEN");
-        const token = jwt.sign({
-            email: user.email
-        }, 'secretkeyforjsonwebtoken');
-        res.json({token});
     }
-    else {
-        res.status(400).json(error);
+
+    var email = {
+        email: req.body.email
     }
 
     // console.log('Server: You Signup');
@@ -38,41 +25,44 @@ router.post('/signup', (req, res) => {
     // res.json({token});
 
 
-    // User.find(email).count(function(err, count){
-    //     let errors = {}
-    //     console.log( "Number of docs: ", count );
-    //     if(count === 0){
-    //         User.create(user,function(err,data){
-    //             console.log("Writing to db");
-    //             if(err){
-    //                 console.log(err.statusCode);
-    //             }else if(!data){
-    //                 console.log(res.statusCode);
-    //                 console.log("Error saving");
-    //             }else{
-    //                 console.log(res.statusCode);
-    //                 console.log("Registered");
-    //                 // success, then send token to client
-    //                 const token = jwt.sign({
-    //                     email: user.email
-    //                 }, 'secretkeyforjsonwebtoken');
-    //                 res.json({token});
-    //             }
-    //
-    //         });
-    //     }else{
-    //         console.log("Email address exists");
-    //         errors.signup = "Email already exits";
-    //         res.status(400).json(errors);
-    //     }
-    // });
+    User.find(email).count(function(err, count){
+        let errors = {}
+        console.log( "Number of docs: ", count );
+        if(count === 0){
+            User.create(user,function(err,data){
+                console.log("Writing to db");
+                if(err){
+                    console.log(err.statusCode);
+                }else if(!data){
+                    console.log(res.statusCode);
+                    console.log("Error saving");
+                }else{
+                    console.log(res.statusCode);
+                    console.log("Registered");
+                    // success, then send token to client
+                    const token = jwt.sign({
+                        email: user.email,
+                        accountType: user.accountType,
+                        id: data._id
+                    }, 'secretkeyforjsonwebtoken');
+                    res.json({token});
+                }
+
+            });
+        }else{
+            console.log("Email address exists");
+            errors.signup = "Email already exits";
+            res.status(400).json(errors);
+        }
+    });
 });
 
 router.post('/login', (req, res) => {
     console.log("Message for LoginForm ",req.body);
     var user = {
         email:req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        accountType: 'local'
     };
 
     // console.log('Server: You Logged in');
@@ -87,6 +77,7 @@ router.post('/login', (req, res) => {
         let errors = {};
         console.log("Auth step 1: Authentication going");
         console.log("Auth step 2: ", user.email+","+user.password);
+        console.log(data);
         if(err){
             console.log(err);
         }else if(!data){
@@ -102,7 +93,9 @@ router.post('/login', (req, res) => {
             // success, then send token back
             const token = jwt.sign({
                 email: user.email,
-                userName: data.username
+                userName: data.userName,
+                accountType: user.accountType,
+                id: data._id
             }, 'secretkeyforjsonwebtoken');
             console.log("Logged in " + data);
             res.json({token});
@@ -118,79 +111,148 @@ router.post('/loginSocial', (req, res) => {
     var user = {
         email: req.body.email,
         password: req.body.password,
-        accountType: req.body.accountType
+        accountType: req.body.accountType,
+        //imageFile: req.body.imageFile
     }
 
-    var email = {
-        email: req.body.email
+    var newUser = {
+        email: req.body.email,
+        password: req.body.password,
+        accountType: req.body.accountType,
+        imageFile: req.body.imageFile
     }
 
-    const token = jwt.sign({
-        email: user.email
-    }, 'secretkeyforjsonwebtoken');
-    res.json({token});
+    User.findOne(user,function(err,data){
+        let errors = {};
+        console.log("Auth step 1: Authentication going");
+        console.log("Auth step 2: ", user.email+","+user.password);
+        console.log(data);
+        if(err){
+            console.log(err);
+        }else if(!data){
+            console.log(data);
+            console.log("Account does not exist. So create");
+            //errors.login = "Account does not exist or wrong password";
+            User.create(newUser,function(err,newData){
+                console.log("Writing to db");
+                if(err){
+                    console.log(err.statusCode);
+                }else if(!newData){
+                    console.log(err.statusCode);
+                    console.log("Error saving");
+                }else{
+                    console.log(res.statusCode);
+                    console.log("Registered");
+                    // success, then send token to client
+                    const token = jwt.sign({
+                        email: newUser.email,
+                        accountType: newUser.accountType,
+                        id: newData._id,
+                        imageFile: newUser.imageFile
+                    }, 'secretkeyforjsonwebtoken');
+                    res.json({token});
+                }
 
-    // User.find(email).count(function(err, count){
-    //   let errors = {}
-    //     console.log( "Number of docs: ", count );
-    //     if(count === 0){
-    //         User.create(user,function(err,data){
-    //             console.log("Writing to db");
-    //             if(err){
-    //                 console.log(err.statusCode);
-    //             }else if(!data){
-    //                 console.log(res.statusCode);
-    //                 console.log("Error saving");
-    //             }else{
-    //                 console.log(res.statusCode);
-    //                 console.log("Registered");
-    //                 res.status(200).json({ success:{} });
-    //             }
-    //
-    //         });
-    //     }else{
-    //         console.log("Email address exists");
-    //         errors.signup = "Email already exits";
-    //         res.status(400).json(errors);
-    //     }
-    // });
+            });
+        }else{
+            //user already there.
+            const token = jwt.sign({
+                email: user.email,
+                accountType: user.accountType,
+                id: data._id,
+                imageFile: newUser.imageFile,
+                userName: data.userName
+            }, 'secretkeyforjsonwebtoken');
+            console.log("Logged in");
+            res.json({token});
+        }
+
+    });
 });
 
 router.post('/addName', (req, res) => {
 
     const user = {
-        username: req.body.userName,
         email: req.body.email,
+        accountType: req.body.accountType
     };
 
-    var thisUser = {
-        email: req.body.email
-    }
+    const userName = req.body.userName;
 
     console.log("User info from WelcomeForm:, ", user);
 
-    User.findOneAndUpdate(thisUser, {$set:{username:user.username}}, {new: true}, function(err, doc){
-        console.log("Finding " + user.email);
+    User.findOne(user, function(err, data){
+        let errors = {};
+        console.log("Adding usernmae step 1:");
+        console.log(" Adding username step 2:");
+        console.log(data);
         if(err){
-            console.log("Something wrong when updating data!");
+            console.log(err);
+        }else if(!data){
+            console.log(data);
+            console.log("Account does not exist.");
+            errors.login = "Account does not exist.";
+            res.status(400).json(errors);
+        }else{
+            User.findByIdAndUpdate(data._id, { $set: {userName: userName} }, {new: true}, function (err, model) {
+                if (err) {
+                    console.log("Adding UserNAme update error");
+                    errors.login = "Adding UserNAme update error";
+                    res.status(400).json(errors);
+                } else {
+                    console.log("update success: " + model);
+                    const token = jwt.sign({
+                        email: user.email,
+                        userName: userName,
+                        accountType: user.accountType,
+                        id: model._id,
+                        imageFile: model.imageFile
+                    }, 'secretkeyforjsonwebtoken');
+                    res.json({token});
+                }
+            });
         }
 
-        console.log("Doc "+ doc);
-        console.log("Username registered");
     });
-    //write username into to db
-    // 所有的前段数据已经存在变量 user 中了
-    // 你可以根据 user.email 和 user.password 唯一对应上某个用户的注册记录
-    // 然后为该用户添加用户名
+});
 
-    // 如果添加成功返回如下信息(我暂时comment out了，只需要copy过去就好的)
 
-    const token = jwt.sign({
-        email: user.email,
-        username: user.username
-    }, 'secretkeyforjsonwebtoken');
-    res.json({token});
+router.post('/addProfilePic', (req, res) => {
 
+    console.log("req body: ", req.body);
+    // const user = {
+    //     //userName: req.body.userName,
+    //     imageFile: req.body.imageFile,
+    //     id: req.body.id
+    // };
+    //
+    // var newPath = __dirname;
+    // console.log("newPath: " + newPath);
+    //   // write file to uploads/fullsize folder
+    //   require('fs').writeFile(newPath, user.imageFile, function (err) {
+    //     // let's see it
+    //     //res.redirect("/uploads/fullsize/" + imageName);
+    //     console.log("I think we are close");
+    //   });
+    //
+    // console.log("User info from WelcomeForm: ", user);
+    // console.log("user image: " + user.imageFile);
+    //
+    // User.findByIdAndUpdate(user.id, { $set: {imageFile: user.imageFile} }, {new: true}, function (err, model) {
+    //   if (err) {
+    //     console.log("Adding imageFile update error");
+    //     errors.login = "Adding imageFile update error";
+    //     res.status(400).json(errors);
+    //   } else {
+    //       console.log("update success: " + model);
+    //       const token = jwt.sign({
+    //           email: model.email,
+    //           userName: model.userName,
+    //           id: model.id
+    //       }, 'secretkeyforjsonwebtoken');
+    //       res.json({token});
+    //   }
+    // });
 });
 
 

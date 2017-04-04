@@ -34,7 +34,7 @@ class WelcomeForm extends React.Component{
             // after server response then...
             // if successful
             (res) => {
-                this.context.router.push('home')
+                this.context.router.push('/home')
             },
             // if server response any error message, set it into state errors
             (err) => {
@@ -52,7 +52,7 @@ class WelcomeForm extends React.Component{
                 className="form-horizontal "
             >
                 <div className="col-md-6 col-md-offset-3 email-sent-block-wel" >
-                    <h1 className="h-e-a-d-e-r-t-e-x-t-wel">WELCOME! {user.email}</h1>
+                    <h1 className="h-e-a-d-e-r-t-e-x-t-wel">WELCOME!</h1>
                     <div className="welcome-text-dark-wel">
                         <span>Before we begin, please set your public username.
                             This username will be visible to all users on our platform.</span>

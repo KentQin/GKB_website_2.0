@@ -29,7 +29,7 @@ function validateInput(data) {
 
 router.post('/', (req, res) => {
     if (config.dev) {
-      
+
     } else {
 
     }
@@ -48,19 +48,22 @@ router.post('/', (req, res) => {
             to: email, // list of receivers
             subject: 'Hello ✔', // Subject line
             text: 'Hello world ?', // plain text body
-            html: '<h2>Hi,</h2><br/><p>We have recently received a request to reset your password.</p><p>If you did not make this request, you can safely disregard this email</p>'
-                  + 'http://localhost:9000/newpwd'
+            // html: '<h2>Hi,</h2><br/><p>We have recently received a request to reset your password.</p><p>If you did not make this request, you can safely disregard this email</p>'
+            //       + 'http://localhost:9000/newpwd'
+            html: '<head><meta charset="UTF-8"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="css/style.css" type="text/css" /></head><body><div id="container"><h2>Hi,</h2><p>We have recently received a request to reset your password.</p><p>If you did not make this request, you can safely disregard this email</p><form action="http://localhost:9000/newpwd"><input type="submit" value="Reset Password" /></form><p>Thanks,</p><p>Your Team at GKB</p></div></body>'
         };
 
         // send mail with defined transport object
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 //return console.log(error);
+                console.log(error);
                 res.status(400).json(error);
+            }else {
+                console.log('Message %s sent: %s', info.messageId, info.response);
+                //res.status(300).send();
+                res.redirect('/emailsentpage');
             }
-            console.log('Message %s sent: %s', info.messageId, info.response);
-            //res.status(300).send();
-            res.redirect('/emailsentpage');
         });
         //res.status(300).send();
         //res.redirect('/emailsentpage');

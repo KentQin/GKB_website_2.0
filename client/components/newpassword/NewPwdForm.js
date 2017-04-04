@@ -1,4 +1,5 @@
 import React from 'react';
+import validateInput from '../../../server/shared/validations/changePswd';
 
 class NewPwdForm extends React.Component{
 
@@ -6,7 +7,8 @@ class NewPwdForm extends React.Component{
         super(props);
         this.state = {
             password: '',
-            confrimPassword: ''
+            confirmPassword: '',
+            errors: {}
         }
 
         this.onChange = this.onChange.bind(this);
@@ -17,10 +19,35 @@ class NewPwdForm extends React.Component{
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    isValid() {
+        const {errors, isValid} = validateInput(this.state);
+
+        if (!isValid) {
+            this.setState({ errors });
+        }
+
+        return isValid;
+    }
+
     onSubmit(e) {
         e.preventDefault();
         // console.log("login sends: ", this.state);
         // axios.post('/api/users/login', this.state);
+        if (this.isValid()) {
+            this.setState({errors: {} });
+            this.props.changePswdRequest(this.state).then(
+                // after server response then...
+                // if successful
+                (res) => {
+                    console.log("I am here in changePswdRequest");
+                    this.context.router.push('/home')
+                },
+                // if server response any error message, set it into state errors
+                (err) => {
+                  console.log("I am here in errors changePswdRequest");
+                    this.setState({ errors: err.response.data})
+                });
+        }
     }
 
     render(){
@@ -32,7 +59,7 @@ class NewPwdForm extends React.Component{
                     <input
                         value = {this.state.password}
                         onChange={this.onChange}
-                        name="new_password"
+                        name="password"
                         type="password"
                         className="form-control input-w-60"
                         id="NewPassword"
@@ -42,7 +69,7 @@ class NewPwdForm extends React.Component{
                     <input
                         value={this.state.confrimPassword}
                         onChange={this.onChange}
-                        name="password"
+                        name="confirmPassword"
                         type="password"
                         className="form-control input-w-60"
                         id="ConfirmPassword"
@@ -52,6 +79,14 @@ class NewPwdForm extends React.Component{
             </form>
         );
     }
+}
+
+NewPwdForm.propTypes = {
+    changePswdRequest: React.PropTypes.func.isRequired
+}
+
+NewPwdForm.contextTypes = {
+    router: React.PropTypes.object.isRequired
 }
 
 export default NewPwdForm;
