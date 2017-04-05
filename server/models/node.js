@@ -7,4 +7,4 @@ var elementSchema = new Schema({
     name: {type: String, require: true},
 });
 
-module.exports = mongoose.model('Element', elementSchema);
+module.exports = mongoose.model('Element', elementSchema, 'elements');

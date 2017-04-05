@@ -37,7 +37,8 @@ export default {
             {
                 test: /\.(png|jpg|jpeg|gif|woff)$/,
                 include: [
-                    path.join(__dirname, 'client/components/img')
+                    path.join(__dirname, 'client/components/img'),
+                    path.join('F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images')
                 ],
                 loader: ['url-loader?limit=8192']
             }
@@ -48,6 +49,7 @@ export default {
     },
     node: {
         net: 'empty',
-        dns: 'empty'
+        dns: 'empty',
+        fs: 'empty'
     }
 }

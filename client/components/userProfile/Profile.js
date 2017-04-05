@@ -19,7 +19,8 @@ class Profile extends React.Component {
         return(
             <div>
                 <button className="btn btn-default profile-btn-on-map  btn-unfold-sidebar"
-                        data-toggle="modal" data-target="#profile-modal"> 》</button>
+                        data-toggle="modal" data-target="#profile-modal"> 》 </button>
+
                 <div className="modal"  id="profile-modal">
                     <div className="col-md-3 sidebar">
                         <button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>

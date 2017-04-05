@@ -12,10 +12,9 @@ export function setCurrentUser(user) {
 }
 
 export function userProfilePicUploadRequest(userData) {
-    var object = {};
-    object.file = userData;
+    console.log("in action user upload: ", userData);
     return dispatch => {
-        return axios.post('/api/users/addProfilePic', object).then(res =>{
+        return axios.post('/api/users/addProfilePic', userData).then(res =>{
             const token = res.data.token;
             console.log('token: ' ,token);
             // get token from server side, and store the token into session storage
