@@ -101,6 +101,16 @@ class DropzoneDemo extends React.Component {
       } else {
         if (user.imageFile != null) {
           console.log("This user has an image");
+          var pic;
+          console.log("type of imageFile: ", typeof(user.imageFile));
+          if (typeof(user.imageFile) != 'string') {
+            console.log("not equal string dropzone")
+            pic = user.imageFile.filename
+            imageSrc = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+pic)
+          } else {
+            imageSrc = user.imageFile
+            console.log("equal to string");
+          }
           //console.log("imageFile " + user.imageFile);
           //console.log("pic: ", pic)
           //imageSrc = user.imageFile.originalname;
@@ -110,7 +120,7 @@ class DropzoneDemo extends React.Component {
           //console.log("latest pic: " + pic);
           // imageSrc = require("./img/" + user.imageFile.filename);
           //imageSrc = require("./img/1cedaadc4eb16a5d83406e9761ebadb9.png");
-          //imageSrc = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+pic)
+
           //imageSrc = require()
           //imageSrc = "file://localhost/F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+pic
           //imageSrc = imageSrc_top
