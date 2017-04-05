@@ -21,7 +21,6 @@ export function userProfilePicUploadRequest(userData) {
             // get token from server side, and store the token into session storage
             sessionStorage.removeItem('loginToken');
             sessionStorage.setItem('loginToken', token);
-            setAuthorizationToken(token);
             // decode token, get user msg from it
             console.log('decode: ',jwt.decode(token));
             // dispatch action 'setCurrentUser' to change state
