@@ -9,16 +9,32 @@ import webpackConfig from '../webpack.config';
 import users from './routes/users';
 import resetpwd from './routes/resetpwd';
 import changePswd from './routes/changePswd'
+import searchBar from './routes/searchBar'
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import './database';
 import './firebase';
 import config from './config'
+// import busboyBodyParser from 'busboy-body-parser'
+import fileUpload from 'express-fileupload'
+import busboy from 'connect-busboy'
+import bb from 'express-busboy'
+// import multer from 'multer'
 
 let app = express();
 
 const compiler = webpack(webpackConfig);
 app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: true}));
+// app.use(multer({dest:'./uploads/'}).single('photo'));
+// bb.extend(app, {
+//     upload: true,
+//     path: '/',
+//     allowedPath: /./
+// });
+// app.use(busboy());
+// // app.use(busboyBodyParser({ limit: '5mb' }));
+// app.use(fileUpload());
 
 app.use(cookieParser());
 app.use(session({
@@ -45,7 +61,7 @@ app.use(webpackHotMiddleware(compiler));
 app.use('/api/users', users);
 app.use('/api/resetpwd', resetpwd);
 app.use('/api/changePswd', changePswd);
-
+app.use('/api/searchBar', searchBar);
 
 
 
