@@ -3,7 +3,7 @@ import React from 'react';
 class PasswordContent extends React.Component{
     render(){
         return(
-            <div>
+            <div className="middle-block">
                 <form className="form-horizontal">
                     <h1 className="h-e-a-d-e-r-t-e-x-t">Update Password</h1>
 

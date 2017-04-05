@@ -14,6 +14,7 @@ class ProfileContent extends React.Component{
                     <a href="#" className="list-group-item"><img src={favourites} className="sidebar-icon"/>Favourites</a>
                     <a href="#" className="list-group-item"><img src={history} className="sidebar-icon"/>Search History</a>
                     <Link to="/accountsetting" className="list-group-item"><img src={setting} className="sidebar-icon"/>Account Settings</Link>
+                    <a href="#" className="list-group-item"><img src={history} className="sidebar-icon"/>Logout</a>
                 </div>
             </div>
         );

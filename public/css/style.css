@@ -470,7 +470,7 @@ a.list-group-item:hover {
 }
 
 .modal-backdrop{
-    z-index:0;
+    z-index:-1;
 }
 
 .sidebar{
@@ -544,8 +544,17 @@ a.list-group-item:hover {
 
 .setting-content-photo{
     margin:10% 5% auto;
+    float:right;
 }
 
 .setting-content-photo-area{
     float:right;
+}
+
+.table{
+    margin-top:120px;
+}
+
+.middle-block{
+    margin-top:10%;
 }

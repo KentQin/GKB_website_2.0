@@ -25,7 +25,7 @@ class NavBar extends React.Component {
         const userNav =(
             <ul className="nav nav-pills btn-on-map">
                 <li role="presentation">
-                    <a href="#" onClick={this.logout} className="btn btn-default btn-nav" data-dismiss="modal">Logout</a>
+                    <a href="#" onClick={this.logout} className="btn btn-default btn-logout" data-dismiss="modal">Logout</a>
                 </li>
             </ul>
         );
