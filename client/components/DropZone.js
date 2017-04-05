@@ -92,7 +92,7 @@ class DropzoneDemo extends React.Component {
       const { errors } = this.state;
       const {user} = this.props.login;
       // Choosing which profile photo to display
-      var pic = user.imageFile.filename
+      //var pic = user.imageFile.filename
       var imageSrc;
       //var imageSrc_top = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+user.imageFile.filename)
 
