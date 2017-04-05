@@ -52,7 +52,6 @@ class HomePage extends React.Component {
                 <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile} />
                 {isAuthenticated && <Profile login = {this.props.login} />}
                 <SearchBar/>
-
             </div>
         )
     }
