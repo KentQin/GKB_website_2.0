@@ -21,7 +21,11 @@ var config = {
     username:"ubuntu",
     host:"115.146.90.170",
     agent : process.env.SSH_AUTH_SOCK,
+<<<<<<< HEAD
     privateKey:require('fs').readFileSync('/Users/zhangruoq/pb'),
+=======
+    privateKey:require('fs').readFileSync('C:/Users/prajith/publicKey'),
+>>>>>>> 92716ca8024f7ccddf2b374373256a2e4fd52bc9
     port:22,
     dstPort:27017,
 };

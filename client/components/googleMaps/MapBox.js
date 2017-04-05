@@ -41,6 +41,7 @@ class MapBox extends React.Component {
         const {user} = this.props.login
         var lat, longt
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (user.coords != null) {
             console.log("we are here in coords");
             lat = (user.coords.lat)
@@ -48,6 +49,8 @@ class MapBox extends React.Component {
         } else {
             console.log("in else coords");
 =======
+=======
+>>>>>>> 92716ca8024f7ccddf2b374373256a2e4fd52bc9
         if (user != null) {
           if (user.coords != null) {
               console.log("we are here in coords");
@@ -60,7 +63,10 @@ class MapBox extends React.Component {
           }
         } else {
             console.log("in else12222 coords");
+<<<<<<< HEAD
 >>>>>>> 77748fcb72c9d579b6ce9d8f97dece457a86020e
+=======
+>>>>>>> 92716ca8024f7ccddf2b374373256a2e4fd52bc9
             lat = 37.772537
             longt = -122.420679
         }

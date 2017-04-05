@@ -92,7 +92,11 @@ class DropzoneDemo extends React.Component {
       const { errors } = this.state;
       const {user} = this.props.login;
       // Choosing which profile photo to display
+<<<<<<< HEAD
       var pic = user.imageFile.filename
+=======
+      //var pic = user.imageFile.filename
+>>>>>>> 92716ca8024f7ccddf2b374373256a2e4fd52bc9
       var imageSrc;
       //var imageSrc_top = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+user.imageFile.filename)
 
@@ -102,7 +106,10 @@ class DropzoneDemo extends React.Component {
         if (user.imageFile != null) {
           console.log("This user has an image");
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 92716ca8024f7ccddf2b374373256a2e4fd52bc9
           var pic;
           console.log("type of imageFile: ", typeof(user.imageFile));
           if (typeof(user.imageFile) != 'string') {
@@ -113,7 +120,10 @@ class DropzoneDemo extends React.Component {
             imageSrc = user.imageFile
             console.log("equal to string");
           }
+<<<<<<< HEAD
 >>>>>>> 77748fcb72c9d579b6ce9d8f97dece457a86020e
+=======
+>>>>>>> 92716ca8024f7ccddf2b374373256a2e4fd52bc9
           //console.log("imageFile " + user.imageFile);
           //console.log("pic: ", pic)
           //imageSrc = user.imageFile.originalname;
@@ -124,10 +134,14 @@ class DropzoneDemo extends React.Component {
           // imageSrc = require("./img/" + user.imageFile.filename);
           //imageSrc = require("./img/1cedaadc4eb16a5d83406e9761ebadb9.png");
 <<<<<<< HEAD
+<<<<<<< HEAD
           //imageSrc = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+pic)
 =======
 
 >>>>>>> 77748fcb72c9d579b6ce9d8f97dece457a86020e
+=======
+
+>>>>>>> 92716ca8024f7ccddf2b374373256a2e4fd52bc9
           //imageSrc = require()
           //imageSrc = "file://localhost/F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+pic
           //imageSrc = imageSrc_top
