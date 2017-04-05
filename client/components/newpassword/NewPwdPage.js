@@ -7,13 +7,13 @@ import { connect } from 'react-redux';
 class NewPwdPage extends React.Component{
     render(){
 
-        const { changePswdRequest } = this.props;
+        const { changePswdRequest, email } = this.props;
         return(
             <div className="container loginPage float_on_the_map">
                 { this.props.params.email && <h2>Hello, {this.props.params.email}</h2>}
                 <LinkToHome/>
                 <div className="col-md-5 col-offset-md-3 email-sent-block">
-                    <NewPwdForm changePswdRequest={changePswdRequest}/>
+                    <NewPwdForm changePswdRequest={changePswdRequest} email={this.props.params.email}/>
                 </div>
 
             </div>
@@ -22,7 +22,8 @@ class NewPwdPage extends React.Component{
 }
 
 NewPwdPage.propTypes = {
-    changePswdRequest: React.PropTypes.func.isRequired
+    changePswdRequest: React.PropTypes.func.isRequired,
+    email: React.PropTypes.string
 }
 
 //export default ResetPasswordPage;

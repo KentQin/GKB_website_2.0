@@ -35,7 +35,12 @@ class NewPwdForm extends React.Component{
         // axios.post('/api/users/login', this.state);
         if (this.isValid()) {
             this.setState({errors: {} });
-            this.props.changePswdRequest(this.state).then(
+            console.log("In onsubmit: " + this.props.email);
+            var toSend = {
+                password: this.state.password,
+                email: this.props.email
+            }
+            this.props.changePswdRequest(toSend).then(
                 // after server response then...
                 // if successful
                 (res) => {
@@ -82,7 +87,8 @@ class NewPwdForm extends React.Component{
 }
 
 NewPwdForm.propTypes = {
-    changePswdRequest: React.PropTypes.func.isRequired
+    changePswdRequest: React.PropTypes.func.isRequired,
+    email: React.PropTypes.string.isRequired
 }
 
 NewPwdForm.contextTypes = {

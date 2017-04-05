@@ -43,7 +43,11 @@ router.post('/', (req, res) => {
       console.log("Before sending mail");
       // I am doing this for using email api
         // setup email data with unicode symbols
+<<<<<<< HEAD
         var temp = "pleasegod"
+=======
+        var temp = email
+>>>>>>> 77748fcb72c9d579b6ce9d8f97dece457a86020e
         var url = "http://localhost:9000/newpwd/${temp}"
         console.log("url: " + url);
         var url2 = `http://localhost:9000/newpwd/${temp}`

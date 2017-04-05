@@ -17,5 +17,9 @@ var userSchema = new Schema({
 });
 
 
+<<<<<<< HEAD
+=======
+//module.exports = mongoose.model('userModel', userSchema);
+>>>>>>> 77748fcb72c9d579b6ce9d8f97dece457a86020e
 module.exports = mongoose.model('user', userSchema);
 

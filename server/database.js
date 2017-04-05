@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import express from 'express';
 import jwt from 'jsonwebtoken';
 
@@ -12,6 +13,23 @@ router.post('/signup', (req, res) => {
         password: req.body.password,
         accountType: 'local',
         username:""
+=======
+import mongoose from 'mongoose';
+import tunnel from 'tunnel-ssh';
+
+var config = {
+    username:"ubuntu",
+    host:"115.146.90.170",
+    agent : process.env.SSH_AUTH_SOCK,
+    privateKey:require('fs').readFileSync('/Users/zhangruoq/pb'),
+    port:22,
+    dstPort:27017,
+};
+
+var server = tunnel(config, function (error, server) {
+    if(error){
+        console.log("SSH connection error: " + error);
+>>>>>>> 77748fcb72c9d579b6ce9d8f97dece457a86020e
     }
 
     var email = {
