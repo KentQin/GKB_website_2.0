@@ -103,14 +103,14 @@ class DropzoneDemo extends React.Component {
           console.log("This user has an image");
           var pic;
           console.log("type of imageFile: ", typeof(user.imageFile));
-          if (typeof(user.imageFile) != 'string') {
-            console.log("not equal string dropzone")
-            pic = user.imageFile.filename
-            imageSrc = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+pic)
-          } else {
+          // if (typeof(user.imageFile) != 'string') {
+          //   console.log("not equal string dropzone")
+          //   pic = user.imageFile.filename
+          //   imageSrc = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+pic)
+          // } else {
             imageSrc = user.imageFile
             console.log("equal to string");
-          }
+    //      }
           //console.log("imageFile " + user.imageFile);
           //console.log("pic: ", pic)
           //imageSrc = user.imageFile.originalname;

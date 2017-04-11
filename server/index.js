@@ -8,8 +8,9 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
 import users from './routes/users';
 import resetpwd from './routes/resetpwd';
-import changePswd from './routes/changePswd'
-import searchBar from './routes/searchBar'
+import changePswd from './routes/changePswd';
+import searchBar from './routes/searchBar';
+import updatePswd from './routes/updatePswd';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import './database';
@@ -62,6 +63,7 @@ app.use('/api/users', users);
 app.use('/api/resetpwd', resetpwd);
 app.use('/api/changePswd', changePswd);
 app.use('/api/searchBar', searchBar);
+app.use('/api/updatePswd', updatePswd);
 
 
 

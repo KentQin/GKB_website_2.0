@@ -25,7 +25,7 @@ class Profile extends React.Component {
                     <div className="col-md-3 sidebar">
                         <button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>
                         <div className="profile-section">
-                            <Dropzone userProfilePicUploadRequest={userProfilePicUploadRequest}/>
+                            {/*<Dropzone userProfilePicUploadRequest={userProfilePicUploadRequest}/>*/}
                             <div className="center-text">{user.userName}</div>
                         </div>
                         <div className="profile-att">

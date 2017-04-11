@@ -54,7 +54,7 @@ class HomePage extends React.Component {
 
                 {isAuthenticated && <Profile login = {this.props.login} />}
 
-                <SearchBar searchBarRequest={this.props.searchBarRequest}/>
+                {/*<SearchBar searchBarRequest={this.props.searchBarRequest}/>*/}
 
             </div>
         )
