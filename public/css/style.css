@@ -56,7 +56,7 @@ body{
     Welcome To Signup
  */
 .welcome-title{
-    width: 251px;
+    width: 100%;
     height: 33px;
     font-family: Oxygen;
     font-size: 20px;
@@ -417,7 +417,7 @@ body{
     User profile, Side bar
  */
 .profile-section{
-    height:300px;
+    height:400px;
     padding:30px;
     border-bottom: rgba(255,255,255,0.75);
 }
@@ -556,5 +556,22 @@ a.list-group-item:hover {
 }
 
 .middle-block{
-    margin-top:10%;
+    margin:100px auto;
+}
+
+.update-pswd-form{
+    margin:100px auto;
+}
+
+.setting-menu{
+    margin:100px auto;
+    width:100%;
+}
+
+.col-md-2{
+    padding:0;
+}
+
+.setting-menu-block{
+    background: rgb(10, 19, 58);
 }

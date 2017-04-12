@@ -74,7 +74,7 @@ class PasswordContent extends React.Component{
 
         return(
             <div className="middle-block">
-                <form className="form-horizontal" onSubmit={this.onSubmit}>
+                <form className="form-horizontal update-pswd-form" onSubmit={this.onSubmit}>
                     <h1 className="h-e-a-d-e-r-t-e-x-t">Update Password</h1>
                     <div className={classnames("form-group", { 'has-error': errors.oldPassword})}>
                         <input

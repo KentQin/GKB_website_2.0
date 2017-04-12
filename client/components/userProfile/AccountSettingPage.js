@@ -3,6 +3,7 @@ import AccountSettingMenu from './AccountSettingMenu';
 import OverviewContent from './OverviewContent';
 import LinkToHome from './../common/LinkToHome';
 import PasswordContent from './PasswordContent';
+import { connect } from 'react-redux';
 
 class AccountSettingPage extends React.Component{
     constructor(props){
@@ -47,13 +48,14 @@ class AccountSettingPage extends React.Component{
             <div className="container float_on_the_map">
                 <LinkToHome/>
                 <div className="row centered ">
-                    <div className="col-md-2 col-md-offset-3 welcome-block">
-                        <div className="list-group">
-                            <h3>Account Setting</h3>
+                    <div className="col-md-2 col-md-offset-3 welcome-block setting-menu-block">
+                        <div className="list-group setting-menu">
+                            <h3 className="welcome-title">Account Setting</h3>
+
                             <a href="#" className="list-group-item" onClick={this.showOverview}>Overview</a>
                             <a href="#" className="list-group-item" onClick={this.showPassword}>Password</a>
-                            <a href="#" classNa
-                               me="list-group-item" onClick={this.showNotifications}>Notifications</a>
+                            <a href="#" className="list-group-item" onClick={this.showNotifications}>Notifications</a>
+
                         </div>
                     </div>
 
@@ -68,5 +70,6 @@ class AccountSettingPage extends React.Component{
         );
     }
 }
+
 
 export default AccountSettingPage;
