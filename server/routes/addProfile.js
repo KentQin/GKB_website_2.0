@@ -22,7 +22,7 @@ router.post('/',function(req,res,next) {
         if (err) {
             res.locals.error = err;
             console.log(err);
-            console.log('has error -01');
+            //console.log('has error -01');
             return;
         }
         var extName = '';  //后缀名
@@ -44,33 +44,30 @@ router.post('/',function(req,res,next) {
 
 
         if(extName.length == 0){
-            res.locals.error = '只支持png和jpg格式图片';
+            res.locals.error = 'only png and jpg';
             res.render('index', { title: TITLE });
             return;
         }
         var avatarName = Math.random() + '.' + extName;
         var newPath = form.uploadDir + avatarName;
 
-        console.log(newPath);
+        //console.log(newPath);
         fs.rename(files.my_file.path, newPath);
 
         // store an img in binary in mongo
         const user = {
             email: fields.email,
             accountType: fields.accountType
-        };
-        console.log(user);
-        // var a = new profile;
-        // a.img.data = fs.readFileSync(newPath);
-        // a.img.contentType = files.my_file.type;
-        // a.save();
+        }
+        console.log();
 
-        const proImg = {data: fs.readFileSync(newPath),
-                    contentType: files.my_file.type}
+        const proImg = {data: fs.readFileSync(newPath), contentType: files.my_file.type};
+
+
 
         User.findOne(user, function(err, data){
             let errors = {};
-            console.log(data);
+            //console.log(data);
             if(err){
                 console.log(err);
             }else if(!data){
@@ -85,26 +82,6 @@ router.post('/',function(req,res,next) {
                         errors.login = "Adding UserNAme update error";
                         res.status(400).json(errors);
                     } else {
-                        // console.log("update success: " + data);
-                        // const token = jwt.sign({
-                        //     email: user.email,
-                        //     userName: data.userName,
-                        //     accountType: data.accountType,
-                        //     id: data._id,
-                        //     proImg: data.proImg
-                        // }, 'secretkeyforjsonwebtoken');
-                        // console.log("add name " + data);
-                        // res.json({token});
-
-                        // const base64 = (data.proImg.data.toString('base64'));
-                        // const contentType = data.proImg.contentType;
-                        // const proImg = {
-                        //     data: base64,
-                        //     contentType:contentType
-                        // }
-
-                        // console.log(data.proImg.data);
-                        // console.log((data.proImg.data.toString('base64')));
 
                         const token = jwt.sign({
                             email: data.email,
@@ -113,7 +90,7 @@ router.post('/',function(req,res,next) {
                             id: data._id,
                             proImg: proImg
                         }, 'secretkeyforjsonwebtoken');
-                        console.log("add profile " + data);
+                        //console.log("add profile " + data);
                         res.json({token});
                     }
                 });
@@ -125,31 +102,10 @@ router.post('/',function(req,res,next) {
             if (err) {
                 return console.error(err);
             }
-            console.log("文件删除成功！");
+            console.log("temporary file deleted！");
         });
-        // console.log('saved img to mongo');
-        //
-        // profile.find(function (err, doc) {
-        //     if (err) return next(err);
-        //     var base64 = (doc[0].img.data.toString('base64'));
-        //     console.log(base64.length);
-        //     res.send(base64);
-        // });
-            //     var proData={
-    //         profileimg: newPath,
-    //     }
-    //     profile.create(proData,function(error,profile){
-    //         if(error){
-    //             return next(error)
-    //         }else{
-    //             console.log('data seeded!!!!')
-    //             // 这里如果res 会报错
-    //             // return res.redirect('/');
-    //         }
-    //     })
-    //
+
      });
-    // res.locals.success = '上传成功';
 
 });
 

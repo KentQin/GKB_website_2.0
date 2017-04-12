@@ -2,63 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2d37e9c-fc3d-4f2c-b42e-7a6013def057" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.014008007913306475.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.025844368636283477.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.03262084645938157.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.06606551961812368.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.06929903212762567.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.109000422737626.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.11742580822425519.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.13878340260338362.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.14521143121332614.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.14590353294830694.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.15919069587589774.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.1780305491134937.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.19510899879038357.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.20553677585729324.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.23690372900677037.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.25097352245483906.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.2684860836284375.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.27149376845832585.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.2747596904550873.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.2751293594248412.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.31565039732348343.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.3395434187432025.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.34204348707845056.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.35876204624763464.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.38207942624878255.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.38929170039147043.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.39921170873324496.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.41022127959913957.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.41222728333015524.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.5140997854983875.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.5372005603135641.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.5401320203769795.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.547833474325548.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.5602019328275505.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.5698146589733495.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.5756082678434495.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.641382010633478.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.6715506053205498.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.704378746884476.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.7527487630713507.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.7528108592385843.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.7655263793631695.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.7661332254037789.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.7856121833748042.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.8090401394195768.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.8367675510834911.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.8570421134585542.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.8603111560211534.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.8907567385224431.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.8908767641634019.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.9048741765612016.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.9061322303430128.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.9474872639223757.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/0.9652695117847412.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/upload_7c1aac575c0077cdcfaf2180b8eb9271.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/img/upload_8bfb26a43ba61ebc8bb7ae8f226ffa9c.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/de247447c75e5ab2d1de16da0009c4c5.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/reducer/login.js" afterPath="$PROJECT_DIR$/client/reducer/login.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/addProfile.js" afterPath="$PROJECT_DIR$/server/routes/addProfile.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -78,8 +24,8 @@
       <file leaf-file-name="addProfile.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/routes/addProfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="132" column="41" lean-forward="true" selection-start-line="132" selection-start-column="41" selection-end-line="132" selection-end-column="41" />
+            <state relative-caret-position="30">
+              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -149,13 +95,10 @@
       <file leaf-file-name="addProImgAction.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/actions/addProImgAction.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
+            <state relative-caret-position="17">
               <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <marker date="1491959766000" expanded="true" signature="390:1181" ph="{...}" />
-                <marker date="1491959766000" expanded="true" signature="415:1179" ph="{...}" />
-                <marker date="1491959766000" expanded="true" signature="588:1171" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -164,11 +107,9 @@
       <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/reducer/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="21" column="61" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="61" />
-              <folding>
-                <element signature="e#0#58#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="256">
+              <caret line="53" column="14" lean-forward="false" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -210,12 +151,13 @@
       <find>up</find>
       <find>SET_CURRENT_USER_ADD_NAME</find>
       <find>signup</find>
-      <find>proImg</find>
       <find>imgScr</find>
       <find>my_file</find>
       <find>action</find>
-      <find>-01</find>
       <find>toString</find>
+      <find>-01</find>
+      <find>proImg</find>
+      <find>add</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -241,10 +183,10 @@
         <option value="$PROJECT_DIR$/client/actions/types.js" />
         <option value="$PROJECT_DIR$/client/components/userProfile/Profile.js" />
         <option value="$PROJECT_DIR$/client/actions/addProImgAction.js" />
-        <option value="$PROJECT_DIR$/client/reducer/login.js" />
         <option value="$PROJECT_DIR$/client/components/DropZone.js" />
         <option value="$PROJECT_DIR$/client/components/userProfile/OverviewContent.js" />
         <option value="$PROJECT_DIR$/server/database.js" />
+        <option value="$PROJECT_DIR$/client/reducer/login.js" />
         <option value="$PROJECT_DIR$/server/routes/addProfile.js" />
       </list>
     </option>
@@ -307,6 +249,24 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -319,6 +279,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GKB_Website_2.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reducer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -765,16 +743,16 @@
       <updated>1491364649541</updated>
       <workItem from="1491364650839" duration="1758000" />
       <workItem from="1491879869759" duration="10808000" />
-      <workItem from="1491906575694" duration="20761000" />
+      <workItem from="1491906575694" duration="23224000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33327000" />
+    <option name="totallyTimeSpent" value="35790000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="97" y="25" width="1260" height="827" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -788,7 +766,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41632652" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3469388" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25779969" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1201,16 +1179,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/reducer/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="21" column="61" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/components/DropZone.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1278,23 +1246,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/reducer/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="53" column="14" lean-forward="false" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/actions/addProImgAction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
+        <state relative-caret-position="17">
           <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1491959766000" expanded="true" signature="390:1181" ph="{...}" />
-            <marker date="1491959766000" expanded="true" signature="415:1179" ph="{...}" />
-            <marker date="1491959766000" expanded="true" signature="588:1171" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/routes/addProfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="132" column="41" lean-forward="true" selection-start-line="132" selection-start-column="41" selection-end-line="132" selection-end-column="41" />
+        <state relative-caret-position="30">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
