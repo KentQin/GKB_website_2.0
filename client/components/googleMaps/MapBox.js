@@ -40,33 +40,18 @@ class MapBox extends React.Component {
     render() {
         const {user} = this.props.login
         var lat, longt
-<<<<<<< HEAD
-<<<<<<< HEAD
-        if (user.coords != null) {
-            console.log("we are here in coords");
-            lat = (user.coords.lat)
-            longt = (user.coords.longt)
-        } else {
-            console.log("in else coords");
-=======
-=======
->>>>>>> 92716ca8024f7ccddf2b374373256a2e4fd52bc9
         if (user != null) {
-          if (user.coords != null) {
-              console.log("we are here in coords");
-              lat = (user.coords.lat)
-              longt = (user.coords.longt)
-          } else {
-              console.log("in else coords");
-              lat = 37.772537
-              longt = -122.420679
-          }
+            if (user.coords != null) {
+                console.log("we are here in coords");
+                lat = (user.coords.lat)
+                longt = (user.coords.longt)
+            } else {
+                console.log("in else coords");
+                lat = 37.772537
+                longt = -122.420679
+            }
         } else {
             console.log("in else12222 coords");
-<<<<<<< HEAD
->>>>>>> 77748fcb72c9d579b6ce9d8f97dece457a86020e
-=======
->>>>>>> 92716ca8024f7ccddf2b374373256a2e4fd52bc9
             lat = 37.772537
             longt = -122.420679
         }
@@ -86,24 +71,24 @@ class MapBox extends React.Component {
 
                     <Router history={browserHistory}>
                         <Route path="/" component={HomePage}/>
-                            <Route path="home" component={HomePage}/>
-                            <Route path="login" component={LoginPage}/>
-                            <Route path="signup" component={SignupPage}/>
-                            <Route path="resetpassword" component={ResetPasswordPage}/>
-                            <Route path="emailsentpage" component={EmailSentPage}/>
-                            <Route path="welcome" component={WelcomePage}/>
-                            <Route path="newpwd" component={NewPwdPage}/>
-                            <Route path="newpwd(/:email)" component={NewPwdPage}/>
-                            <Route path="accountsetting" component={AccountSetting}/>
+                        <Route path="home" component={HomePage}/>
+                        <Route path="login" component={LoginPage}/>
+                        <Route path="signup" component={SignupPage}/>
+                        <Route path="resetpassword" component={ResetPasswordPage}/>
+                        <Route path="emailsentpage" component={EmailSentPage}/>
+                        <Route path="welcome" component={WelcomePage}/>
+                        <Route path="newpwd" component={NewPwdPage}/>
+                        <Route path="newpwd(/:email)" component={NewPwdPage}/>
+                        <Route path="accountsetting" component={AccountSetting}/>
                     </Router>
 
 
-                        <Layer
-                          type="symbol"
-                          id="marker"
-                          layout={{ "icon-image": "marker-15" }}>
-                          <Feature coordinates={[longt, lat]}/>
-                        </Layer>
+                    <Layer
+                        type="symbol"
+                        id="marker"
+                        layout={{ "icon-image": "marker-15" }}>
+                        <Feature coordinates={[longt, lat]}/>
+                    </Layer>
 
                 </ReactMapboxGl>
             </div>

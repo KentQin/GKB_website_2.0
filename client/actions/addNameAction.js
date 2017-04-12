@@ -15,7 +15,7 @@ export function addNameRequest(userData) {
     return dispatch => {
         return axios.post('/api/users/addName', userData).then(res =>{
             const token = res.data.token;
-            console.log('token: ' ,token);
+            console.log('add name token: ' ,token);
             // get token from server side, and store the token into session storage
             sessionStorage.removeItem('loginToken');
             sessionStorage.setItem('loginToken', token);

@@ -39,19 +39,11 @@ router.post('/', (req, res) => {
     if (!isValid) {
         res.status(400).json(errors);
     } else {
-      // Perfect
-      console.log("Before sending mail");
-      // I am doing this for using email api
+        // Perfect
+        console.log("Before sending mail");
+        // I am doing this for using email api
         // setup email data with unicode symbols
-<<<<<<< HEAD
-<<<<<<< HEAD
-        var temp = "pleasegod"
-=======
         var temp = email
->>>>>>> 77748fcb72c9d579b6ce9d8f97dece457a86020e
-=======
-        var temp = email
->>>>>>> 92716ca8024f7ccddf2b374373256a2e4fd52bc9
         var url = "http://localhost:9000/newpwd/${temp}"
         console.log("url: " + url);
         var url2 = `http://localhost:9000/newpwd/${temp}`

@@ -10,6 +10,7 @@ import users from './routes/users';
 import resetpwd from './routes/resetpwd';
 import changePswd from './routes/changePswd'
 import searchBar from './routes/searchBar'
+import addProfile from './routes/addProfile'
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import './database';
@@ -62,7 +63,7 @@ app.use('/api/users', users);
 app.use('/api/resetpwd', resetpwd);
 app.use('/api/changePswd', changePswd);
 app.use('/api/searchBar', searchBar);
-
+app.use('/api/addProfilePic', addProfile);
 
 
 app.get('/*', (req, res) => {
@@ -73,8 +74,6 @@ app.get('/*', (req, res) => {
 app.post('/resetpwd', (req, res) => {
     console.log("Message for reset password ",req.body);
 });
-
-app.use('/api/users',users);
 
 if (config.dev) {
   console.log(app.listen(9000, () => console.log('Running on localhost:9000')));
