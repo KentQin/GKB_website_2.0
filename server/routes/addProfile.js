@@ -121,6 +121,12 @@ router.post('/',function(req,res,next) {
 
         });
 
+        fs.unlink(newPath, function(err) {
+            if (err) {
+                return console.error(err);
+            }
+            console.log("文件删除成功！");
+        });
         // console.log('saved img to mongo');
         //
         // profile.find(function (err, doc) {
