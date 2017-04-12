@@ -8,19 +8,16 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
 import users from './routes/users';
 import resetpwd from './routes/resetpwd';
-import changePswd from './routes/changePswd'
-import searchBar from './routes/searchBar'
 import addProfile from './routes/addProfile'
+import changePswd from './routes/changePswd';
+import searchBar from './routes/searchBar';
+import updatePswd from './routes/updatePswd';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import './database';
 import './firebase';
 import config from './config'
-// import busboyBodyParser from 'busboy-body-parser'
-import fileUpload from 'express-fileupload'
-import busboy from 'connect-busboy'
-import bb from 'express-busboy'
-// import multer from 'multer'
+
 
 let app = express();
 
@@ -64,6 +61,9 @@ app.use('/api/resetpwd', resetpwd);
 app.use('/api/changePswd', changePswd);
 app.use('/api/searchBar', searchBar);
 app.use('/api/addProfilePic', addProfile);
+app.use('/api/updatePswd', updatePswd);
+
+
 
 
 app.get('/*', (req, res) => {

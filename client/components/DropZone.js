@@ -2,17 +2,7 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import defaultPhoto from './img/default-profile-picture.jpg';
 import lodash from 'lodash';
-import axios from 'axios';
-import jwt from 'jsonwebtoken';
-import fs from 'fs';
 
-// import request from 'express';
-import classnames from 'classnames'
-import { connect } from 'react-redux';
-// import request from 'superagent'
-//import fs from 'fs'
-//var imageSrc_top = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+props.login.user.imageFile.filename)
-//import pic from './img/7c09444f582152f9983273c8c51b158a.png'
 
 class DropzoneDemo extends React.Component {
 
@@ -66,7 +56,7 @@ class DropzoneDemo extends React.Component {
 
 
     render() {
-         const {proImg} = this.props.user;
+        const {proImg} = this.props.user;
         console.log(proImg);
         console.log(lodash.isEmpty(proImg));
         if(lodash.isEmpty(proImg)){

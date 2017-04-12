@@ -1,16 +1,34 @@
 import React from 'react';
 import ProfileContent from './ProfileContent';
 import Dropzone from '../DropZone';
+
 import {addProImgAction} from '../../actions/addProImgAction.js'
-import { connect } from 'react-redux'; 
+import {userProfilePicUploadRequest} from '../../actions/addUserProfilePicAction.js'
+import { logout } from '../../actions/authAction';
+import { connect } from 'react-redux';
 
 class Profile extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-
+            showProfile: false
         }
+        this.showProfile = this.showProfile.bind(this);
+        this.hideProfile = this.hideProfile.bind(this);
+    }
+
+    showProfile(){
+        this.setState({
+            showProfile: true
+        })
+    }
+
+
+    hideProfile(){
+        this.setState({
+            showProfile: false
+        })
     }
 
     render(){
@@ -26,10 +44,11 @@ class Profile extends React.Component {
                         <button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>
                         <div className="profile-section">
                             <Dropzone user = {user} addProImgAction={addProImgAction}/>
+
                             <div className="center-text">{user.userName}</div>
                         </div>
                         <div className="profile-att">
-                            <ProfileContent />
+                            <ProfileContent logout={ this.props.logout} hideProfile={this.hideProfile}/>
                         </div>
                     </div>
                 </div>
@@ -45,4 +64,5 @@ Profile.propTypes = {
     addProImgAction: React.PropTypes.func.isRequired
 }
 
-export default connect( null, { addProImgAction}) (Profile);
+export default connect( null, { logout, userProfilePicUploadRequest, addProImgAction}) (Profile);
+
