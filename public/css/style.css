@@ -1,5 +1,6 @@
 body{
     background-color: aliceblue;
+    overflow: scroll;
 }
 /*
     index.html
@@ -579,15 +580,23 @@ a.list-group-item:hover {
 /*
     Landing Page
  */
-.landingPage{
-    background-image:url("../../client/components/img/landing_page_photo.png");
-}
-
 .jumbotron{
     margin-bottom:0;
-    background-image:url("../../client/components/img/landing_page_photo.png");
+    background-image:url("../img/landing_page_photo.png");
+    height:100%;
 }
 
+.title-white{
+    color:white;
+}
+
+.landingPage{
+    position:absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+}
 
 /*
     Search History
@@ -688,4 +697,5 @@ a.list-group-item:hover {
     left: 8px;
     auto:5px;
 }
+
 
