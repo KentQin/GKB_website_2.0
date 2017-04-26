@@ -74,7 +74,7 @@ class SearchResultList extends React.Component {
                         </tr>
                         <tr>
                             <td>
-                                <div>
+                                <div className="left-text">
                                     <span> Location Descriptions </span>
                                     <div id = "add_dis_box" >
                                         {/*<buttom id = "discription"*/}

@@ -20,19 +20,19 @@ class SearchResultHead extends React.Component{
                     <div className="search-result-bar">
                         {/*<button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>*/}
                         <div className="search-result-content">
-                            <div className="photo-gallery col-md-6">
+                            <div className="photo-gallery col-md-5">
                                 <img src={photo}/>
                             </div>
 
                             <div className="search-result-right">
-                            <div className="result-info">
-                                <img className="small-icon-rec icon-place" src={place}/>
-                                <div className="place-sec">
-                                    <p>{location}</p>
-                                    <p>Street info</p>
-                                    <p>City and post code</p>
+                                <div className="result-info">
+                                    <img className="small-icon-rec icon-place" src={place}/>
+                                    <div className="place-sec">
+                                        <p>{location}</p>
+                                        <p>Street info</p>
+                                        <p>City and post code</p>
+                                    </div>
                                 </div>
-                            </div>
                             <div className="result-info result-btn">
                                 <div className="add-sec">
                                     <img className="small-icon-sq" src={add}/>
@@ -44,13 +44,14 @@ class SearchResultHead extends React.Component{
                                     Share
                                 </div>
                             </div>
-                        </div>
+                            </div>
+
                             <div className="auto-comment">
                                 <p>
                                     {autoComment}
                                 </p>
                             </div>
-                    </div>
+                        </div>
 
                     </div>
 
