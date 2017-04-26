@@ -10,8 +10,9 @@ import WelcomePage from '../welcome/WelcomePage'
 import HomePage from '../home/HomePage'
 import {connect} from 'react-redux'
 import AccountSetting from '../userProfile/AccountSettingPage';
-
-
+import LandingPage from '../landing/landingPage';
+import SearchHistoryPage from '../userProfile/SearchHistoryPage';
+import SearchResultPage from '../search/SearchResultPage';
 
 class MapBox extends React.Component {
 
@@ -80,6 +81,9 @@ class MapBox extends React.Component {
                             <Route path="newpwd" component={NewPwdPage}/>
                             <Route path="newpwd(/:email)" component={NewPwdPage}/>
                             <Route path="accountsetting" component={AccountSetting}/>
+                            <Route path="searchhistory" component={SearchHistoryPage}/>
+                            <Route path="searchresult" component={SearchResultPage}/>
+                            <Route path="landing" component={LandingPage}/>
                     </Router>
 
 
