@@ -601,6 +601,8 @@ a.list-group-item:hover {
     bottom:0;
     right:0;
     left:0;
+    text-align: center;
+    margin-top: 10%;
 }
 
 /*
@@ -853,3 +855,7 @@ a.list-group-item:hover {
     padding:8px;
 }
 
+.landing-search-bar>div>div{
+    margin-left: 25%;
+    margin-right: 25%;
+}

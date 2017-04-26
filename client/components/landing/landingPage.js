@@ -1,17 +1,24 @@
 import React from 'react';
 import SearchBar from './../home/SearchBar';
-import {Link} from 'react-router';
-
+import NavBar from '../home/NavBar';
+import {connect} from 'react-redux';
 
 class landingPage extends React.Component{
     render(){
         return(
         <div className="jumbotron">
-            <div className="col-md-offset-3 col-md-6 landingPage">
+
+            <div className="col-md-12 landingPage">
+                <div>
+                <NavBar login={this.props.login}/>
+                </div>
                 <h3 className="title-white">Locate your destination in one sentence</h3>
-                <SearchBar className="full-length" searchBarRequest={this.props.searchBarRequest}/>
+                <div className="landing-search-bar" >
+                <SearchBar searchBarRequest={this.props.searchBarRequest}/>
+                </div>
                 <p><a className="btn" href="#" role="button">Learn more</a></p>
             </div>
+
         </div>
         );
     }
@@ -21,5 +28,9 @@ landingPage.propTypes = {
     searchBarRequest: React.PropTypes.func.isRequired
 }
 
-
-export default landingPage;
+function mapStateToProps(state) {
+    return {
+        login: state.login,
+    };
+}
+export default connect(mapStateToProps)(landingPage);
