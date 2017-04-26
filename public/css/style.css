@@ -575,3 +575,218 @@ a.list-group-item:hover {
 .setting-menu-block{
     background: rgb(10, 19, 58);
 }
+
+/* searchResultList and searchResultItem */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.result_box{
+    width: 700px;
+    border: 1px solid gray;
+    border-width: 1px 0px 0px 0px;
+    position: relative;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    font-size: 0.9em;
+    float: left;
+}
+
+.first_result_box{
+    padding-left: 10px;
+    font-size: 1.1em;
+    border-top: none;
+}
+
+.user_box{
+    width: 49%;
+    /*border: 1px solid black;*/
+    float: left;
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+
+.user{
+    height: 40px;
+    width: 40px;
+    margin:0px 20px 0px 20px;
+    position: relative;
+    top: 10px;
+}
+
+.like_box{
+    width: 49%;
+    /*border: 1px solid black;*/
+    float: left;
+}
+
+.like_box span{
+    position: relative;
+    right: 46%;
+    left: 52%;
+}
+
+.like_box img{
+    margin-top:5px;
+}
+
+.thumb{
+    height: 30px;
+    width: 30px;
+    position: relative;
+    right: 50%;
+    left: 50%;
+}
+
+.first_thumb{
+    height: 40px;
+    width: 40px;
+}
+
+.thumbUp{
+    height: 30px;
+    width: 30px;
+    position: relative;
+    right: 50%;
+    left: 50%;
+    transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);		/* IE 9 */
+    -webkit-transform: rotate(-30deg);	/* Safari and Chrome */
+    -o-transform: rotate(-30deg);		/* Opera */
+    -moz-transform: rotate(-30deg);		/* Firefox */
+}
+
+.first_thumbUp{
+    height: 40px;
+    width: 40px;
+}
+
+.result_container{
+    padding: 20px;
+    background-color: #E0FFFF;
+    width: auto;
+    display:inline-block
+}
+
+.result_table{
+    border-collapse:collapse;
+    border:1px solid gray;
+    background-color: #E0FFFF;
+}
+
+.result_table tr:first-child td{
+    border: 1px solid gray;
+    padding: 10px 0 10px 0;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+
+#add_dis_box {
+    float: right;
+    width: auto;
+    margin-right: 20px;
+}
+
+#add{
+    height: 40px;
+    width: 40px;
+}
+
+#discription{
+    font-size: 0.6em;
+    color: white;
+    height: 30px;
+    width: 120px;
+    border-radius: 5px;
+    background-color: red;
+    text-align: center;
+    float:right;
+    padding-top: 10px;
+}
+
+/*
+    Search Result
+ */
+.search-result-bar{
+    background-color: #f3f5fb;
+    height:220px;
+    padding:0;
+    margin-top: 5%;
+}
+
+.auto-comment{
+    height: 40px;
+    background-color: white;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding:10px;
+}
+
+.comment{
+    padding:10px;
+}
+
+.photo-gallery>img{
+    height:79px;
+    width:103px;
+    float:left;
+    align-content: center;
+    margin:10% 2%;
+
+}
+
+.result-info{
+
+}
+
+.small-icon-sq{
+    height:25px;
+    width:25px;
+}
+
+.small-icon-rec{
+    height:25px;
+    width:20px;
+}
+
+.search-result-content{
+    margin:5%;
+    height:60%;
+}
+
+.place-sec>p{
+    margin:0;
+}
+
+.place-sec{
+    float:left;
+    padding:10px;
+    margin:5px;
+}
+.result-info>div{
+    display: inline-block;
+    margin: auto 2px;
+}
+
+.result-btn{
+    margin:5%;
+}
+
+.search-result-right{
+    margin:2%;
+    width:50%;
+    height:100%;
+    float:right;
+}
+
+.icon-place{
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 8px;
+    auto:5px;
+}

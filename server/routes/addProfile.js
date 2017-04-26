@@ -48,19 +48,25 @@ router.post('/',function(req,res,next) {
             res.render('index', { title: TITLE });
             return;
         }
+
+        // define a new name: new.ext
         var avatarName = Math.random() + '.' + extName;
+        // define a new path: path/new.ext
         var newPath = form.uploadDir + avatarName;
 
-        //console.log(newPath);
+        // console.log(newPath);
+        // rename and relocate the uploaded file(img) to the new path
         fs.rename(files.my_file.path, newPath);
 
         // store an img in binary in mongo
+        // read email info from uploaded form, read img type info
         const user = {
             email: fields.email,
             accountType: fields.accountType
         }
         console.log();
 
+        //
         const proImg = {data: fs.readFileSync(newPath), contentType: files.my_file.type};
 
 

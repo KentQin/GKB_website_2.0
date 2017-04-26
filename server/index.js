@@ -23,6 +23,9 @@ let app = express();
 
 const compiler = webpack(webpackConfig);
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+}));
 //app.use(bodyParser.urlencoded({extended: true}));
 // app.use(multer({dest:'./uploads/'}).single('photo'));
 // bb.extend(app, {
@@ -60,6 +63,7 @@ app.use('/api/users', users);
 app.use('/api/resetpwd', resetpwd);
 app.use('/api/changePswd', changePswd);
 app.use('/api/searchBar', searchBar);
+app.use('/api/searchBar/testgo', searchBar);
 app.use('/api/addProfilePic', addProfile);
 app.use('/api/updatePswd', updatePswd);
 

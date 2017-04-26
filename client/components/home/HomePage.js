@@ -5,16 +5,20 @@ import NavBar from './NavBar';
 import { logout } from '../../actions/authAction';
 import SearchBar from './SearchBar';
 import { searchBarRequest } from '../../actions/searchBarAction';
+import SearchResultList from './SearchResultList';
+import { searchBarTestGoAction } from '../../actions/searchBarTestGoAction'
 
 class HomePage extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-            showProfile: false
+            showProfile: false,
+            showSearchResult: false
         }
         this.showProfile = this.showProfile.bind(this);
         this.hideProfile = this.hideProfile.bind(this);
+        this.showSearchResult = this.showSearchResult.bind(this);
     }
 
     showProfile(){
@@ -27,6 +31,12 @@ class HomePage extends React.Component {
     hideProfile(){
         this.setState({
             showProfile: false
+        })
+    }
+
+    showSearchResult(){
+        this.setState({
+            showProfile: true
         })
     }
 
@@ -47,6 +57,7 @@ class HomePage extends React.Component {
     render() {
 
         const { isAuthenticated } = this.props.login;
+        const searchResult = this.props.searchResult;
 
         return (
             <div className="container loginPage float_on_the_map">
@@ -54,7 +65,12 @@ class HomePage extends React.Component {
 
                 {isAuthenticated && <Profile login = {this.props.login} />}
 
-                <SearchBar searchBarRequest={this.props.searchBarRequest}/>
+                <SearchBar searchBarRequest={this.props.searchBarRequest}
+                           searchBarTestGoAction = {this.props.searchBarTestGoAction}
+                           showSearchResult={this.showSearchResult}/>
+
+                {this.state.showProfile && <SearchResultList searchResult={searchResult}/>}
+
 
             </div>
         )
@@ -64,13 +80,15 @@ class HomePage extends React.Component {
 
 HomePage.propTypes = {
     login: React.PropTypes.object.isRequired,
-    searchBarRequest: React.PropTypes.func.isRequired
+    searchBarRequest: React.PropTypes.func.isRequired,
+    searchBarTestGoAction: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
     return {
-        login: state.login
+        login: state.login,
+        searchResult: state.searchResult
     };
 }
 
-export default connect(mapStateToProps, { logout, searchBarRequest })(HomePage);
+export default connect(mapStateToProps, { logout, searchBarRequest, searchBarTestGoAction })(HomePage);
