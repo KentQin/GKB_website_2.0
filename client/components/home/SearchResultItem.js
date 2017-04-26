@@ -9,7 +9,7 @@ class SearchResultItem extends React.Component {
         return (
             <div className = "result_box">
                 <div className = "user_box" >
-	                <span> Rank {this.props.rank} </span>
+	                <span> Rank {this.props.num} </span>
                     <img src = {userPic}
                          className = "user" />
                     <span> {this.props.userName} </span>
@@ -21,7 +21,7 @@ class SearchResultItem extends React.Component {
                              className = "thumb"/>
                     </div >
                     <div>
-                        <span> this.state.clicks</span>
+                        <span> {this.props.rank}</span>
                     </div>
 	            </div>
                 <p>

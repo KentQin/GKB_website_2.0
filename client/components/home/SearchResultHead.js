@@ -6,17 +6,21 @@ import share from '../img/ic-share-black-48-dp.png';
 
 
 class SearchResultHead extends React.Component{
+
     render(){
+
+        const autoComment = this.props.autoComment;
+        const location = this.props.location;
         return(
             <div>
                 {/*<button className="btn btn-default profile-btn-on-map  btn-unfold-sidebar"*/}
                         {/*data-toggle="modal" data-target="#search-result-modal"> 》 </button>*/}
 
                 <div id="search-result-modal">
-                    <div className="col-md-4 col-md-offset-2 search-result-bar">
-                        <button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>
+                    <div className="search-result-bar">
+                        {/*<button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>*/}
                         <div className="search-result-content">
-                            <div className="photo-gallery">
+                            <div className="photo-gallery col-md-6">
                                 <img src={photo}/>
                             </div>
 
@@ -24,9 +28,9 @@ class SearchResultHead extends React.Component{
                             <div className="result-info">
                                 <img className="small-icon-rec icon-place" src={place}/>
                                 <div className="place-sec">
-                                    <p>First line,</p>
-                                    <p>Second line second line,</p>
-                                    <p>Third line third</p>
+                                    <p>{location}</p>
+                                    <p>Street info</p>
+                                    <p>City and post code</p>
                                 </div>
                             </div>
                             <div className="result-info result-btn">
@@ -41,11 +45,13 @@ class SearchResultHead extends React.Component{
                                 </div>
                             </div>
                         </div>
+                            <div className="auto-comment">
+                                <p>
+                                    {autoComment}
+                                </p>
+                            </div>
                     </div>
 
-                        <p className="auto-comment">
-                            A 2-storey building with a bright blue and green neon sign at the entrance
-                        </p>
                     </div>
 
                 </div>
@@ -53,6 +59,11 @@ class SearchResultHead extends React.Component{
 
         );
     }
+}
+
+SearchResultHead.propTypes = {
+    // autoComment: React.PropTypes.string.isRequired,
+    // location: React.PropTypes.string.isRequired
 }
 
 export default SearchResultHead;

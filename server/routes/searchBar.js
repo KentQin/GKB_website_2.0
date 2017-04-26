@@ -255,8 +255,13 @@ function loadResultList(location) {
         tempJson.discription = 'rank' + i + 'xxxxxxxxxxxxxxxxxx';
         resultArray.push(tempJson);
     }
+    resultArray.sort(function(a, b) {
+        return parseInt(b.rank) - parseInt(a.rank);
+    });
     results.location = location;
     results.resultArray = resultArray;
+    results.autoComment = 'autoComment is here';
+
     return results;
 }
 
