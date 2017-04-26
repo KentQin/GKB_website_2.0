@@ -577,7 +577,7 @@ a.list-group-item:hover {
     background: rgb(10, 19, 58);
 }
 
-<<<<<<< HEAD
+
 /*
     Landing Page
  */
@@ -589,6 +589,10 @@ a.list-group-item:hover {
 
 .title-white{
     color:white;
+}
+
+.full-length{
+    width:100%;
 }
 
 .landingPage{
@@ -611,9 +615,9 @@ a.list-group-item:hover {
     background-color: white;
 }
 
-.checkbox{
-    float:right;
-=======
+.checkbox {
+    float: right;
+}
 /* searchResultList and searchResultItem */
 *{
     margin: 0;
@@ -828,10 +832,5 @@ a.list-group-item:hover {
     top: 15px;
     left: 8px;
     auto:5px;
-<<<<<<< HEAD
 }
 
-
-=======
-}
->>>>>>> 637c12bae9ab86eec8763d41ac1916334bca2033

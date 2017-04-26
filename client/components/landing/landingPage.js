@@ -7,9 +7,9 @@ class landingPage extends React.Component{
     render(){
         return(
         <div className="jumbotron">
-            <div className="container landingPage">
+            <div className="col-md-offset-3 col-md-6 landingPage">
                 <h3 className="title-white">Locate your destination in one sentence</h3>
-                <SearchBar searchBarRequest={this.props.searchBarRequest}/>
+                <SearchBar className="full-length" searchBarRequest={this.props.searchBarRequest}/>
                 <p><a className="btn" href="#" role="button">Learn more</a></p>
             </div>
         </div>

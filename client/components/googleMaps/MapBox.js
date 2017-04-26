@@ -72,7 +72,6 @@ class MapBox extends React.Component {
 
                     <Router history={browserHistory}>
                         <Route path="/" component={HomePage}/>
-<<<<<<< HEAD
                             <Route path="home" component={HomePage}/>
                             <Route path="login" component={LoginPage}/>
                             <Route path="signup" component={SignupPage}/>
@@ -85,17 +84,6 @@ class MapBox extends React.Component {
                             <Route path="searchhistory" component={SearchHistoryPage}/>
                             <Route path="searchresult" component={SearchResultPage}/>
                             <Route path="landing" component={LandingPage}/>
-=======
-                        <Route path="home" component={HomePage}/>
-                        <Route path="login" component={LoginPage}/>
-                        <Route path="signup" component={SignupPage}/>
-                        <Route path="resetpassword" component={ResetPasswordPage}/>
-                        <Route path="emailsentpage" component={EmailSentPage}/>
-                        <Route path="welcome" component={WelcomePage}/>
-                        <Route path="newpwd" component={NewPwdPage}/>
-                        <Route path="newpwd(/:email)" component={NewPwdPage}/>
-                        <Route path="accountsetting" component={AccountSetting}/>
->>>>>>> 637c12bae9ab86eec8763d41ac1916334bca2033
                     </Router>
 
 
