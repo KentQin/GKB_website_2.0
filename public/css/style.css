@@ -676,11 +676,17 @@ a.list-group-item:hover {
     background-color: #E0FFFF;
 }
 
-.result_table tr:first-child td{
-    border: 1px solid gray;
-    padding: 10px 0 10px 0;
-    font-weight: bold;
-    font-size: 2em;
+/*.result_table tr:first-child td{*/
+    /*border: 1px solid gray;*/
+    /*padding: 10px 0 10px 0;*/
+    /*font-weight: bold;*/
+    /*font-size: 2em;*/
+
+/*}*/
+
+.scrollit{
+    overflow:scroll;
+    height:300px;
 }
 
 

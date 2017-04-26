@@ -42,26 +42,34 @@ class SearchResultList extends React.Component {
 
 
         var items = [];
-        var i = 0;
+        //var i = 0;
         const { resultArray } = this.props.searchResult.searchResultList;
-        //console.log(resultArray);
-        for (var result in resultArray) {
-            //console.log(result);
-            items.push(<tr key={i}><td><SearchResultItem userName={resultArray[i].userName}
-                                                 rank={resultArray[i].rank}
-                                                 discription={resultArray[i].discription}/></td></tr>
-            );
-            i+=1;
+        const { autoComment } = this.props.searchResult.searchResultList;
+        const { location } = this.props.searchResult.searchResultList;
+        if (typeof(resultArray) != 'undefined') {
+
+            var numList = resultArray.length;
+            console.log('num:', numList)
+            for (var i = 0; i < numList; i++) {
+                //console.log(resultArray.length);
+                items.push(<tr key={i}><td><SearchResultItem userName={resultArray[i].userName}
+                                                             rank={resultArray[i].rank}
+                                                             num = {i+1}
+                                                             discription={resultArray[i].discription}/>
+                            </td></tr>
+                );
+            }
         }
+
 
 
         return (
             <div>
                 <table className = 'result_table' >
                     <tbody>
-                        <tr><
-                            td>
-                                <SearchResultHead/>
+                        <tr>
+                            <td>
+                                <SearchResultHead autoComment = {autoComment} location = {location}/>
                             </td>
                         </tr>
                         <tr>
@@ -80,7 +88,9 @@ class SearchResultList extends React.Component {
                                 </div>
                             </td>
                         </tr>
+                        <div className='scrollit'>
                          {items}
+                        </div>
                     </tbody>
                     </table>
             </div>
