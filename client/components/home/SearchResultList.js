@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchResultItem from './SearchResultItem'
 import SearchResultHead from './SearchResultHead'
-import addPic from '../img/add.png';
+import addPic from '../img/add-post-button-dark.png';
 
 class SearchResultList extends React.Component {
 
@@ -77,9 +77,9 @@ class SearchResultList extends React.Component {
                                 <div>
                                     <span> Location Descriptions </span>
                                     <div id = "add_dis_box" >
-                                        <buttom id = "discription"
-                                                onClick = {this.onClickDis}
-                                        >Location Discriptions</buttom>
+                                        {/*<buttom id = "discription"*/}
+                                                {/*onClick = {this.onClickDis}*/}
+                                        {/*>Location Discriptions</buttom>*/}
                                         <img id = "add"
                                              src = {addPic}
                                              onClick = {this.onClickAdd}

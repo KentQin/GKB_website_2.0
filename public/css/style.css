@@ -1,5 +1,6 @@
 body{
     background-color: aliceblue;
+    overflow: scroll;
 }
 /*
     index.html
@@ -576,6 +577,47 @@ a.list-group-item:hover {
     background: rgb(10, 19, 58);
 }
 
+
+/*
+    Landing Page
+ */
+.jumbotron{
+    margin-bottom:0;
+    background-image:url("../img/landing_page_photo.png");
+    height:100%;
+}
+
+.title-white{
+    color:white;
+}
+
+.full-length{
+    width:100%;
+}
+
+.landingPage{
+    position:absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+}
+
+/*
+    Search History
+ */
+.history-title{
+    background-color:rgb(10, 19, 58);
+    height:30%;
+}
+
+.history-content{
+    background-color: white;
+}
+
+.checkbox {
+    float: right;
+}
 /* searchResultList and searchResultItem */
 *{
     margin: 0;
@@ -587,9 +629,8 @@ a.list-group-item:hover {
     border: 1px solid gray;
     border-width: 1px 0px 0px 0px;
     position: relative;
-    padding-left: 5px;
     padding-bottom: 10px;
-    padding-left: 40px;
+    padding-left: 20px;
     font-size: 0.9em;
     float: left;
 }
@@ -604,8 +645,9 @@ a.list-group-item:hover {
     width: 49%;
     /*border: 1px solid black;*/
     float: left;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
     font-size: 1.2em;
+    text-align: left;
 }
 
 .user{
@@ -624,8 +666,7 @@ a.list-group-item:hover {
 
 .like_box span{
     position: relative;
-    right: 46%;
-    left: 52%;
+    left: 30%;
 }
 
 .like_box img{
@@ -636,8 +677,7 @@ a.list-group-item:hover {
     height: 30px;
     width: 30px;
     position: relative;
-    right: 50%;
-    left: 50%;
+    left: 30%;
 }
 
 .first_thumb{
@@ -687,6 +727,7 @@ a.list-group-item:hover {
 .scrollit{
     overflow:scroll;
     height:300px;
+    background-color: white;
 }
 
 
@@ -720,7 +761,6 @@ a.list-group-item:hover {
     background-color: #f3f5fb;
     height:220px;
     padding:0;
-    margin-top: 5%;
 }
 
 .auto-comment{
@@ -741,8 +781,12 @@ a.list-group-item:hover {
     width:103px;
     float:left;
     align-content: center;
-    margin:10% 2%;
+   margin:auto;
 
+}
+
+.photo-gallery{
+    padding:0;
 }
 
 .result-info{
@@ -760,7 +804,6 @@ a.list-group-item:hover {
 }
 
 .search-result-content{
-    margin:5%;
     height:60%;
 }
 
@@ -796,3 +839,4 @@ a.list-group-item:hover {
     left: 8px;
     auto:5px;
 }
+

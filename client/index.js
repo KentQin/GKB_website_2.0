@@ -15,6 +15,7 @@ import setAuthorizationToken from './utils/setAuthorizationToken';
 import rootReduce from './reducer/rootReducer';
 import jwt from 'jsonwebtoken';
 import { setCurrentUser } from './actions/authAction';
+import LandingPage from './components/landing/landingPage';
 /*
 * createStore(reducer, [preloadedState], enhancer)
 * Here, set an empty func (state = {}) => state as reducer
@@ -76,7 +77,10 @@ if(!sessionStorage.length) {
 
 render(
     <Provider store={store}>
-            <MapBox />
+        {/*<Router history={browserHistory}>*/}
+            {/*<Route path="/" component={LandingPage}/>*/}
+        {/*</Router>*/}
+        <MapBox />
     </Provider>
     , document.getElementById('app')
 );
