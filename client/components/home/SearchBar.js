@@ -13,6 +13,7 @@ class SearchBar extends React.Component{
 
       this.onChange = this.onChange.bind(this);
       this.buttonClick = this.buttonClick.bind(this);
+      this.buttonTestClick = this.buttonTestClick.bind(this);
   }
 
   onChange(e) {
@@ -42,7 +43,13 @@ class SearchBar extends React.Component{
                   this.setState({ errors: err.response.data});
                   console.log("this.state.errors: ", this.state.errors);
               });
-    }
+  }
+
+  buttonTestClick(e){
+      console.log("testgo");
+      this.props.searchBarTestGoAction(this.state.searchStr);
+      this.props.showSearchResult();
+  }
 
     render(){
         const { errors } = this.state;
@@ -54,6 +61,7 @@ class SearchBar extends React.Component{
                         {errors.searchBar && <span className="help-block">{errors.searchBar}</span> }
                           <span className="input-group-btn">
                             <button className="btn btn-default" type="button" onClick={this.buttonClick}>Go!</button>
+                              <button className="btn btn-default" type="button" onClick={this.buttonTestClick}>Test Go!</button>
                           </span>
                     </div>
                 </div>
@@ -65,6 +73,7 @@ class SearchBar extends React.Component{
 
 SearchBar.propTypes = {
     searchBarRequest: React.PropTypes.func.isRequired,
+    searchBarTestGoAction: React.PropTypes.func.isRequired,
     login: React.PropTypes.object.isRequired
 }
 

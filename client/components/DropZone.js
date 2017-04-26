@@ -1,162 +1,95 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import defaultPhoto from './img/default-profile-picture.jpg';
-import classnames from 'classnames'
-import { connect } from 'react-redux';
-import request from 'superagent'
-//import fs from 'fs'
-//var imageSrc_top = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+props.login.user.imageFile.filename)
-//import pic from './img/7c09444f582152f9983273c8c51b158a.png'
+import lodash from 'lodash';
+
 
 class DropzoneDemo extends React.Component {
 
     constructor(props) {
-      super(props);
-      this.state = {
-        imageFile: {},
-        preview: '',
-        errors: {}
-      }
+        super(props);
+        this.state = {
+            imageFile: {},
+            preview: '',
+            errors: {},
+            imgScr:''
+        }
 
-      this.onDrop = this.onDrop.bind(this);
+        this.onDrop = this.onDrop.bind(this);
     }
 
-    onDrop(acceptedFiles, rejectedFiles) {
-      console.log('Accepted files: ', acceptedFiles);
-      console.log('Rejected files: ', rejectedFiles);
-      const {user} = this.props.login;
-      console.log("user in onDrop: " + user.email +  " " + user.id);
+    onDrop(acceptedFile) {
+        // var req = request.post('/api/users/addProfilePic');
+        // acceptedFiles.forEach((file)=> {
+        //     req.attach(file.name, file);
+        // });
+        // req.end(callback);
+        const img = acceptedFile[0]
+        // console.log('Received imgFile: ', img)
+        // console.log('Received imgFile: ', img.type);
+        let header = {
+            'content-type': 'multipart/form-data'
+        }
 
-      console.log("file preview: " + acceptedFiles[0].preview);
-      if (acceptedFiles[0]) {
+        const data = new FormData();
 
-
-        // var newPath = __dirname + "/images/" + acceptedFiles[0].name;
-        // // write file to uploads/fullsize folder
-        // require('fs').writeFile(newPath, data, function (err) {
-        //   // let's see it
-        //   //res.redirect("/uploads/fullsize/" + imageName);
+        const {email} = this.props.user;
+        const {accountType} = this.props.user;
+        const {proImg} = this.props.user;
+        console.log('proImg:',proImg);
+        // console.log(email);
+        // console.log(accountType);
+        data.append('my_file', img);
+        data.append('email',email);
+        data.append('accountType',accountType);
+        this.props.addProImgAction(data);
+        // axios.post('/api/addProfilePic', data ,{headers:header}).then(res =>{
+        //     const token = res.data.token;
+        //     // get token from server side, and store the token into session storage
+        //     console.log('decode: ',jwt.decode(token));
+        //     // dispatch action 'setCurrentUser' to change state;
         // });
 
 
-        this.setState({
-          preview: acceptedFiles[0].preview,
-          imageFile: acceptedFiles[0]
-        }, function() {
-          console.log("imageFile in setState callback: ", this.state);
-          var toSend = {
-            imageFile: this.state.imageFile,
-            id: user.id
-          }
-          var temp = acceptedFiles[0];
-          // this.props.userProfilePicUploadRequest(toSend).then(
-          //     // after server response then...
-          //     // if successful
-          //     (res) => {
-          //         //this.context.router.push('/welcome')
-          //
-          //     },
-          //     // if server response any error message, set it into state errors
-          //     (err) => {
-          //         //this.setState({ errors: err.response.data})
-          //     });
-
-            var photo = new FormData();
-            photo.append('photo', acceptedFiles[0]);
-            var post = "/api/users/addProfilePic/" + user.id
-            request.post(post)
-            .send(photo)
-            .end(function(err, resp) {
-              if (err) { console.error(err); }
-              else {
-                console.log("resp: ", resp);
-                console.log("successfully here in dropzone");
-              }
-              //return resp;
-            });
-
-        });
-
-        //console.log("imageFile: ", this.state);
-
-
-      } else if (rejectedFiles[0]) {
-        console.log("in rejected");
-        this.setState({
-          errors: {invalid: 'Cannot upload Image. Invalid File or size more than 2MB'}
-        });
-      }
     }
 
+
+
     render() {
-      const { errors } = this.state;
-      const {user} = this.props.login;
-      // Choosing which profile photo to display
-      //var pic = user.imageFile.filename
-      var imageSrc;
-      //var imageSrc_top = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+user.imageFile.filename)
-
-      if (this.state.preview) {
-        imageSrc = this.state.preview;
-      } else {
-        if (user.imageFile != null) {
-          console.log("This user has an image");
-          var pic;
-          console.log("type of imageFile: ", typeof(user.imageFile));
-          // if (typeof(user.imageFile) != 'string') {
-          //   console.log("not equal string dropzone")
-          //   pic = user.imageFile.filename
-          //   imageSrc = require("F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+pic)
-          // } else {
-            imageSrc = user.imageFile
-            console.log("equal to string");
-    //      }
-          //console.log("imageFile " + user.imageFile);
-          //console.log("pic: ", pic)
-          //imageSrc = user.imageFile.originalname;
-          //var pic = "./img/" + user.imageFile.filename
-          // import image from pic
-          // imageSrc = pic;
-          //console.log("latest pic: " + pic);
-          // imageSrc = require("./img/" + user.imageFile.filename);
-          //imageSrc = require("./img/1cedaadc4eb16a5d83406e9761ebadb9.png");
-
-          //imageSrc = require()
-          //imageSrc = "file://localhost/F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images/"+pic
-          //imageSrc = imageSrc_top
-        } else {
-          imageSrc = defaultPhoto;
+        const {proImg} = this.props.user;
+        console.log(proImg);
+        console.log(lodash.isEmpty(proImg));
+        if(lodash.isEmpty(proImg)){
+            var userProfile = defaultPhoto;
+        }else{
+            const base64 = (Buffer.from(proImg.data).toString('base64'));
+            var userProfile = 'data:'+proImg.contentType+';base64,'+base64;
         }
-      }
-      return (
-          <div className="">
-            <Dropzone className="drop-zone" onDrop={this.onDrop}
-              maxSize={2048000}
-              accept="image/*"
-              name="file" >
-              <img className="img-circle" src={imageSrc} />
-            </Dropzone>
-            {errors.invalid && <span className={classnames("help-block", { 'has-error': errors.invalid})} >{errors.invalid}</span> }
-          </div>
-      );
+        return (
+
+            <div className="">
+                <Dropzone className="drop-zone"
+                          onDrop={this.onDrop}
+                          maxSize={2048000}
+                          accept="image/*"
+                          name="userProfile"
+                          multiple={false}>
+                    <img className="img-circle" src={userProfile} />
+                </Dropzone>
+            </div>
+        );
     }
 }
 
 DropzoneDemo.propTypes = {
-    login: React.PropTypes.object.isRequired
-    // userProfilePicUploadRequest: React.PropTypes.func.isRequired
+    user: React.PropTypes.object.isRequired,
+    addProImgAction: React.PropTypes.func.isRequired
 }
 
 DropzoneDemo.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
 
-function mapStateToProps(state) {
-    console.log('mapStateToProps: ',state.login);
-    return {
-        login: state.login
-    };
-}
 
 //export default DropzoneDemo;
-export default connect(mapStateToProps, {})(DropzoneDemo);
+export default DropzoneDemo;

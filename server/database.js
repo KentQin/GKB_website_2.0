@@ -6,6 +6,7 @@ var config = {
     host:"115.146.90.170",
     agent : process.env.SSH_AUTH_SOCK,
     privateKey:require('fs').readFileSync('/Users/zhangruoq/pb'),
+
     port:22,
     dstPort:27017,
 };
@@ -23,3 +24,12 @@ var server = tunnel(config, function (error, server) {
         }
     });
 });
+
+// mongoose.connect('mongodb://localhost/mydb', function(err) {
+//     if (err) {
+//         console.log(err);
+//         console.log("database not conencted");
+//     } else {
+//         console.log("database connected to great");
+//     }
+// });

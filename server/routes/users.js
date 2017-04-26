@@ -40,11 +40,21 @@ router.post('/signup', (req, res) => {
                     console.log(res.statusCode);
                     console.log("Registered");
                     // success, then send token to client
+                    // const token = jwt.sign({
+                    //     email: user.email,
+                    //     accountType: user.accountType,
+                    //     id: data._id
+                    // }, 'secretkeyforjsonwebtoken');
+                    // res.json({token});
+
                     const token = jwt.sign({
-                        email: user.email,
-                        accountType: user.accountType,
-                        id: data._id
+                        email: data.email,
+                        userName: data.userName,
+                        accountType: data.accountType,
+                        id: data._id,
+                        proImg: data.proImg
                     }, 'secretkeyforjsonwebtoken');
+                    console.log("Sign up " + data);
                     res.json({token});
                 }
 
@@ -58,7 +68,7 @@ router.post('/signup', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    console.log("Message for LoginForm ",req.body);
+    // console.log("Message for LoginForm ",req.body);
     var user = {
         email:req.body.email,
         password: req.body.password,
@@ -96,7 +106,7 @@ router.post('/login', (req, res) => {
                 userName: data.userName,
                 accountType: user.accountType,
                 id: data._id,
-                imageFile: data.imageFile
+                proImg: data.proImg
             }, 'secretkeyforjsonwebtoken');
             console.log("Logged in " + data);
             res.json({token});
@@ -184,8 +194,6 @@ router.post('/addName', (req, res) => {
 
     User.findOne(user, function(err, data){
         let errors = {};
-        console.log("Adding usernmae step 1:");
-        console.log(" Adding username step 2:");
         console.log(data);
         if(err){
             console.log(err);
@@ -195,20 +203,31 @@ router.post('/addName', (req, res) => {
             errors.login = "Account does not exist.";
             res.status(400).json(errors);
         }else{
-            User.findByIdAndUpdate(data._id, { $set: {userName: userName} }, {new: true}, function (err, model) {
+            User.findByIdAndUpdate(data._id, { $set: {userName: userName} }, {new: true}, function (err, data) {
                 if (err) {
                     console.log("Adding UserNAme update error");
                     errors.login = "Adding UserNAme update error";
                     res.status(400).json(errors);
                 } else {
-                    console.log("update success: " + model);
+                    // console.log("update success: " + data);
+                    // const token = jwt.sign({
+                    //     email: user.email,
+                    //     userName: data.userName,
+                    //     accountType: data.accountType,
+                    //     id: data._id,
+                    //     proImg: data.proImg
+                    // }, 'secretkeyforjsonwebtoken');
+                    // console.log("add name " + data);
+                    // res.json({token});
+
                     const token = jwt.sign({
-                        email: user.email,
-                        userName: userName,
-                        accountType: user.accountType,
-                        id: model._id,
-                        imageFile: model.imageFile
+                        email: data.email,
+                        userName: data.userName,
+                        accountType: data.accountType,
+                        id: data._id,
+                        proImg: data.proImg
                     }, 'secretkeyforjsonwebtoken');
+                    console.log("add name " + data);
                     res.json({token});
                 }
             });
@@ -217,51 +236,49 @@ router.post('/addName', (req, res) => {
     });
 });
 
-
-import multer from 'multer'
-//var upload = multer({ dest: './uploads'});
-import crypto from 'crypto'
-import path from 'path'
-
-
-var storage = multer.diskStorage({
-  destination: 'F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images',
-  filename: function (req, file, cb) {
-    crypto.pseudoRandomBytes(16, function (err, raw) {
-      if (err) return cb(err)
-
-      cb(null, raw.toString('hex') + path.extname(file.originalname))
-    })
-  }
-})
-
-var upload = multer({ storage: storage })
-
-router.post('/addProfilePic/:userid', upload.single('photo'), function(req, res, next) {
-  console.log("object id: " + req.params.userid);
-  console.log("req.files: ", req.files);
-  console.log("req file: ", req.file);
-  var userId = req.params.userid;
-  //res.end(req.files);
-    User.findByIdAndUpdate(userId, { $set: {imageFile: req.file} }, {new: true}, function (err, model) {
-         if (err) {
-             console.log("Adding imageFile update error");
-             errors.login = "Adding imageFile update error";
-             res.status(400).json(errors);
-           } else {
-               console.log("update success: " + model);
-               const token = jwt.sign({
-                   email: model.email,
-                   userName: model.userName,
-                   id: model.id,
-                   imageFile: model.imageFile
-               }, 'secretkeyforjsonwebtoken');
-               //res.json({token});
-              res.end("sucess");
-              //res.end(model.imageFile);
-           }
-    });
-});
+//
+// import crypto from 'crypto'
+// import path from 'path'
+//
+//
+// var storage = multer.diskStorage({
+//     destination: 'F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images',
+//     filename: function (req, file, cb) {
+//         crypto.pseudoRandomBytes(16, function (err, raw) {
+//             if (err) return cb(err)
+//
+//             cb(null, raw.toString('hex') + path.extname(file.originalname))
+//         })
+//     }
+// })
+//
+// var upload = multer({ storage: storage })
+//
+// router.post('/addProfilePic/:userid', upload.single('photo'), function(req, res, next) {
+//     console.log("object id: " + req.params.userid);
+//     console.log("req.files: ", req.files);
+//     console.log("req file: ", req.file);
+//     var userId = req.params.userid;
+//     //res.end(req.files);
+//     User.findByIdAndUpdate(userId, { $set: {imageFile: req.file} }, {new: true}, function (err, model) {
+//         if (err) {
+//             console.log("Adding imageFile update error");
+//             errors.login = "Adding imageFile update error";
+//             res.status(400).json(errors);
+//         } else {
+//             console.log("update success: " + model);
+//             const token = jwt.sign({
+//                 email: model.email,
+//                 userName: model.userName,
+//                 id: model.id,
+//                 imageFile: model.imageFile
+//             }, 'secretkeyforjsonwebtoken');
+//             //res.json({token});
+//             res.end("sucess");
+//             //res.end(model.imageFile);
+//         }
+//     });
+// });
 
 // router.post('/addProfilePic', (req, res) => {
 //

@@ -1,21 +1,24 @@
 import axios from 'axios';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
-import { SET_CURRENT_USER_ADD_NAME } from '../actions/types';
+import { SET_CURRENT_USER_ADD_PROIMG } from '../actions/types';
 
 // pure redux function, action creator
 export function setCurrentUser(user) {
     return {
-        type: SET_CURRENT_USER_ADD_NAME,
+        type: SET_CURRENT_USER_ADD_PROIMG,
         user
     }
 }
 
-export function addNameRequest(userData) {
+export function addProImgAction(userData) {
     return dispatch => {
-        return axios.post('/api/users/addName', userData).then(res =>{
+        let header = {
+            'content-type': 'multipart/form-data'
+        };
+        return axios.post('/api/addProfilePic', userData, {headers:header}).then(res =>{
             const token = res.data.token;
-            console.log('add name token: ' ,token);
+            //console.log('add name proimg: ' ,token);
             // get token from server side, and store the token into session storage
             sessionStorage.removeItem('loginToken');
             sessionStorage.setItem('loginToken', token);

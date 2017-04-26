@@ -8,6 +8,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
 import users from './routes/users';
 import resetpwd from './routes/resetpwd';
+import addProfile from './routes/addProfile'
 import changePswd from './routes/changePswd';
 import searchBar from './routes/searchBar';
 import updatePswd from './routes/updatePswd';
@@ -16,16 +17,15 @@ import cookieParser from 'cookie-parser';
 import './database';
 import './firebase';
 import config from './config'
-// import busboyBodyParser from 'busboy-body-parser'
-import fileUpload from 'express-fileupload'
-import busboy from 'connect-busboy'
-import bb from 'express-busboy'
-// import multer from 'multer'
+
 
 let app = express();
 
 const compiler = webpack(webpackConfig);
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+}));
 //app.use(bodyParser.urlencoded({extended: true}));
 // app.use(multer({dest:'./uploads/'}).single('photo'));
 // bb.extend(app, {
@@ -63,7 +63,10 @@ app.use('/api/users', users);
 app.use('/api/resetpwd', resetpwd);
 app.use('/api/changePswd', changePswd);
 app.use('/api/searchBar', searchBar);
+app.use('/api/searchBar/testgo', searchBar);
+app.use('/api/addProfilePic', addProfile);
 app.use('/api/updatePswd', updatePswd);
+
 
 
 
@@ -75,8 +78,6 @@ app.get('/*', (req, res) => {
 app.post('/resetpwd', (req, res) => {
     console.log("Message for reset password ",req.body);
 });
-
-app.use('/api/users',users);
 
 if (config.dev) {
   console.log(app.listen(9000, () => console.log('Running on localhost:9000')));
