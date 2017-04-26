@@ -770,6 +770,10 @@ a.list-group-item:hover {
     display: inline-block;
     width: 100%;
     padding:10px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin:3% auto;
 }
 
 .comment{
@@ -777,16 +781,16 @@ a.list-group-item:hover {
 }
 
 .photo-gallery>img{
-    height:79px;
-    width:103px;
-    float:left;
-    align-content: center;
-   margin:auto;
+    height:94px;
+    width:128px;
+    margin:auto;
+    margin-top: 15%;
 
 }
 
 .photo-gallery{
     padding:0;
+    height:100%;
 }
 
 .result-info{
@@ -819,10 +823,12 @@ a.list-group-item:hover {
 .result-info>div{
     display: inline-block;
     margin: auto 2px;
+    text-align: left;
 }
 
 .result-btn{
-    margin:5%;
+    margin:3%;
+    float:left;
 }
 
 .search-result-right{
@@ -835,8 +841,13 @@ a.list-group-item:hover {
 .icon-place{
     float: left;
     position: relative;
-    top: 15px;
-    left: 8px;
-    auto:5px;
+    top: 10px;
+    left: 10px;
+    margin: 5px;
+}
+
+.left-text{
+    text-align: left;
+    padding:8px;
 }
 
