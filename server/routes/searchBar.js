@@ -104,47 +104,65 @@ router.post('/', (req, res) => {
                                   for (var k = 0; k < len_element2; k++) {
                                       object2 = elementArr2[k]["o"]
                                       predicate2 = elementArr2[k]["p"]
-                                      if (predicate2["value"].includes("lat")) {
+                                      if (predicate2["value"].includes("#lat")) {
                                         console.log("inside lat2");
                                         console.log(object2["value"])
                                         lat2 = object2["value"]
                                       }
-                                      if (predicate2["value"].includes("long")) {
+                                      if (predicate2["value"].includes("#long")) {
                                         console.log("inside lat2");
                                         console.log(object2["value"])
                                         longt2 = object2["value"]
                                       }
                                   }
-
-                                  User.findOne({_id: req.body.id},function(err,data2){
-                                      let errors = {};
-                                      console.log("data2: " + data2);
-                                      if(err){
-                                          console.log(err);
-                                      }else if(!data2){
-                                          //errors.login = "Email does not exist or wrong password";
-                                          //res.status(400).json(errors);
-                                      }else{
-                                          var coords2 = {
-                                            lat: lat2,
-                                            longt: longt2
+                                  if (req.body.id != null) {
+                                      User.findOne({_id: req.body.id},function(err,data2){
+                                          let errors = {};
+                                          console.log("data2: " + data2);
+                                          if(err){
+                                              console.log(err);
+                                          }else if(!data2){
+                                              //errors.login = "Email does not exist or wrong password";
+                                              //res.status(400).json(errors);
+                                          }else{
+                                              var coords2 = {
+                                                lat: lat2,
+                                                longt: longt2
+                                              }
+                                              console.log("coords2: ", coords2);
+                                              const token = jwt.sign({
+                                                  email: data2.email,
+                                                  userName: data2.userName,
+                                                  accountType: data2.accountType,
+                                                  id: data2._id,
+                                                  imageFile: data2.imageFile,
+                                                  coords: coords2
+                                              }, 'secretkeyforjsonwebtoken');
+                                              console.log("search bar sending token2 ");
+                                              updatedDbSendTokenFlag = 1
+                                              res.json({token});
+                                              //updatedDbSendTokenFlag = 1;
                                           }
-                                          console.log("coords2: ", coords2);
-                                          const token = jwt.sign({
-                                              email: data2.email,
-                                              userName: data2.userName,
-                                              accountType: data2.accountType,
-                                              id: data2._id,
-                                              imageFile: data2.imageFile,
-                                              coords: coords2
-                                          }, 'secretkeyforjsonwebtoken');
-                                          console.log("search bar sending token2 ");
-                                          updatedDbSendTokenFlag = 1
-                                          res.json({token});
-                                          //updatedDbSendTokenFlag = 1;
-                                      }
 
-                                  });
+                                      });
+                                  } else {
+                                      var coords2 = {
+                                        lat: lat2,
+                                        longt: longt2
+                                      }
+                                      console.log("coords2: ", coords2);
+                                      const token = jwt.sign({
+                                          email: null,
+                                          userName: null,
+                                          accountType: null,
+                                          id: null,
+                                          imageFile: null,
+                                          coords: coords2
+                                      }, 'secretkeyforjsonwebtoken');
+                                      console.log("search bar sending token2 ");
+                                      updatedDbSendTokenFlag = 1
+                                      res.json({token});
+                                  }
                                 }
                               })
                               break;
@@ -155,12 +173,12 @@ router.post('/', (req, res) => {
                         for (var i = 0; i < len_element; i++) {
                             object = elementArr[i]["o"]
                             predicate = elementArr[i]["p"]
-                            if (predicate["value"].includes("lat")) {
+                            if (predicate["value"].includes("#lat")) {
                               console.log("inside lat");
                               console.log(object["value"])
                               lat = object["value"]
                             }
-                            if (predicate["value"].includes("long")) {
+                            if (predicate["value"].includes("#long")) {
                               console.log("inside lat");
                               console.log(object["value"])
                               longt = object["value"]
@@ -168,50 +186,68 @@ router.post('/', (req, res) => {
                         }
 
                         if (updatedDbSendTokenFlag == 0) {
-                            User.findOne({_id: req.body.id},function(err,data){
-                                let errors = {};
-                                console.log("data", data);
-                                if(err){
-                                    console.log(err);
-                                }else if(!data){
-                                    //errors.login = "Email does not exist or wrong password";
-                                    //res.status(400).json(errors);
-                                }else{
-                                    var coords = {
-                                      lat: lat,
-                                      longt: longt
-                                    }
-
-                                    var insertToSearchHistory = {
-                                      element: doc_id,
-                                      searchStr: req.body.searchStr
-                                    }
-                                    //Update searchHistory in user Model.
-                                    User.findByIdAndUpdate(req.body.id, {
-                                      $push: { searchHistory: insertToSearchHistory }
-                                    }, { 'new': true}, function(err, user) {
-                                        if (err) {
-                                              console.log("error in searchhistory update");
-                                        } else {
-                                            console.log("succes in updataing searchHistory");
-                                            const token = jwt.sign({
-                                                email: user.email,
-                                                userName: user.userName,
-                                                accountType: user.accountType,
-                                                id: user._id,
-                                                imageFile: user.imageFile,
-                                                coords: coords
-                                            }, 'secretkeyforjsonwebtoken');
-                                            console.log("search bar sending token ");
-                                            res.json({token});
+                            if (req.body.id != null) {
+                                User.findOne({_id: req.body.id},function(err,data){
+                                    let errors = {};
+                                    console.log("data", data);
+                                    if(err){
+                                        console.log(err);
+                                    }else if(!data){
+                                        //errors.login = "Email does not exist or wrong password";
+                                        //res.status(400).json(errors);
+                                    }else{
+                                        var coords = {
+                                          lat: lat,
+                                          longt: longt
                                         }
 
-                                    });
+                                        var insertToSearchHistory = {
+                                          element: doc_id,
+                                          searchStr: req.body.searchStr
+                                        }
+                                        //Update searchHistory in user Model.
+                                        User.findByIdAndUpdate(req.body.id, {
+                                          $push: { searchHistory: insertToSearchHistory }
+                                        }, { 'new': true}, function(err, user) {
+                                            if (err) {
+                                                  console.log("error in searchhistory update");
+                                            } else {
+                                                console.log("succes in updataing searchHistory");
+                                                const token = jwt.sign({
+                                                    email: user.email,
+                                                    userName: user.userName,
+                                                    accountType: user.accountType,
+                                                    id: user._id,
+                                                    imageFile: user.imageFile,
+                                                    coords: coords
+                                                }, 'secretkeyforjsonwebtoken');
+                                                console.log("search bar sending token ");
+                                                res.json({token});
+                                            }
+
+                                        });
 
 
+                                    }
+
+                                });
+                            } else {
+                                var coords = {
+                                  lat: lat,
+                                  longt: longt
                                 }
-
-                            });
+                                console.log("no user coords: ", coords);
+                                const token = jwt.sign({
+                                    email: null,
+                                    userName: null,
+                                    accountType: null,
+                                    id: null,
+                                    imageFile: null,
+                                    coords: coords
+                                }, 'secretkeyforjsonwebtoken');
+                                console.log("search bar sending token lplpl ");
+                                res.json({token});
+                            }
                         }
 
                       }

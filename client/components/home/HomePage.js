@@ -5,6 +5,8 @@ import NavBar from './NavBar';
 import { logout } from '../../actions/authAction';
 import SearchBar from './SearchBar';
 import { searchBarRequest } from '../../actions/searchBarAction';
+import { updateCoordsRequest} from '../../actions/updateCoords'
+import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest'
 
 class HomePage extends React.Component {
 
@@ -43,7 +45,9 @@ class HomePage extends React.Component {
     //         this.showProfile();
     //     }
     // }
-
+  //  <SearchBar searchBarRequest={this.props.searchBarRequest}/>
+//<MapBoxAuto searchBarRequest={this.props.searchBarRequest}/>
+//<MapBoxAuto searchBarRequest={this.props.searchBarRequest} updateCoordsRequest={this.props.updateCoordsRequest}/>
     render() {
 
         const { isAuthenticated } = this.props.login;
@@ -54,7 +58,8 @@ class HomePage extends React.Component {
 
                 {isAuthenticated && <Profile login = {this.props.login} />}
 
-                <SearchBar searchBarRequest={this.props.searchBarRequest}/>
+
+                <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest} updateCoordsRequest={this.props.updateCoordsRequest}/>
 
             </div>
         )
@@ -64,7 +69,8 @@ class HomePage extends React.Component {
 
 HomePage.propTypes = {
     login: React.PropTypes.object.isRequired,
-    searchBarRequest: React.PropTypes.func.isRequired
+    searchBarRequest: React.PropTypes.func.isRequired,
+    updateCoordsRequest: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -73,4 +79,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { logout, searchBarRequest })(HomePage);
+export default connect(mapStateToProps, { logout, searchBarRequest, updateCoordsRequest })(HomePage);
