@@ -1,17 +1,29 @@
 import React from 'react';
-import Dropzone from './../DropZone'
+import Dropzone from './../DropZone';
+import { connect } from 'react-redux';
+
 class OverviewContent extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+
+        }
+    }
+
     render(){
+         const { user } = this.props.login;
+
         return(
             <div className="middle-block">
                 <h4 className="setting-content-title">Overview/Profile</h4>
                 <div className="setting-content-photo">
-                    <Dropzone className="setting-content-photo-area"/>
+                    {/*<Dropzone className="setting-content-photo-area"/>*/}
                 </div>
                <table className="table">
                     <tr>
                         <th>Display Name</th>
-                        <td>Username</td>
+                        <td>{user.userName}</td>
                     </tr>
                    <tr>
                        <th>Date joined</th>
@@ -27,4 +39,11 @@ class OverviewContent extends React.Component{
     }
 }
 
-export default OverviewContent
+
+function mapStateToProps(state) {
+    return {
+        login: state.login
+    };
+}
+
+export default connect(mapStateToProps,null)(OverviewContent);

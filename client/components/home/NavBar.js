@@ -7,28 +7,12 @@ class NavBar extends React.Component {
         super(props);
         this.state = {
         }
-        this.logout = this.logout.bind(this);
     }
 
-    logout(e){
-        e.preventDefault();
-        this.props.hideProfile();
-        //console.log(this.props);
-        this.props.hideProfile();
-        this.props.logout();
-    }
 
     render(){
 
         const { isAuthenticated } = this.props.login;
-
-        const userNav =(
-            <ul className="nav nav-pills btn-on-map">
-                <li role="presentation">
-                    <a href="#" onClick={this.logout} className="btn btn-default btn-logout" data-dismiss="modal">Logout</a>
-                </li>
-            </ul>
-        );
 
         const guestNav =(
             <ul className="nav nav-pills btn-on-map">
@@ -43,16 +27,13 @@ class NavBar extends React.Component {
 
 
         return(
-            <div>{ isAuthenticated ? userNav : guestNav}</div>
-
-
+            <div>{ !isAuthenticated && guestNav}</div>
         );
     }
 }
 
 NavBar.propTypes = {
-    login: React.PropTypes.object.isRequired,
-    logout: React.PropTypes.func.isRequired
+    login: React.PropTypes.object.isRequired
 }
 
 export default NavBar;

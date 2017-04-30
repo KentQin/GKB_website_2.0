@@ -7,16 +7,16 @@ var userSchema = new Schema({
     email: {type: String, require: true},
     password: {type: String, require: true},
     accountType: {type: String, require: true},
+    proImg: { data: Buffer, contentType: String },
     imageFile: {type: Object},
     contributions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element' }],
     searchHistory: [{
-                      element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
-                      searchStr: { type: String }
-                   }],
+        element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
+        searchStr: { type: String }
+    }],
     favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element'}]
 });
 
 
 //module.exports = mongoose.model('userModel', userSchema);
 module.exports = mongoose.model('user', userSchema);
-

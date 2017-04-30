@@ -257,10 +257,54 @@ router.post('/', (req, res) => {
         }
 
     });
-
-
     //res.redirect('/home');
 });
+
+// handle search_bar location search
+// test version
+router.get('/testgo', (req, res) => {
+    //console.log('msg from testgo:');
+    //console.log(req.query.location);
+    const resultlist = loadResultList(req.query.location);
+    console.log(resultlist);
+    //const token = jwt.sign(resultlist, 'secretkeyforjsonwebtoken');
+    //res.json(resultlist);
+    //res.json({users: 'users'});
+    //res.send('hello');
+    //res.json(resultlist);
+    res.json(resultlist);
+
+    // console.log("TestGO:" + resultlist);
+    // console.log("TestGO:" + resultlist.location);
+    // console.log("TestGO:" + resultlist.resultArray);
+});
+
+// simulate load query result from db
+function loadResultList(location) {
+    const results = {};
+    const resultNum = rnd(3,8);
+    const resultArray = []
+    for (let i = 0; i < resultNum; i++){
+        let tempJson = {};
+        tempJson.userName = 'user-' + i;
+        tempJson.rank = rnd(0,300);
+        tempJson.discription = 'rank' + i + 'xxxxxxxxxxxxxxxxxx';
+        resultArray.push(tempJson);
+    }
+    resultArray.sort(function(a, b) {
+        return parseInt(b.rank) - parseInt(a.rank);
+    });
+    results.location = location;
+    results.resultArray = resultArray;
+    results.autoComment = 'autoComment is here';
+
+    return results;
+}
+
+// produce a random number
+function rnd(start, end){
+    return Math.floor(Math.random() * (end - start) + start);
+}
 
 //we need to get data from post request
 
