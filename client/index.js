@@ -14,13 +14,10 @@ import setAuthorizationToken from './utils/setAuthorizationToken';
 import rootReduce from './reducer/rootReducer';
 import jwt from 'jsonwebtoken';
 import { setCurrentUser } from './actions/authAction';
-<<<<<<< HEAD
 import GoogleAutoSuggest from './components/googleMaps/GoogleAutoSuggest'
 import MapContainer from './components/googleMaps/MapContainer'
 import HttpsRedirect from 'react-https-redirect';
-=======
 import LandingPage from './components/landing/landingPage';
->>>>>>> adabfa6efc3f44dd60813177f493349d76e25ef8
 /*
 * createStore(reducer, [preloadedState], enhancer)
 * Here, set an empty func (state = {}) => state as reducer
@@ -82,14 +79,7 @@ if(!sessionStorage.length) {
 
 render(
     <Provider store={store}>
-<<<<<<< HEAD
         <MapContainer />
-=======
-        {/*<Router history={browserHistory}>*/}
-            {/*<Route path="/" component={LandingPage}/>*/}
-        {/*</Router>*/}
-        <MapBox />
->>>>>>> adabfa6efc3f44dd60813177f493349d76e25ef8
     </Provider>
     , document.getElementById('app')
 );

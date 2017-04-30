@@ -71,8 +71,8 @@ class HomePage extends React.Component {
 HomePage.propTypes = {
     login: React.PropTypes.object.isRequired,
     searchBarRequest: React.PropTypes.func.isRequired,
-    updateCoordsRequest: React.PropTypes.func.isRequired
-    searchBarTestGoAction: React.PropTypes.func.isRequired
+    updateCoordsRequest: React.PropTypes.func.isRequired,
+    //searchBarTestGoAction: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

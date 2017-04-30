@@ -3,11 +3,8 @@ import { SET_CURRENT_USER_SIGNUP } from '../actions/types';
 import { SET_CURRENT_USER_LOGOUT } from '../actions/types';
 import { SET_CURRENT_USER_ADD_NAME } from '../actions/types';
 import {SET_CURRENT_USER_SEARCH_BAR} from '../actions/types';
-<<<<<<< HEAD
 import {SET_CURRENT_COORDS} from '../actions/types';
-=======
 import {SET_CURRENT_USER_ADD_PROIMG} from '../actions/types';
->>>>>>> adabfa6efc3f44dd60813177f493349d76e25ef8
 import lodash from 'lodash';
 
 const initialState = {
@@ -61,7 +58,7 @@ export default (state = initialState, action) => {
                 isAuthenticated: !lodash.isEmpty(action.user),
                 user: action.user
             }
-            
+
 
         case SET_CURRENT_USER_SEARCH_BAR:
             return {
