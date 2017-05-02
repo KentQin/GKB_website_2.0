@@ -12,6 +12,8 @@ import WelcomePage from '../welcome/WelcomePage'
 import HomePage from '../home/HomePage'
 import {connect} from 'react-redux'
 import AccountSetting from '../userProfile/AccountSettingPage';
+import SearchHistory from '../userProfile/SearchHistoryPage';
+import MyFavourites from '../userProfile/FavouritesPage';
 
 //import GettingStartedGoogleMap from "./GMap"
 
@@ -187,6 +189,8 @@ class MapContainer extends Component {
                   <Route path="newpwd" component={NewPwdPage}/>
                   <Route path="newpwd(/:email)" component={NewPwdPage}/>
                   <Route path="accountsetting" component={AccountSetting}/>
+                  <Route path="searchhistory" component={SearchHistory}/>
+                  <Route path="myfavourites" component={MyFavourites}/>
           </Router>
 
 
