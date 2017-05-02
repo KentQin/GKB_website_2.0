@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
 import tunnel from 'tunnel-ssh';
 
+
 // var config = {
 //     username:"ubuntu",
 //     host:"115.146.90.170",
 //     agent : process.env.SSH_AUTH_SOCK,
-//     privateKey:require('fs').readFileSync('/Users/zhangruoq/pb'),
+//     privateKey:require('fs').readFileSync('/Users/kenty/.ssh/gkb'),
 //
 //     port:22,
 //     dstPort:27017,
@@ -25,6 +26,16 @@ import tunnel from 'tunnel-ssh';
 //     });
 // });
 
+var config = {
+    username:"ubuntu",
+    host:"115.146.90.170",
+    agent : process.env.SSH_AUTH_SOCK,
+    privateKey:require('fs').readFileSync('/Users/kenty/.ssh/gkb'),
+
+    port:22,
+    dstPort:27017,
+};
+
 mongoose.connect('mongodb://localhost/mydb', function(err) {
     if (err) {
         console.log(err);
@@ -33,3 +44,13 @@ mongoose.connect('mongodb://localhost/mydb', function(err) {
         console.log("database connected to great");
     }
 });
+
+
+// mongoose.connect('mongodb://localhost/mydb', function(err) {
+//     if (err) {
+//         console.log(err);
+//         console.log("database not conencted");
+//     } else {
+//         console.log("database connected to great");
+//     }
+// });

@@ -2,11 +2,19 @@ import axios from 'axios';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
 import { SET_CURRENT_USER_SEARCH_BAR } from '../actions/types';
+import { SET_CURRENT_COORDS } from '../actions/types';
 
 // pure redux function, action creator
 export function setCurrentUser(user) {
     return {
         type: SET_CURRENT_USER_SEARCH_BAR,
+        user
+    }
+}
+
+export function setCurrentUserGuest(user) {
+    return {
+        type: SET_CURRENT_COORDS,
         user
     }
 }
@@ -22,8 +30,13 @@ export function searchBarRequest(userData) {
             setAuthorizationToken(token);
             // decode token, get user msg from it
             console.log('decode: ',jwt.decode(token));
-            // dispatch action 'setCurrentUser' to change state
-            dispatch(setCurrentUser(jwt.decode(token)));
+            // if (jwt.decode(token).id == null) {
+            //   dispatch(setCurrentUserGuest(jwt.decode(token)));
+            // } else {
+            // // dispatch action 'setCurrentUser' to change state
+            //   dispatch(setCurrentUser(jwt.decode(token)));
+            // }
+             dispatch(setCurrentUser(jwt.decode(token)));
         });
     }
 }

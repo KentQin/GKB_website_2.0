@@ -10,11 +10,13 @@ import SignupPage from './components/signup/SignupPage';
 import ResetPasswordPage from './components/resetpwd/ResetPasswordPage';
 import EmailSentPage from './components/resetpwd/EmailSentPage';
 import NewPwdPage from './components/newpassword/NewPwdPage';
-import MapBox from './components/googleMaps/MapBox'
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import rootReduce from './reducer/rootReducer';
 import jwt from 'jsonwebtoken';
 import { setCurrentUser } from './actions/authAction';
+import GoogleAutoSuggest from './components/googleMaps/GoogleAutoSuggest'
+import MapContainer from './components/googleMaps/MapContainer'
+import HttpsRedirect from 'react-https-redirect';
 import LandingPage from './components/landing/landingPage';
 /*
 * createStore(reducer, [preloadedState], enhancer)
@@ -77,10 +79,7 @@ if(!sessionStorage.length) {
 
 render(
     <Provider store={store}>
-        {/*<Router history={browserHistory}>*/}
-            {/*<Route path="/" component={LandingPage}/>*/}
-        {/*</Router>*/}
-        <MapBox />
+        <MapContainer />
     </Provider>
     , document.getElementById('app')
 );

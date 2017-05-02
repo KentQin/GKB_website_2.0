@@ -30,7 +30,8 @@ export default {
             {
                 test: /\.css$/,
                 include: [
-                    path.join(__dirname, 'public/css')
+                    path.join(__dirname, 'public/css'),
+                    path.join(__dirname, 'node_modules')
                 ],
                 loaders: 'style-loader!css-loader'
             },
@@ -50,6 +51,7 @@ export default {
     node: {
         net: 'empty',
         dns: 'empty',
-        fs: 'empty'
+        fs: 'empty',
+        child_process: 'empty'
     }
 }

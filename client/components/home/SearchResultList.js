@@ -46,20 +46,20 @@ class SearchResultList extends React.Component {
         const { resultArray } = this.props.searchResult.searchResultList;
         const { autoComment } = this.props.searchResult.searchResultList;
         const { location } = this.props.searchResult.searchResultList;
-        if (typeof(resultArray) != 'undefined') {
-
-            var numList = resultArray.length;
-            console.log('num:', numList)
-            for (var i = 0; i < numList; i++) {
-                //console.log(resultArray.length);
-                items.push(<tr key={i}><td><SearchResultItem userName={resultArray[i].userName}
-                                                             rank={resultArray[i].rank}
-                                                             num = {i+1}
-                                                             discription={resultArray[i].discription}/>
-                            </td></tr>
-                );
-            }
-        }
+        // if (typeof(resultArray) != 'undefined') {
+        //
+        //     var numList = resultArray.length;
+        //     console.log('num:', numList)
+        //     for (var i = 0; i < numList; i++) {
+        //         //console.log(resultArray.length);
+        //         items.push(<tr key={i}><td><SearchResultItem userName={resultArray[i].userName}
+        //                                                      rank={resultArray[i].rank}
+        //                                                      num = {i+1}
+        //                                                      discription={resultArray[i].discription}/>
+        //                     </td></tr>
+        //         );
+        //     }
+        // }
 
 
 
@@ -69,7 +69,8 @@ class SearchResultList extends React.Component {
                     <tbody>
                         <tr>
                             <td>
-                                <SearchResultHead autoComment = {autoComment} location = {location}/>
+                                {/*<SearchResultHead autoComment = {autoComment} location = {location}/>*/}
+                                Head
                             </td>
                         </tr>
                         <tr>
@@ -77,9 +78,6 @@ class SearchResultList extends React.Component {
                                 <div className="left-text">
                                     <span> Location Descriptions </span>
                                     <div id = "add_dis_box" >
-                                        {/*<buttom id = "discription"*/}
-                                                {/*onClick = {this.onClickDis}*/}
-                                        {/*>Location Discriptions</buttom>*/}
                                         <img id = "add"
                                              src = {addPic}
                                              onClick = {this.onClickAdd}
@@ -89,7 +87,7 @@ class SearchResultList extends React.Component {
                             </td>
                         </tr>
                         <div className='scrollit'>
-                         {items}
+                         {/*{items}*/}
                         </div>
                     </tbody>
                     </table>
