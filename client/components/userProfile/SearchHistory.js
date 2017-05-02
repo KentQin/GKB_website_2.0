@@ -4,17 +4,18 @@ import {Link} from 'react-router';
 class SearchHistory extends React.Component{
     render(){
         return(
-            <div>
-                <LinkToHome/>
+            <div className="vertical-block col-md-offset-1 col-md-8">
 
-                <div className="history-title">
+                <div className="vertical-block-title">
                     <h3>Search History</h3>
+                    <LinkToHome/>
                 </div>
 
-                <div className="history-content">
+                <div className="vertical-block-content">
                     <div className="history-button">
                         <Link to ="/home"/>Add to Favourites
-                        <Link to="/signup"/>Delete
+                        <Link to="/signup"/>
+                        Delete
                         <div className="checkbox">
                             <label>
                                 <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." />

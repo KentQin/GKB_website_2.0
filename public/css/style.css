@@ -608,14 +608,40 @@ a.list-group-item:hover {
 /*
     Search History
  */
-.history-title{
-    background-color:rgb(10, 19, 58);
-    height:30%;
+.vertical-block{
+    position: absolute;
+    top: 0;
+    height: 90%;
+    background-color: white;
+    margin-top: 2%;
 }
 
-.history-content{
-    background-color: white;
+.vertical-block-title{
+    background-color:rgb(10, 19, 58);
+    height:20%;
+    margin:0 auto;
+    width:100%;
+    position:absolute;
+    top:0;
+    padding:10%;
 }
+
+.history-button{
+    float:right;
+}
+
+.col-md-8{
+    padding-left:0;
+    padding-right:0;
+}
+
+.vertical-block-content{
+    background-color: white;
+    position: absolute;
+    top: 20%;
+    width:100%;
+}
+
 
 .checkbox {
     float: right;
@@ -858,4 +884,18 @@ a.list-group-item:hover {
 .landing-search-bar>div>div{
     margin-left: 25%;
     margin-right: 25%;
+}
+
+/*
+    My Favourites
+ */
+
+.vertical-block-content-left{
+    background-color: #0f4bac;
+    height:100%;
+}
+
+.vertical-block-content-right{
+    background-color: #bcddff;
+    height:100%;
 }
