@@ -5,9 +5,10 @@ import config from '../config'
 import curl from 'curlrequest';
 import jwt from 'jsonwebtoken';
 
+var rest = require('rest')
 var ElementEl = require('./../models/node.js');
 var User = require('./../models/user.js');
-var rest = require('rest')
+//var rest = require('rest')
 
 let router = express.Router();
 
@@ -15,6 +16,8 @@ router.post('/', (req, res) => {
     console.log("id: " + req.body.id)
     console.log("searchStr: " + req.body.searchStr)
     console.log("finally in searchBar route");
+    console.log("fulladdr: ", req.body.fulladdr);
+    console.log("DATE: ", Date());
 
     const button = req.body.button
 
@@ -24,7 +27,7 @@ router.post('/', (req, res) => {
       //places
 
       var ret = {};
-      ret = queryJena(req.body.searchStr, req.body.id, function(ret) {
+      ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
           //console.log("ret: ", ret)
 
           if (ret.error == 1) {
@@ -62,8 +65,8 @@ router.post('/', (req, res) => {
     } else {
 
         var ret = {};
-        ret = queryJena(req.body.searchStr, req.body.id, function(ret) {
-          console.log("ret: ", ret)
+        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
+          //console.log("ret: ", ret)
           if (ret.error == 1) {
               var errors = ret.errors
               res.status(400).json(errors);
@@ -77,7 +80,7 @@ router.post('/', (req, res) => {
 });
 
 
-function queryJena(searchStr, id, callback) {
+function queryJena(searchStr, fulladdr, id, callback) {
   //var searchStr = searchStr
   var result;
   var wayFlag = 0;
@@ -204,28 +207,134 @@ function queryJena(searchStr, id, callback) {
                                               longt: longt2
                                             }
                                             console.log("coords2: ", coords2);
-                                            const token = jwt.sign({
-                                                email: data2.email,
-                                                userName: data2.userName,
-                                                accountType: data2.accountType,
-                                                id: data2._id,
-                                                proImg: data2.proImg,
-                                                coords: coords2,
-                                                placeFullAddr: searchStr,
-                                                placePhoto: ""
-                                            }, 'secretkeyforjsonwebtoken');
-                                            console.log("search bar sending token2 ");
-                                            updatedDbSendTokenFlag = 1
-                                            //res.json({token});
-                                            var ret = {
-                                                error:0,
-                                                token: token
-                                            }
-                                            callback(ret);
-                                            //updatedDbSendTokenFlag = 1;
-                                        }
 
-                                    });
+
+                                            var insertToSearchHistory = {
+                                              element: doc_id,
+                                              searchStr: fulladdr,
+                                              //date: new Date()
+                                            }
+                                            //Update searchHistory in user Model.
+                                            User.update(
+                                              { _id: id, searchHistory: insertToSearchHistory},
+                                              {$addToSet: { searchHistory: insertToSearchHistory}},
+                                              function(err, user) {
+                                                if (err) {
+                                                      console.log("error in searchhistory update");
+                                                } else {
+                                                    console.log("succes in updataing searchHistory11111", user);
+
+
+
+                                                    User.findOne({_id:id,'searchHistory.searchStr': fulladdr}, function(err, data) {
+
+                                                      if(err) {
+                                                        console.log("1111111111111");
+                                                      } else if (!data){
+                                                        console.log("2222222222222");
+                                                        var insertToSearchHistoryNew = {
+                                                          element: doc_id,
+                                                          searchStr: fulladdr,
+                                                          date: new Date()
+                                                        }
+                                                        User.update(
+                                                          { _id: id},
+                                                          {$addToSet: { searchHistory: insertToSearchHistoryNew}},
+                                                          function(err, user) {
+                                                              if (err) {
+                                                                 console.log("in 2nd update error")
+                                                              } else {
+                                                                 console.log("in 2nd update success");
+                                                                 const token = jwt.sign({
+                                                                     email: data2.email,
+                                                                     userName: data2.userName,
+                                                                     accountType: data2.accountType,
+                                                                     id: data2._id,
+                                                                     proImg: data2.proImg,
+                                                                     coords: coords2,
+                                                                     placeFullAddr: fulladdr,
+                                                                     placePhoto: ""
+                                                                 }, 'secretkeyforjsonwebtoken');
+                                                                 console.log("search bar sending token ");
+                                                                 //res.json({token});
+                                                                 var ret = {
+                                                                     error:0,
+                                                                     token: token
+                                                                 }
+                                                                 callback(ret);
+                                                              }
+                                                          })
+
+                                                      } else {
+                                                        console.log("333333333333333")
+                                                        User.update(
+                                                          { 'searchHistory.searchStr': fulladdr},
+                                                          {$set: { 'searchHistory.$.date': new Date()}},
+                                                        function(err, user2) {
+                                                            if (err) {
+                                                              console.log("error date updated");
+                                                            } else {
+                                                              console.log("updating date",  user2);
+                                                              const token = jwt.sign({
+                                                                  email: data2.email,
+                                                                  userName: data2.userName,
+                                                                  accountType: data2.accountType,
+                                                                  id: data2._id,
+                                                                  proImg: data2.proImg,
+                                                                  coords: coords2,
+                                                                  placeFullAddr: fulladdr,
+                                                                  placePhoto: ""
+                                                              }, 'secretkeyforjsonwebtoken');
+                                                              console.log("search bar sending token ");
+                                                              //res.json({token});
+                                                              var ret = {
+                                                                  error:0,
+                                                                  token: token
+                                                              }
+                                                              callback(ret);
+                                                            }
+
+                                                        })
+                                                      }
+                                                    })
+
+
+
+
+
+                                                    // const token = jwt.sign({
+                                                    //     email: data2.email,
+                                                    //     userName: data2.userName,
+                                                    //     accountType: data2.accountType,
+                                                    //     id: data2._id,
+                                                    //     proImg: data2.proImg,
+                                                    //     coords: coords2,
+                                                    //     placeFullAddr: searchStr,
+                                                    //     placePhoto: ""
+                                                    // }, 'secretkeyforjsonwebtoken');
+                                                    // console.log("search bar sending token ");
+                                                    // //res.json({token});
+                                                    // var ret = {
+                                                    //     error:0,
+                                                    //     token: token
+                                                    // }
+                                                    // callback(ret);
+                                                }
+                                              });
+
+
+                                            updatedDbSendTokenFlag = 1
+                                            }
+                                            //res.json({token});
+                                            // var ret = {
+                                            //     error:0,
+                                            //     token: token
+                                            // }
+                                            // callback(ret);
+                                            //updatedDbSendTokenFlag = 1;
+                                        });
+
+                                    //});
                                 } else {
                                     var coords2 = {
                                       lat: lat2,
@@ -239,7 +348,7 @@ function queryJena(searchStr, id, callback) {
                                         id: null,
                                         proImg: null,
                                         coords: coords2,
-                                        placeFullAddr: searchStr,
+                                        placeFullAddr: fulladdr,
                                         placePhoto: ""
                                     }, 'secretkeyforjsonwebtoken');
                                     console.log("search bar sending token2 ");
@@ -291,38 +400,124 @@ function queryJena(searchStr, id, callback) {
 
                                       var insertToSearchHistory = {
                                         element: doc_id,
-                                        searchStr: searchStr
+                                        searchStr: fulladdr,
+                                        //date: new Date()
                                       }
                                       //Update searchHistory in user Model.
-                                      User.findByIdAndUpdate(id, {
-                                        $push: { searchHistory: insertToSearchHistory }
-                                      }, { 'new': true}, function(err, user) {
-                                          if (err) {
-                                                console.log("error in searchhistory update");
-                                          } else {
-                                              console.log("succes in updataing searchHistory");
-                                              const token = jwt.sign({
-                                                  email: user.email,
-                                                  userName: user.userName,
-                                                  accountType: user.accountType,
-                                                  id: user._id,
-                                                  proImg: user.proImg,
-                                                  coords: coords,
-                                                  placeFullAddr: searchStr,
-                                                  placePhoto: ""
-                                              }, 'secretkeyforjsonwebtoken');
-                                              console.log("search bar sending token ");
-                                              //res.json({token});
-                                              var ret = {
-                                                  error:0,
-                                                  token: token
-                                              }
-                                              callback(ret);
-                                          }
+                                      // User.find({_id: id,searchHistory:},function(err,docs){
+                                      //
+                                      // })
+                                      if (false) {
 
-                                      });
+                                      } else {
+                                        User.update(
+                                          { _id: id, searchHistory: insertToSearchHistory},
+                                          {$addToSet: { searchHistory: insertToSearchHistory}},
+                                          function(err, user) {
+                                            if (err) {
+                                                  console.log("error in searchhistory update");
+                                            } else {
+                                                console.log("succes in updataing searchHistory11111", user);
 
 
+
+                                                User.findOne({_id:id,'searchHistory.searchStr': fulladdr}, function(err, data3) {
+
+                                                  if(err) {
+                                                    console.log("1111111111111");
+                                                  } else if (!data3){
+                                                    console.log("2222222222222");
+                                                    var insertToSearchHistoryNew = {
+                                                      element: doc_id,
+                                                      searchStr: fulladdr,
+                                                      date: new Date()
+                                                    }
+                                                    User.update(
+                                                      { _id: id},
+                                                      {$addToSet: { searchHistory: insertToSearchHistoryNew}},
+                                                      function(err, user) {
+                                                          if (err) {
+                                                             console.log("in 2nd update error")
+                                                          } else {
+                                                             console.log("in 2nd update success");
+                                                             const token = jwt.sign({
+                                                                 email: data.email,
+                                                                 userName: data.userName,
+                                                                 accountType: data.accountType,
+                                                                 id: data._id,
+                                                                 proImg: data.proImg,
+                                                                 coords: coords2,
+                                                                 placeFullAddr: fulladdr,
+                                                                 placePhoto: ""
+                                                             }, 'secretkeyforjsonwebtoken');
+                                                             console.log("search bar sending token ");
+                                                             //res.json({token});
+                                                             var ret = {
+                                                                 error:0,
+                                                                 token: token
+                                                             }
+                                                             callback(ret);
+                                                          }
+                                                      })
+
+                                                  } else {
+                                                    console.log("333333333333333")
+                                                    User.update(
+                                                      { 'searchHistory.searchStr': fulladdr},
+                                                      {$set: { 'searchHistory.$.date': new Date()}},
+                                                    function(err, user2) {
+                                                        if (err) {
+                                                          console.log("error date updated");
+                                                        } else {
+                                                          console.log("updating date",  user2);
+                                                          const token = jwt.sign({
+                                                              email: data.email,
+                                                              userName: data.userName,
+                                                              accountType: data.accountType,
+                                                              id: data._id,
+                                                              proImg: data.proImg,
+                                                              coords: coords,
+                                                              placeFullAddr: fulladdr,
+                                                              placePhoto: ""
+                                                          }, 'secretkeyforjsonwebtoken');
+                                                          console.log("search bar sending token ");
+                                                          //res.json({token});
+                                                          var ret = {
+                                                              error:0,
+                                                              token: token
+                                                          }
+                                                          callback(ret);
+                                                        }
+
+                                                    })
+                                                  }
+                                                })
+
+
+
+
+
+                                                // const token = jwt.sign({
+                                                //     email: data2.email,
+                                                //     userName: data2.userName,
+                                                //     accountType: data2.accountType,
+                                                //     id: data2._id,
+                                                //     proImg: data2.proImg,
+                                                //     coords: coords2,
+                                                //     placeFullAddr: searchStr,
+                                                //     placePhoto: ""
+                                                // }, 'secretkeyforjsonwebtoken');
+                                                // console.log("search bar sending token ");
+                                                // //res.json({token});
+                                                // var ret = {
+                                                //     error:0,
+                                                //     token: token
+                                                // }
+                                                // callback(ret);
+                                            }
+                                          });
+
+                                      }
                                   }
 
                               });
@@ -339,7 +534,7 @@ function queryJena(searchStr, id, callback) {
                                   id: null,
                                   proImg: null,
                                   coords: coords,
-                                  placeFullAddr: searchStr,
+                                  placeFullAddr: fulladdr,
                                   placePhoto: ""
                               }, 'secretkeyforjsonwebtoken');
                               console.log("search bar sending token lplpl ");
@@ -357,9 +552,8 @@ function queryJena(searchStr, id, callback) {
               });
             }
       }
-
-  });
-}
+    })
+  }
 
 // handle search_bar location search
 // test version

@@ -94,12 +94,14 @@ class MyGoogleSuggest extends Component {
       if (user.id == null) {
         toSend = {
           searchStr: suggest.terms[0].value,
-          id: null
+          id: null,
+          fulladdr: suggest.description
         }
       } else {
         toSend = {
           searchStr: suggest.terms[0].value,
-          id: user.id
+          id: user.id,
+          fulladdr: suggest.description
         }
       }
       this.props.searchBarRequest(toSend).then(
@@ -127,6 +129,7 @@ class MyGoogleSuggest extends Component {
           // if server response any error message, set it into state errors
           (err) => {
               var photo = "";
+              console.log("in err");
               console.log("err.response.data: ", err.response.data);
               this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
                 console.log("suggest: ", suggest);
