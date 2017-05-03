@@ -1,28 +1,18 @@
 import { SET_SHOW_SEARCH_RESULT } from '../actions/types';
-
 // pure redux function, action creator
-export function setShow() {
+export function setSearchResultList(conf) {
     return {
         type: SET_SHOW_SEARCH_RESULT,
-        setConf
+        data: conf
     }
 }
 
-export function setShowSearchResult(userData) {
-    console.log("inside updateCoordsRequest, ", setConf);
-    if (userData.id == null) {
-        return dispatch => {
-            // sessionStorage.removeItem('loginToken');
-            // sessionStorage.setItem('loginToken', userData);
-            // setAuthorizationToken(userData);
-            return dispatch(setShow(setConf));
-        }
-    } else {
-        return dispatch => {
-            // sessionStorage.removeItem('loginToken');
-            // sessionStorage.setItem('loginToken', userData);
-            // setAuthorizationToken(userData);
-            return dispatch(setShow(setConf));
-        }
+export function setShowSearchResult(conf) {
+    return dispatch => {
+
+            dispatch(setSearchResultList(conf));
+
     }
 }
+
+

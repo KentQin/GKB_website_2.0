@@ -1,5 +1,4 @@
-import {SET_SEARCH_RESULT_LIST} from '../actions/types';
-//import lodash from 'lodash';
+import {SET_SHOW_SEARCH_RESULT} from '../actions/types';
 
 const initialState = {
     searchResultList: {}
@@ -10,10 +9,10 @@ export default (state = initialState, action) => {
     switch (action.type) {
 
         //called by login page
-        case SET_SEARCH_RESULT_LIST:
+        case SET_SHOW_SEARCH_RESULT:
             return {
                 //action object contains user
-                searchResultList: action.searchresultList
+                searchResultPageConfig: action.data
             }
 
         default: return state;

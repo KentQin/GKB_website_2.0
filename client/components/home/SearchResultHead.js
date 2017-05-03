@@ -29,8 +29,8 @@ class SearchResultHead extends React.Component{
                                     <img className="small-icon-rec icon-place" src={place}/>
                                     <div className="place-sec">
                                         <p>{location}</p>
-                                        <p>Street info</p>
-                                        <p>City and post code</p>
+                                        {/*<p>Street info</p>*/}
+                                        {/*<p>City and post code</p>*/}
                                     </div>
                                 </div>
                             <div className="result-info result-btn">

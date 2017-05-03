@@ -3,6 +3,7 @@ import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
 import { SET_SEARCH_RESULT_LIST } from '../actions/types';
 
+
 // pure redux function, action creator
 export function setSearchResultList(searchresultList) {
     return {

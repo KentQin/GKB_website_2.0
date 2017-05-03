@@ -5,8 +5,9 @@ import NavBar from './NavBar';
 import { logout } from '../../actions/authAction';
 import SearchBar from './SearchBar';
 import { searchBarRequest } from '../../actions/searchBarAction';
-import { updateCoordsRequest} from '../../actions/updateCoords'
-import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest'
+import { updateCoordsRequest} from '../../actions/updateCoords';
+import { setShowSearchResult } from '../../actions/setShowSearchResult'
+import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
 import { searchBarTestGoAction } from '../../actions/searchBarTestGoAction'
 
@@ -59,6 +60,7 @@ class HomePage extends React.Component {
 
                 <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest}
                                    updateCoordsRequest={this.props.updateCoordsRequest}
+                                   setShowSearchResult={this.props.setShowSearchResult}
                                    showSearchResult={this.showSearchResult}/>
 
 
@@ -84,5 +86,5 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { logout, searchBarRequest, updateCoordsRequest })(HomePage);
+export default connect(mapStateToProps, { logout, searchBarRequest, updateCoordsRequest, setShowSearchResult })(HomePage);
 //export default connect(mapStateToProps, { logout, searchBarRequest, searchBarTestGoAction })(HomePage);
