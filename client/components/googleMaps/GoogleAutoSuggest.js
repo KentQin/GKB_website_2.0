@@ -26,60 +26,64 @@ class MyGoogleSuggest extends Component {
   }
 
   buttonClick(e) {
-    // This will directly go to the back end and search for coordinates in google db and jena
-    // query apache jena database, if not then go with google.
-    const {user} = this.props.login
-    // console.log("search term to jena: ", suggest.terms[0].value);
-    this.setState({errors: {} });
-    var toSend;
-    if (user.id == null) {
-      toSend = {
-        searchStr: this.state.searchStr,
-        id: null,
-        button:true
-      }
-    } else {
-      toSend = {
-        searchStr: this.state.searchStr,
-        id: user.id,
-        button:true
-      }
-    }
-    this.props.searchBarRequest(toSend).then(
-        (res) => {
-            console.log("we are back in searchBar clientside button");
-        },
-        // if server response any error message, set it into state errors
-        (err) => {
-            console.log("err.response.data: ", err.response.data);
-            // this.setState({searchStr: this.state.searchStr, selectedCoordinate: coordinate}, function() {
-            //   console.log("suggest: ", suggest);
-            //   console.log("coordinates: ", coordinate);
-            //   console.log("selectedCoordinate", this.state.selectedCoordinate);
-            //   console.log("place details in my code: ", place);
-            //   if (place.photos) {
-            //     console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
-            //   }
-            //   console.log("directionsResponse in my code: ", directionsResponse.routes[0].overview_path);
-            //   console.log("directionsResponse in my code lat: ", directionsResponse.routes[0].overview_path[0].lat());
-            //   // const {user} = this.props.login;
-            //   console.log("inside suggestSelect :", user);
-            //   var userData = {
-            //     email: user.email,
-            //     userName: user.userName,
-            //     accountType: user.accountType,
-            //     id: user.id,
-            //     coords: {
-            //       lat: this.state.selectedCoordinate.latitude,
-            //       longt: this.state.selectedCoordinate.longitude
-            //     },
-            //     directions:directionsResponse.routes[0].overview_path,
-            //   }
-            //
-            //   this.props.updateCoordsRequest(userData);
-            // })
-        }
-    );
+
+      console.log('GO is clicked ************');
+      this.props.showSearchResult();
+
+    // // This will directly go to the back end and search for coordinates in google db and jena
+    // // query apache jena database, if not then go with google.
+    // const {user} = this.props.login
+    // // console.log("search term to jena: ", suggest.terms[0].value);
+    // this.setState({errors: {} });
+    // var toSend;
+    // if (user.id == null) {
+    //   toSend = {
+    //     searchStr: this.state.searchStr,
+    //     id: null,
+    //     button:true
+    //   }
+    // } else {
+    //   toSend = {
+    //     searchStr: this.state.searchStr,
+    //     id: user.id,
+    //     button:true
+    //   }
+    // }
+    // this.props.searchBarRequest(toSend).then(
+    //     (res) => {
+    //         console.log("we are back in searchBar clientside button");
+    //     },
+    //     // if server response any error message, set it into state errors
+    //     (err) => {
+    //         console.log("err.response.data: ", err.response.data);
+    //         // this.setState({searchStr: this.state.searchStr, selectedCoordinate: coordinate}, function() {
+    //         //   console.log("suggest: ", suggest);
+    //         //   console.log("coordinates: ", coordinate);
+    //         //   console.log("selectedCoordinate", this.state.selectedCoordinate);
+    //         //   console.log("place details in my code: ", place);
+    //         //   if (place.photos) {
+    //         //     console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
+    //         //   }
+    //         //   console.log("directionsResponse in my code: ", directionsResponse.routes[0].overview_path);
+    //         //   console.log("directionsResponse in my code lat: ", directionsResponse.routes[0].overview_path[0].lat());
+    //         //   // const {user} = this.props.login;
+    //         //   console.log("inside suggestSelect :", user);
+    //         //   var userData = {
+    //         //     email: user.email,
+    //         //     userName: user.userName,
+    //         //     accountType: user.accountType,
+    //         //     id: user.id,
+    //         //     coords: {
+    //         //       lat: this.state.selectedCoordinate.latitude,
+    //         //       longt: this.state.selectedCoordinate.longitude
+    //         //     },
+    //         //     directions:directionsResponse.routes[0].overview_path,
+    //         //   }
+    //         //
+    //         //   this.props.updateCoordsRequest(userData);
+    //         // })
+    //     }
+    // );
   }
 
   handleSearchChange(e) {
@@ -158,15 +162,21 @@ class MyGoogleSuggest extends Component {
                   accountType: user.accountType,
                   proImg: user.proImg,
                   id: user.id,
+                    proImg: user.proImg,
+                    showSearchResult: true,
                   coords: {
                     lat: this.state.selectedCoordinate.latitude,
                     longt: this.state.selectedCoordinate.longitude
                   },
                   directions:directionsResponse.routes[0].overview_path,
-                  placeFullAddr:suggest.description,
-                  placePhoto: photo
-                }
 
+                }
+                var conf = {
+                    showSearchResult: true,
+                    placeFullAddr:suggest.description,
+                    placePhoto: photo
+                }
+                this.props.setShowSearchResult(conf);
                 this.props.updateCoordsRequest(userData);
                 if (flag) {
                     console.log("just before routing to mapContainer")
