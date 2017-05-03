@@ -12,7 +12,8 @@ var userSchema = new Schema({
     contributions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element' }],
     searchHistory: [{
         element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
-        searchStr: { type: String }
+        searchStr: { type: String },
+        date: { type: Date }
     }],
     favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element'}]
 });

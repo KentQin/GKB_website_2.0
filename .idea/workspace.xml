@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6a18087-ce5f-45bc-8c21-47bd5c73a330" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/home/AddDescription.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/userProfile/Favourites.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/userProfile/FavouritesPage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/actions/searchBarTestGoAction.js" afterPath="$PROJECT_DIR$/client/actions/searchBarTestGoAction.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/actions/setShowSearchResult.js" afterPath="$PROJECT_DIR$/client/actions/setShowSearchResult.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/actions/searchBarAction.js" afterPath="$PROJECT_DIR$/client/actions/searchBarAction.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/DropZone.js" afterPath="$PROJECT_DIR$/client/components/DropZone.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/googleMaps/GoogleAutoSuggest.js" afterPath="$PROJECT_DIR$/client/components/googleMaps/GoogleAutoSuggest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/googleMaps/MapContainer.js" afterPath="$PROJECT_DIR$/client/components/googleMaps/MapContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/home/HomePage.js" afterPath="$PROJECT_DIR$/client/components/home/HomePage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/home/SearchResultHead.js" afterPath="$PROJECT_DIR$/client/components/home/SearchResultHead.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/home/SearchResultList.js" afterPath="$PROJECT_DIR$/client/components/home/SearchResultList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/userProfile/SearchHistory.js" afterPath="$PROJECT_DIR$/client/components/userProfile/SearchHistory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/reducer/searchResult.js" afterPath="$PROJECT_DIR$/client/reducer/searchResult.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/home/SearchBar.js" afterPath="$PROJECT_DIR$/client/components/home/SearchBar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/landing/landingPage.js" afterPath="$PROJECT_DIR$/client/components/landing/landingPage.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/database.js" afterPath="$PROJECT_DIR$/server/database.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/user.js" afterPath="$PROJECT_DIR$/server/models/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/searchBar.js" afterPath="$PROJECT_DIR$/server/routes/searchBar.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -77,7 +70,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddDescription.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddDescription.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/home/AddDescription.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
@@ -123,26 +116,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchResultHead.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/home/SearchResultHead.js">
+      <file leaf-file-name="GoogleAutoSuggest.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/googleMaps/GoogleAutoSuggest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="43" column="41" lean-forward="false" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="41" />
+            <state relative-caret-position="1095">
+              <caret line="177" column="17" lean-forward="false" selection-start-line="177" selection-start-column="17" selection-end-line="177" selection-end-column="17" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GoogleAutoSuggest.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/googleMaps/GoogleAutoSuggest.js">
+      <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="168" column="17" lean-forward="true" selection-start-line="168" selection-start-column="17" selection-end-line="168" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-15">
+              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,6 +148,7 @@
       <find>result_table</find>
       <find>add</find>
       <find>Array</find>
+      <find>head</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,7 +164,6 @@
       <list>
         <option value="$PROJECT_DIR$/client/actions/types.js" />
         <option value="$PROJECT_DIR$/client/actions/showSeachResult.js" />
-        <option value="$PROJECT_DIR$/server/database.js" />
         <option value="$PROJECT_DIR$/client/actions/searchBarTestGoAction.js" />
         <option value="$PROJECT_DIR$/client/components/home/HomePage.js" />
         <option value="$PROJECT_DIR$/client/actions/setShowSearchResult.js" />
@@ -182,6 +173,7 @@
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/client/components/home/SearchResultList.js" />
         <option value="$PROJECT_DIR$/client/components/home/AddDescription.js" />
+        <option value="$PROJECT_DIR$/server/database.js" />
       </list>
     </option>
   </component>
@@ -248,25 +240,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_Website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_Website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -281,24 +255,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_Website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_Website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reducer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -317,50 +273,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_Website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_Website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_Website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GKB_Website_2.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -800,12 +712,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1493698012772</updated>
-      <workItem from="1493698014061" duration="13741000" />
+      <workItem from="1493698014061" duration="14110000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13741000" />
+    <option name="totallyTimeSpent" value="14110000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="31" y="22" width="1260" height="827" extended-state="0" />
@@ -966,14 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="28" column="10" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/actions/searchBarAction.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-195">
@@ -1018,16 +922,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/googleMaps/GoogleAutoSuggest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="168" column="17" lean-forward="true" selection-start-line="168" selection-start-column="17" selection-end-line="168" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1113,6 +1007,24 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/googleMaps/GoogleAutoSuggest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="177" column="17" lean-forward="false" selection-start-line="177" selection-start-column="17" selection-end-line="177" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

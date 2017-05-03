@@ -91,7 +91,7 @@ class SearchBar extends React.Component{
 
 SearchBar.propTypes = {
     searchBarRequest: React.PropTypes.func.isRequired,
-    searchBarTestGoAction: React.PropTypes.func.isRequired,
+    searchBarTestGoAction: React.PropTypes.func,
     login: React.PropTypes.object.isRequired
 }
 

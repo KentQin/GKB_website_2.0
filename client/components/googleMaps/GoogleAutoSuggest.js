@@ -3,6 +3,7 @@ import GoogleMapLoader from "react-google-maps-loader"
 import GooglePlacesSuggest from "react-google-places-suggest"
 import "react-google-places-suggest/lib/index.css"
 import { connect } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 const MY_API_KEY = "AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM"
 
@@ -92,18 +93,22 @@ class MyGoogleSuggest extends Component {
   handleSelectSuggest(suggest, coordinate, place, directionsResponse) {
       // query apache jena database, if not then go with google.
       const {user} = this.props.login
+      console.log("this props landingpage flag: ", this.props.landingPageFlag);
+      var flag = this.props.landingPageFlag;
       console.log("search term to jena: ", suggest.terms[0].value);
       this.setState({errors: {} });
       var toSend;
       if (user.id == null) {
         toSend = {
           searchStr: suggest.terms[0].value,
-          id: null
+          id: null,
+          fulladdr: suggest.description
         }
       } else {
         toSend = {
           searchStr: suggest.terms[0].value,
-          id: user.id
+          id: user.id,
+          fulladdr: suggest.description
         }
       }
       this.props.searchBarRequest(toSend).then(
@@ -127,10 +132,14 @@ class MyGoogleSuggest extends Component {
 
               //this.props.updateCoordsRequest(userData);
               //this.context.router.push('/home')
+              if (flag) {
+                 this.context.router.push('/map')
+              }
           },
           // if server response any error message, set it into state errors
           (err) => {
               var photo = "";
+              console.log("in err");
               console.log("err.response.data: ", err.response.data);
               this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
                 console.log("suggest: ", suggest);
@@ -169,6 +178,11 @@ class MyGoogleSuggest extends Component {
                 }
                 this.props.setShowSearchResult(conf);
                 this.props.updateCoordsRequest(userData);
+                if (flag) {
+                    console.log("just before routing to mapContainer")
+                   browserHistory.push('/map');
+                }
+
               })
           }
       );
@@ -211,7 +225,8 @@ class MyGoogleSuggest extends Component {
 MyGoogleSuggest.propTypes = {
     searchBarRequest: React.PropTypes.func.isRequired,
     login: React.PropTypes.object.isRequired,
-    updateCoordsRequest: React.PropTypes.func.isRequired
+    updateCoordsRequest: React.PropTypes.func.isRequired,
+    landingPageFlag: React.PropTypes.any
 }
 
 MyGoogleSuggest.contextTypes = {
