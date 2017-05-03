@@ -79,7 +79,7 @@ if(!sessionStorage.length) {
 
 render(
     <Provider store={store}>
-        <LandingPage />
+        <MapContainer />
     </Provider>
     , document.getElementById('app')
 );
