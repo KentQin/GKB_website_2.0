@@ -208,7 +208,7 @@ MyGoogleSuggest.propTypes = {
 }
 
 MyGoogleSuggest.contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: React.PropTypes.object
 }
 
 function mapStateToProps(state) {
