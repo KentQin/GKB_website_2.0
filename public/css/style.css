@@ -623,7 +623,7 @@ a.list-group-item:hover {
     width:100%;
     position:absolute;
     top:0;
-    padding:10%;
+    color:white;
 }
 
 .history-button{
@@ -646,6 +646,16 @@ a.list-group-item:hover {
 .checkbox {
     float: right;
 }
+
+.search-history-entry{
+    background-color: honeydew;
+    margin-bottom: 1%;
+}
+.search-history-date-title{
+    float:left;
+}
+
+.s
 /* searchResultList and searchResultItem */
 *{
     margin: 0;
@@ -891,11 +901,57 @@ a.list-group-item:hover {
  */
 
 .vertical-block-content-left{
-    background-color: #0f4bac;
     height:100%;
 }
 
 .vertical-block-content-right{
-    background-color: #bcddff;
     height:100%;
+    overflow:scroll;
+}
+
+.favourite-item-box{
+    width:100%;
+    margin-bottom:2%;
+    padding:0;
+    height:50px;
+}
+
+.favourite-img{
+    background-color: darkgray;
+    height:100%;
+}
+
+.favourite-content{
+    height:100%;
+    float: initial;
+    background-color: lavender;
+}
+.favourite-content-title{
+    width:100%;
+    margin-top:1px;
+}
+
+.favourite-content-body{
+    width:100%;
+}
+
+.small-window{
+    position:absolute;
+    top:5%;
+    background: white;
+    padding:3%;
+}
+
+.form-group-n{
+    margin:4%;
+    text-align: center;
+}
+
+.margin-small{
+    margin:3% auto;
+}
+
+.text-align-right{
+    text-align: right;
+    margin:auto;
 }

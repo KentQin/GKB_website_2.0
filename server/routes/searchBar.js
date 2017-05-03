@@ -25,9 +25,6 @@ router.post('/', (req, res) => {
 
     } else {
 
-
-
-
       var searchStr = req.body.searchStr
       var result;
       var wayFlag = 0;

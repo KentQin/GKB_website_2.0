@@ -1,6 +1,7 @@
 import React from 'react';
 import LinkToHome from '../common/LinkToHome';
 import {Link} from 'react-router';
+import SearchHistoryList from './SearchHistoryList';
 class SearchHistory extends React.Component{
     render(){
         return(
@@ -25,35 +26,7 @@ class SearchHistory extends React.Component{
 
 
                     <div>
-                        <h5>Date</h5>
-                        <div className="checkbox">
-                            <label>
-                                <input type="checkbox" value="" />
-                                    Option one is this and that be sure to include why it's great
-                            </label>
-                        </div>
-                        <div className="checkbox">
-                            <label>
-                                <input type="checkbox" value="" />
-                                    Option two is disabled
-                            </label>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h5>Date</h5>
-                        <div className="checkbox">
-                            <label>
-                                <input type="checkbox" value="" />
-                                Option one is this and that be sure to include why it's great
-                            </label>
-                        </div>
-                        <div className="checkbox">
-                            <label>
-                                <input type="checkbox" value="" />
-                                Option two is disabled
-                            </label>
-                        </div>
+                        <SearchHistoryList/>
                     </div>
                 </div>
 

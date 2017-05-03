@@ -26,7 +26,7 @@ class ProfileContent extends React.Component{
             <div>
                 <div className="list-group">
                     <a href="#" className="list-group-item"><img src={contribution} className="sidebar-icon"/>My Contributions</a>
-                    <a href="#" className="list-group-item"><img src={favourites} className="sidebar-icon"/>Favourites</a>
+                    <Link to="/myfavourites" className="list-group-item"><img src={favourites} className="sidebar-icon"/>Favourites</Link>
                     <Link to ='/searchhistory' className="list-group-item"><img src={history} className="sidebar-icon"/>Search History</Link>
                     <Link to="/accountsetting" className="list-group-item"><img src={setting} className="sidebar-icon"/>Account Settings</Link>
                     <a href="#" onClick={this.logout} data-dismiss="modal" className="list-group-item"><img src={history} className="sidebar-icon"/>Logout</a>

@@ -14,6 +14,7 @@ import {connect} from 'react-redux'
 import AccountSetting from '../userProfile/AccountSettingPage';
 import SearchHistory from '../userProfile/SearchHistoryPage';
 import MyFavourites from '../userProfile/FavouritesPage';
+import AddDescription from '../home/AddDescription';
 
 //import GettingStartedGoogleMap from "./GMap"
 

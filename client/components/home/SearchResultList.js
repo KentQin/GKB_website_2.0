@@ -40,14 +40,11 @@ class SearchResultList extends React.Component {
 
     render() {
 
-
         var items = [];
-        //var i = 0;
         const { resultArray } = this.props.searchResult.searchResultList;
         const { autoComment } = this.props.searchResult.searchResultList;
         const { location } = this.props.searchResult.searchResultList;
         if (typeof(resultArray) != 'undefined') {
-
             var numList = resultArray.length;
             console.log('num:', numList)
             for (var i = 0; i < numList; i++) {
@@ -60,8 +57,6 @@ class SearchResultList extends React.Component {
                 );
             }
         }
-
-
 
         return (
             <div>
@@ -77,9 +72,6 @@ class SearchResultList extends React.Component {
                                 <div className="left-text">
                                     <span> Location Descriptions </span>
                                     <div id = "add_dis_box" >
-                                        {/*<buttom id = "discription"*/}
-                                                {/*onClick = {this.onClickDis}*/}
-                                        {/*>Location Discriptions</buttom>*/}
                                         <img id = "add"
                                              src = {addPic}
                                              onClick = {this.onClickAdd}
