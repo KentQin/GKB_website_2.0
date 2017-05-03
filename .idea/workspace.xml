@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a6a18087-ce5f-45bc-8c21-47bd5c73a330" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/actions/searchBarAction.js" afterPath="$PROJECT_DIR$/client/actions/searchBarAction.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/DropZone.js" afterPath="$PROJECT_DIR$/client/components/DropZone.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/googleMaps/GoogleAutoSuggest.js" afterPath="$PROJECT_DIR$/client/components/googleMaps/GoogleAutoSuggest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/home/SearchBar.js" afterPath="$PROJECT_DIR$/client/components/home/SearchBar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/landing/landingPage.js" afterPath="$PROJECT_DIR$/client/components/landing/landingPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/database.js" afterPath="$PROJECT_DIR$/server/database.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/user.js" afterPath="$PROJECT_DIR$/server/models/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/searchBar.js" afterPath="$PROJECT_DIR$/server/routes/searchBar.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -131,8 +123,8 @@
       <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -712,16 +704,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1493698012772</updated>
-      <workItem from="1493698014061" duration="14110000" />
+      <workItem from="1493698014061" duration="14294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14110000" />
+    <option name="totallyTimeSpent" value="14294000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="31" y="22" width="1260" height="827" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -735,7 +727,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292517" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292517" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24958949" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1022,8 +1014,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding />
         </state>
       </provider>
