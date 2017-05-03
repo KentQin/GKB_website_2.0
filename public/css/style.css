@@ -583,8 +583,14 @@ a.list-group-item:hover {
  */
 .jumbotron{
     margin-bottom:0;
-    background-image:url("../img/landing_page_photo.png");
     height:100%;
+    background-image:url("../img/landing_page_photo.png");
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+.landing-bg{
+
 }
 
 .title-white{
@@ -602,7 +608,13 @@ a.list-group-item:hover {
     right:0;
     left:0;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 5%;
+    padding:10% 0;
+}
+
+.landing-content{
+    width:100%;
+    margin:auto;
 }
 
 /*
@@ -628,6 +640,7 @@ a.list-group-item:hover {
 
 .history-button{
     float:right;
+    margin:auto 1%;
 }
 
 .col-md-8{
@@ -953,5 +966,18 @@ a.list-group-item:hover {
 
 .text-align-right{
     text-align: right;
+    margin:auto;
+}
+
+.history-entries-date{
+    text-align: left;
+    margin: 5% auto;
+}
+
+.entry-block{
+    margin:auto 2%;
+}
+
+.search-entry-content{
     margin:auto;
 }

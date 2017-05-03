@@ -9,7 +9,7 @@ class SearchHistoryEntryList extends React.Component{
 
         for(var i =0;i<entryArray.length;i++){
             items.push(
-                <div><SearchHistoryEntry location={entryArray[i]} />
+                <div key={i}><SearchHistoryEntry location={entryArray[i]} />
                 </div>
             )
         }

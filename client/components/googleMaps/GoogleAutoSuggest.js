@@ -94,12 +94,14 @@ class MyGoogleSuggest extends Component {
       if (user.id == null) {
         toSend = {
           searchStr: suggest.terms[0].value,
-          id: null
+          id: null,
+          fulladdr: suggest.description
         }
       } else {
         toSend = {
           searchStr: suggest.terms[0].value,
-          id: user.id
+          id: user.id,
+          fulladdr: suggest.description
         }
       }
       this.props.searchBarRequest(toSend).then(
@@ -126,6 +128,8 @@ class MyGoogleSuggest extends Component {
           },
           // if server response any error message, set it into state errors
           (err) => {
+              var photo = "";
+              console.log("in err");
               console.log("err.response.data: ", err.response.data);
               this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
                 console.log("suggest: ", suggest);
@@ -134,6 +138,9 @@ class MyGoogleSuggest extends Component {
                 console.log("place details in my code: ", place);
                 if (place.photos) {
                   console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
+                  photo = place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35})
+                } else {
+                  photo = ""
                 }
                 console.log("directionsResponse in my code: ", directionsResponse.routes[0].overview_path);
                 console.log("directionsResponse in my code lat: ", directionsResponse.routes[0].overview_path[0].lat());
@@ -143,12 +150,15 @@ class MyGoogleSuggest extends Component {
                   email: user.email,
                   userName: user.userName,
                   accountType: user.accountType,
+                  proImg: user.proImg,
                   id: user.id,
                   coords: {
                     lat: this.state.selectedCoordinate.latitude,
                     longt: this.state.selectedCoordinate.longitude
                   },
                   directions:directionsResponse.routes[0].overview_path,
+                  placeFullAddr:suggest.description,
+                  placePhoto: photo
                 }
 
                 this.props.updateCoordsRequest(userData);

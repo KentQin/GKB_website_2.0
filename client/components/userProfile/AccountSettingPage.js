@@ -1,9 +1,7 @@
 import React from 'react';
-import AccountSettingMenu from './AccountSettingMenu';
 import OverviewContent from './OverviewContent';
 import LinkToHome from './../common/LinkToHome';
 import PasswordContent from './PasswordContent';
-import { connect } from 'react-redux';
 
 class AccountSettingPage extends React.Component{
     constructor(props){

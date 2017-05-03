@@ -12,17 +12,22 @@ class SearchHistory extends React.Component{
                     <LinkToHome/>
                 </div>
 
+
                 <div className="vertical-block-content">
                     <div className="history-button">
-                        <Link to ="/home"/>Add to Favourites
-                        <Link to="/signup"/>
-                        Delete
-                        <div className="checkbox">
-                            <label>
-                                <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." />
-                            </label>
-                        </div>
+                        <Link to="/signup"  className="history-button"/>Delete
                     </div>
+
+                    <div  className="history-button">
+                        <Link to ="/home" />Add to Favourites
+                    </div>
+
+                        {/*<div className="checkbox">*/}
+                            {/*<label>*/}
+                                {/*<input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." />*/}
+                            {/*</label>*/}
+                        {/*</div>*/}
+
 
 
                     <div>

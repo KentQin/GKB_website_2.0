@@ -106,9 +106,10 @@ router.post('/login', (req, res) => {
                 userName: data.userName,
                 accountType: user.accountType,
                 id: data._id,
-                proImg: data.proImg
+                proImg: data.proImg,
+                searchHistory: data.searchHistory
             }, 'secretkeyforjsonwebtoken');
-            console.log("Logged in " + data);
+            console.log("Logged in " + data.searchHistory);
             res.json({token});
         }
 

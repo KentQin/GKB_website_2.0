@@ -30,13 +30,13 @@ export function searchBarRequest(userData) {
             setAuthorizationToken(token);
             // decode token, get user msg from it
             console.log('decode: ',jwt.decode(token));
-            // if (jwt.decode(token).id == null) {
-            //   dispatch(setCurrentUserGuest(jwt.decode(token)));
-            // } else {
-            // // dispatch action 'setCurrentUser' to change state
-            //   dispatch(setCurrentUser(jwt.decode(token)));
-            // }
-             dispatch(setCurrentUser(jwt.decode(token)));
+            if (jwt.decode(token).id == null) {
+              dispatch(setCurrentUserGuest(jwt.decode(token)));
+            } else {
+            // dispatch action 'setCurrentUser' to change state
+              dispatch(setCurrentUser(jwt.decode(token)));
+            }
+             //dispatch(setCurrentUser(jwt.decode(token)));
         });
     }
 }
