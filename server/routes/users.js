@@ -24,7 +24,6 @@ router.post('/signup', (req, res) => {
     // }, 'secretkeyforjsonwebtoken');
     // res.json({token});
 
-
     User.find(email).count(function(err, count){
         let errors = {}
         console.log( "Number of docs: ", count );

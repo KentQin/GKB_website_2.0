@@ -111,7 +111,8 @@ class MyGoogleSuggest extends Component {
           fulladdr: suggest.description
         }
       }
-      this.props.searchBarRequest(toSend).then(
+      this.props.searchBarRequest(toSend)
+          .then(
           // after server response then...
           // if successful
           //var userUpdated = this.props.login.user;
@@ -139,23 +140,13 @@ class MyGoogleSuggest extends Component {
           // if server response any error message, set it into state errors
           (err) => {
               var photo = "";
-              console.log("in err");
-              console.log("err.response.data: ", err.response.data);
               this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
-                console.log("suggest: ", suggest);
-                console.log("coordinates: ", coordinate);
-                console.log("selectedCoordinate", this.state.selectedCoordinate);
-                console.log("place details in my code: ", place);
                 if (place.photos) {
                   console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
                   photo = place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35})
                 } else {
                   photo = ""
-                }
-                console.log("directionsResponse in my code: ", directionsResponse.routes[0].overview_path);
-                console.log("directionsResponse in my code lat: ", directionsResponse.routes[0].overview_path[0].lat());
-                // const {user} = this.props.login;
-                console.log("inside suggestSelect :", user);
+                };
                 var userData = {
                   email: user.email,
                   userName: user.userName,
@@ -171,12 +162,14 @@ class MyGoogleSuggest extends Component {
                   directions:directionsResponse.routes[0].overview_path,
 
                 }
-                var conf = {
+                const descriptionArray = err.response.data
+                const conf = {
                     showSearchResult: true,
                     placeFullAddr:suggest.description,
                     placePhoto: photo
                 }
                 this.props.setShowSearchResult(conf);
+                this.props.setDescriptionArray(descriptionArray);
                 this.props.updateCoordsRequest(userData);
                 if (flag) {
                     console.log("just before routing to mapContainer")
@@ -226,6 +219,7 @@ MyGoogleSuggest.propTypes = {
     searchBarRequest: React.PropTypes.func.isRequired,
     login: React.PropTypes.object.isRequired,
     updateCoordsRequest: React.PropTypes.func.isRequired,
+    setDescriptionArray: React.PropTypes.func.isRequired,
     landingPageFlag: React.PropTypes.any
 }
 

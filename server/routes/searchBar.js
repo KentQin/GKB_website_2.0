@@ -4,80 +4,98 @@ import validator from 'validator';
 import config from '../config'
 import curl from 'curlrequest';
 import jwt from 'jsonwebtoken';
+// import moment from 'moment';
 
 var rest = require('rest')
 var ElementEl = require('./../models/node.js');
 var User = require('./../models/user.js');
+var DescriptionSchema = require('./../models/placeDescription');
 //var rest = require('rest')
 
 let router = express.Router();
 
 router.post('/', (req, res) => {
-    console.log("id: " + req.body.id)
-    console.log("searchStr: " + req.body.searchStr)
+    console.log(req.body);
+    console.log("id: " + req.body.id);
+    console.log("searchStr: " + req.body.searchStr);
     console.log("finally in searchBar route");
     console.log("fulladdr: ", req.body.fulladdr);
     console.log("DATE: ", Date());
 
-    const button = req.body.button
+    const query = { placeFullAddr: req.body.fulladdr}
 
-    // if button was clicked, different way of dealing
-    if (button) {
-        console.log("go button clicked")
-        //places
+    // DescriptionSchema.find(query, 'user_email placeFullAddr like', function (err, place) {
+    //     if (err) return handleError(err);
+    //     console.log('%s %s %s.', place.user_email, place.placeFullAddr, place.like) // Space Ghost is a talk show host.
+    // });
+    DescriptionSchema.find(query, 'user_name description_content like',function (err, docs) {
+        if (err) return handleError(err);
+        // console.log(docs);
+        res.status(400).json(docs);
+    }).sort({ like: -1 });
+    // res.json(docs);
 
-        var ret = {};
-        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
-            //console.log("ret: ", ret)
-
-            if (ret.error == 1) {
-                var errors = ret.errors
-                res.status(400).json(errors);
-                // so search google now
-                //https://maps.googleapis.com/maps/api/place/textsearch/json?query=IGA&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
-                //autocomplete
-                //https://maps.googleapis.com/maps/api/place/autocomplete/json?input=hawthorn&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
-
-                console.log("not present in jena, so gooogle");
-                rest('http://freegeoip.net/json/').then(function(response) {
-                    var parsedData = JSON.parse(response.entity)
-                    var pos = {
-                        lat: parsedData.latitude,
-                        lng: parsedData.longitude
-                    };
-
-                    var options = { url: url};
-                    curl.request(options, function (err, res1) {
-
-                    });
-
-                });
-
-            } else {
-                //send jena results
-                console.log("present in jena")
-                var token = ret.token
-                res.json({token});
-            }
-
-        });
-
-    } else {
-
-        var ret = {};
-        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
-            //console.log("ret: ", ret)
-            if (ret.error == 1) {
-                var errors = ret.errors
-                res.status(400).json(errors);
-            } else {
-                var token = ret.token
-                res.json({token});
-            }
-        });
-    }
-    //res.redirect('/home');
 });
+//
+//     const button = req.body.button
+//
+//     // if button was clicked, different way of dealing
+//     if (button) {
+//         console.log("go button clicked")
+//         //places
+//
+//         var ret = {};
+//         ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
+//             //console.log("ret: ", ret)
+//
+//             if (ret.error == 1) {
+//                 var errors = ret.errors
+//                 res.status(400).json(errors);
+//                 // so search google now
+//                 //https://maps.googleapis.com/maps/api/place/textsearch/json?query=IGA&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
+//                 //autocomplete
+//                 //https://maps.googleapis.com/maps/api/place/autocomplete/json?input=hawthorn&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
+//
+//                 console.log("not present in jena, so gooogle");
+//                 rest('http://freegeoip.net/json/').then(function(response) {
+//                     var parsedData = JSON.parse(response.entity)
+//                     var pos = {
+//                         lat: parsedData.latitude,
+//                         lng: parsedData.longitude
+//                     };
+//
+//                     var options = { url: url};
+//                     curl.request(options, function (err, res1) {
+//
+//                     });
+//
+//                 });
+//
+//             } else {
+//                 //send jena results
+//                 console.log("present in jena")
+//                 var token = ret.token
+//                 res.json({token});
+//             }
+//
+//         });
+//
+//     } else {
+//
+//         var ret = {};
+//         ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
+//             //console.log("ret: ", ret)
+//             if (ret.error == 1) {
+//                 var errors = ret.errors
+//                 res.status(400).json(errors);
+//             } else {
+//                 var token = ret.token
+//                 res.json({token});
+//             }
+//         });
+//     }
+//     //res.redirect('/home');
+// });
 
 
 function queryJena(searchStr, fulladdr, id, callback) {
@@ -572,6 +590,45 @@ router.get('/testgo', (req, res) => {
     // console.log("TestGO:" + resultlist);
     // console.log("TestGO:" + resultlist.location);
     // console.log("TestGO:" + resultlist.resultArray);
+});
+
+router.post('/addDescription', (req, res) => {
+
+    var description = req.body
+    // description.date = new Date().Format("yyyy-MM-dd HH:mm:ss");
+    description.like = 0;
+    description.date = Date();
+    // console.log(description);
+    // console.log(description);
+
+    DescriptionSchema.create(description,function(err,data){
+        console.log("Writing to db");
+        console.log(description);
+        if(err){
+            console.log(err.statusCode);
+            console.log(err);
+        }else if(!data){
+            console.log(res.statusCode);
+            console.log("Error saving");
+        }else{
+            console.log(res.statusCode);
+            console.log("Description added!!!!");
+            const query = { placeFullAddr: description.placeFullAddr}
+            console.log(query)
+
+            // DescriptionSchema.find(query, 'user_email placeFullAddr like', function (err, place) {
+            //     if (err) return handleError(err);
+            //     console.log('%s %s %s.', place.user_email, place.placeFullAddr, place.like) // Space Ghost is a talk show host.
+            // });
+            DescriptionSchema.find(query, 'user_name description_content like',function (err, docs) {
+                if (err) return handleError(err);
+                // console.log(docs);
+                res.status(200).json(docs);
+            }).sort({ like: -1 });
+
+        }
+    })
+
 });
 
 // simulate load query result from db

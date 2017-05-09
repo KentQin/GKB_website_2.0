@@ -6,7 +6,9 @@ import { logout } from '../../actions/authAction';
 import SearchBar from './SearchBar';
 import { searchBarRequest } from '../../actions/searchBarAction';
 import { updateCoordsRequest} from '../../actions/updateCoords';
-import { setShowSearchResult } from '../../actions/setShowSearchResult'
+import { setShowSearchResult } from '../../actions/setShowSearchResult';
+import { setDescriptionArray }from '../../actions/setDescriptionArray';
+import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
 import { searchBarTestGoAction } from '../../actions/searchBarTestGoAction'
@@ -51,6 +53,7 @@ class HomePage extends React.Component {
         const { isAuthenticated } = this.props.login;
         const { showSearchResult } = this.props.login.user;
         const searchResult = this.props.searchResult;
+        const descriptionArray = this.props.descriptionArray;
 
         return (
             <div className="container loginPage float_on_the_map">
@@ -61,10 +64,14 @@ class HomePage extends React.Component {
                 <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest}
                                    updateCoordsRequest={this.props.updateCoordsRequest}
                                    setShowSearchResult={this.props.setShowSearchResult}
-                                   showSearchResult={this.showSearchResult}/>
+                                   showSearchResult={this.showSearchResult}
+                                   setDescriptionArray={this.props.setDescriptionArray}/>
 
 
-                {showSearchResult && <SearchResultList searchResult={searchResult}/>}
+                {showSearchResult && <SearchResultList searchResult={searchResult}
+                                                       descriptionArray = {descriptionArray}
+                                                       setDescriptionArray={this.props.setDescriptionArray}
+                                                       updateShowSearchResult={this.props.updateShowSearchResult}/>}
 
             </div>
         )
@@ -76,15 +83,23 @@ HomePage.propTypes = {
     login: React.PropTypes.object.isRequired,
     searchBarRequest: React.PropTypes.func.isRequired,
     updateCoordsRequest: React.PropTypes.func.isRequired,
+    setDescriptionArray: React.PropTypes.func.isRequired,
+    updateShowSearchResult: React.PropTypes.func.isRequired
     //searchBarTestGoAction: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
     return {
         login: state.login,
-        searchResult: state.searchResult
+        searchResult: state.searchResult,
+        descriptionArray: state.descriptionArray
     };
 }
 
-export default connect(mapStateToProps, { logout, searchBarRequest, updateCoordsRequest, setShowSearchResult })(HomePage);
+export default connect(mapStateToProps, { logout,
+                                        searchBarRequest,
+                                        updateCoordsRequest,
+                                        setShowSearchResult,
+                                        setDescriptionArray,
+                                        updateShowSearchResult})(HomePage);
 //export default connect(mapStateToProps, { logout, searchBarRequest, searchBarTestGoAction })(HomePage);

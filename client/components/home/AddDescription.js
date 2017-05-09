@@ -1,5 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
+import { connect } from 'react-redux';
+import axios from 'axios';
+
 
 class AddDescription extends React.Component{
 
@@ -11,6 +14,7 @@ class AddDescription extends React.Component{
         }
         this.onClickClose = this.onClickClose.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.onClickSubmit = this.onClickSubmit.bind(this);
     }
 
     onClickClose(){
@@ -19,6 +23,33 @@ class AddDescription extends React.Component{
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
+    }
+
+    onClickSubmit() {
+        // console.log("Submit!!!!!!!!!!!")
+        const content = this.state.content;
+        const { email } = this.props.contributor;
+        const { placeFullAddr} = this.props.placeInfo;
+        const { userName } =  this.props.contributor;
+        const description = {
+            user_email : email,
+            user_name : userName,
+            placeFullAddr: placeFullAddr,
+            description_content: content
+        }
+        // console.log(this.props);
+        this.props.updateShowSearchResult(description).then(this.props.hideAddWindow());
+        // axios.post('/api/searchBar/addDescription', description).then(res =>{
+        //     console.log('ans from server')
+        //     this.props.hideAddWindow();
+            // toSend = {
+            //     searchStr: suggest.terms[0].value,
+            //     id: user.id,
+            //     fulladdr: suggest.description
+            // }
+            // this.props.searchBarRequest(toSend).then(
+            // );
+        // })
     }
 
     render(){
@@ -49,9 +80,12 @@ class AddDescription extends React.Component{
                             <p className="text-align-right">{this.state.content.length}/140</p>
                         </div>
 
-                        <button type="submit" className="btn btn-default btn-login margin-small">Submit</button>
+                        <button type="submit"
+                                className="btn btn-default btn-login margin-small"
+                                onClick={this.onClickSubmit}>Submit</button>
                         <div>
-                            <Link className="margin-small" onClick={this.onClickClose}>Cancel</Link>
+                            <Link className="margin-small"
+                                  onClick={this.onClickClose}>Cancel</Link>
                         </div>
 
                     </div>
@@ -63,7 +97,15 @@ class AddDescription extends React.Component{
 
 
 AddDescription.propTypes = {
-    hideAddWindow: React.PropTypes.func.isRequired
+    hideAddWindow: React.PropTypes.func.isRequired,
+    updateShowSearchResult: React.PropTypes.func.isRequired
 }
 
-export default AddDescription;
+function mapStateToProps(state) {
+    return {
+        contributor: state.login.user,
+        placeInfo: state.searchResult.searchResultPageConfig
+    };
+}
+
+export default connect(mapStateToProps, null) (AddDescription);

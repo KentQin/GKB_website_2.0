@@ -66,19 +66,19 @@ class SearchResultList extends React.Component {
         // const { resultArray } = this.props.searchResult.searchResultList;
         // const { autoComment } = this.props.searchResult.searchResultList;
         const { placeFullAddr } = this.props.searchResult.searchResultPageConfig;
-        // if (typeof(resultArray) != 'undefined') {
-        //
-            var numList = 5;
-            // console.log('num:', numList)
-            for (var i = 0; i < numList; i++) {
-                //console.log(resultArray.length);
-                items.push(<tr key={i}><td><SearchResultItem userName='User'
-                                                             rank= {9}
-                                                             num = {i+1}
-                                                             discription='discrption'/>
-                            </td></tr>
-                );
-            }
+        const { array }= this.props.descriptionArray;
+
+        // console.log(descriptionArray);
+        var numList = array.length;
+        for (var i = 0; i < numList; i++) {
+            //console.log(resultArray.length);
+            items.push(<tr key={i}><td><SearchResultItem userName={array[i].user_name}
+                                                         like= {array[i].like}
+                                                         num = {i+1}
+                                                         discription={array[i].description_content}/>
+                        </td></tr>
+            );
+        }
         // }
 
         return (
@@ -109,7 +109,9 @@ class SearchResultList extends React.Component {
                     </tbody>
                     </table>
 
-                {this.state.showAddDescription && <AddDescription hideAddWindow={this.hideAddWindow}/>}
+                {this.state.showAddDescription && <AddDescription hideAddWindow={this.hideAddWindow}
+                                                                  setDescriptionArray = {this.props.setDescriptionArray}
+                                                                  updateShowSearchResult={this.props.updateShowSearchResult}/>}
             </div>
         )
     }
@@ -117,7 +119,10 @@ class SearchResultList extends React.Component {
 }
 
 SearchResultList.propTypes = {
-    searchResult: React.PropTypes.object.isRequired
+    searchResult: React.PropTypes.object.isRequired,
+    descriptionArray: React.PropTypes.object.isRequired,
+    setDescriptionArray: React.PropTypes.func.isRequired,
+    updateShowSearchResult: React.PropTypes.func.isRequired
 }
 
 

@@ -21,22 +21,23 @@ export function setCurrentUserGuest(user) {
 
 export function searchBarRequest(userData) {
     return dispatch => {
-        return axios.post('/api/searchBar', userData).then(res =>{
-            const token = res.data.token;
-            console.log('token: ' ,token);
-            // get token from server side, and store the token into session storage
-            sessionStorage.removeItem('loginToken');
-            sessionStorage.setItem('loginToken', token);
-            setAuthorizationToken(token);
-            // decode token, get user msg from it
-            console.log('decode: ',jwt.decode(token));
-            if (jwt.decode(token).id == null) {
-              dispatch(setCurrentUserGuest(jwt.decode(token)));
-            } else {
-            // dispatch action 'setCurrentUser' to change state
-              dispatch(setCurrentUser(jwt.decode(token)));
-            }
-             //dispatch(setCurrentUser(jwt.decode(token)));
-        });
+        return axios.post('/api/searchBar', userData)
+            // .then(res =>{
+            // const token = res.data.token;
+            // console.log('token: ' ,token);
+            // // get token from server side, and store the token into session storage
+            // sessionStorage.removeItem('loginToken');
+            // sessionStorage.setItem('loginToken', token);
+            // setAuthorizationToken(token);
+            // // decode token, get user msg from it
+            // console.log('decode: ',jwt.decode(token));
+            // if (jwt.decode(token).id == null) {
+            //   dispatch(setCurrentUserGuest(jwt.decode(token)));
+            // } else {
+            // // dispatch action 'setCurrentUser' to change state
+            //   dispatch(setCurrentUser(jwt.decode(token)));
+            // }
+            //  //dispatch(setCurrentUser(jwt.decode(token)));
+            //  });
     }
 }

@@ -1,19 +1,20 @@
 import {SET_SHOW_SEARCH_RESULT} from '../actions/types';
 
-const initialState = {
-    searchResultList: {}
-};
 
-export default (state = initialState, action) => {
+            const initialState = {
+                searchResultList: {}
+            };
 
-    switch (action.type) {
+        export default (state = initialState, action) => {
 
-        //called by login page
-        case SET_SHOW_SEARCH_RESULT:
-            return {
-                //action object contains user
-                searchResultPageConfig: action.data
-            }
+        switch (action.type) {
+
+            //called by login page
+            case SET_SHOW_SEARCH_RESULT:
+                return {
+                    //action object contains user
+                    searchResultPageConfig: action.data
+                }
 
         default: return state;
     }

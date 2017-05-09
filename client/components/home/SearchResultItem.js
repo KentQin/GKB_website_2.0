@@ -21,7 +21,7 @@ class SearchResultItem extends React.Component {
                              className = "thumb"/>
                     </div >
                     <div>
-                        <span> {this.props.rank}</span>
+                        <span> {this.props.like}</span>
                     </div>
 	            </div>
                 <p>
