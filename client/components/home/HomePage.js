@@ -69,7 +69,9 @@ class HomePage extends React.Component {
 
 
                 {showSearchResult && <SearchResultList searchResult={searchResult}
+                                                       isAuthenticated = {isAuthenticated}
                                                        descriptionArray = {descriptionArray}
+                                                       login={this.props.login}
                                                        setDescriptionArray={this.props.setDescriptionArray}
                                                        updateShowSearchResult={this.props.updateShowSearchResult}/>}
 

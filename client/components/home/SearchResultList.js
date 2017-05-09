@@ -14,8 +14,6 @@ class SearchResultList extends React.Component {
         // console.log('resultArray:',resultArray);
         // console.log('location:',location);
         this.state = {
-            results: {},
-            location: {},
             showAddDescription: false
         }
         this.onClickAdd = this.onClickAdd.bind(this);
@@ -24,6 +22,7 @@ class SearchResultList extends React.Component {
     }
 
     onClickAdd(){
+
         this.showAddWindow();
     }
 
@@ -119,6 +118,7 @@ class SearchResultList extends React.Component {
 }
 
 SearchResultList.propTypes = {
+    isAuthenticated: React.PropTypes.object.isRequired,
     searchResult: React.PropTypes.object.isRequired,
     descriptionArray: React.PropTypes.object.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
