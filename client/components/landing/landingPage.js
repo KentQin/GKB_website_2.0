@@ -12,34 +12,34 @@ import MapContainer from '../googleMaps/MapContainer'
 class landingPage extends React.Component{
     render(){
 
-      const { isAuthenticated } = this.props.login;
-      // const searchResult = this.props.searchResult;
+        const { isAuthenticated } = this.props.login;
+        // const searchResult = this.props.searchResult;
 
         return(
-        <div className="jumbotron">
+            <div className="jumbotron">
 
-            <div className="col-md-12 landingPage">
-                <div>
-                    <NavBar login={this.props.login}/>
+                <div className="col-md-12 landingPage">
+                    <div>
+                        <NavBar login={this.props.login}/>
+                    </div>
+                    <h3 className="title-white">Locate your destination in one sentence</h3>
+                    <div className="landing-search-bar" >
+                        <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest} updateCoordsRequest={this.props.updateCoordsRequest} landingPageFlag = {true}>
+
+                            <Router history={browserHistory}>
+                                <Route path="/" component={MapContainer}/>
+                                <Route path="home" component={MapContainer}/>
+                                <Route path="map" component={MapContainer}/>
+
+                            </Router>
+
+                        </GoogleAutoSuggest>
+
+                    </div>
+                    <p><a className="btn" href="#" role="button">Learn more</a></p>
                 </div>
-                <h3 className="title-white">Locate your destination in one sentence</h3>
-                <div className="landing-search-bar" >
-                    <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest} updateCoordsRequest={this.props.updateCoordsRequest} landingPageFlag = {true}>
 
-                    <Router history={browserHistory}>
-                        <Route path="/" component={MapContainer}/>
-                          <Route path="home" component={MapContainer}/>
-                          <Route path="map" component={MapContainer}/>
-
-                    </Router>
-
-                    </GoogleAutoSuggest>
-
-                </div>
-                <p><a className="btn" href="#" role="button">Learn more</a></p>
             </div>
-
-        </div>
         );
     }
 }

@@ -61,6 +61,7 @@ class AddDescription extends React.Component{
     }
 }
 
+
 AddDescription.propTypes = {
     hideAddWindow: React.PropTypes.func.isRequired
 }

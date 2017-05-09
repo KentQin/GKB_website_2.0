@@ -61,7 +61,6 @@ class SearchResultList extends React.Component {
 
     render() {
 
-
         var items = [];
         //var i = 0;
         // const { resultArray } = this.props.searchResult.searchResultList;
@@ -81,8 +80,6 @@ class SearchResultList extends React.Component {
                 );
             }
         // }
-
-
 
         return (
             <div>
