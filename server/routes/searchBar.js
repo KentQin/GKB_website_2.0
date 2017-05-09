@@ -23,15 +23,47 @@ router.post('/', (req, res) => {
     console.log("DATE: ", Date());
 
     const query = { placeFullAddr: req.body.fulladdr}
-
-    // DescriptionSchema.find(query, 'user_email placeFullAddr like', function (err, place) {
-    //     if (err) return handleError(err);
-    //     console.log('%s %s %s.', place.user_email, place.placeFullAddr, place.like) // Space Ghost is a talk show host.
-    // });
-    DescriptionSchema.find(query, 'user_name description_content like',function (err, docs) {
+    console.log("start1********************");
+    DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
         if (err) return handleError(err);
-        // console.log(docs);
-        res.status(400).json(docs);
+        //console.log(docs);
+        var counter = 1
+        var descriptionArray = [];
+        console.log(docs);
+        if(docs.length == 0){
+            res.status(400).json({data: null});
+        }else{
+            docs.forEach((doc) => {
+                //console.log(doc);
+                var temp = {};
+                User.findById(doc.user_id, 'proImg', function (err, img) {
+                    temp.doc = doc;
+                    temp.proImg = img.proImg;
+                    descriptionArray.push(temp);
+                    //console.log(temp);
+                    if (counter == docs.length){
+                        //console.log("All done")
+                        descriptionArray.sort((a,b)=>{
+                            if( a.doc.like > b.doc.like){
+                                return -1;
+                            }else if( a.doc.like < b.doc.like ){
+                                return 1;
+                            }
+                            return 0;
+                        });
+                        res.status(400).json(descriptionArray);
+                    }
+                    counter+=1;
+                });
+            });
+        }
+
+        // const data = {
+        //     user_imgs: user_imgs,
+        //     docs: docs
+        // }
+        //console.log(user_imgs);
+
     }).sort({ like: -1 });
     // res.json(docs);
 
@@ -607,28 +639,72 @@ router.post('/addDescription', (req, res) => {
         if(err){
             console.log(err.statusCode);
             console.log(err);
+            console.log("get error");
         }else if(!data){
             console.log(res.statusCode);
             console.log("Error saving");
         }else{
             console.log(res.statusCode);
             console.log("Description added!!!!");
-            const query = { placeFullAddr: description.placeFullAddr}
-            console.log(query)
+            const query = { placeFullAddr: description.placeFullAddr};
+            //console.log(query);
 
             // DescriptionSchema.find(query, 'user_email placeFullAddr like', function (err, place) {
             //     if (err) return handleError(err);
             //     console.log('%s %s %s.', place.user_email, place.placeFullAddr, place.like) // Space Ghost is a talk show host.
             // });
-            DescriptionSchema.find(query, 'user_name description_content like',function (err, docs) {
-                if (err) return handleError(err);
-                // console.log(docs);
-                res.status(200).json(docs);
+            DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+                if (err) console.log(err);
+                var counter = 1
+                var descriptionArray = [];
+                docs.forEach((doc) => {
+                    //console.log(doc);
+                    var temp = {};
+                    User.findById(doc.user_id, 'proImg', function (err, img) {
+                        temp.doc = doc;
+                        temp.proImg = img.proImg;
+                        descriptionArray.push(temp);
+                        //console.log(temp);
+                        if (counter == docs.length){
+                            //console.log("All done")
+                            //console.log(descriptionArray);
+                            descriptionArray.sort((a,b)=>{
+                                if( a.doc.like > b.doc.like){
+                                    return -1;
+                                }else if( a.doc.like < b.doc.like ){
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                            res.status(200).json(descriptionArray);
+                        }
+                        counter+=1;
+                    });
+                });
             }).sort({ like: -1 });
 
         }
     })
 
+});
+
+router.post('/addLike', (req, res) => {
+    const {id} = req.body;
+    const query = {_id: id}
+
+    //User.findByIdAndUpdate(data._id, { $set: {password: req.body.password} }, {new: true}, function (err, model) {});
+    DescriptionSchema.findByIdAndUpdate(id, { $inc: {like: 1} }, {new: true},function (err, description) {
+        if (err) return handleError(err);
+        res.status(200).json(description);
+        // console.log(description);
+    });
+
+    // DescriptionSchema.findOne(query, '_id user_name description_content like', function (err, description) {
+    //     if (err) return handleError(err);
+    //     console.log('%s %s %s.', description._id, description.user_name, description.like) // Space Ghost is a talk show host.
+    // });
+
+    // console.log(id);
 });
 
 // simulate load query result from db

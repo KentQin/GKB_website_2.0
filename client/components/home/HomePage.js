@@ -9,6 +9,7 @@ import { updateCoordsRequest} from '../../actions/updateCoords';
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
 import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
+import { addLikeRequest } from '../../actions/addLikeAction';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
 import { searchBarTestGoAction } from '../../actions/searchBarTestGoAction'
@@ -73,7 +74,8 @@ class HomePage extends React.Component {
                                                        descriptionArray = {descriptionArray}
                                                        login={this.props.login}
                                                        setDescriptionArray={this.props.setDescriptionArray}
-                                                       updateShowSearchResult={this.props.updateShowSearchResult}/>}
+                                                       updateShowSearchResult={this.props.updateShowSearchResult}
+                                                       addLikeRequest={this.props.addLikeRequest}/>}
 
             </div>
         )
@@ -86,7 +88,8 @@ HomePage.propTypes = {
     searchBarRequest: React.PropTypes.func.isRequired,
     updateCoordsRequest: React.PropTypes.func.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
-    updateShowSearchResult: React.PropTypes.func.isRequired
+    updateShowSearchResult: React.PropTypes.func.isRequired,
+    addLikeRequest: React.PropTypes.func.isRequired
     //searchBarTestGoAction: React.PropTypes.func.isRequired
 }
 
@@ -103,5 +106,6 @@ export default connect(mapStateToProps, { logout,
                                         updateCoordsRequest,
                                         setShowSearchResult,
                                         setDescriptionArray,
-                                        updateShowSearchResult})(HomePage);
+                                        updateShowSearchResult,
+                                        addLikeRequest})(HomePage);
 //export default connect(mapStateToProps, { logout, searchBarRequest, searchBarTestGoAction })(HomePage);

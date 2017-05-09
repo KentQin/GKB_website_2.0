@@ -28,11 +28,11 @@ class AddDescription extends React.Component{
     onClickSubmit() {
         // console.log("Submit!!!!!!!!!!!")
         const content = this.state.content;
-        const { email } = this.props.contributor;
+        const { id } = this.props.contributor;
         const { placeFullAddr} = this.props.placeInfo;
         const { userName } =  this.props.contributor;
         const description = {
-            user_email : email,
+            user_id : id,
             user_name : userName,
             placeFullAddr: placeFullAddr,
             description_content: content
