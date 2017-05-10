@@ -11,6 +11,10 @@ class SearchResultHead extends React.Component{
 
         const autoComment = this.props.autoComment;
         const location = this.props.location;
+        var imgSrc = this.props.placePhoto;
+        if(imgSrc == ''){
+            imgSrc = photo
+        }
         return(
             <div>
                 {/*<button className="btn btn-default profile-btn-on-map  btn-unfold-sidebar"*/}
@@ -21,7 +25,7 @@ class SearchResultHead extends React.Component{
                         {/*<button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>*/}
                         <div className="search-result-content">
                             <div className="photo-gallery col-md-5">
-                                <img src={photo}/>
+                                <img src={imgSrc}/>
                             </div>
 
                             <div className="search-result-right">

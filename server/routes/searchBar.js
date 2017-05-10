@@ -23,13 +23,11 @@ router.post('/', (req, res) => {
     console.log("DATE: ", Date());
 
     const query = { placeFullAddr: req.body.fulladdr}
-    console.log("start1********************");
     DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
         if (err) return handleError(err);
         //console.log(docs);
         var counter = 1
         var descriptionArray = [];
-        console.log(docs);
         if(docs.length == 0){
             res.status(400).json({data: null});
         }else{

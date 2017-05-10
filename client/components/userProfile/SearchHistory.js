@@ -2,6 +2,8 @@ import React from 'react';
 import LinkToHome from '../common/LinkToHome';
 import {Link} from 'react-router';
 import SearchHistoryList from './SearchHistoryList';
+
+
 class SearchHistory extends React.Component{
     render(){
         return(
@@ -21,13 +23,6 @@ class SearchHistory extends React.Component{
                     <div  className="history-button">
                         <Link to ="/home" />Add to Favourites
                     </div>
-
-                        {/*<div className="checkbox">*/}
-                            {/*<label>*/}
-                                {/*<input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." />*/}
-                            {/*</label>*/}
-                        {/*</div>*/}
-
 
 
                     <div>

@@ -75,22 +75,34 @@ class SearchResultList extends React.Component {
         // const { resultArray } = this.props.searchResult.searchResultList;
         // const { autoComment } = this.props.searchResult.searchResultList;
         const { placeFullAddr } = this.props.searchResult.searchResultPageConfig;
+        const { placePhoto } =this.props.searchResult.searchResultPageConfig;
         const { array }= this.props.descriptionArray;
+
 
         // console.log(descriptionArray);
         var numList = array.length;
-        for (var i = 0; i < numList; i++) {
-            //console.log(resultArray.length);
-            items.push(<tr key={i}><td><SearchResultItem userName={array[i].doc.user_name}
-                                                         like= {array[i].doc.like}
-                                                         num = {i+1}
-                                                         clickLike = {this.clickLike}
-                                                         id = {array[i].doc._id}
-                                                         proImg = {array[i].proImg}
-                                                         discription={array[i].doc.description_content}/>
-                        </td></tr>
+
+        if(numList != undefined){
+            for (var i = 0; i < numList; i++) {
+                //console.log(resultArray.length);
+                items.push(<tr key={i}><td><SearchResultItem userName={array[i].doc.user_name}
+                                                             like= {array[i].doc.like}
+                                                             num = {i+1}
+                                                             clickLike = {this.clickLike}
+                                                             id = {array[i].doc._id}
+                                                             proImg = {array[i].proImg}
+                                                             discription={array[i].doc.description_content}/>
+                    </td></tr>
+                );
+            }
+        }else{
+            items.push(<tr><td><div className = "result_box">
+                                    <h3>There is no description, waiting for your contribution</h3>
+                                </div>
+                </td></tr>
             );
         }
+
         // }
 
         return (
@@ -99,7 +111,9 @@ class SearchResultList extends React.Component {
                     <tbody>
                         <tr>
                             <td>
-                                <SearchResultHead autoComment = "autoComment" location = {placeFullAddr}/>
+                                <SearchResultHead autoComment = "autoComment"
+                                                  location = {placeFullAddr}
+                                                  placePhoto = {placePhoto}/>
                             </td>
                         </tr>
                         <tr>

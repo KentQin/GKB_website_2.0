@@ -11,11 +11,11 @@ class SearchHistoryList extends React.Component{
     }
 
     render(){
-        const {user} = this.props.login;
+        // const {user} = this.props.login;
 
         var items = [];
-        var { searchHistory } = this.props.login.user;
-        console.log("This:"+searchHistory);
+        // var { searchHistory } = this.props.login.user;
+        //console.log("This:"+searchHistory);
         // const history = {
         //     date:"Date of Search",
         //     entryArray:{entryArray}
@@ -25,13 +25,13 @@ class SearchHistoryList extends React.Component{
        var dates = [];
 
 
-        for(var i = 0; i< searchHistory.length;i++){
+        for(var i = 0; i< 5;i++){
             items.push(
                 <div key={i} className="entry-block">
                     {/*<SearchHistoryEntryList entryArray = {searchHistory[i].search}/>*/}
-                    <h5 className="search-history-date-title">{searchHistory[0].date}</h5>
+                    <h5 className="search-history-date-title">data</h5>
                     <div className="search-entry-content col-md-offset-2 col-md-8">
-                        <p>{searchHistory[i].searchStr}</p>
+                        <p>kent</p>
                     </div>
 
                 </div>
@@ -46,10 +46,10 @@ class SearchHistoryList extends React.Component{
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        login: state.login
-    };
-}
+// function mapStateToProps(state) {
+//     return {
+//         login: state.login
+//     };
+// }
 
-export default connect(mapStateToProps,null)(SearchHistoryList);
+export default (SearchHistoryList);
