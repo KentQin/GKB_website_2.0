@@ -16,6 +16,8 @@ import SearchHistory from '../userProfile/SearchHistoryPage';
 import MyFavourites from '../userProfile/FavouritesPage';
 import AddDescription from '../home/AddDescription';
 import Landing from '../landing/landingPage';
+import HomeLogin from '../login/HomeLogin';
+import HomeSignup from '../signup/HomeSignup';
 //import GettingStartedGoogleMap from "./GMap"
 
 class MapContainer extends Component {
@@ -180,8 +182,10 @@ class MapContainer extends Component {
 
 
           <Router history={browserHistory}>
-              <Route path="/" component={HomePage}/>
+              <Route path="/" component={Landing}/>
                   <Route path="home" component={HomePage}/>
+                  <Route path="homelogin" component={HomeLogin}/>
+                  <Route path="homesignup" component={HomeSignup}/>
                   <Route path="login" component={LoginPage}/>
                   <Route path="signup" component={SignupPage}/>
                   <Route path="resetpassword" component={ResetPasswordPage}/>
@@ -192,7 +196,6 @@ class MapContainer extends Component {
                   <Route path="accountsetting" component={AccountSetting}/>
                   <Route path="searchhistory" component={SearchHistory}/>
                   <Route path="myfavourites" component={MyFavourites}/>
-                  <Route path="landing" component={Landing}/>
           </Router>
 
 

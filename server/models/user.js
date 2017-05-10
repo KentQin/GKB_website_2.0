@@ -14,7 +14,9 @@ var userSchema = new Schema({
         element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
         searchStr: { type: String },
         date: { type: Date }
+        // date: [{type: Date, content:[{type: String}]}]
     }],
+
     favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element'}]
 });
 

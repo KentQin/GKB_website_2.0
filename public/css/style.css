@@ -997,3 +997,8 @@ a.list-group-item:hover {
 .search-entry-content{
     margin:auto;
 }
+
+.link-on-form{
+    position: inherit;
+    top:70%;
+}
