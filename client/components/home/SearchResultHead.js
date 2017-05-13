@@ -1,11 +1,45 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
 import photo from '../img/landing_page_photo.png';
 import place from '../img/ic-place-black-48-dp.png';
 import add from '../img/heart-light-filled-green.png';
 import share from '../img/ic-share-black-48-dp.png';
 
 
+
 class SearchResultHead extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+          searchStr: ""
+        }
+        this.addFavorite = this.addFavorite.bind(this);
+    }
+
+    addFavorite(e) {
+        console.log("In function addFavorite");
+        const location = this.props.location;
+        const photo = this.props.photo
+        const {user} = this.props.login;
+        const description = {
+            location : location,
+            photo : photo,
+            coords: user.coords
+        }
+        // console.log(this.props);
+
+        this.props.addToFavoritesAction(description).then(
+            (res) = {
+
+            },
+            (err) = {
+
+            }
+        );
+    }
 
     render(){
 
@@ -35,7 +69,7 @@ class SearchResultHead extends React.Component{
                                 </div>
                             <div className="result-info result-btn">
                                 <div className="add-sec">
-                                    <img className="small-icon-sq" src={add}/>
+                                    <img className="small-icon-sq" src={add} onClick={this.addFavorite}/>
                                     Add to Favourites
                                 </div>
 
@@ -61,9 +95,28 @@ class SearchResultHead extends React.Component{
     }
 }
 
+// SearchResultHead.propTypes = {
+//     // autoComment: React.PropTypes.string.isRequired,
+//     // location: React.PropTypes.string.isRequired
+// }
+//
+// export default SearchResultHead;
+
+
 SearchResultHead.propTypes = {
-    // autoComment: React.PropTypes.string.isRequired,
-    // location: React.PropTypes.string.isRequired
+    addToFavoritesAction: React.PropTypes.func.isRequired,
+    login: React.PropTypes.object.isRequired
 }
 
-export default SearchResultHead;
+SearchResultHead.contextTypes = {
+    router: React.PropTypes.object.isRequired
+}
+
+function mapStateToProps(state) {
+    console.log('mapStateToProps: ',state.login);
+    return {
+        login: state.login
+    };
+}
+
+export default connect(mapStateToProps, null)(SearchResultHead);

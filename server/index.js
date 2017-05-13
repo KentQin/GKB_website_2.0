@@ -12,6 +12,7 @@ import addProfile from './routes/addProfile'
 import changePswd from './routes/changePswd';
 import searchBar from './routes/searchBar';
 import updatePswd from './routes/updatePswd';
+import addFavorites from './routes/addFavorites'
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import './database';
@@ -66,7 +67,7 @@ app.use('/api/searchBar', searchBar);
 app.use('/api/searchBar/testgo', searchBar);
 app.use('/api/addProfilePic', addProfile);
 app.use('/api/updatePswd', updatePswd);
-
+app.use('/api/favorites', addFavorites);
 
 
 

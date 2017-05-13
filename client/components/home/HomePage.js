@@ -12,6 +12,7 @@ import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
 import { searchBarTestGoAction } from '../../actions/searchBarTestGoAction'
+import { addToFavoritesAction } from '../../actions/addToFavorites'
 
 class HomePage extends React.Component {
 
@@ -73,7 +74,8 @@ class HomePage extends React.Component {
                                                        descriptionArray = {descriptionArray}
                                                        login={this.props.login}
                                                        setDescriptionArray={this.props.setDescriptionArray}
-                                                       updateShowSearchResult={this.props.updateShowSearchResult}/>}
+                                                       updateShowSearchResult={this.props.updateShowSearchResult}
+                                                       addToFavoritesAction={this.props.addToFavoritesAction}/>}
 
             </div>
         )
@@ -86,7 +88,8 @@ HomePage.propTypes = {
     searchBarRequest: React.PropTypes.func.isRequired,
     updateCoordsRequest: React.PropTypes.func.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
-    updateShowSearchResult: React.PropTypes.func.isRequired
+    updateShowSearchResult: React.PropTypes.func.isRequired,
+    addToFavoritesAction: React.PropTypes.func.isRequired
     //searchBarTestGoAction: React.PropTypes.func.isRequired
 }
 
@@ -103,5 +106,5 @@ export default connect(mapStateToProps, { logout,
                                         updateCoordsRequest,
                                         setShowSearchResult,
                                         setDescriptionArray,
-                                        updateShowSearchResult})(HomePage);
-//export default connect(mapStateToProps, { logout, searchBarRequest, searchBarTestGoAction })(HomePage);
+                                        updateShowSearchResult,
+                                        addToFavoritesAction})(HomePage);

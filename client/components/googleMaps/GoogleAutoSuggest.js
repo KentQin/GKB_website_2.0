@@ -94,7 +94,7 @@ class MyGoogleSuggest extends Component {
       // query apache jena database, if not then go with google.
       const {user} = this.props.login
       console.log("this props landingpage flag: ", this.props.landingPageFlag);
-      var flag = this.props.landingPageFlag;
+      // var flag = this.props.landingPageFlag;
       console.log("search term to jena: ", suggest.terms[0].value);
       this.setState({errors: {} });
       var toSend;
@@ -133,9 +133,9 @@ class MyGoogleSuggest extends Component {
 
               //this.props.updateCoordsRequest(userData);
               //this.context.router.push('/home')
-              if (flag) {
-                 this.context.router.push('/map')
-              }
+              // if (flag) {
+              //    this.context.router.push('/map')
+              // }
           },
           // if server response any error message, set it into state errors
           (err) => {
@@ -171,10 +171,10 @@ class MyGoogleSuggest extends Component {
                 this.props.setShowSearchResult(conf);
                 this.props.setDescriptionArray(descriptionArray);
                 this.props.updateCoordsRequest(userData);
-                if (flag) {
-                    console.log("just before routing to mapContainer")
-                   browserHistory.push('/map');
-                }
+                // if (flag) {
+                //     console.log("just before routing to mapContainer")
+                //    browserHistory.push('/map');
+                // }
 
               })
           }
