@@ -740,8 +740,6 @@ a.list-group-item:hover {
     height: 30px;
     width: 30px;
     position: relative;
-    right: 50%;
-    left: 50%;
     transform: rotate(-30deg);
     -ms-transform: rotate(-30deg);		/* IE 9 */
     -webkit-transform: rotate(-30deg);	/* Safari and Chrome */

@@ -22,11 +22,16 @@ class SearchResultList extends React.Component {
         this.onClickAdd = this.onClickAdd.bind(this);
         this.showAddWindow = this.showAddWindow.bind(this);
         this.hideAddWindow = this.hideAddWindow.bind(this);
+        this.clickLike = this.clickLike.bind(this);
     }
 
     onClickAdd(){
-
-        this.showAddWindow();
+        const auth = this.props.isAuthenticated;
+        if (auth){
+            this.showAddWindow();
+        }else{
+            alert("Please log in");
+        }
     }
 
     showAddWindow(){
@@ -39,6 +44,11 @@ class SearchResultList extends React.Component {
         this.setState({
             showAddDescription: false
         });
+    }
+
+    clickLike(id){
+        //add one count on target description
+        this.props.addLikeRequest(id)
     }
 
 
@@ -76,10 +86,13 @@ class SearchResultList extends React.Component {
         var numList = array.length;
         for (var i = 0; i < numList; i++) {
             //console.log(resultArray.length);
-            items.push(<tr key={i}><td><SearchResultItem userName={array[i].user_name}
-                                                         like= {array[i].like}
+            items.push(<tr key={i}><td><SearchResultItem userName={array[i].doc.user_name}
+                                                         like= {array[i].doc.like}
                                                          num = {i+1}
-                                                         discription={array[i].description_content}/>
+                                                         clickLike = {this.clickLike}
+                                                         id = {array[i].doc._id}
+                                                         proImg = {array[i].proImg}
+                                                         discription={array[i].doc.description_content}/>
                         </td></tr>
             );
         }
@@ -124,12 +137,13 @@ class SearchResultList extends React.Component {
 }
 
 SearchResultList.propTypes = {
-    isAuthenticated: React.PropTypes.object.isRequired,
+    //isAuthenticated: React.PropTypes.boolean.isRequired,
     searchResult: React.PropTypes.object.isRequired,
     descriptionArray: React.PropTypes.object.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
     addToFavoritesAction: React.PropTypes.func.isRequired
+    addLikeRequest: React.PropTypes.func.isRequired
 }
 
 
