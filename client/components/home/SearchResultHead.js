@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-import photo from '../img/landing_page_photo.png';
+import photoDef from '../img/landing_page_photo.png';
 import place from '../img/ic-place-black-48-dp.png';
 import add from '../img/heart-light-filled-green.png';
 import share from '../img/ic-share-black-48-dp.png';
@@ -14,37 +14,57 @@ class SearchResultHead extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-          searchStr: ""
+          searchStr: "",
+          errors: {}
         }
         this.addFavorite = this.addFavorite.bind(this);
     }
 
     addFavorite(e) {
         console.log("In function addFavorite");
-        const location = this.props.location;
-        const photo = this.props.photo
+        console.log("In add favorites: location: ", this.props.location)
+        var location = this.props.location;
+        var photo = this.props.photo
         const {user} = this.props.login;
-        const description = {
+        var description = {
             location : location,
             photo : photo,
-            coords: user.coords
+            coords: user.coords,
+            user: user
         }
         // console.log(this.props);
 
         this.props.addToFavoritesAction(description).then(
-            (res) = {
-
-            },
-            (err) = {
-
-            }
-        );
+        //     (res) = {
+        //         console.log("we are back in addToFavoritesAction clientside")
+        //     },
+        //     (err) = {
+        //         console.log("we are back in addToFavoritesAction clientside, err")
+        //     }
+        // );
+        (res) => {
+            console.log("we are back in addToFavoritesAction clientside");
+            //this.context.router.push('/home')
+        },
+        // if server response any error message, set it into state errors
+        (err) => {
+            console.log("Login Form: login failed");
+            //console.log(err.response.data);
+            this.setState({ errors: err.response.data});
+            console.log("this.state.errors: ", this.state.errors);
+        });
     }
 
     render(){
 
         const autoComment = this.props.autoComment;
         const location = this.props.location;
+        let photoPlace
+        if (this.props.photo.length > 0) {
+          photoPlace = this.props.photo
+        } else {
+          photoPlace = photoDef
+        }
         return(
             <div>
                 {/*<button className="btn btn-default profile-btn-on-map  btn-unfold-sidebar"*/}
@@ -55,7 +75,7 @@ class SearchResultHead extends React.Component{
                         {/*<button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>*/}
                         <div className="search-result-content">
                             <div className="photo-gallery col-md-5">
-                                <img src={photo}/>
+                                <img src={photoPlace}/>
                             </div>
 
                             <div className="search-result-right">
@@ -105,7 +125,9 @@ class SearchResultHead extends React.Component{
 
 SearchResultHead.propTypes = {
     addToFavoritesAction: React.PropTypes.func.isRequired,
-    login: React.PropTypes.object.isRequired
+    login: React.PropTypes.object.isRequired,
+    // location: React.PropTypes.String
+    // photo: React.PropTypes.String
 }
 
 SearchResultHead.contextTypes = {

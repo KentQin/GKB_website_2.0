@@ -49,6 +49,7 @@ class HomePage extends React.Component {
     // <SearchBar searchBarRequest={this.props.searchBarRequest}
     //            searchBarTestGoAction = {this.props.searchBarTestGoAction}
     //            showSearchResult={this.showSearchResult}/>
+    // showSearchResult={this.showSearchResult}
 
     render() {
 
@@ -56,6 +57,7 @@ class HomePage extends React.Component {
         const { showSearchResult } = this.props.login.user;
         const searchResult = this.props.searchResult;
         const descriptionArray = this.props.descriptionArray;
+        // const { showSearchResult } = this.props.searchResult.searchResultPageConfig;
 
         return (
             <div className="container loginPage float_on_the_map">
@@ -66,7 +68,7 @@ class HomePage extends React.Component {
                 <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest}
                                    updateCoordsRequest={this.props.updateCoordsRequest}
                                    setShowSearchResult={this.props.setShowSearchResult}
-                                   showSearchResult={this.showSearchResult}
+
                                    setDescriptionArray={this.props.setDescriptionArray}/>
 
 
@@ -91,7 +93,7 @@ HomePage.propTypes = {
     updateCoordsRequest: React.PropTypes.func.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
-    addToFavoritesAction: React.PropTypes.func.isRequired
+    addToFavoritesAction: React.PropTypes.func.isRequired,
     addLikeRequest: React.PropTypes.func.isRequired
 }
 

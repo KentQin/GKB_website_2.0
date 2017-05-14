@@ -34,11 +34,9 @@ class MyGoogleSuggest extends Component {
 
     handleSelectSuggest(suggest, coordinate, place, directionsResponse) {
         // query apache jena database, if not then go with google.
-        console.log("+++++++++++coordinate+++++++++++coordinate");
-        console.log(coordinate);
         const {user} = this.props.login;
-        console.log("this props landingpage flag: ", this.props.landingPageFlag);
-        var flag = this.props.landingPageFlag;
+        // console.log("this props landingpage flag: ", this.props.landingPageFlag);
+        // var flag = this.props.landingPageFlag;
         console.log("search term to jena: ", suggest.terms[0].value);
         this.setState({errors: {} });
         var toSend;
@@ -52,10 +50,10 @@ class MyGoogleSuggest extends Component {
             toSend = {
                 searchStr: suggest.terms[0].value,
                 id: user.id,
-                fulladdr: suggest.description
+                fulladdr: suggest.description,
             }
         }
-      }
+
       this.props.searchBarRequest(toSend)
           .then(
           // after server response then...
@@ -63,24 +61,7 @@ class MyGoogleSuggest extends Component {
           //var userUpdated = this.props.login.user;
           (res) => {
               console.log("we are back in searchBar clientside");
-              //console.log("ins ide suggestSelect :", this.props.login);
-              // var userData = {
-              //   email: this.props.login.user.email,
-              //   userName: this.props.login.user.userName,
-              //   accountType: this.props.login.user.accountType,
-              //   id: this.props.login.user.id,
-              //   coords: {
-              //     lat: this.props.login.user.coords.lat,
-              //     longt: this.props.login.user.coords.longt
-              //   },
-              //   directions:[],
-              // }
 
-              //this.props.updateCoordsRequest(userData);
-              //this.context.router.push('/home')
-              // if (flag) {
-              //    this.context.router.push('/map')
-              // }
           },
           // if server response any error message, set it into state errors
           (err) => {
@@ -107,14 +88,20 @@ class MyGoogleSuggest extends Component {
                     directions:directionsResponse.routes[0].overview_path,
 
                   }
-                  const descriptionArray = err.response.data
+                  //const descriptionArray = err.response.descriptionArray
+                  // Changing thw whole functionality. For now let descriptionArray is null
+                  var descriptionArray = null;
                   const conf = {
                       showSearchResult: true,
                       placeFullAddr:suggest.description,
                       placePhoto: photo
                   }
+                  console.log("conf conf: ", conf)
                   this.props.setShowSearchResult(conf);
+
+                  //if (descriptionArray) {
                   this.props.setDescriptionArray(descriptionArray);
+                  // }
                   this.props.updateCoordsRequest(userData);
                 // if (flag) {
                 //     console.log("just before routing to mapContainer")
@@ -124,6 +111,8 @@ class MyGoogleSuggest extends Component {
               })
           }
       );
+
+    }
 
     render() {
         const {searchStr} = this.state

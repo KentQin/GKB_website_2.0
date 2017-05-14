@@ -83,7 +83,11 @@ class SearchResultList extends React.Component {
         // const {addToFavoritesAction} = this.props
 
         // console.log(descriptionArray);
-        var numList = array.length;
+        if (!array) {
+          var numList = 0
+        } else {
+          var numList = array.length;
+        }
         for (var i = 0; i < numList; i++) {
             //console.log(resultArray.length);
             items.push(<tr key={i}><td><SearchResultItem userName={array[i].doc.user_name}
@@ -142,7 +146,7 @@ SearchResultList.propTypes = {
     descriptionArray: React.PropTypes.object.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
-    addToFavoritesAction: React.PropTypes.func.isRequired
+    addToFavoritesAction: React.PropTypes.func.isRequired,
     addLikeRequest: React.PropTypes.func.isRequired
 }
 
