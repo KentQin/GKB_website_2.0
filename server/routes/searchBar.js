@@ -4,6 +4,7 @@ import validator from 'validator';
 import config from '../config'
 import curl from 'curlrequest';
 import jwt from 'jsonwebtoken';
+import moment from 'moment';
 // import moment from 'moment';
 
 var rest = require('rest')
@@ -16,169 +17,121 @@ var GooglePlaces = require('./../models/googlePlaces')
 let router = express.Router();
 
 router.post('/', (req, res) => {
-    console.log(req.body);
-    console.log("id: " + req.body.id);
-    console.log("searchStr: " + req.body.searchStr);
-    console.log("finally in searchBar route");
-    console.log("fulladdr: ", req.body.fulladdr);
-    console.log("DATE: ", Date());
-
+    console.log("request: ", req.body);
     const query = { placeFullAddr: req.body.fulladdr}
-    // DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
-    //     if (err) return handleError(err);
-    //     //console.log(docs);
-    //     var counter = 1
-    //     var descriptionArray = [];
-    //     console.log(docs);
-    //     if(docs.length == 0){
-    //         res.status(400).json({data: null});
-    //     }else{
-    //         docs.forEach((doc) => {
-    //             //console.log(doc);
-    //             var temp = {};
-    //             User.findById(doc.user_id, 'proImg', function (err, img) {
-    //                 temp.doc = doc;
-    //                 temp.proImg = img.proImg;
-    //                 descriptionArray.push(temp);
-    //                 //console.log(temp);
-    //                 if (counter == docs.length){
-    //                     //console.log("All done")
-    //                     descriptionArray.sort((a,b)=>{
-    //                         if( a.doc.like > b.doc.like){
-    //                             return -1;
-    //                         }else if( a.doc.like < b.doc.like ){
-    //                             return 1;
-    //                         }
-    //                         return 0;
-    //                     });
-    //                     res.status(400).json(descriptionArray);
-    //                 }
-    //                 counter+=1;
-    //             });
-    //         });
-    //     }
 
-        // const data = {
-        //     user_imgs: user_imgs,
-        //     docs: docs
-        // }
-        //console.log(user_imgs);
+    var data = {};
+    data.photo = req.body.photo;
+    data.coordinate = req.body.coordinate;
+    data.suggestDescription = req.body.suggestDescription;
+    User.findById(req.body.user_id, function (err, s_user) {
+        data.user = s_user;
+        DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+            if (err) return handleError(err);
+            //console.log(docs);
+            var counter = 1
+            var descriptionArray = [];
+            //console.log(docs);
+            if(docs.length == 0){
+                data.descriptionArray = null;
+                res.status(400).json(data);
+            }else{
+                docs.forEach((doc) => {
+                    //console.log(doc);
+                    var temp = {};
+                    //console.log("user_id: ", doc);
+                    User.findById(doc.user_id, 'proImg', function (err, user) {
+                        temp.doc = doc;
+                        //console.log("test111111111111111111")
+                        //console.log(" user: proimg " , )
+                        //console.log("user: ***************", user);
 
-    // }).sort({ like: -1 });
-
-
-    const button = req.body.button
-
-    // if button was clicked, different way of dealing
-    if (button) {
-        console.log("go button clicked")
-        //places
-
-        var ret = {};
-        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
-            //console.log("ret: ", ret)
-
-            if (ret.error == 1) {
-                var errors = ret.errors
-                res.status(400).json(errors);
-                // so search google now
-                //https://maps.googleapis.com/maps/api/place/textsearch/json?query=IGA&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
-                //autocomplete
-                //https://maps.googleapis.com/maps/api/place/autocomplete/json?input=hawthorn&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
-
-                console.log("not present in jena, so gooogle");
-                rest('http://freegeoip.net/json/').then(function(response) {
-                    var parsedData = JSON.parse(response.entity)
-                    var pos = {
-                        lat: parsedData.latitude,
-                        lng: parsedData.longitude
-                    };
-
-                    var options = { url: url};
-                    curl.request(options, function (err, res1) {
-
+                        temp.proImg = user.proImg;
+                        //console.log("temp   ", temp);
+                        descriptionArray.push(temp);
+                        //console.log(temp);
+                        if (counter == docs.length){
+                            //console.log("All done")
+                            descriptionArray.sort((a,b)=>{
+                                if( a.doc.like > b.doc.like){
+                                    return -1;
+                                }else if( a.doc.like < b.doc.like ){
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                            data.descriptionArray = descriptionArray
+                            res.status(400).json(data);
+                        }
+                        counter+=1;
                     });
-
                 });
-
-            } else {
-                //send jena results
-                console.log("present in jena")
-                var token = ret.token
-                res.json({token});
-            }
-
-        });
-
-    } else {
-
-        var ret = {};
-        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
-            //console.log("ret: ", ret)
-            if (ret.error == 1) {
-
-              console.log("not in jena, but in google");
-              var errors = ret.errors
-              res.status(400).json(ret);
-              // DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
-              //     if (err) return handleError(err);
-              //     //console.log(docs);
-              //     var counter = 1
-              //     var descriptionArray = [];
-              //     console.log(docs);
-              //     if(docs.length == 0){
-              //         res.status(400).json({errors: null,
-              //                               descriptionArray: null});
-              //     }else{
-              //         docs.forEach((doc) => {
-              //             //console.log(doc);
-              //             var temp = {};
-              //             User.findById(doc.user_id, 'proImg', function (err, img) {
-              //                 temp.doc = doc;
-              //                 if (img.proImg) {
-              //                   temp.proImg = img.proImg;
-              //                 }
-              //                 descriptionArray.push(temp);
-              //                 //console.log(temp);
-              //                 if (counter == docs.length){
-              //                     //console.log("All done")
-              //                     descriptionArray.sort((a,b)=>{
-              //                         if( a.doc.like > b.doc.like){
-              //                             return -1;
-              //                         }else if( a.doc.like < b.doc.like ){
-              //                             return 1;
-              //                         }
-              //                         return 0;
-              //                     });
-              //                     //res.status(400).json(descriptionArray);
-              //                     // To send to the front end if not in jena, with descriptionArray
-              //                     var errors = {
-              //                       errors: ret.errors,
-              //                       descriptionArray: descriptionArray
-              //                     }
-              //                     console.log("not in jena, but in google. With descriptionArray")
-              //                     res.status(400).json(errors);
-              //                 }
-              //                 counter+=1;
-              //             });
-              //         });
-              //     }
-              //
-              //     // const data = {
-              //     //     user_imgs: user_imgs,
-              //     //     docs: docs
-              //     // }
-              //     // console.log(user_imgs);
-              //
-              // }).sort({ like: -1 });
-
-            } else {
-                var token = ret.token
-                res.json({token});
             }
         });
-    }
-    //res.redirect('/home');
+    });
+
+
+    // const button = req.body.button
+    //
+    // // if button was clicked, different way of dealing
+    // if (button) {
+    //     console.log("go button clicked")
+    //     //places
+    //
+    //     var ret = {};
+    //     ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
+    //         //console.log("ret: ", ret)
+    //
+    //         if (ret.error == 1) {
+    //             var errors = ret.errors
+    //             res.status(400).json(errors);
+    //             // so search google now
+    //             //https://maps.googleapis.com/maps/api/place/textsearch/json?query=IGA&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
+    //             //autocomplete
+    //             //https://maps.googleapis.com/maps/api/place/autocomplete/json?input=hawthorn&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
+    //
+    //             console.log("not present in jena, so gooogle");
+    //             rest('http://freegeoip.net/json/').then(function(response) {
+    //                 var parsedData = JSON.parse(response.entity)
+    //                 var pos = {
+    //                     lat: parsedData.latitude,
+    //                     lng: parsedData.longitude
+    //                 };
+    //
+    //                 var options = { url: url};
+    //                 curl.request(options, function (err, res1) {
+    //
+    //                 });
+    //
+    //             });
+    //
+    //         } else {
+    //             //send jena results
+    //             console.log("present in jena")
+    //             var token = ret.token
+    //             res.json({token});
+    //         }
+    //
+    //     });
+    //
+    // } else {
+    //
+    //     var ret = {};
+    //     ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
+    //         //console.log("ret: ", ret)
+    //         if (ret.error == 1) {
+    //
+    //             console.log("not in jena, but in google");
+    //             var errors = ret.errors
+    //             res.status(400).json(ret);
+    //
+    //         } else {
+    //             var token = ret.token
+    //             res.json({token});
+    //         }
+    //     });
+    // }
+
 });
 
 
@@ -469,6 +422,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                             coords: coords2,
                                                                                             placeFullAddr: fulladdr,
                                                                                             placePhoto: "",
+
                                                                                             searchHistory: searchHistoryStore
                                                                                             // showSearchResult: true
                                                                                         }, 'secretkeyforjsonwebtoken');
@@ -889,9 +843,14 @@ router.post('/addDescription', (req, res) => {
                 docs.forEach((doc) => {
                     //console.log(doc);
                     var temp = {};
-                    User.findById(doc.user_id, 'proImg', function (err, img) {
+                    User.findById(doc.user_id, 'proImg', function (err, user) {
                         temp.doc = doc;
-                        temp.proImg = img.proImg;
+                        console.log("user: ***************", user);
+                        if(user.proImg == null){
+                            temp.proImg = null
+                        }else{
+                            temp.proImg = user.proImg;
+                        }
                         descriptionArray.push(temp);
                         //console.log(temp);
                         if (counter == docs.length){
@@ -910,7 +869,7 @@ router.post('/addDescription', (req, res) => {
                         counter+=1;
                     });
                 });
-            }).sort({ like: -1 });
+            });
 
         }
     })
@@ -918,23 +877,31 @@ router.post('/addDescription', (req, res) => {
 });
 
 router.post('/addLike', (req, res) => {
-    const {id} = req.body;
-    const query = {_id: id}
-
-    //User.findByIdAndUpdate(data._id, { $set: {password: req.body.password} }, {new: true}, function (err, model) {});
-    DescriptionSchema.findByIdAndUpdate(id, { $inc: {like: 1} }, {new: true},function (err, description) {
-        if (err) return handleError(err);
-        res.status(200).json(description);
-        // console.log(description);
+    const {des_id} = req.body;
+    const {user_id} = req.body;
+    // check if the user already liked this one
+    var liked = false;
+    DescriptionSchema.findById(des_id, function (err, description) {
+        const {user_like_array} = description;
+        var response = {};
+        if (user_like_array.indexOf(user_id) === -1){
+            // user haven't like this one
+            DescriptionSchema.findByIdAndUpdate(des_id, { $inc: {like: 1}, $push: {user_like_array: user_id} }, {new: true}, function (err, description) {
+                if (err) return handleError(err);
+                response.ans = true;
+                // return accepted as signal
+                res.status(200).json(response);
+            });
+        }else{
+            // user already liked this one
+            response.ans = false;
+            // return refused as signal
+            res.status(200).json(response);
+        }
     });
 
-    // DescriptionSchema.findOne(query, '_id user_name description_content like', function (err, description) {
-    //     if (err) return handleError(err);
-    //     console.log('%s %s %s.', description._id, description.user_name, description.like) // Space Ghost is a talk show host.
-    // });
-
-    // console.log(id);
 });
+
 
 // simulate load query result from db
 function loadResultList(location) {
