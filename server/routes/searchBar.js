@@ -118,7 +118,7 @@ router.post('/', (req, res) => {
 
               console.log("not in jena, but in google");
               var errors = ret.errors
-              res.status(400).json(errors);
+              res.status(400).json(ret);
               // DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
               //     if (err) return handleError(err);
               //     //console.log(docs);
@@ -218,10 +218,12 @@ function queryJena(searchStr, fulladdr, id, callback) {
                 }
                 // Then store the searchstr in searchStr in db with google type.
 
-
                 User.findOne({_id: id},function(err,data2) {
                     let errors = {};
+                    var searchHistoryStore = [];
                     console.log("data2: " + data2);
+                    searchHistoryStore = data2.searchHistory;
+                    console.log("searchHistoryStore: ", searchHistoryStore)
                     if(err){
                         console.log(err);
                     }else if(!data2){
@@ -266,6 +268,15 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                         console.log("in 2nd update error")
                                                     } else {
                                                         console.log("in 2nd update success");
+
+                                                        searchHistoryStore.push(insertToSearchHistoryNew);
+                                                        console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
+                                                        var ret = {
+                                                            error:1,
+                                                            errors:errors,
+                                                            searchHistory:searchHistoryStore
+                                                        }
+                                                        callback(ret);
                                                     }
                                                 })
 
@@ -279,6 +290,12 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                         console.log("error date updated");
                                                     } else {
                                                         console.log("updating date",  user2);
+                                                        var ret = {
+                                                            error:1,
+                                                            errors:errors,
+                                                            searchHistory: data2.searchHistory
+                                                        }
+                                                        callback(ret);
                                                     }
 
                                                 })
@@ -294,7 +311,6 @@ function queryJena(searchStr, fulladdr, id, callback) {
 
 
 
-                callback(ret);
             } else {
                 for (var i = 0; i < docs.length; i++) {
                     if (docs[i].element.includes("way")) {
@@ -373,8 +389,10 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                             }
                                             if (id != null) {
                                                 User.findOne({_id: id},function(err,data2){
+                                                    var searchHistoryStore = [];
                                                     let errors = {};
                                                     console.log("data2: " + data2);
+                                                    searchHistoryStore = data2.searchHistory;
                                                     if(err){
                                                         console.log(err);
                                                     }else if(!data2){
@@ -425,6 +443,9 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                     if (err) {
                                                                                         console.log("in 2nd update error")
                                                                                     } else {
+                                                                                      searchHistoryStore.push(insertToSearchHistoryNew);
+                                                                                      console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
+
                                                                                         console.log("in 2nd update success");
                                                                                         const token = jwt.sign({
                                                                                             email: data2.email,
@@ -434,7 +455,9 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                             proImg: data2.proImg,
                                                                                             coords: coords2,
                                                                                             placeFullAddr: fulladdr,
-                                                                                            placePhoto: ""
+                                                                                            placePhoto: "",
+                                                                                            searchHistory: searchHistoryStore
+                                                                                            // showSearchResult: true
                                                                                         }, 'secretkeyforjsonwebtoken');
                                                                                         console.log("search bar sending token ");
                                                                                         //res.json({token});
@@ -464,7 +487,9 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                             proImg: data2.proImg,
                                                                                             coords: coords2,
                                                                                             placeFullAddr: fulladdr,
-                                                                                            placePhoto: ""
+                                                                                            placePhoto: "",
+                                                                                            searchHistory: data2.searchHistory
+                                                                                            // showSearchResult: true
                                                                                         }, 'secretkeyforjsonwebtoken');
                                                                                         console.log("search bar sending token ");
                                                                                         //res.json({token});
@@ -530,7 +555,9 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                     proImg: null,
                                                     coords: coords2,
                                                     placeFullAddr: fulladdr,
-                                                    placePhoto: ""
+                                                    placePhoto: "",
+                                                    searchHistory: null
+                                                    // showSearchResult: true
                                                 }, 'secretkeyforjsonwebtoken');
                                                 console.log("search bar sending token2 ");
                                                 updatedDbSendTokenFlag = 1
@@ -566,6 +593,9 @@ function queryJena(searchStr, fulladdr, id, callback) {
                             if (updatedDbSendTokenFlag == 0) {
                                 if (id != null) {
                                     User.findOne({_id: id},function(err,data){
+                                      var searchHistoryStore = [];
+                                      // console.log("data: " + data);
+                                      searchHistoryStore = data.searchHistory;
                                         let errors = {};
                                         console.log("data", data);
                                         if(err){
@@ -622,6 +652,8 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                             if (err) {
                                                                                 console.log("in 2nd update error")
                                                                             } else {
+                                                                                searchHistoryStore.push(insertToSearchHistoryNew);
+                                                                                console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
                                                                                 console.log("in 2nd update success");
                                                                                 const token = jwt.sign({
                                                                                     email: data.email,
@@ -631,7 +663,9 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                     proImg: data.proImg,
                                                                                     coords: coords,
                                                                                     placeFullAddr: fulladdr,
-                                                                                    placePhoto: ""
+                                                                                    placePhoto: "",
+                                                                                    searchHistory: searchHistoryStore
+                                                                                    // showSearchResult: true
                                                                                 }, 'secretkeyforjsonwebtoken');
                                                                                 console.log("search bar sending token ");
                                                                                 //res.json({token});
@@ -661,7 +695,10 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                     proImg: data.proImg,
                                                                                     coords: coords,
                                                                                     placeFullAddr: fulladdr,
-                                                                                    placePhoto: ""
+                                                                                    placePhoto: "",
+                                                                                    searchHistory: data.searchHistory
+
+                                                                                    // showSearchResult: true
                                                                                 }, 'secretkeyforjsonwebtoken');
                                                                                 console.log("search bar sending token ");
                                                                                 //res.json({token});
@@ -718,7 +755,9 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                         proImg: null,
                                         coords: coords,
                                         placeFullAddr: fulladdr,
-                                        placePhoto: ""
+                                        placePhoto: "",
+                                        searchHistory: null
+                                        // showSearchResult: true
                                     }, 'secretkeyforjsonwebtoken');
                                     console.log("search bar sending token lplpl ");
                                     //res.json({token});
