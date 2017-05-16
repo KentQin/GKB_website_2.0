@@ -26,13 +26,17 @@ class SearchHistory extends React.Component{
 
 
                     <div>
-                        <SearchHistoryList/>
+                        <SearchHistoryList searchHistory={this.props.searchHistory}/>
                     </div>
                 </div>
 
             </div>
         );
     }
+}
+
+SearchHistory.propTypes = {
+    searchHistory: React.PropTypes.array.isRequired
 }
 
 export default SearchHistory;

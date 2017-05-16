@@ -3,6 +3,7 @@ import thumbPic from '../img/thumb.png';
 import userPic from '../img/user.png';
 import classNames from 'classnames';
 import defaultPhoto from '../img/default-profile-picture.jpg';
+import axios from 'axios';
 
 
 class SearchResultItem extends React.Component {
@@ -17,22 +18,52 @@ class SearchResultItem extends React.Component {
     }
 
     onThumbClicker(){
-        if(this.state.clicked){
-            alert("you already liked this one")
+
+        const auth = this.props.auth;
+
+        if (auth){
+            // if already clicked
+            if(this.state.clicked){
+                alert("you already liked this one")
+            }
+            // if this is the first click
+            else{
+                // send add like request
+                const addLikeRequest = {
+                    des_id :this.props.des_id,
+                    user_id :this.props.user_id
+                };
+
+                axios.post('/api/searchBar/addLike', addLikeRequest).then(res =>{
+                    //const description = res.data;
+                    console.log("*************");
+                    console.log(res.data);
+                    const {ans} = res.data;
+                    if (ans)  {
+                        this.setState({
+                        clicked: !this.state.clicked,
+                        like: this.state.like + 1
+                        });
+                    }else{
+                        alert("alread liked this one");
+                    }
+                    // return res.data;
+                    // dispatch(setSearchResultList(descriptionArray));
+                });
+
+            }
         }else{
-            this.setState({
-                clicked: !this.state.clicked,
-                like: this.state.like + 1
-            });
-            this.props.clickLike(this.props.id);
+            alert("please login");
         }
+
     }
 
     render() {
 
         var btnClass = classNames({
             'thumb': true,
-            'thumbUp': this.state.clicked
+            'thumbUp': this.state.clicked,
+            'thumbUp': this.props.preThumbUp
         });
         var userProfile;
         if(this.props.proImg.contentType != null){
@@ -40,8 +71,8 @@ class SearchResultItem extends React.Component {
             const base64 = (Buffer.from(proImg.data).toString('base64'));
             userProfile = 'data:'+proImg.contentType+';base64,'+base64;
         }else{
-            console.log("********************");
-            console.log(this.props.proImg);
+            // console.log("********************");
+            // console.log(this.props.proImg);
             userProfile = defaultPhoto;
         }
 
@@ -74,5 +105,7 @@ class SearchResultItem extends React.Component {
 
 SearchResultItem.propTypes = {
     clickLike: React.PropTypes.func.isRequired,
+    auth: React.PropTypes.bool.isRequired,
+    user_id: React.PropTypes.string.isRequired
 }
 export default SearchResultItem;

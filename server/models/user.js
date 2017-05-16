@@ -11,9 +11,8 @@ var userSchema = new Schema({
     imageFile: {type: Object},
     contributions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element' }],
     searchHistory: [{
-        element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
-        searchStr: { type: String },
-        date: { type: Date }
+        date: { type: Date , require: true},
+        searchStr: {type: String, require: true}
     }],
     favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element'}]
 });

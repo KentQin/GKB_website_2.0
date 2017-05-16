@@ -4,6 +4,7 @@ import validator from 'validator';
 import config from '../config'
 import curl from 'curlrequest';
 import jwt from 'jsonwebtoken';
+import moment from 'moment';
 // import moment from 'moment';
 
 var rest = require('rest')
@@ -20,10 +21,13 @@ router.post('/', (req, res) => {
     console.log("searchStr: " + req.body.searchStr);
     console.log("finally in searchBar route");
     console.log("fulladdr: ", req.body.fulladdr);
-    console.log("DATE: ", Date());
+    // console.log("DATE: ", moment(new Date()).format("YYYY/MM/DD"));
+    const user_id = req.body.id;
+    const placeFullAddr = req.body.fulladdr;
 
+    // query descriptions
     const query = { placeFullAddr: req.body.fulladdr}
-    DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+    DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
         if (err) return handleError(err);
         //console.log(docs);
         var counter = 1
@@ -56,14 +60,9 @@ router.post('/', (req, res) => {
             });
         }
 
-        // const data = {
-        //     user_imgs: user_imgs,
-        //     docs: docs
-        // }
-        //console.log(user_imgs);
+    })
 
-    }).sort({ like: -1 });
-    // res.json(docs);
+
 
 });
 //
@@ -679,7 +678,7 @@ router.post('/addDescription', (req, res) => {
                         counter+=1;
                     });
                 });
-            }).sort({ like: -1 });
+            });
 
         }
     })
@@ -687,23 +686,48 @@ router.post('/addDescription', (req, res) => {
 });
 
 router.post('/addLike', (req, res) => {
-    const {id} = req.body;
-    const query = {_id: id}
-
-    //User.findByIdAndUpdate(data._id, { $set: {password: req.body.password} }, {new: true}, function (err, model) {});
-    DescriptionSchema.findByIdAndUpdate(id, { $inc: {like: 1} }, {new: true},function (err, description) {
-        if (err) return handleError(err);
-        res.status(200).json(description);
-        // console.log(description);
+    const {des_id} = req.body;
+    const {user_id} = req.body;
+    // check if the user already liked this one
+    var liked = false;
+    DescriptionSchema.findById(des_id, function (err, description) {
+        const {user_like_array} = description;
+        var response = {};
+        if (user_like_array.indexOf(user_id) === -1){
+            // user haven't like this one
+            DescriptionSchema.findByIdAndUpdate(des_id, { $inc: {like: 1}, $push: {user_like_array: user_id} }, {new: true}, function (err, description) {
+                if (err) return handleError(err);
+                response.ans = true;
+                // return accepted as signal
+                res.status(200).json(response);
+            });
+        }else{
+            // user already liked this one
+            response.ans = false;
+            // return refused as signal
+            res.status(200).json(response);
+        }
     });
 
-    // DescriptionSchema.findOne(query, '_id user_name description_content like', function (err, description) {
-    //     if (err) return handleError(err);
-    //     console.log('%s %s %s.', description._id, description.user_name, description.like) // Space Ghost is a talk show host.
-    // });
-
-    // console.log(id);
 });
+
+// router.post('/addSearchHistory', (req, res) => {
+//     /* add and query history*/
+//
+//     const { history } = req.body;
+//     const { user_id } = req.body;
+//     var temp_history = {"date": new Date(), "searchStr": history};
+//     User.findById(user_id, function (err, user) {
+//     user.searchHistory.push(temp_history);
+//     user.save();
+//     //next stage
+//     //end stage
+//         res.json(user);
+//     });
+//
+//
+// });
+
 
 // simulate load query result from db
 function loadResultList(location) {

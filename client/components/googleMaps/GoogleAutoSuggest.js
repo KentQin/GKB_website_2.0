@@ -4,6 +4,7 @@ import GooglePlacesSuggest from "react-google-places-suggest"
 import "react-google-places-suggest/lib/index.css"
 import { connect } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { addSearchHistory } from '../../actions/addSearchHistory'
 
 const MY_API_KEY = "AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM"
 
@@ -27,7 +28,7 @@ class MyGoogleSuggest extends Component {
 
     buttonClick(e) {
 
-        console.log('GO is clicked ************');
+        //console.log('GO is clicked ************');
         this.props.showSearchResult();
 
         // // This will directly go to the back end and search for coordinates in google db and jena
@@ -92,8 +93,6 @@ class MyGoogleSuggest extends Component {
 
     handleSelectSuggest(suggest, coordinate, place, directionsResponse) {
         // query apache jena database, if not then go with google.
-        console.log("+++++++++++coordinate+++++++++++coordinate");
-        console.log(coordinate);
         const {user} = this.props.login;
         console.log("this props landingpage flag: ", this.props.landingPageFlag);
         var flag = this.props.landingPageFlag;
@@ -113,6 +112,7 @@ class MyGoogleSuggest extends Component {
                 fulladdr: suggest.description
             }
         }
+        console.log("searchBarRequest:");
         this.props.searchBarRequest(toSend)
             .then(
                 // after server response then...
@@ -120,21 +120,6 @@ class MyGoogleSuggest extends Component {
                 //var userUpdated = this.props.login.user;
                 (res) => {
                     console.log("we are back in searchBar clientside");
-                    //console.log("ins ide suggestSelect :", this.props.login);
-                    // var userData = {
-                    //   email: this.props.login.user.email,
-                    //   userName: this.props.login.user.userName,
-                    //   accountType: this.props.login.user.accountType,
-                    //   id: this.props.login.user.id,
-                    //   coords: {
-                    //     lat: this.props.login.user.coords.lat,
-                    //     longt: this.props.login.user.coords.longt
-                    //   },
-                    //   directions:[],
-                    // }
-
-                    //this.props.updateCoordsRequest(userData);
-                    //this.context.router.push('/home')
                     if (flag) {
                         this.context.router.push('/map')
                     }
@@ -144,8 +129,8 @@ class MyGoogleSuggest extends Component {
                     var photo = "";
                     this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
                         if (place.photos) {
-                            console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
-                            photo = place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35})
+                            console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200}));
+                            photo = place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200})
                         } else {
                             photo = ""
                         };
@@ -170,8 +155,13 @@ class MyGoogleSuggest extends Component {
                             placeFullAddr:suggest.description,
                             placePhoto: photo
                         }
+                        // call action to set ShowSearchResult
                         this.props.setShowSearchResult(conf);
+                        // call action to set DescriptionArray
                         this.props.setDescriptionArray(descriptionArray);
+
+                        //this.props.addSearchHistory(history_data);
+
                         this.props.updateCoordsRequest(userData);
                         if (flag) {
                             console.log("just before routing to mapContainer")
@@ -243,7 +233,7 @@ function mapStateToProps(state) {
 //   key: MY_API_KEY,
 // })
 
-export default connect(mapStateToProps, {})(GoogleMapLoader(MyGoogleSuggest, {
+export default connect(mapStateToProps, { addSearchHistory })(GoogleMapLoader(MyGoogleSuggest, {
     libraries: ["places"],
     key: MY_API_KEY,
 }));

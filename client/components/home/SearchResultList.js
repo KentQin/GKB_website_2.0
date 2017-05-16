@@ -3,6 +3,8 @@ import SearchResultItem from './SearchResultItem'
 import SearchResultHead from './SearchResultHead'
 import addPic from '../img/add-post-button-dark.png';
 import AddDescription from './AddDescription';
+import { Link } from 'react-router';
+// import LoginWindow from './LoginWindow';
 
 class SearchResultList extends React.Component {
 
@@ -19,6 +21,8 @@ class SearchResultList extends React.Component {
         this.onClickAdd = this.onClickAdd.bind(this);
         this.showAddWindow = this.showAddWindow.bind(this);
         this.hideAddWindow = this.hideAddWindow.bind(this);
+        //this.showLoginWindow = this.showLoginWindow.bind(this);
+        //this.hideLoginWindow = this.hideLoginWindow.bind(this);
         this.clickLike = this.clickLike.bind(this);
     }
 
@@ -26,8 +30,6 @@ class SearchResultList extends React.Component {
         const auth = this.props.isAuthenticated;
         if (auth){
             this.showAddWindow();
-        }else{
-            alert("Please log in");
         }
     }
 
@@ -42,31 +44,24 @@ class SearchResultList extends React.Component {
             showAddDescription: false
         });
     }
+    //
+    // showLoginWindow(){
+    //     this.setState({
+    //         showLoginWindow: true
+    //     });
+    // }
+    //
+    // hideLoginWindow(){
+    //     this.setState({
+    //         showLoginWindow: false
+    //     });
+    // }
 
-    clickLike(id){
-        //add one count on target description
-        this.props.addLikeRequest(id)
+    clickLike(addLikeRequest){
+        // add one count on target description
+        // send user_id
+        //this.props.addLikeRequest(addLikeRequest);
     }
-
-
-
-    // componentWillMount() {
-    //
-    //     const { resultArray } = this.props.searchResult.searchResultList;
-    //     const { location } = this.props.searchResult.searchResultList;
-    //     this.setState({
-    //         results: resultArray,
-    //         location: location
-    //     });
-    // }
-    //
-    // componentWillReceiveProps(nextProps){
-    //     this.setState({
-    //         results: nextProps.resultArray,
-    //         location: nextProps.location
-    //     });
-    // }
-
 
     render() {
 
@@ -77,6 +72,17 @@ class SearchResultList extends React.Component {
         const { placeFullAddr } = this.props.searchResult.searchResultPageConfig;
         const { placePhoto } =this.props.searchResult.searchResultPageConfig;
         const { array }= this.props.descriptionArray;
+        const auth = this.props.isAuthenticated;
+
+        var addImg;
+        if(auth){
+            addImg = <img id = "add" src = {addPic}
+                              onClick = {this.onClickAdd}
+            />;
+        }else {
+            addImg = <Link to="/login" ><img id = "add" src = {addPic}/>
+                    </Link>;
+        }
 
 
         // console.log(descriptionArray);
@@ -85,18 +91,28 @@ class SearchResultList extends React.Component {
         if(numList != undefined){
             for (var i = 0; i < numList; i++) {
                 //console.log(resultArray.length);
+                const user_id = this.props.user_id;
+                const {user_like_array} = array[i].doc;
+                var thumbUp = false;
+                if(user_like_array.indexOf(user_id) != -1){
+                    console.log("exist");
+                    thumbUp = true;
+                }
                 items.push(<tr key={i}><td><SearchResultItem userName={array[i].doc.user_name}
                                                              like= {array[i].doc.like}
                                                              num = {i+1}
-                                                             clickLike = {this.clickLike}
-                                                             id = {array[i].doc._id}
+                                                             //clickLike = {this.clickLike}
+                                                             des_id = {array[i].doc._id}
                                                              proImg = {array[i].proImg}
+                                                             auth = {auth}
+                                                             user_id = {user_id}
+                                                             preThumbUp = {thumbUp}
                                                              discription={array[i].doc.description_content}/>
                     </td></tr>
                 );
             }
         }else{
-            items.push(<tr><td><div className = "result_box">
+            items.push(<tr key={1}><td><div className = "result_box">
                                     <h3>There is no description, waiting for your contribution</h3>
                                 </div>
                 </td></tr>
@@ -121,10 +137,7 @@ class SearchResultList extends React.Component {
                                 <div className="left-text">
                                     <span> Location Descriptions </span>
                                     <div id = "add_dis_box" >
-                                        <img id = "add"
-                                             src = {addPic}
-                                             onClick = {this.onClickAdd}
-                                        />
+                                        {addImg}
                                     </div>
                                 </div>
                             </td>
@@ -150,7 +163,8 @@ SearchResultList.propTypes = {
     descriptionArray: React.PropTypes.object.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
-    addLikeRequest: React.PropTypes.func.isRequired
+    //addLikeRequest: React.PropTypes.func.isRequired,
+    user_id: React.PropTypes.string.isRequired
 }
 
 

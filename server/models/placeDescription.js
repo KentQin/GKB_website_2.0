@@ -8,7 +8,8 @@ var placeDescritionSchema = new Schema({
     user_name: {type: String, require: true},
     description_content: {type: String, require: true},
     date: {type: Date},
-    like: {type: Number}
+    like: {type: Number},
+    user_like_array: [{type: String, require: true}]
 });
 
 
