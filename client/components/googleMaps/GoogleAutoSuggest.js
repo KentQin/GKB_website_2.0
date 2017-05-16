@@ -57,64 +57,64 @@ class MyGoogleSuggest extends Component {
         }
         console.log("searchBarRequest:", toSend);
 
-        // axios.post('/api/searchBar', toSend)
-        //     .then(res =>{
-        //             console.log("response res");
-        //         },
-        //         (err) => {
-        //             console.log("response err");
-        //             console.log(err.response.data);
-        //         });
+        this.setState({searchStr: suggest.description,
+                        selectedCoordinate: coordinate});
 
-        //this.props.searchBarRequest(toSend)
-        axios.post('/api/searchBar', toSend)
-            .then(
-                (res) => {
-                    console.log("we are back in searchBar clientside");
-
-                },
-                // if server response any error message, set it into state errors
-                (err) => {
-                    var photo = "";
-                    this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
-                        if (place.photos) {
-                            console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200}));
-                            photo = place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200})
-                        } else {
-                            photo = ""
-                        };
-                        var userData = {
-                            email: user.email,
-                            userName: user.userName,
-                            accountType: user.accountType,
-                            proImg: user.proImg,
-                            _id: user._id,
-                            showSearchResult: true,
-                            coords: {
-                                lat: this.state.selectedCoordinate.latitude,
-                                longt: this.state.selectedCoordinate.longitude
-                            },
-                            directions:directionsResponse.routes[0].overview_path,
-
-                        }
-                        const descriptionArray = err.response.data;
-                        const conf = {
-                            showSearchResult: true,
-                            placeFullAddr:suggest.description,
-                            placePhoto: photo
-                        }
-                        // call action to set ShowSearchResult
-                        this.props.setShowSearchResult(conf);
-                        // call action to set DescriptionArray
-                        this.props.setDescriptionArray(descriptionArray);
-
-                        //this.props.addSearchHistory(history_data);
-                        console.log("updateCoordsRequest: ", userData)
-                        this.props.updateCoordsRequest(userData);
-
-                    })
-                }
-            );
+        if (place.photos) {
+            toSend.photo = place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200});
+        }else{
+            toSend.photo = '';
+        }
+        toSend.coordinate = coordinate;
+        toSend.suggestDescription = suggest.description;
+        //axios.post('/api/searchBar', toSend);
+        this.props.searchBarRequest(toSend);
+            // .then(
+            //     (res) => {
+            //         console.log("we are back in searchBar clientside");
+            //     },
+            //     // if server response any error message, set it into state errors
+            //     (err) => {
+            //         var photo = "";
+            //         this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
+            //             if (place.photos) {
+            //                 console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200}));
+            //                 photo = place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200})
+            //             } else {
+            //                 photo = ""
+            //             };
+            //             var userData = {
+            //                 email: user.email,
+            //                 userName: user.userName,
+            //                 accountType: user.accountType,
+            //                 proImg: user.proImg,
+            //                 _id: user._id,
+            //                 showSearchResult: true,
+            //                 coords: {
+            //                     lat: this.state.selectedCoordinate.latitude,
+            //                     longt: this.state.selectedCoordinate.longitude
+            //                 },
+            //                 directions:directionsResponse.routes[0].overview_path,
+            //
+            //             }
+            //             const descriptionArray = err.response.data;
+            //             const conf = {
+            //                 showSearchResult: true,
+            //                 placeFullAddr:suggest.description,
+            //                 placePhoto: photo
+            //             }
+            //             // call action to set ShowSearchResult
+            //             this.props.setShowSearchResult(conf);
+            //             // call action to set DescriptionArray
+            //             this.props.setDescriptionArray(descriptionArray);
+            //
+            //             //this.props.addSearchHistory(history_data);
+            //             console.log("updateCoordsRequest: ", userData)
+            //             this.props.updateCoordsRequest(userData);
+            //
+            //         })
+            //     }
+            // );
       //
       // this.props.searchBarRequest(toSend)
       //     .then(

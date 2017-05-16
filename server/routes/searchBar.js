@@ -18,48 +18,58 @@ let router = express.Router();
 
 router.post('/', (req, res) => {
     console.log("request: ", req.body);
-
     const query = { placeFullAddr: req.body.fulladdr}
-    DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
-        if (err) return handleError(err);
-        //console.log(docs);
-        var counter = 1
-        var descriptionArray = [];
-        console.log(docs);
-        if(docs.length == 0){
-            res.status(400).json({data: null});
-        }else{
-            docs.forEach((doc) => {
-                //console.log(doc);
-                var temp = {};
-                console.log("user_id: ", doc);
-                User.findById(doc.user_id, 'proImg', function (err, user) {
-                    temp.doc = doc;
-                    //console.log("test111111111111111111")
-                    //console.log(" user: proimg " , )
-                    console.log("user: ***************", user);
 
-                    temp.proImg = user.proImg;
-                    console.log("temp   ", temp);
-                    descriptionArray.push(temp);
-                    //console.log(temp);
-                    if (counter == docs.length){
-                        //console.log("All done")
-                        descriptionArray.sort((a,b)=>{
-                            if( a.doc.like > b.doc.like){
-                                return -1;
-                            }else if( a.doc.like < b.doc.like ){
-                                return 1;
-                            }
-                            return 0;
-                        });
-                        res.status(400).json(descriptionArray);
-                    }
-                    counter+=1;
+    var data = {};
+    data.photo = req.body.photo;
+    data.coordinate = req.body.coordinate;
+    data.suggestDescription = req.body.suggestDescription;
+    User.findById(req.body.user_id, function (err, s_user) {
+        data.user = s_user;
+        DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+            if (err) return handleError(err);
+            //console.log(docs);
+            var counter = 1
+            var descriptionArray = [];
+            //console.log(docs);
+            if(docs.length == 0){
+                data.descriptionArray = null;
+                res.status(400).json(data);
+            }else{
+                docs.forEach((doc) => {
+                    //console.log(doc);
+                    var temp = {};
+                    //console.log("user_id: ", doc);
+                    User.findById(doc.user_id, 'proImg', function (err, user) {
+                        temp.doc = doc;
+                        //console.log("test111111111111111111")
+                        //console.log(" user: proimg " , )
+                        //console.log("user: ***************", user);
+
+                        temp.proImg = user.proImg;
+                        //console.log("temp   ", temp);
+                        descriptionArray.push(temp);
+                        //console.log(temp);
+                        if (counter == docs.length){
+                            //console.log("All done")
+                            descriptionArray.sort((a,b)=>{
+                                if( a.doc.like > b.doc.like){
+                                    return -1;
+                                }else if( a.doc.like < b.doc.like ){
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                            data.descriptionArray = descriptionArray
+                            res.status(400).json(data);
+                        }
+                        counter+=1;
+                    });
                 });
-            });
-        }
+            }
+        });
     });
+
 
     // const button = req.body.button
     //

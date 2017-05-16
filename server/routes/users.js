@@ -192,11 +192,7 @@ router.post('/addName', (req, res) => {
                     errors.login = "Adding UserNAme update error";
                     res.status(400).json(errors);
                 } else {
-                    const user_info = user._doc
-                    //console.log("login: ", user_info);
-                    // const token = jwt.sign( user_info.email, 'secretkeyforjsonwebtoken');
-                    // console.log("token: ", token);
-                    //console.log("Logged in " + data.searchHistory);
+                    const user_info = user._doc;
                     res.json({user: user_info});
                 }
             });

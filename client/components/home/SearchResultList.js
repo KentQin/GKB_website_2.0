@@ -5,6 +5,7 @@ import addPic from '../img/add-post-button-dark.png';
 import AddDescription from './AddDescription';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import lodash from 'lodash';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 
@@ -88,9 +89,8 @@ class SearchResultList extends React.Component {
 
 
         // console.log(descriptionArray);
-        var numList = array.length;
-
-        if(numList != undefined){
+        if(!lodash.isEmpty(array)){
+            const numList = array.length;
             for (var i = 0; i < numList; i++) {
                 //console.log(resultArray.length);
                 const user_id = this.props.user_id;
