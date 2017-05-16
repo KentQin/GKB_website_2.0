@@ -103,9 +103,9 @@ class SignupForm extends React.Component {
                     {errors.confirmPassword && <span className="help-block">{errors.confirmPassword}</span> }
                 </div>
                 <button type="submit" className="btn btn-default btn-login">Submit</button>
-                <div className="form-group">
-                    <Link to="/login" >Return to Login</Link>
-                </div>
+                {/*<div className="form-group">*/}
+                    {/*<Link to="/login" >Return to Login</Link>*/}
+                {/*</div>*/}
             </form>
         );
     }

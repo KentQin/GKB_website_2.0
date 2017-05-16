@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
 var Schema = mongoose.Schema;
-
 var userSchema = new Schema({
     userName: {type: String, require: true},
     email: {type: String, require: true},
@@ -14,9 +13,7 @@ var userSchema = new Schema({
         element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
         searchStr: { type: String },
         date: { type: Date }
-        // date: [{type: Date, content:[{type: String}]}]
     }],
-
     favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element'}]
 });
 

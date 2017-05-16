@@ -21,15 +21,45 @@ router.post('/', (req, res) => {
     console.log("finally in searchBar route");
     console.log("fulladdr: ", req.body.fulladdr);
     console.log("DATE: ", Date());
-
     const query = { placeFullAddr: req.body.fulladdr}
     console.log("start1********************");
+
+
+    // User.findOne({_id:req.body.id}, function(err,data){
+    //     console.log("In here finding id");
+    //     if(err){
+    //         console.log("Finding id but "+err);
+    //     }else if(!data){
+    //         console.log("Finding id but cannot find data");
+    //     }else{
+    //         console.log("Finding id and found");
+    //         // console.log(data.searchHistory.searchResult);
+    //         var date = new Date();
+    //         // var content = [];
+    //         // var history = {type: date, content: content};
+    //         // console.log("To update: "+history.type);
+    //         User.update ({_id: req.body.id, }, {$push: {searchHistorys:date}}, function(err,data){
+    //             if(err){
+    //                 console.log("Updating history but "+err);
+    //             }else if (!data){
+    //                 console.log("Updating history but failed");
+    //             }else {
+    //                 console.log("Updated history successfully");
+    //                 console.log(data);
+    //             }
+    //         });
+    //     }
+    // });
+
+    // User.findByIdAndUpdate({_id:req.body.id}, )
+
     DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
         if (err) return handleError(err);
         //console.log(docs);
         var counter = 1
         var descriptionArray = [];
         console.log(docs);
+
         if(docs.length == 0){
             res.status(400).json({data: null});
         }else{

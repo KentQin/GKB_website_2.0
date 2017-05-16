@@ -24,6 +24,7 @@ class HomeSignup extends React.Component {
                 <div className="row centered col-md-offset-3 col-md-6">
 
                     <div className="col-md-7 login-page-block login-block">
+                        <Link to="/homelogin" className="link-on-home-form">Return to Login</Link>
                         <SignUpForm userSignupRequest={userSignupRequest}/>
 
                     </div>

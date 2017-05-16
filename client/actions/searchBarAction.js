@@ -22,6 +22,8 @@ export function setCurrentUserGuest(user) {
 export function searchBarRequest(userData) {
     return dispatch => {
         return axios.post('/api/searchBar', userData)
+            // console.log("POSTING SEARCH RESULT  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            // console.log(userData);
             // .then(res =>{
             // const token = res.data.token;
             // console.log('token: ' ,token);

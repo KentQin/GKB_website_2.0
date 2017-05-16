@@ -186,6 +186,8 @@ class MapContainer extends Component {
                   <Route path="home" component={HomePage}/>
                   <Route path="login" component={LoginPage}/>
                   <Route path="signup" component={SignupPage}/>
+                  <Route path="homelogin" component={HomeLogin}/>
+                  <Route path="homesignup" component={HomeSignup}/>
                   <Route path="resetpassword" component={ResetPasswordPage}/>
                   <Route path="emailsentpage" component={EmailSentPage}/>
                   <Route path="welcome" component={WelcomePage}/>

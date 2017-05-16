@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { userSignupRequest } from '../../actions/signupAction';
 import { userLoginSocialRequest } from '../../actions/loginActionSocial'
 import LinkToHome from './../common/LinkToHome';
-
+import {Link} from 'react-router';
 class SignupPage extends React.Component {
     render() {
 
@@ -28,6 +28,7 @@ class SignupPage extends React.Component {
                     </div>
 
                     <div className="col-md-5 login-page-block login-block">
+                        <Link to ='/login' className="link-on-form">Return to Login </Link>
                         <SignupFrom userSignupRequest={userSignupRequest}/>
 
                     </div>

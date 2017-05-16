@@ -1000,5 +1000,10 @@ a.list-group-item:hover {
 
 .link-on-form{
     position: inherit;
+    top:90%;
+}
+
+.link-on-home-form{
+    position: inherit;
     top:70%;
 }
