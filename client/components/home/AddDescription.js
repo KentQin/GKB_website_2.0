@@ -31,11 +31,15 @@ class AddDescription extends React.Component{
         const { _id } = this.props.contributor;
         const { placeFullAddr} = this.props.placeInfo;
         const { userName } =  this.props.contributor;
+        const {user} = this.props.login;
         const description = {
             user_id : _id,
             user_name : userName,
             placeFullAddr: placeFullAddr,
-            description_content: content
+            description_content: content,
+            type: this.props.searchResult.searchResultPageConfig.type,
+            image: this.props.searchResult.searchResultPageConfig.placePhoto,
+            coords: user.coords
         }
         // console.log(this.props);
         this.props.updateShowSearchResult(description).then(this.props.hideAddWindow());
@@ -104,7 +108,9 @@ AddDescription.propTypes = {
 function mapStateToProps(state) {
     return {
         contributor: state.login.user,
-        placeInfo: state.searchResult.searchResultPageConfig
+        placeInfo: state.searchResult.searchResultPageConfig,
+        searchResult: state.searchResult,
+        login: state.login
     };
 }
 

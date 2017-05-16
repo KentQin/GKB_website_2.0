@@ -73,7 +73,6 @@ class HomePage extends React.Component {
         }
         console.log("searchResult in HomePage render: ", searchResult)
 
-
         const descriptionArray = this.props.descriptionArray;
 
 
