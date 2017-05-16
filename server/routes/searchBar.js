@@ -42,10 +42,6 @@ router.post('/', (req, res) => {
                     //console.log("user_id: ", doc);
                     User.findById(doc.user_id, 'proImg', function (err, user) {
                         temp.doc = doc;
-                        //console.log("test111111111111111111")
-                        //console.log(" user: proimg " , )
-                        //console.log("user: ***************", user);
-
                         temp.proImg = user.proImg;
                         //console.log("temp   ", temp);
                         descriptionArray.push(temp);
