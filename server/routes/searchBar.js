@@ -10,7 +10,7 @@ var rest = require('rest')
 var ElementEl = require('./../models/node.js');
 var User = require('./../models/user.js');
 var DescriptionSchema = require('./../models/placeDescription');
-var GooglePlaces = require('./../models/googleplaces')
+var GooglePlaces = require('./../models/googlePlaces')
 //var rest = require('rest')
 
 let router = express.Router();
@@ -213,100 +213,112 @@ function queryJena(searchStr, fulladdr, id, callback) {
                 console.log("No docs2");
                 errors.searchBar = "We could not find " + searchStr
                 //res.status(400).json(errors);
-                var ret = {
-                    error:1,
-                    errors:errors
-                }
+                // var ret = {
+                //     error:1,
+                //     errors:errors
+                // }
                 // Then store the searchstr in searchStr in db with google type.
-
-                User.findOne({_id: id},function(err,data2) {
-                    let errors = {};
-                    var searchHistoryStore = [];
-                    console.log("data2: " + data2);
-                    searchHistoryStore = data2.searchHistory;
-                    console.log("searchHistoryStore: ", searchHistoryStore)
-                    if(err){
-                        console.log(err);
-                    }else if(!data2){
-                        //errors.login = "Email does not exist or wrong password";
-                        //res.status(400).json(errors);
-                    }else{
-
-
-                        var insertToSearchHistory = {
-                            type: "google",
-                            searchStr: fulladdr,
-                            //date: new Date()
-                        }
-                        //Update searchHistory in user Model.
-                        User.update(
-                            { _id: id, searchHistory: insertToSearchHistory},
-                            {$addToSet: { searchHistory: insertToSearchHistory}},
-                            function(err, user) {
-                                if (err) {
-                                    console.log("error in searchhistory update");
-                                } else {
-                                    console.log("succes in updataing searchHistory11111", user);
+                if (id != null) {
+                    User.findOne({_id: id},function(err,data2) {
+                        let errors = {};
+                        var searchHistoryStore = [];
+                        console.log("data2: " + data2);
+                        searchHistoryStore = data2.searchHistory;
+                        console.log("searchHistoryStore: ", searchHistoryStore)
+                        if(err){
+                            console.log(err);
+                        }else if(!data2){
+                            //errors.login = "Email does not exist or wrong password";
+                            //res.status(400).json(errors);
+                        }else{
 
 
+                            var insertToSearchHistory = {
+                                type: "google",
+                                searchStr: fulladdr,
+                                //date: new Date()
+                            }
+                            //Update searchHistory in user Model.
+                            User.update(
+                                { _id: id, searchHistory: insertToSearchHistory},
+                                {$addToSet: { searchHistory: insertToSearchHistory}},
+                                function(err, user) {
+                                    if (err) {
+                                        console.log("error in searchhistory update");
+                                    } else {
+                                        console.log("succes in updataing searchHistory11111", user);
 
-                                    User.findOne({_id:id,'searchHistory.searchStr': fulladdr}, function(err, data) {
 
-                                        if(err) {
-                                            console.log("1111111111111 google");
-                                        } else if (!data){
-                                            console.log("2222222222222 google");
-                                            var insertToSearchHistoryNew = {
-                                                type: "google",
-                                                searchStr: fulladdr,
-                                                date: new Date()
+
+                                        User.findOne({_id:id,'searchHistory.searchStr': fulladdr}, function(err, data) {
+
+                                            if(err) {
+                                                console.log("1111111111111 google");
+                                            } else if (!data){
+                                                console.log("2222222222222 google");
+                                                var insertToSearchHistoryNew = {
+                                                    type: "google",
+                                                    searchStr: fulladdr,
+                                                    date: new Date()
+                                                }
+                                                User.update(
+                                                    { _id: id},
+                                                    {$addToSet: { searchHistory: insertToSearchHistoryNew}},
+                                                    function(err, user) {
+                                                        if (err) {
+                                                            console.log("in 2nd update error")
+                                                        } else {
+                                                            console.log("in 2nd update success");
+
+                                                            searchHistoryStore.push(insertToSearchHistoryNew);
+                                                            console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
+                                                            var ret = {
+                                                                error:1,
+                                                                errors:errors,
+                                                                searchHistory:searchHistoryStore
+                                                            }
+                                                            callback(ret);
+                                                        }
+                                                    })
+
+                                            } else {
+                                                console.log("333333333333333 google")
+                                                User.update(
+                                                    { 'searchHistory.searchStr': fulladdr},
+                                                    {$set: { 'searchHistory.$.date': new Date()}},
+                                                    function(err, user2) {
+                                                        if (err) {
+                                                            console.log("error date updated");
+                                                        } else {
+                                                            console.log("updating date",  user2);
+                                                            var ret = {
+                                                                error:1,
+                                                                errors:errors,
+                                                                searchHistory: data2.searchHistory
+                                                            }
+                                                            callback(ret);
+                                                        }
+
+                                                    })
                                             }
-                                            User.update(
-                                                { _id: id},
-                                                {$addToSet: { searchHistory: insertToSearchHistoryNew}},
-                                                function(err, user) {
-                                                    if (err) {
-                                                        console.log("in 2nd update error")
-                                                    } else {
-                                                        console.log("in 2nd update success");
+                                        })
 
-                                                        searchHistoryStore.push(insertToSearchHistoryNew);
-                                                        console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
-                                                        var ret = {
-                                                            error:1,
-                                                            errors:errors,
-                                                            searchHistory:searchHistoryStore
-                                                        }
-                                                        callback(ret);
-                                                    }
-                                                })
+                                    }
+                                });
+                        }
+                    });
+                } else {
+                  // no user. Guest user trying to search
+                  console.log("In google searchbar line 312, in else part of no user.");
+                  errors.searchBar = "We could not find " + searchStr
 
-                                        } else {
-                                            console.log("333333333333333 google")
-                                            User.update(
-                                                { 'searchHistory.searchStr': fulladdr},
-                                                {$set: { 'searchHistory.$.date': new Date()}},
-                                                function(err, user2) {
-                                                    if (err) {
-                                                        console.log("error date updated");
-                                                    } else {
-                                                        console.log("updating date",  user2);
-                                                        var ret = {
-                                                            error:1,
-                                                            errors:errors,
-                                                            searchHistory: data2.searchHistory
-                                                        }
-                                                        callback(ret);
-                                                    }
-
-                                                })
-                                        }
-                                    })
-
-                                }
-                            });
-                    }
-                });
+                  var ret = {
+                      error:1,
+                      errors:errors,
+                      searchHistory:null
+                  }
+                  callback(ret);
+                }
 
 
 

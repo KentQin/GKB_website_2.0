@@ -61,6 +61,10 @@ class MyGoogleSuggest extends Component {
           //var userUpdated = this.props.login.user;
           (res) => {
               console.log("we are back in searchBar clientside");
+              if (this.props.landingPageFlag == true) {
+                  console.log("just before routing to mapContainer")
+                  browserHistory.push('/home');
+              }
 
           },
           // if server response any error message, set it into state errors
@@ -109,10 +113,10 @@ class MyGoogleSuggest extends Component {
                   this.props.setDescriptionArray(descriptionArray);
                   // }
                   this.props.updateCoordsRequest(userData);
-                // if (flag) {
-                //     console.log("just before routing to mapContainer")
-                //    browserHistory.push('/map');
-                // }
+                  if (this.props.landingPageFlag == true) {
+                      console.log("just before routing to mapContainer")
+                      browserHistory.push('/home');
+                  }
 
               })
           }

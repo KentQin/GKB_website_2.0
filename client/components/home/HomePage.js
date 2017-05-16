@@ -83,8 +83,8 @@ class HomePage extends React.Component {
                 <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest}
                                    updateCoordsRequest={this.props.updateCoordsRequest}
                                    setShowSearchResult={this.props.setShowSearchResult}
-
-                                   setDescriptionArray={this.props.setDescriptionArray}/>
+                                   setDescriptionArray={this.props.setDescriptionArray}
+                                   landingPageFlag = {false}/>
 
 
                 {searchResultFlag && <SearchResultList searchResult={searchResult}

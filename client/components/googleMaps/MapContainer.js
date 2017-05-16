@@ -179,7 +179,7 @@ class MapContainer extends Component {
 
 
           <Router history={browserHistory}>
-              <Route path="/" component={HomePage}/>
+              <Route path="/" component={Landing}/>
                   <Route path="home" component={HomePage}/>
                   <Route path="login" component={LoginPage}/>
                   <Route path="signup" component={SignupPage}/>

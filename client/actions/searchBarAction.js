@@ -54,8 +54,15 @@ export function searchBarRequest(userData) {
                 // decode token, get user msg from it
                 console.log('decode: ',jwt.decode(token));
                 if (jwt.decode(token).id == null) {
-                  dispatch(setCurrentUserGuest(jwt.decode(token)));
-
+                    dispatch(setCurrentUserGuest(jwt.decode(token)));
+                    const conf = {
+                        showSearchResult: true,
+                        placeFullAddr:userData.fulladdr,
+                        placePhoto: "",
+                        type: "jena"
+                    }
+                    console.log("conf conf: ", conf)
+                    dispatch(setSearchResultList(conf));                  
                 } else {
                 // dispatch action 'setCurrentUser' to change state
                   dispatch(setCurrentUser(jwt.decode(token)));
