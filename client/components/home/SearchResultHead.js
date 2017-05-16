@@ -23,6 +23,7 @@ class SearchResultHead extends React.Component{
     addFavorite(e) {
         console.log("In function addFavorite");
         console.log("In add favorites: location: ", this.props.location)
+        console.log("this.props.searchResult: ", this.props.searchResult);
         var location = this.props.location;
         var photo = this.props.photo
         const {user} = this.props.login;
@@ -30,7 +31,8 @@ class SearchResultHead extends React.Component{
             location : location,
             photo : photo,
             coords: user.coords,
-            user: user
+            user: user,
+            type: this.props.searchResult.searchResultPageConfig.type
         }
         // console.log(this.props);
 
@@ -137,7 +139,8 @@ SearchResultHead.contextTypes = {
 function mapStateToProps(state) {
     console.log('mapStateToProps: ',state.login);
     return {
-        login: state.login
+        login: state.login,
+        searchResult: state.searchResult
     };
 }
 

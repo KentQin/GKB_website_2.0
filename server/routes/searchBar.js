@@ -10,6 +10,7 @@ var rest = require('rest')
 var ElementEl = require('./../models/node.js');
 var User = require('./../models/user.js');
 var DescriptionSchema = require('./../models/placeDescription');
+var GooglePlaces = require('./../models/googleplaces')
 //var rest = require('rest')
 
 let router = express.Router();
@@ -798,12 +799,56 @@ router.get('/testgo', (req, res) => {
 
 router.post('/addDescription', (req, res) => {
 
+    // Add this place to googlePlaces in db only if they type is google
+    if (req.body.type == "google") {
+        console.log("in addDescription google places add");
+
+        var query = {
+          addr: req.body.placeFullAddr,
+        }
+
+        var place = {
+          addr: req.body.placeFullAddr,
+          image: req.body.image,
+          coords: req.body.coords,
+          // date: Date(),
+        }
+
+        GooglePlaces.find(query).count(function(err, count){
+            let errors = {}
+            console.log("In addFavorites Number of docs: ", count );
+            if(count === 0){
+                GooglePlaces.create(place,function(err,dataGoogle) {
+                    console.log("Writing to db");
+                    if(err){
+                        console.log(err.statusCode);
+                    }else if(!dataGoogle){
+                        console.log(res.statusCode);
+                        console.log("Error saving");
+                    }else{
+                        console.log(res.statusCode);
+                        console.log("Registered");
+                    }
+
+                });
+            }else{
+                console.log("place already exists in Favorites db");
+                // errors.signup = "place already exists in Favorites db";
+                // res.status(400).json(errors);
+            }
+        });
+
+
+    }
+
     var description = req.body
+    console.log("descriptionis gonna be stored.: ", description)
     // description.date = new Date().Format("yyyy-MM-dd HH:mm:ss");
     description.like = 0;
     description.date = Date();
     // console.log(description);
     // console.log(description);
+
 
     DescriptionSchema.create(description,function(err,data){
         console.log("Writing to db");

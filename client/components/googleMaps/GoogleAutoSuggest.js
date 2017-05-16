@@ -99,7 +99,8 @@ class MyGoogleSuggest extends Component {
                   const conf = {
                       showSearchResult: true,
                       placeFullAddr:suggest.description,
-                      placePhoto: photo
+                      placePhoto: photo,
+                      type: "google"
                   }
                   console.log("conf conf: ", conf)
                   this.props.setShowSearchResult(conf);
