@@ -3,6 +3,9 @@ import SearchResultItem from './SearchResultItem'
 import SearchResultHead from './SearchResultHead'
 import addPic from '../img/add-post-button-dark.png';
 import AddDescription from './AddDescription';
+import { connect } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
 
 class SearchResultList extends React.Component {
 
@@ -75,10 +78,16 @@ class SearchResultList extends React.Component {
         // const { resultArray } = this.props.searchResult.searchResultList;
         // const { autoComment } = this.props.searchResult.searchResultList;
         const { placeFullAddr } = this.props.searchResult.searchResultPageConfig;
+        const { placePhoto } = this.props.searchResult.searchResultPageConfig;
         const { array }= this.props.descriptionArray;
+        // const {addToFavoritesAction} = this.props
 
         // console.log(descriptionArray);
-        var numList = array.length;
+        if (!array) {
+          var numList = 0
+        } else {
+          var numList = array.length;
+        }
         for (var i = 0; i < numList; i++) {
             //console.log(resultArray.length);
             items.push(<tr key={i}><td><SearchResultItem userName={array[i].doc.user_name}
@@ -99,7 +108,7 @@ class SearchResultList extends React.Component {
                     <tbody>
                         <tr>
                             <td>
-                                <SearchResultHead autoComment = "autoComment" location = {placeFullAddr}/>
+                                <SearchResultHead autoComment = "autoComment" location = {placeFullAddr} photo = {placePhoto} addToFavoritesAction={this.props.addToFavoritesAction}/>
                             </td>
                         </tr>
                         <tr>
@@ -123,7 +132,8 @@ class SearchResultList extends React.Component {
 
                 {this.state.showAddDescription && <AddDescription hideAddWindow={this.hideAddWindow}
                                                                   setDescriptionArray = {this.props.setDescriptionArray}
-                                                                  updateShowSearchResult={this.props.updateShowSearchResult}/>}
+                                                                  updateShowSearchResult={this.props.updateShowSearchResult}
+                                                                  />}
             </div>
         )
     }
@@ -136,8 +146,10 @@ SearchResultList.propTypes = {
     descriptionArray: React.PropTypes.object.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
+    addToFavoritesAction: React.PropTypes.func.isRequired,
     addLikeRequest: React.PropTypes.func.isRequired
 }
 
 
-export default SearchResultList;
+//export default SearchResultList;
+export default connect(null, {}) (SearchResultList);

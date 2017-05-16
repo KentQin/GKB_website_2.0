@@ -13,7 +13,7 @@ class LoginPage extends React.Component {
         return (
             <div className="container loginPage float_on_the_map">
                 <LinkToHome />
-                <div className="row centered">
+                <div className="row centered window-drop-shadow">
                     <div className="col-md-3 login-page-block welcome-block">
                         <WelToSignup />
                     </div>

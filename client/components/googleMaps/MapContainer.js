@@ -2,7 +2,6 @@
 import React, {Component} from "react"
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Polyline } from "react-google-maps";
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import LoginPage from '../login/LoginPage';
 import SignupPage from '../signup/SignupPage';
 import ResetPasswordPage from '../resetpwd/ResetPasswordPage';
@@ -18,6 +17,7 @@ import AddDescription from '../home/AddDescription';
 import Landing from '../landing/landingPage';
 import HomeLogin from '../login/HomeLogin';
 import HomeSignup from '../signup/HomeSignup';
+import MyContributions from '../userProfile/ContributionPage';
 //import GettingStartedGoogleMap from "./GMap"
 
 class MapContainer extends Component {
@@ -196,6 +196,7 @@ class MapContainer extends Component {
                   <Route path="accountsetting" component={AccountSetting}/>
                   <Route path="searchhistory" component={SearchHistory}/>
                   <Route path="myfavourites" component={MyFavourites}/>
+                  <Route path="mycontributions" component={MyContributions}/>
           </Router>
 
 

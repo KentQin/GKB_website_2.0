@@ -21,143 +21,164 @@ router.post('/', (req, res) => {
     console.log("finally in searchBar route");
     console.log("fulladdr: ", req.body.fulladdr);
     console.log("DATE: ", Date());
+
     const query = { placeFullAddr: req.body.fulladdr}
-    console.log("start1********************");
-
-
-    // User.findOne({_id:req.body.id}, function(err,data){
-    //     console.log("In here finding id");
-    //     if(err){
-    //         console.log("Finding id but "+err);
-    //     }else if(!data){
-    //         console.log("Finding id but cannot find data");
+    // DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+    //     if (err) return handleError(err);
+    //     //console.log(docs);
+    //     var counter = 1
+    //     var descriptionArray = [];
+    //     console.log(docs);
+    //     if(docs.length == 0){
+    //         res.status(400).json({data: null});
     //     }else{
-    //         console.log("Finding id and found");
-    //         // console.log(data.searchHistory.searchResult);
-    //         var date = new Date();
-    //         // var content = [];
-    //         // var history = {type: date, content: content};
-    //         // console.log("To update: "+history.type);
-    //         User.update ({_id: req.body.id, }, {$push: {searchHistorys:date}}, function(err,data){
-    //             if(err){
-    //                 console.log("Updating history but "+err);
-    //             }else if (!data){
-    //                 console.log("Updating history but failed");
-    //             }else {
-    //                 console.log("Updated history successfully");
-    //                 console.log(data);
-    //             }
+    //         docs.forEach((doc) => {
+    //             //console.log(doc);
+    //             var temp = {};
+    //             User.findById(doc.user_id, 'proImg', function (err, img) {
+    //                 temp.doc = doc;
+    //                 temp.proImg = img.proImg;
+    //                 descriptionArray.push(temp);
+    //                 //console.log(temp);
+    //                 if (counter == docs.length){
+    //                     //console.log("All done")
+    //                     descriptionArray.sort((a,b)=>{
+    //                         if( a.doc.like > b.doc.like){
+    //                             return -1;
+    //                         }else if( a.doc.like < b.doc.like ){
+    //                             return 1;
+    //                         }
+    //                         return 0;
+    //                     });
+    //                     res.status(400).json(descriptionArray);
+    //                 }
+    //                 counter+=1;
+    //             });
     //         });
     //     }
-    // });
 
-    // User.findByIdAndUpdate({_id:req.body.id}, )
+    // const data = {
+    //     user_imgs: user_imgs,
+    //     docs: docs
+    // }
+    //console.log(user_imgs);
 
-    DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
-        if (err) return handleError(err);
-        //console.log(docs);
-        var counter = 1
-        var descriptionArray = [];
-        console.log(docs);
+    // }).sort({ like: -1 });
 
-        if(docs.length == 0){
-            res.status(400).json({data: null});
-        }else{
-            docs.forEach((doc) => {
-                //console.log(doc);
-                var temp = {};
-                User.findById(doc.user_id, 'proImg', function (err, img) {
-                    temp.doc = doc;
-                    temp.proImg = img.proImg;
-                    descriptionArray.push(temp);
-                    //console.log(temp);
-                    if (counter == docs.length){
-                        //console.log("All done")
-                        descriptionArray.sort((a,b)=>{
-                            if( a.doc.like > b.doc.like){
-                                return -1;
-                            }else if( a.doc.like < b.doc.like ){
-                                return 1;
-                            }
-                            return 0;
-                        });
-                        res.status(400).json(descriptionArray);
-                    }
-                    counter+=1;
+
+    const button = req.body.button
+
+    // if button was clicked, different way of dealing
+    if (button) {
+        console.log("go button clicked")
+        //places
+
+        var ret = {};
+        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
+            //console.log("ret: ", ret)
+
+            if (ret.error == 1) {
+                var errors = ret.errors
+                res.status(400).json(errors);
+                // so search google now
+                //https://maps.googleapis.com/maps/api/place/textsearch/json?query=IGA&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
+                //autocomplete
+                //https://maps.googleapis.com/maps/api/place/autocomplete/json?input=hawthorn&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
+
+                console.log("not present in jena, so gooogle");
+                rest('http://freegeoip.net/json/').then(function(response) {
+                    var parsedData = JSON.parse(response.entity)
+                    var pos = {
+                        lat: parsedData.latitude,
+                        lng: parsedData.longitude
+                    };
+
+                    var options = { url: url};
+                    curl.request(options, function (err, res1) {
+
+                    });
+
                 });
-            });
-        }
 
-        // const data = {
-        //     user_imgs: user_imgs,
-        //     docs: docs
-        // }
-        //console.log(user_imgs);
+            } else {
+                //send jena results
+                console.log("present in jena")
+                var token = ret.token
+                res.json({token});
+            }
 
-    }).sort({ like: -1 });
-    // res.json(docs);
+        });
 
+    } else {
+
+        var ret = {};
+        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
+            //console.log("ret: ", ret)
+            if (ret.error == 1) {
+
+                console.log("not in jena, but in google");
+                var errors = ret.errors
+                res.status(400).json(errors);
+                // DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+                //     if (err) return handleError(err);
+                //     //console.log(docs);
+                //     var counter = 1
+                //     var descriptionArray = [];
+                //     console.log(docs);
+                //     if(docs.length == 0){
+                //         res.status(400).json({errors: null,
+                //                               descriptionArray: null});
+                //     }else{
+                //         docs.forEach((doc) => {
+                //             //console.log(doc);
+                //             var temp = {};
+                //             User.findById(doc.user_id, 'proImg', function (err, img) {
+                //                 temp.doc = doc;
+                //                 if (img.proImg) {
+                //                   temp.proImg = img.proImg;
+                //                 }
+                //                 descriptionArray.push(temp);
+                //                 //console.log(temp);
+                //                 if (counter == docs.length){
+                //                     //console.log("All done")
+                //                     descriptionArray.sort((a,b)=>{
+                //                         if( a.doc.like > b.doc.like){
+                //                             return -1;
+                //                         }else if( a.doc.like < b.doc.like ){
+                //                             return 1;
+                //                         }
+                //                         return 0;
+                //                     });
+                //                     //res.status(400).json(descriptionArray);
+                //                     // To send to the front end if not in jena, with descriptionArray
+                //                     var errors = {
+                //                       errors: ret.errors,
+                //                       descriptionArray: descriptionArray
+                //                     }
+                //                     console.log("not in jena, but in google. With descriptionArray")
+                //                     res.status(400).json(errors);
+                //                 }
+                //                 counter+=1;
+                //             });
+                //         });
+                //     }
+                //
+                //     // const data = {
+                //     //     user_imgs: user_imgs,
+                //     //     docs: docs
+                //     // }
+                //     // console.log(user_imgs);
+                //
+                // }).sort({ like: -1 });
+
+            } else {
+                var token = ret.token
+                res.json({token});
+            }
+        });
+    }
+    //res.redirect('/home');
 });
-//
-//     const button = req.body.button
-//
-//     // if button was clicked, different way of dealing
-//     if (button) {
-//         console.log("go button clicked")
-//         //places
-//
-//         var ret = {};
-//         ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
-//             //console.log("ret: ", ret)
-//
-//             if (ret.error == 1) {
-//                 var errors = ret.errors
-//                 res.status(400).json(errors);
-//                 // so search google now
-//                 //https://maps.googleapis.com/maps/api/place/textsearch/json?query=IGA&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
-//                 //autocomplete
-//                 //https://maps.googleapis.com/maps/api/place/autocomplete/json?input=hawthorn&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
-//
-//                 console.log("not present in jena, so gooogle");
-//                 rest('http://freegeoip.net/json/').then(function(response) {
-//                     var parsedData = JSON.parse(response.entity)
-//                     var pos = {
-//                         lat: parsedData.latitude,
-//                         lng: parsedData.longitude
-//                     };
-//
-//                     var options = { url: url};
-//                     curl.request(options, function (err, res1) {
-//
-//                     });
-//
-//                 });
-//
-//             } else {
-//                 //send jena results
-//                 console.log("present in jena")
-//                 var token = ret.token
-//                 res.json({token});
-//             }
-//
-//         });
-//
-//     } else {
-//
-//         var ret = {};
-//         ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
-//             //console.log("ret: ", ret)
-//             if (ret.error == 1) {
-//                 var errors = ret.errors
-//                 res.status(400).json(errors);
-//             } else {
-//                 var token = ret.token
-//                 res.json({token});
-//             }
-//         });
-//     }
-//     //res.redirect('/home');
-// });
 
 
 function queryJena(searchStr, fulladdr, id, callback) {
@@ -195,6 +216,84 @@ function queryJena(searchStr, fulladdr, id, callback) {
                     error:1,
                     errors:errors
                 }
+                // Then store the searchstr in searchStr in db with google type.
+
+
+                User.findOne({_id: id},function(err,data2) {
+                    let errors = {};
+                    console.log("data2: " + data2);
+                    if(err){
+                        console.log(err);
+                    }else if(!data2){
+                        //errors.login = "Email does not exist or wrong password";
+                        //res.status(400).json(errors);
+                    }else{
+
+
+                        var insertToSearchHistory = {
+                            type: "google",
+                            searchStr: fulladdr,
+                            //date: new Date()
+                        }
+                        //Update searchHistory in user Model.
+                        User.update(
+                            { _id: id, searchHistory: insertToSearchHistory},
+                            {$addToSet: { searchHistory: insertToSearchHistory}},
+                            function(err, user) {
+                                if (err) {
+                                    console.log("error in searchhistory update");
+                                } else {
+                                    console.log("succes in updataing searchHistory11111", user);
+
+
+
+                                    User.findOne({_id:id,'searchHistory.searchStr': fulladdr}, function(err, data) {
+
+                                        if(err) {
+                                            console.log("1111111111111 google");
+                                        } else if (!data){
+                                            console.log("2222222222222 google");
+                                            var insertToSearchHistoryNew = {
+                                                type: "google",
+                                                searchStr: fulladdr,
+                                                date: new Date()
+                                            }
+                                            User.update(
+                                                { _id: id},
+                                                {$addToSet: { searchHistory: insertToSearchHistoryNew}},
+                                                function(err, user) {
+                                                    if (err) {
+                                                        console.log("in 2nd update error")
+                                                    } else {
+                                                        console.log("in 2nd update success");
+                                                    }
+                                                })
+
+                                        } else {
+                                            console.log("333333333333333 google")
+                                            User.update(
+                                                { 'searchHistory.searchStr': fulladdr},
+                                                {$set: { 'searchHistory.$.date': new Date()}},
+                                                function(err, user2) {
+                                                    if (err) {
+                                                        console.log("error date updated");
+                                                    } else {
+                                                        console.log("updating date",  user2);
+                                                    }
+
+                                                })
+                                        }
+                                    })
+
+                                }
+                            });
+                    }
+                });
+
+
+
+
+
                 callback(ret);
             } else {
                 for (var i = 0; i < docs.length; i++) {
@@ -290,6 +389,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
 
 
                                                         var insertToSearchHistory = {
+                                                            type: "jena",
                                                             element: doc_id,
                                                             searchStr: fulladdr,
                                                             //date: new Date()
@@ -313,6 +413,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                         } else if (!data){
                                                                             console.log("2222222222222");
                                                                             var insertToSearchHistoryNew = {
+                                                                                type: "jena",
                                                                                 element: doc_id,
                                                                                 searchStr: fulladdr,
                                                                                 date: new Date()
@@ -481,6 +582,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                             var insertToSearchHistory = {
                                                 element: doc_id,
                                                 searchStr: fulladdr,
+                                                type: "jena"
                                                 //date: new Date()
                                             }
                                             //Update searchHistory in user Model.
@@ -508,6 +610,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                 } else if (!data3){
                                                                     console.log("2222222222222");
                                                                     var insertToSearchHistoryNew = {
+                                                                        type: "jena",
                                                                         element: doc_id,
                                                                         searchStr: fulladdr,
                                                                         date: new Date()
@@ -526,7 +629,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                     accountType: data.accountType,
                                                                                     id: data._id,
                                                                                     proImg: data.proImg,
-                                                                                    coords: coords2,
+                                                                                    coords: coords,
                                                                                     placeFullAddr: fulladdr,
                                                                                     placePhoto: ""
                                                                                 }, 'secretkeyforjsonwebtoken');

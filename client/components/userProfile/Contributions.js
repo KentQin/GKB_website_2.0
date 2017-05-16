@@ -1,14 +1,14 @@
 import React from 'react';
 import LinkToHome from '../common/LinkToHome';
-import FavouriteList from './FavouriteList';
+import ContributionList from './ContributonList';
 
-class Favourites extends React.Component{
+class Contributions extends React.Component{
     render(){
 
         return(
             <div className="vertical-block col-md-offset-1 col-md-8 window-drop-shadow">
                 <div className="vertical-block-title">
-                    <h3>My Favourites</h3>
+                    <h3>My Contributions</h3>
                     <LinkToHome/>
                 </div>
 
@@ -28,16 +28,16 @@ class Favourites extends React.Component{
                             <a href="#" className="list-group-item">Oldest</a>
                             <a className="list-group-item">Highest Rank</a>
                             <a className="list-group-item">Lowest Rank</a>
-                            <br/>
 
+                            <br/>
                             <h5>Filter By</h5>
-                            <a className="list-group-item">Country</a>
-                            <a className="list-group-item">Location Type</a>
+                            <a href="#" className="list-group-item">Country</a>
+                            <a href="#" className="list-group-item">Location Type</a>
                         </div>
                     </div>
 
                     <div className="vertical-block-content-right col-md-9">
-                        <FavouriteList />
+                        <ContributionList />
                     </div>
                 </div>
             </div>
@@ -45,4 +45,4 @@ class Favourites extends React.Component{
     }
 }
 
-export default Favourites;
+export default Contributions;

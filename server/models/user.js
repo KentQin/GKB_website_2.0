@@ -12,9 +12,16 @@ var userSchema = new Schema({
     searchHistory: [{
         element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
         searchStr: { type: String },
-        date: { type: Date }
+        date: { type: Date },
+        type: {type: String}
     }],
-    favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element'}]
+    favorites: [{
+        searchStr: { type: String},
+        date: { type: Date},
+        type: {type: String},
+        image: {type: String},
+        coords: {type: Object}
+    }],
 });
 
 

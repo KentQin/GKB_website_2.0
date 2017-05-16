@@ -1,17 +1,19 @@
-import {SET_DESCRIPTION_ARRAY} from '../actions/types';
+import {SET_FAVORITES} from '../actions/types';
+
 
 const initialState = {
-    descriptionArray: {}
+    favorites: {}
 };
 
 export default (state = initialState, action) => {
+
     switch (action.type) {
 
         //called by login page
-        case SET_DESCRIPTION_ARRAY:
+        case SET_FAVORITES:
             return {
                 //action object contains user
-                array: action.data
+                favorites: action.data
             }
 
         default: return state;

@@ -1,9 +1,9 @@
 import React from 'react';
-import FavouriteItem from './FavouriteItem';
+import ContributionItem from './ContributionItem';
 import testImg from './../img/default-profile-picture.jpg';
 import {connect} from 'react-redux';
 
-class FavouriteList extends React.Component{
+class ContributonList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -20,15 +20,15 @@ class FavouriteList extends React.Component{
 
         const {user} = this.props.login;
         var items = [];
-        var {favorites} = this.props.login.user;
-        console.log("Favorites page: "+JSON.stringify(favorites[0]));
+        var {descriptions} = this.props.login.user;
 
-        if (typeof(favorites) != 'undefined') {
-            for (var i = 0; i < favorites.length; i++) {
+        console.log("User in contribution "+JSON.stringify(descriptions[0]));
+        if (typeof(descriptions) != 'undefined') {
+            for (var i = 0; i < descriptions.length; i++) {
                 console.log("Processing "+i);
-                items.push(<div><FavouriteItem location={favorites[i].searchStr}
-                                               img={favorites[i].image}
-                                               description={favorites[i].description}/>
+                items.push(<div><ContributionItem location={descriptions[i].location}
+                                               img={testImg}
+                                               description={descriptions[i].description}/>
                     </div>
                 );
             }
@@ -50,4 +50,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps,null)(FavouriteList);
+export default connect(mapStateToProps,null)(ContributonList);

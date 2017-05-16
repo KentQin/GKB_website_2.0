@@ -8,11 +8,6 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 const MY_API_KEY = "AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM"
 
 class MyGoogleSuggest extends Component {
-    // state = {
-    //   search: "",
-    //   selectedCoordinate: null,
-    // }
-
     constructor(props){
         super(props);
         this.state = {
@@ -30,60 +25,7 @@ class MyGoogleSuggest extends Component {
         console.log('GO is clicked ************');
         this.props.showSearchResult();
 
-        // // This will directly go to the back end and search for coordinates in google db and jena
-        // // query apache jena database, if not then go with google.
-        // const {user} = this.props.login
-        // // console.log("search term to jena: ", suggest.terms[0].value);
-        // this.setState({errors: {} });
-        // var toSend;
-        // if (user.id == null) {
-        //   toSend = {
-        //     searchStr: this.state.searchStr,
-        //     id: null,
-        //     button:true
-        //   }
-        // } else {
-        //   toSend = {
-        //     searchStr: this.state.searchStr,
-        //     id: user.id,
-        //     button:true
-        //   }
-        // }
-        // this.props.searchBarRequest(toSend).then(
-        //     (res) => {
-        //         console.log("we are back in searchBar clientside button");
-        //     },
-        //     // if server response any error message, set it into state errors
-        //     (err) => {
-        //         console.log("err.response.data: ", err.response.data);
-        //         // this.setState({searchStr: this.state.searchStr, selectedCoordinate: coordinate}, function() {
-        //         //   console.log("suggest: ", suggest);
-        //         //   console.log("coordinates: ", coordinate);
-        //         //   console.log("selectedCoordinate", this.state.selectedCoordinate);
-        //         //   console.log("place details in my code: ", place);
-        //         //   if (place.photos) {
-        //         //     console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
-        //         //   }
-        //         //   console.log("directionsResponse in my code: ", directionsResponse.routes[0].overview_path);
-        //         //   console.log("directionsResponse in my code lat: ", directionsResponse.routes[0].overview_path[0].lat());
-        //         //   // const {user} = this.props.login;
-        //         //   console.log("inside suggestSelect :", user);
-        //         //   var userData = {
-        //         //     email: user.email,
-        //         //     userName: user.userName,
-        //         //     accountType: user.accountType,
-        //         //     id: user.id,
-        //         //     coords: {
-        //         //       lat: this.state.selectedCoordinate.latitude,
-        //         //       longt: this.state.selectedCoordinate.longitude
-        //         //     },
-        //         //     directions:directionsResponse.routes[0].overview_path,
-        //         //   }
-        //         //
-        //         //   this.props.updateCoordsRequest(userData);
-        //         // })
-        //     }
-        // );
+
     }
 
     handleSearchChange(e) {
@@ -92,11 +34,9 @@ class MyGoogleSuggest extends Component {
 
     handleSelectSuggest(suggest, coordinate, place, directionsResponse) {
         // query apache jena database, if not then go with google.
-        console.log("+++++++++++coordinate+++++++++++coordinate");
-        console.log(coordinate);
         const {user} = this.props.login;
-        console.log("this props landingpage flag: ", this.props.landingPageFlag);
-        var flag = this.props.landingPageFlag;
+        // console.log("this props landingpage flag: ", this.props.landingPageFlag);
+        // var flag = this.props.landingPageFlag;
         console.log("search term to jena: ", suggest.terms[0].value);
         this.setState({errors: {} });
         var toSend;
@@ -110,77 +50,68 @@ class MyGoogleSuggest extends Component {
             toSend = {
                 searchStr: suggest.terms[0].value,
                 id: user.id,
-                fulladdr: suggest.description
+                fulladdr: suggest.description,
             }
         }
-        this.props.searchBarRequest(toSend)
-            .then(
-                // after server response then...
-                // if successful
-                //var userUpdated = this.props.login.user;
-                (res) => {
-                    console.log("we are back in searchBar clientside");
-                    //console.log("ins ide suggestSelect :", this.props.login);
-                    // var userData = {
-                    //   email: this.props.login.user.email,
-                    //   userName: this.props.login.user.userName,
-                    //   accountType: this.props.login.user.accountType,
-                    //   id: this.props.login.user.id,
-                    //   coords: {
-                    //     lat: this.props.login.user.coords.lat,
-                    //     longt: this.props.login.user.coords.longt
-                    //   },
-                    //   directions:[],
-                    // }
 
-                    //this.props.updateCoordsRequest(userData);
-                    //this.context.router.push('/home')
-                    if (flag) {
-                        this.context.router.push('/map')
-                    }
-                },
-                // if server response any error message, set it into state errors
-                (err) => {
-                    var photo = "";
-                    this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
-                        if (place.photos) {
-                            console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
-                            photo = place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35})
-                        } else {
-                            photo = ""
-                        };
-                        var userData = {
-                            email: user.email,
-                            userName: user.userName,
-                            accountType: user.accountType,
-                            proImg: user.proImg,
-                            id: user.id,
-                            proImg: user.proImg,
-                            showSearchResult: true,
-                            coords: {
-                                lat: this.state.selectedCoordinate.latitude,
-                                longt: this.state.selectedCoordinate.longitude
-                            },
-                            directions:directionsResponse.routes[0].overview_path,
+      this.props.searchBarRequest(toSend)
+          .then(
+          // after server response then...
+          // if successful
+          //var userUpdated = this.props.login.user;
+          (res) => {
+              console.log("we are back in searchBar clientside");
 
-                        }
-                        const descriptionArray = err.response.data;
-                        const conf = {
-                            showSearchResult: true,
-                            placeFullAddr:suggest.description,
-                            placePhoto: photo
-                        }
-                        this.props.setShowSearchResult(conf);
-                        this.props.setDescriptionArray(descriptionArray);
-                        this.props.updateCoordsRequest(userData);
-                        if (flag) {
-                            console.log("just before routing to mapContainer")
-                            browserHistory.push('/map');
-                        }
+          },
+          // if server response any error message, set it into state errors
+          (err) => {
+              var photo = "";
+              this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
+                  if (place.photos) {
+                    console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
+                    photo = place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35})
+                  } else {
+                    photo = ""
+                  };
+                  var userData = {
+                    email: user.email,
+                    userName: user.userName,
+                    accountType: user.accountType,
+                    proImg: user.proImg,
+                    id: user.id,
+                      proImg: user.proImg,
+                      showSearchResult: true,
+                    coords: {
+                      lat: this.state.selectedCoordinate.latitude,
+                      longt: this.state.selectedCoordinate.longitude
+                    },
+                    directions:directionsResponse.routes[0].overview_path,
 
-                    })
-                }
-            );
+                  }
+                  //const descriptionArray = err.response.descriptionArray
+                  // Changing thw whole functionality. For now let descriptionArray is null
+                  var descriptionArray = null;
+                  const conf = {
+                      showSearchResult: true,
+                      placeFullAddr:suggest.description,
+                      placePhoto: photo
+                  }
+                  console.log("conf conf: ", conf)
+                  this.props.setShowSearchResult(conf);
+
+                  //if (descriptionArray) {
+                  this.props.setDescriptionArray(descriptionArray);
+                  // }
+                  this.props.updateCoordsRequest(userData);
+                // if (flag) {
+                //     console.log("just before routing to mapContainer")
+                //    browserHistory.push('/map');
+                // }
+
+              })
+          }
+      );
+
     }
 
     render() {

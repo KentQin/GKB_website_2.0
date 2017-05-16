@@ -13,6 +13,7 @@ import { addLikeRequest } from '../../actions/addLikeAction';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
 import { searchBarTestGoAction } from '../../actions/searchBarTestGoAction'
+import { addToFavoritesAction } from '../../actions/addToFavorites'
 
 class HomePage extends React.Component {
 
@@ -48,6 +49,7 @@ class HomePage extends React.Component {
     // <SearchBar searchBarRequest={this.props.searchBarRequest}
     //            searchBarTestGoAction = {this.props.searchBarTestGoAction}
     //            showSearchResult={this.showSearchResult}/>
+    // showSearchResult={this.showSearchResult}
 
     render() {
 
@@ -55,6 +57,7 @@ class HomePage extends React.Component {
         const { showSearchResult } = this.props.login.user;
         const searchResult = this.props.searchResult;
         const descriptionArray = this.props.descriptionArray;
+        // const { showSearchResult } = this.props.searchResult.searchResultPageConfig;
 
         return (
             <div className="container loginPage float_on_the_map">
@@ -65,7 +68,7 @@ class HomePage extends React.Component {
                 <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest}
                                    updateCoordsRequest={this.props.updateCoordsRequest}
                                    setShowSearchResult={this.props.setShowSearchResult}
-                                   showSearchResult={this.showSearchResult}
+
                                    setDescriptionArray={this.props.setDescriptionArray}/>
 
 
@@ -75,6 +78,7 @@ class HomePage extends React.Component {
                                                        login={this.props.login}
                                                        setDescriptionArray={this.props.setDescriptionArray}
                                                        updateShowSearchResult={this.props.updateShowSearchResult}
+                                                       addToFavoritesAction={this.props.addToFavoritesAction}
                                                        addLikeRequest={this.props.addLikeRequest}/>}
 
             </div>
@@ -89,8 +93,8 @@ HomePage.propTypes = {
     updateCoordsRequest: React.PropTypes.func.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
+    addToFavoritesAction: React.PropTypes.func.isRequired,
     addLikeRequest: React.PropTypes.func.isRequired
-    //searchBarTestGoAction: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -107,5 +111,6 @@ export default connect(mapStateToProps, { logout,
                                         setShowSearchResult,
                                         setDescriptionArray,
                                         updateShowSearchResult,
+                                        addToFavoritesAction,
                                         addLikeRequest})(HomePage);
 //export default connect(mapStateToProps, { logout, searchBarRequest, searchBarTestGoAction })(HomePage);
