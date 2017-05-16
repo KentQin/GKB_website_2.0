@@ -14,16 +14,8 @@ export function setCurrentUser(user) {
 export function addNameRequest(userData) {
     return dispatch => {
         return axios.post('/api/users/addName', userData).then(res =>{
-            const token = res.data.token;
-            console.log('add name token: ' ,token);
-            // get token from server side, and store the token into session storage
-            sessionStorage.removeItem('loginToken');
-            sessionStorage.setItem('loginToken', token);
-            setAuthorizationToken(token);
-            // decode token, get user msg from it
-            console.log('decode add username: ',jwt.decode(token));
-            // dispatch action 'setCurrentUser' to change state
-            dispatch(setCurrentUser(jwt.decode(token)));
+            const user = res.data.user;
+            dispatch(setCurrentUser(user));
         });
     }
 }

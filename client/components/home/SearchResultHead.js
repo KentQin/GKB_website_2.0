@@ -1,19 +1,67 @@
 import React from 'react';
-import photo from '../img/landing_page_photo.png';
+import { connect } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
+import photoDef from '../img/landing_page_photo.png';
 import place from '../img/ic-place-black-48-dp.png';
 import add from '../img/heart-light-filled-green.png';
 import share from '../img/ic-share-black-48-dp.png';
 
 
+
 class SearchResultHead extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+          searchStr: "",
+          errors: {}
+        }
+        this.addFavorite = this.addFavorite.bind(this);
+    }
+
+    addFavorite(e) {
+        console.log("In function addFavorite");
+        console.log("In add favorites: location: ", this.props.location)
+        var location = this.props.location;
+        var photo = this.props.photo
+        const {user} = this.props.login;
+        var description = {
+            location : location,
+            photo : photo,
+            coords: user.coords,
+            user: user
+        }
+        // console.log(this.props);
+
+        this.props.addToFavoritesAction(description).then(
+        //     (res) = {
+        //         console.log("we are back in addToFavoritesAction clientside")
+        //     },
+        //     (err) = {
+        //         console.log("we are back in addToFavoritesAction clientside, err")
+        //     }
+        // );
+        (res) => {
+            console.log("we are back in addToFavoritesAction clientside");
+            //this.context.router.push('/home')
+        },
+        // if server response any error message, set it into state errors
+        (err) => {
+            console.log("Login Form: login failed");
+            //console.log(err.response.data);
+            this.setState({ errors: err.response.data});
+            console.log("this.state.errors: ", this.state.errors);
+        });
+    }
 
     render(){
 
         const autoComment = this.props.autoComment;
         const location = this.props.location;
-        var imgSrc = this.props.placePhoto;
+        var imgSrc = this.props.photo;
         if(imgSrc == ''){
-            imgSrc = photo
+            imgSrc = photoDef
         }
         return(
             <div>
@@ -26,6 +74,7 @@ class SearchResultHead extends React.Component{
                         <div className="search-result-content">
                             <div className="photo-gallery col-md-5">
                                 <img src={imgSrc}/>
+
                             </div>
 
                             <div className="search-result-right">
@@ -39,7 +88,7 @@ class SearchResultHead extends React.Component{
                                 </div>
                             <div className="result-info result-btn">
                                 <div className="add-sec">
-                                    <img className="small-icon-sq" src={add}/>
+                                    <img className="small-icon-sq" src={add} onClick={this.addFavorite}/>
                                     Add to Favourites
                                 </div>
 
@@ -65,9 +114,30 @@ class SearchResultHead extends React.Component{
     }
 }
 
+// SearchResultHead.propTypes = {
+//     // autoComment: React.PropTypes.string.isRequired,
+//     // location: React.PropTypes.string.isRequired
+// }
+//
+// export default SearchResultHead;
+
+
 SearchResultHead.propTypes = {
-    // autoComment: React.PropTypes.string.isRequired,
-    // location: React.PropTypes.string.isRequired
+    addToFavoritesAction: React.PropTypes.func.isRequired,
+    login: React.PropTypes.object.isRequired,
+    // location: React.PropTypes.String
+    // photo: React.PropTypes.String
 }
 
-export default SearchResultHead;
+SearchResultHead.contextTypes = {
+    router: React.PropTypes.object.isRequired
+}
+
+function mapStateToProps(state) {
+    console.log('mapStateToProps: ',state.login);
+    return {
+        login: state.login
+    };
+}
+
+export default connect(mapStateToProps, null)(SearchResultHead);

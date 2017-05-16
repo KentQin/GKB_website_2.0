@@ -2,7 +2,6 @@
 import React, {Component} from "react"
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Polyline } from "react-google-maps";
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import LoginPage from '../login/LoginPage';
 import SignupPage from '../signup/SignupPage';
 import ResetPasswordPage from '../resetpwd/ResetPasswordPage';

@@ -4,7 +4,9 @@ import SearchResultHead from './SearchResultHead'
 import addPic from '../img/add-post-button-dark.png';
 import AddDescription from './AddDescription';
 import { Link } from 'react-router';
-// import LoginWindow from './LoginWindow';
+import { connect } from 'react-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
 
 class SearchResultList extends React.Component {
 
@@ -27,8 +29,8 @@ class SearchResultList extends React.Component {
     }
 
     onClickAdd(){
-        const auth = this.props.isAuthenticated;
-        if (auth){
+        const isAuthenticated = this.props.isAuthenticated;
+        if (isAuthenticated){
             this.showAddWindow();
         }
     }
@@ -72,10 +74,10 @@ class SearchResultList extends React.Component {
         const { placeFullAddr } = this.props.searchResult.searchResultPageConfig;
         const { placePhoto } =this.props.searchResult.searchResultPageConfig;
         const { array }= this.props.descriptionArray;
-        const auth = this.props.isAuthenticated;
+        const isAuthenticated = this.props.isAuthenticated;
 
         var addImg;
-        if(auth){
+        if(isAuthenticated){
             addImg = <img id = "add" src = {addPic}
                               onClick = {this.onClickAdd}
             />;
@@ -94,17 +96,20 @@ class SearchResultList extends React.Component {
                 const user_id = this.props.user_id;
                 const {user_like_array} = array[i].doc;
                 var thumbUp = false;
-                if(user_like_array.indexOf(user_id) != -1){
-                    console.log("exist");
-                    thumbUp = true;
+                if(user_like_array != undefined){
+                    if(user_like_array.indexOf(user_id) != -1){
+                        console.log("exist");
+                        thumbUp = true;
+                    }
                 }
+
                 items.push(<tr key={i}><td><SearchResultItem userName={array[i].doc.user_name}
                                                              like= {array[i].doc.like}
                                                              num = {i+1}
                                                              //clickLike = {this.clickLike}
                                                              des_id = {array[i].doc._id}
                                                              proImg = {array[i].proImg}
-                                                             auth = {auth}
+                                                             isAuthenticated = {isAuthenticated}
                                                              user_id = {user_id}
                                                              preThumbUp = {thumbUp}
                                                              discription={array[i].doc.description_content}/>
@@ -116,6 +121,7 @@ class SearchResultList extends React.Component {
                                     <h3>There is no description, waiting for your contribution</h3>
                                 </div>
                 </td></tr>
+
             );
         }
 
@@ -129,7 +135,8 @@ class SearchResultList extends React.Component {
                             <td>
                                 <SearchResultHead autoComment = "autoComment"
                                                   location = {placeFullAddr}
-                                                  placePhoto = {placePhoto}/>
+                                                  photo = {placePhoto}
+                                                  addToFavoritesAction = {this.props.addToFavoritesAction}/>
                             </td>
                         </tr>
                         <tr>
@@ -150,7 +157,8 @@ class SearchResultList extends React.Component {
 
                 {this.state.showAddDescription && <AddDescription hideAddWindow={this.hideAddWindow}
                                                                   setDescriptionArray = {this.props.setDescriptionArray}
-                                                                  updateShowSearchResult={this.props.updateShowSearchResult}/>}
+                                                                  updateShowSearchResult={this.props.updateShowSearchResult}
+                                                                  />}
             </div>
         )
     }
@@ -163,9 +171,9 @@ SearchResultList.propTypes = {
     descriptionArray: React.PropTypes.object.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
-    //addLikeRequest: React.PropTypes.func.isRequired,
-    user_id: React.PropTypes.string.isRequired
+    addToFavoritesAction: React.PropTypes.func.isRequired
 }
 
 
-export default SearchResultList;
+//export default SearchResultList;
+export default connect(null, {}) (SearchResultList);

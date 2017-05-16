@@ -7,14 +7,22 @@ var userSchema = new Schema({
     email: {type: String, require: true},
     password: {type: String, require: true},
     accountType: {type: String, require: true},
-    proImg: { data: Buffer, contentType: String },
-    imageFile: {type: Object},
+    proImg: { data: {type: Buffer},
+                contentType: {type: String} },
     contributions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element' }],
     searchHistory: [{
-        date: { type: Date , require: true},
-        searchStr: {type: String, require: true}
+        element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
+        searchStr: { type: String },
+        date: { type: Date },
+        type: {type: String}
     }],
-    favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element'}]
+    favorites: [{
+        searchStr: { type: String},
+        date: { type: Date},
+        type: {type: String},
+        image: {type: String},
+        coords: {type: Object}
+    }],
 });
 
 

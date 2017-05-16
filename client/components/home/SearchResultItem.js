@@ -4,6 +4,7 @@ import userPic from '../img/user.png';
 import classNames from 'classnames';
 import defaultPhoto from '../img/default-profile-picture.jpg';
 import axios from 'axios';
+import lodash from 'lodash';
 
 
 class SearchResultItem extends React.Component {
@@ -19,9 +20,9 @@ class SearchResultItem extends React.Component {
 
     onThumbClicker(){
 
-        const auth = this.props.auth;
+        const isAuthenticated = this.props.isAuthenticated;
 
-        if (auth){
+        if (isAuthenticated){
             // if already clicked
             if(this.state.clicked){
                 alert("you already liked this one")
@@ -66,7 +67,8 @@ class SearchResultItem extends React.Component {
             'thumbUp': this.props.preThumbUp
         });
         var userProfile;
-        if(this.props.proImg.contentType != null){
+
+        if(!lodash.isEmpty(this.props.proImg)){
             const proImg = this.props.proImg;
             const base64 = (Buffer.from(proImg.data).toString('base64'));
             userProfile = 'data:'+proImg.contentType+';base64,'+base64;
@@ -104,8 +106,7 @@ class SearchResultItem extends React.Component {
 }
 
 SearchResultItem.propTypes = {
-    clickLike: React.PropTypes.func.isRequired,
-    auth: React.PropTypes.bool.isRequired,
-    user_id: React.PropTypes.string.isRequired
+    isAuthenticated: React.PropTypes.bool.isRequired
 }
+
 export default SearchResultItem;

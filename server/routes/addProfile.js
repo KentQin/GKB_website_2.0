@@ -82,22 +82,14 @@ router.post('/',function(req,res,next) {
                 errors.login = "Account does not exist.";
                 res.status(400).json(errors);
             }else{
-                User.findByIdAndUpdate(data._id, { $set: {proImg: proImg} }, {new: true}, function (err, data) {
+                User.findByIdAndUpdate(data._id, { $set: {proImg: proImg} }, {new: true}, function (err, user) {
                     if (err) {
                         console.log("Adding UserNAme update error");
                         errors.login = "Adding UserNAme update error";
                         res.status(400).json(errors);
                     } else {
-
-                        const token = jwt.sign({
-                            email: data.email,
-                            userName: data.userName,
-                            accountType: data.accountType,
-                            id: data._id,
-                            proImg: proImg
-                        }, 'secretkeyforjsonwebtoken');
-                        //console.log("add profile " + data);
-                        res.json({token});
+                        const user_info = user._doc
+                        res.json({user: user_info});
                     }
                 });
             }

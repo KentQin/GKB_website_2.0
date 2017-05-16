@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
         case SET_CURRENT_USER_LOGIN:
             return {
                 //action object contains user
-                isAuthenticated: !lodash.isEmpty(action.user),
+                isAuthenticated: true,
                 user: action.user
             }
 

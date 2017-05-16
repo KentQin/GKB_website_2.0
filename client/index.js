@@ -39,7 +39,7 @@ const store = createStore(
 
 if (sessionStorage.loginToken) {
     setAuthorizationToken(sessionStorage.loginToken);
-    store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginToken)));
+    store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginUser)));
 }
 
 window.addEventListener('storage', function(e) {
@@ -51,19 +51,24 @@ window.addEventListener('storage', function(e) {
     if(newSession && sessionStorage.loginToken) {
         console.log('I am already login, I will write loginToken into localstorage');
         const token = sessionStorage.getItem('loginToken');
+        const user = sessionStorage.getItem('loginUser');
         localStorage.setItem('loginToken',token);
+        localStorage.setItem('loginUser', user);
         console.log('loginToken is in localstorage');
         //localStorage.removeItem('getSessionStorage');
         //console.log('getSessionStorage is removed from localstorage')
     } else if (newSession && !sessionStorage.length){
         console.log('I am the new tag')
         const token = localStorage.getItem('loginToken');
+        const user = sessionStorage.getItem('loginUser');
         localStorage.removeItem('getSessionStorage');
         localStorage.removeItem('loginToken');
-        sessionStorage.setItem('loginToken',token)
+        sessionStorage.setItem('loginToken',token);
+        sessionStorage.setItem('loginUser',user);
         localStorage.removeItem('loginToken');
+        localStorage.removeItem('loginUser');
         setAuthorizationToken(sessionStorage.loginToken);
-        store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginToken)));
+        store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginUser)));
     }
 });
 
@@ -73,9 +78,6 @@ if(!sessionStorage.length) {
     localStorage.setItem('getSessionStorage',true)
     console.log("set getSessionStorage")
 }
-
-
-
 
 render(
     <Provider store={store}>

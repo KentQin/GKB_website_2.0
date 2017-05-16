@@ -9,8 +9,8 @@ export function setSearchResultList(array) {
 
 export function setDescriptionArray(array) {
     return dispatch => {
-        console.log("*******************");
-        console.log(array);
+        // console.log("*******************");
+        // console.log(array);
         dispatch(setSearchResultList(array));
 
     }

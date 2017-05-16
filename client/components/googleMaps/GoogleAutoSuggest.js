@@ -1,19 +1,15 @@
-import React, {Component} from "react"
-import GoogleMapLoader from "react-google-maps-loader"
-import GooglePlacesSuggest from "react-google-places-suggest"
-import "react-google-places-suggest/lib/index.css"
+import React, {Component} from "react";
+import GoogleMapLoader from "react-google-maps-loader";
+import GooglePlacesSuggest from "react-google-places-suggest";
+import "react-google-places-suggest/lib/index.css";
 import { connect } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import { addSearchHistory } from '../../actions/addSearchHistory'
+import { addSearchHistory } from '../../actions/addSearchHistory';
+import axios from 'axios';
 
 const MY_API_KEY = "AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM"
 
 class MyGoogleSuggest extends Component {
-    // state = {
-    //   search: "",
-    //   selectedCoordinate: null,
-    // }
-
     constructor(props){
         super(props);
         this.state = {
@@ -31,60 +27,7 @@ class MyGoogleSuggest extends Component {
         //console.log('GO is clicked ************');
         this.props.showSearchResult();
 
-        // // This will directly go to the back end and search for coordinates in google db and jena
-        // // query apache jena database, if not then go with google.
-        // const {user} = this.props.login
-        // // console.log("search term to jena: ", suggest.terms[0].value);
-        // this.setState({errors: {} });
-        // var toSend;
-        // if (user.id == null) {
-        //   toSend = {
-        //     searchStr: this.state.searchStr,
-        //     id: null,
-        //     button:true
-        //   }
-        // } else {
-        //   toSend = {
-        //     searchStr: this.state.searchStr,
-        //     id: user.id,
-        //     button:true
-        //   }
-        // }
-        // this.props.searchBarRequest(toSend).then(
-        //     (res) => {
-        //         console.log("we are back in searchBar clientside button");
-        //     },
-        //     // if server response any error message, set it into state errors
-        //     (err) => {
-        //         console.log("err.response.data: ", err.response.data);
-        //         // this.setState({searchStr: this.state.searchStr, selectedCoordinate: coordinate}, function() {
-        //         //   console.log("suggest: ", suggest);
-        //         //   console.log("coordinates: ", coordinate);
-        //         //   console.log("selectedCoordinate", this.state.selectedCoordinate);
-        //         //   console.log("place details in my code: ", place);
-        //         //   if (place.photos) {
-        //         //     console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
-        //         //   }
-        //         //   console.log("directionsResponse in my code: ", directionsResponse.routes[0].overview_path);
-        //         //   console.log("directionsResponse in my code lat: ", directionsResponse.routes[0].overview_path[0].lat());
-        //         //   // const {user} = this.props.login;
-        //         //   console.log("inside suggestSelect :", user);
-        //         //   var userData = {
-        //         //     email: user.email,
-        //         //     userName: user.userName,
-        //         //     accountType: user.accountType,
-        //         //     id: user.id,
-        //         //     coords: {
-        //         //       lat: this.state.selectedCoordinate.latitude,
-        //         //       longt: this.state.selectedCoordinate.longitude
-        //         //     },
-        //         //     directions:directionsResponse.routes[0].overview_path,
-        //         //   }
-        //         //
-        //         //   this.props.updateCoordsRequest(userData);
-        //         // })
-        //     }
-        // );
+
     }
 
     handleSearchChange(e) {
@@ -94,35 +37,41 @@ class MyGoogleSuggest extends Component {
     handleSelectSuggest(suggest, coordinate, place, directionsResponse) {
         // query apache jena database, if not then go with google.
         const {user} = this.props.login;
-        console.log("this props landingpage flag: ", this.props.landingPageFlag);
-        var flag = this.props.landingPageFlag;
+        // console.log("this props landingpage flag: ", this.props.landingPageFlag);
+        // var flag = this.props.landingPageFlag;
         console.log("search term to jena: ", suggest.terms[0].value);
         this.setState({errors: {} });
         var toSend;
-        if (user.id == null) {
+        if (user._id == null) {
             toSend = {
                 searchStr: suggest.terms[0].value,
-                id: null,
+                user_id: null,
                 fulladdr: suggest.description
             }
         } else {
             toSend = {
                 searchStr: suggest.terms[0].value,
-                id: user.id,
-                fulladdr: suggest.description
+                user_id: user._id,
+                fulladdr: suggest.description,
             }
         }
-        console.log("searchBarRequest:");
-        this.props.searchBarRequest(toSend)
+        console.log("searchBarRequest:", toSend);
+
+        // axios.post('/api/searchBar', toSend)
+        //     .then(res =>{
+        //             console.log("response res");
+        //         },
+        //         (err) => {
+        //             console.log("response err");
+        //             console.log(err.response.data);
+        //         });
+
+        //this.props.searchBarRequest(toSend)
+        axios.post('/api/searchBar', toSend)
             .then(
-                // after server response then...
-                // if successful
-                //var userUpdated = this.props.login.user;
                 (res) => {
                     console.log("we are back in searchBar clientside");
-                    if (flag) {
-                        this.context.router.push('/map')
-                    }
+
                 },
                 // if server response any error message, set it into state errors
                 (err) => {
@@ -139,8 +88,7 @@ class MyGoogleSuggest extends Component {
                             userName: user.userName,
                             accountType: user.accountType,
                             proImg: user.proImg,
-                            id: user.id,
-                            proImg: user.proImg,
+                            _id: user._id,
                             showSearchResult: true,
                             coords: {
                                 lat: this.state.selectedCoordinate.latitude,
@@ -161,21 +109,18 @@ class MyGoogleSuggest extends Component {
                         this.props.setDescriptionArray(descriptionArray);
 
                         //this.props.addSearchHistory(history_data);
-
+                        console.log("updateCoordsRequest: ", userData)
                         this.props.updateCoordsRequest(userData);
-                        if (flag) {
-                            console.log("just before routing to mapContainer")
-                            browserHistory.push('/map');
-                        }
 
                     })
                 }
             );
+
     }
 
     render() {
-        const {searchStr} = this.state
-        const {googleMaps} = this.props
+        const {searchStr} = this.state;
+        const {googleMaps} = this.props;
 //{errors.searchBar && <span className="help-block">{errors.searchBar}</span> }
 
         return (

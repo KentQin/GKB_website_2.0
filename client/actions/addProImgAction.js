@@ -17,16 +17,10 @@ export function addProImgAction(userData) {
             'content-type': 'multipart/form-data'
         };
         return axios.post('/api/addProfilePic', userData, {headers:header}).then(res =>{
-            const token = res.data.token;
-            //console.log('add name proimg: ' ,token);
-            // get token from server side, and store the token into session storage
-            sessionStorage.removeItem('loginToken');
-            sessionStorage.setItem('loginToken', token);
-            setAuthorizationToken(token);
-            // decode token, get user msg from it
-            console.log('decode add username: ',jwt.decode(token));
-            // dispatch action 'setCurrentUser' to change state
-            dispatch(setCurrentUser(jwt.decode(token)));
+            const user = res.data.user;
+            sessionStorage.removeItem('loginUser');
+            sessionStorage.setItem('loginUser', jwt.sign( user, 'secretkeyforjsonwebtoken'));
+            dispatch(setCurrentUser(user));
         });
     }
 }
