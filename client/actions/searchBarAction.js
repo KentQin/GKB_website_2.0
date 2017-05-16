@@ -82,7 +82,8 @@ export function searchBarRequest(userData) {
                   const conf = {
                       showSearchResult: true,
                       placeFullAddr:userData.fulladdr,
-                      placePhoto: ""
+                      placePhoto: "",
+                      type: "jena"
                   }
                   console.log("conf conf: ", conf)
                   dispatch(setSearchResultList(conf));

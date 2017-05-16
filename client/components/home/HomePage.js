@@ -56,6 +56,21 @@ class HomePage extends React.Component {
         const { isAuthenticated } = this.props.login;
         const { showSearchResult } = this.props.login.user;
         const searchResult = this.props.searchResult;
+        var searchResultFlag;
+        if (searchResult) {
+          if (searchResult.searchResultPageConfig) {
+            if (searchResult.searchResultPageConfig.showSearchResult == true) {
+                searchResultFlag = true
+            } else {
+              searchResultFlag = false
+            }
+          } else {
+            searchResultFlag = false;
+          }
+        } else {
+          searchResultFlag = false
+        }
+        console.log("searchResult in HomePage render: ", searchResult)
         const descriptionArray = this.props.descriptionArray;
         // const { showSearchResult } = this.props.searchResult.searchResultPageConfig;
 
@@ -72,7 +87,7 @@ class HomePage extends React.Component {
                                    setDescriptionArray={this.props.setDescriptionArray}/>
 
 
-                {showSearchResult && <SearchResultList searchResult={searchResult}
+                {searchResultFlag && <SearchResultList searchResult={searchResult}
                                                        isAuthenticated = {isAuthenticated}
                                                        descriptionArray = {descriptionArray}
                                                        login={this.props.login}

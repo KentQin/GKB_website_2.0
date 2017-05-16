@@ -88,13 +88,19 @@ class MyGoogleSuggest extends Component {
                     directions:directionsResponse.routes[0].overview_path,
 
                   }
+                  console.log("err response: ", err.response)
+                  if (err.response.data.searchHistory) {
+                      console.log("err.response.searchHistory: ", err.response.data.searchHistory)
+                      userData.searchHistory = err.response.data.searchHistory;
+                  }
                   //const descriptionArray = err.response.descriptionArray
                   // Changing thw whole functionality. For now let descriptionArray is null
                   var descriptionArray = null;
                   const conf = {
                       showSearchResult: true,
                       placeFullAddr:suggest.description,
-                      placePhoto: photo
+                      placePhoto: photo,
+                      type: "google"
                   }
                   console.log("conf conf: ", conf)
                   this.props.setShowSearchResult(conf);
