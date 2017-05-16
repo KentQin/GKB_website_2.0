@@ -80,14 +80,8 @@ class SearchResultItem extends React.Component {
 
         return (
             <div className = "result_box">
-                <div className = "user_box" >
-	                <span> Rank {this.props.num} </span>
-                    <img src = {userProfile}
-                         className = "user" />
-                    <span> {this.props.userName} </span>
-                </div>
                 <div className = "like_box" >
-	                <div>
+                    <div>
                         <img src = {thumbPic}
                              onClick = {this.onThumbClicker}
                              className = {btnClass}/>
@@ -95,7 +89,13 @@ class SearchResultItem extends React.Component {
                     <div>
                         <span> {this.state.like}</span>
                     </div>
-	            </div>
+                </div>
+                <div className = "user_box" >
+
+                    <img src = {userProfile}
+                         className = "user" />
+                    <span> {this.props.userName} </span>
+                </div>
                 <p>
 	                <span><strong> Discription: </strong></span > {this.props.discription}
                 </p>

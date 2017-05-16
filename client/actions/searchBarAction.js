@@ -58,15 +58,18 @@ export function searchBarRequest(userData) {
                 // if server response any error message, set it into state errors
                 (err) => {
 
+                    //
                     console.log(err.response.data);
                     const {descriptionArray} = err.response.data;
                     const {photo} = err.response.data;
                     const {user} = err.response.data;
                     const {coordinate} = err.response.data;
                     const {suggestDescription} = err.response.data;
-
-                    //user.coords = coordinate.latitude;
-
+                    let tempCoords = {  lat: coordinate.latitude,
+                                    longt:coordinate.longitude
+                    };
+                    user.coords = tempCoords;
+                    console.log("user: ", user);
 
                     const conf = {
                         showSearchResult: true,
@@ -76,15 +79,13 @@ export function searchBarRequest(userData) {
                     // call action to set ShowSearchResult
                     dispatch(setDescriptionArray(descriptionArray));
                     dispatch(setSearchResultList(conf));
+                    console.log("done all dispath before")
                     if (lodash.isEmpty(user._id)) {
-                        return dispatch => {
-                            return dispatch(setCurrentUserGuest(userData));
-                        }
+                        dispatch(setCurrentUserGuest(user));
                     } else {
-                        return dispatch => {
-                            return dispatch(setCurrentUser(userData));
-                        }
+                        dispatch(setCurrentUser(user));
                     }
+                    console.log("done all dispath")
                 });
     }
 }
