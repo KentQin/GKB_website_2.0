@@ -53,7 +53,7 @@ class HomePage extends React.Component {
 
     render() {
         const { isAuthenticated } = this.props.login;
-        const { showSearchResult } = this.props.login.user;
+        // const { showSearchResult } = this.props.login.user;
         //const { showSearchResult } = this.props.searchResult.searchResultPageConfig;
         const searchResult = this.props.searchResult;
 
@@ -128,4 +128,3 @@ export default connect(mapStateToProps, { logout,
                                         setDescriptionArray,
                                         updateShowSearchResult,
                                         addToFavoritesAction,})(HomePage);
-

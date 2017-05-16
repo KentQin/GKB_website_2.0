@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
     console.log("id: ", id)
 
     if (req.body.type == "google") {
-
+        console.log("in google")
           var query = {
             addr: addr,
           }

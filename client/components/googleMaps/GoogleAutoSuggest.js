@@ -73,19 +73,25 @@ class MyGoogleSuggest extends Component {
               // sessionStorage.setItem('loginToken', token);
               // setAuthorizationToken(token);
               // decode token, get user msg from it
-              console.log('decode token: ',jwt.decode(token));
-              var userData = jwt.decode(token)
-              if (jwt.decode(token).id == null) {
+              console.log('decode token: ',token);
+              var userData = token
+              if (userData._id == null) {
                   //dispatch(setCurrentUserGuest(jwt.decode(token)));
                   this.props.updateCoordsRequest(userData);
                   const conf = {
                       showSearchResult: true,
-                      placeFullAddr:userData.fulladdr,
+                      placeFullAddr:userData.placeFullAddr,
                       placePhoto: "",
                       type: "jena"
                   }
                   console.log("conf conf: ", conf)
                   //dispatch(setSearchResultList(conf));
+                  if (token.descriptionArray) {
+                    console.log("token descriptionArray line 90 googleAuto");
+                    this.props.setDescriptionArray(token.descriptionArray);
+                  } else {
+                    this.props.setDescriptionArray({});
+                  }
                   this.props.setShowSearchResult(conf);
               } else {
               // dispatch action 'setCurrentUser' to change state
@@ -94,12 +100,18 @@ class MyGoogleSuggest extends Component {
                 // set show result component
                 const conf = {
                     showSearchResult: true,
-                    placeFullAddr:userData.fulladdr,
+                    placeFullAddr:userData.placeFullAddr,
                     placePhoto: "",
                     type: "jena"
                 }
                 console.log("conf conf: ", conf)
                 //dispatch(setSearchResultList(conf));
+                if (token.descriptionArray) {
+                  console.log("token descriptionArray line 110 googleAuto");
+                  this.props.setDescriptionArray(token.descriptionArray);
+                } else {
+                  this.props.setDescriptionArray({});
+                }
                 this.props.setShowSearchResult(conf);
               }
 
@@ -126,7 +138,7 @@ class MyGoogleSuggest extends Component {
                     userName: user.userName,
                     accountType: user.accountType,
                     proImg: user.proImg,
-                    id: user.id,
+                    id: user._id,
                       proImg: user.proImg,
                       showSearchResult: true,
                     coords: {
@@ -143,7 +155,7 @@ class MyGoogleSuggest extends Component {
                   }
                   //const descriptionArray = err.response.descriptionArray
                   // Changing thw whole functionality. For now let descriptionArray is null
-                  var descriptionArray = null;
+                  var descriptionArray = err.response.data.descriptionArray;
                   const conf = {
                       showSearchResult: true,
                       placeFullAddr:suggest.description,
@@ -153,9 +165,11 @@ class MyGoogleSuggest extends Component {
                   console.log("conf conf: ", conf)
                   this.props.setShowSearchResult(conf);
 
-                  //if (descriptionArray) {
-                  this.props.setDescriptionArray(descriptionArray);
-                  // }
+                  if (descriptionArray) {
+                    this.props.setDescriptionArray(descriptionArray);
+                  } else {
+                    this.props.setDescriptionArray({});
+                  }
                   this.props.updateCoordsRequest(userData);
                   if (this.props.landingPageFlag == true) {
                       console.log("just before routing to mapContainer")

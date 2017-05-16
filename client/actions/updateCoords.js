@@ -20,6 +20,7 @@ export function setCurrentUser(user) {
 }
 
 export function updateCoordsRequest(userData) {
+    console.log("in updateCoordsRequest:, ", userData);
     if (userData._id == null) {
       return dispatch => {
               return dispatch(setCurrentUserGuest(userData));

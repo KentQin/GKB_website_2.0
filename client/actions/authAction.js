@@ -3,6 +3,7 @@ import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
 import { SET_CURRENT_USER_LOGIN } from '../actions/types';
 import { SET_CURRENT_USER_LOGOUT } from '../actions/types';
+import { UNSET_SHOW_SEARCH_RESULT } from '../actions/types'
 
 // pure redux function, action creator
 export function setCurrentUser(user) {
@@ -19,11 +20,19 @@ export function removeCurrentUser(user) {
     }
 }
 
+export function removeSearchResultList(conf) {
+    return {
+        type: UNSET_SHOW_SEARCH_RESULT,
+        data: conf
+    }
+}
+
 export function logout() {
     return dispatch => {
         sessionStorage.removeItem('loginToken');
         setAuthorizationToken(false);
         dispatch(removeCurrentUser({}));
+        dispatch(removeSearchResultList({}));
     }
 }
 
