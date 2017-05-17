@@ -126,7 +126,7 @@ router.post('/login', (req, res) => {
                 }else if(!data){
                     console.log("No contribution yet");
                 }else{
-                    console.log("Descriptions: "+data.length);
+                    console.log("Descriptions: "+data[0]);
                     var user_descriptions = [];
                     for(var i = 0; i<data.length; i++){
                         var this_description={
@@ -136,7 +136,7 @@ router.post('/login', (req, res) => {
                         }
                         addresses.push(data[i].placeFullAddr);
                         user_descriptions.push(this_description);
-                        console.log("Pushed "+user_descriptions.length);
+                       // console.log("Pushed "+user_descriptions.length);
                     }
 
                 }
@@ -150,15 +150,23 @@ router.post('/login', (req, res) => {
                     }else if(!data){
                         console.log("Cannot find in googleplaces");
                     }else {
-                        console.log("places match description in google :"+data);
+                        console.log("MATCHING google palce "+data[0]);
+                        for(var i = 0; i< data.length;i++){
+                            for(var j = 0; j<user_descriptions.length;j++){
+                                if(data[i].addr=== user_descriptions[j].location){
+                                    user_descriptions[i].image = data[i].image;
+                                }
+                            }
+
+                        }
                     }
+
+                    console.log("With token: "+JSON.stringify(temp_token));
+                    const token = jwt.sign(temp_token,'secretkeyforjsonwebtoken');
+                    res.json({token});
 
                 });
 
-                const token = jwt.sign(temp_token,'secretkeyforjsonwebtoken');
-
-
-                res.json({token});
             });
 
             // console.log(user_descriptions.length);

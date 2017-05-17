@@ -5,6 +5,7 @@ import Dropzone from '../DropZone';
 import {addProImgAction} from '../../actions/addProImgAction.js'
 import {userProfilePicUploadRequest} from '../../actions/addUserProfilePicAction.js'
 import { logout } from '../../actions/authAction';
+//import { getDescriptionRequest } from '../../actions/getDescriptionAction';
 import { connect } from 'react-redux';
 
 class Profile extends React.Component {

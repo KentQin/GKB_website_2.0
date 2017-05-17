@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken';
 var ElementEl = require('./../models/node.js');
 var User = require('./../models/user.js');
 var DescriptionSchema = require('./../models/placeDescription');
-var GooglePlaces = require('./../models/googleplaces')
+var GooglePlaces = require('./../models/googlePlaces');
 //var rest = require('rest')
 
 let router = express.Router();

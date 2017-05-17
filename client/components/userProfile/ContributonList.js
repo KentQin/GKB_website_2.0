@@ -22,12 +22,12 @@ class ContributonList extends React.Component{
         var items = [];
         var {descriptions} = this.props.login.user;
 
-        console.log("User in contribution "+JSON.stringify(descriptions[0]));
+        //console.log("User in contribution "+JSON.stringify(descriptions[0]));
         if (typeof(descriptions) != 'undefined') {
             for (var i = 0; i < descriptions.length; i++) {
-                console.log("Processing "+i);
+                console.log("Processing "+JSON.stringify(descriptions[i])+'\n');
                 items.push(<div><ContributionItem location={descriptions[i].location}
-                                               img={testImg}
+                                               img={descriptions[i].image}
                                                description={descriptions[i].description}/>
                     </div>
                 );
