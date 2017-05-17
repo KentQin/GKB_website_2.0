@@ -135,6 +135,8 @@ router.post('/', (req, res) => {
             } else {
                 var token = ret.token
 
+                console.log("return from jena");
+
                 const query = { placeFullAddr: req.body.fulladdr}
                 User.findById(req.body.user_id, function (err, s_user) {
                     // data.user = s_user;
@@ -145,8 +147,12 @@ router.post('/', (req, res) => {
                         var descriptionArray = [];
                         //console.log(docs);
                         if(docs.length == 0){
+                            console.log(" in jena, Without descriptionArray")
+                            //console.log(token);
                             res.status(400).json({errors: null,
-                            descriptionArray: null});
+                                searchHistory: ret.searchHistory,
+                                descriptionArray: null,}
+                                );
                         }else{
                             docs.forEach((doc) => {
                                 //console.log(doc);
@@ -178,7 +184,9 @@ router.post('/', (req, res) => {
                                         //   descriptionArray: descriptionArray
                                         // }
                                         console.log(" in jena, With descriptionArray")
+
                                         token.descriptionArray = descriptionArray
+                                        //console.log(token);
                                         res.json({token});
                                     }
                                     counter+=1;
