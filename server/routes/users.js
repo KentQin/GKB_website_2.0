@@ -29,33 +29,23 @@ router.post('/signup', (req, res) => {
         let errors = {}
         console.log( "Number of docs: ", count );
         if(count === 0){
-            User.create(user,function(err,data){
+            User.create(user,function(err,user){
                 console.log("Writing to db");
                 if(err){
                     console.log(err.statusCode);
-                }else if(!data){
+                }else if(!user){
                     console.log(res.statusCode);
                     console.log("Error saving");
                 }else{
                     console.log(res.statusCode);
                     console.log("Registered");
-                    // success, then send token to client
-                    // const token = jwt.sign({
-                    //     email: user.email,
-                    //     accountType: user.accountType,
-                    //     id: data._id
-                    // }, 'secretkeyforjsonwebtoken');
-                    // res.json({token});
-
-                    const token = jwt.sign({
-                        email: data.email,
-                        userName: data.userName,
-                        accountType: data.accountType,
-                        id: data._id,
-                        proImg: data.proImg
-                    }, 'secretkeyforjsonwebtoken');
-                    console.log("Sign up " + data);
-                    res.json({token});
+                    const user_info = user._doc
+                    //console.log("login: ", user_info);
+                    const token = jwt.sign( user_info.email, 'secretkeyforjsonwebtoken');
+                    console.log("token: ", token);
+                    //console.log("Logged in " + data.searchHistory);
+                    res.json({  token: token,
+                        user: user_info});
                 }
 
             });
@@ -84,90 +74,108 @@ router.post('/login', (req, res) => {
     // res.json({token});
 
 
-    User.findOne(user,function(err,data){
+    User.findOne(user,function(err,user){
         let errors = {};
-        console.log("Auth step 1: Authentication going");
-        console.log("Auth step 2: ", user.email+","+user.password);
-        // console.log(data);
+        // console.log("Auth step 1: Authentication going");
+        // console.log("Auth step 2: ", user.email+","+user.password);
+        console.log(user);
         if(err){
             console.log(err);
-        }else if(!data){
-            console.log(data);
+        }else if(!user){
+            console.log(user);
             console.log("Email does not exist or wrong password");
             errors.login = "Email does not exist or wrong password";
             res.status(400).json(errors);
         }else{
+            const user_info = user._doc
+            //console.log("login: ", user_info);
+            const token = jwt.sign( user_info.email, 'secretkeyforjsonwebtoken');
+            console.log("token: ", token);
+            //console.log("Logged in " + data.searchHistory);
+            res.json({  token: token,
+                user: user_info});
+
+
+            ////////////////////////////////////////////////////////////
+            ////////////////  Contributions  ///////////////////////////
+            ////////////////////////////////////////////////////////////
+
+            // var temp_token = {
+            //     email: user.email,
+            //     userName: data.userName,
+            //     accountType: user.accountType,
+            //     id: data._id,
+            //     proImg: data.proImg,
+            //     searchHistory: data.searchHistory,
+            //     favorites: data.favorites
+            // }
+            //
+            // var this_user = {
+            //     user_id: data._id,
+            //     user_name: data.userName
+            // }
+
+
+            // DescriptionSchema.find(this_user, function(err,data){
+            //     var addresses = [];
+            //     if(err){
+            //         console.log(err);
+            //     }else if(!data){
+            //         console.log("No contribution yet");
+            //     }else{
+            //         console.log("Descriptions: "+data[0]);
+            //         var user_descriptions = [];
+            //         for(var i = 0; i<data.length; i++){
+            //             var this_description={
+            //                 location: data[i].placeFullAddr,
+            //                 description: data[i].description_content,
+            //                 create_date:data[i].date
+            //             }
+            //             addresses.push(data[i].placeFullAddr);
+            //             user_descriptions.push(this_description);
+            //            // console.log("Pushed "+user_descriptions.length);
+            //         }
+            //
+            //     }
+            //
+            //     temp_token.descriptions = user_descriptions;
+            //
+            //
+            //     GooglePlaces.find({addr:{$in:addresses}},function(err,data){
+            //         if(err){
+            //             console.log("Error finding google places "+err);
+            //         }else if(!data){
+            //             console.log("Cannot find in googleplaces");
+            //         }else {
+            //             console.log("MATCHING google palce "+data[0]);
+            //             for(var i = 0; i< data.length;i++){
+            //                 for(var j = 0; j<user_descriptions.length;j++){
+            //                     if(data[i].addr=== user_descriptions[j].location){
+            //                         user_descriptions[i].image = data[i].image;
+            //                     }
+            //                 }
+            //
+            //             }
+            //         }
+            //
+            //         console.log("With token: "+JSON.stringify(temp_token));
+            //         const token = jwt.sign(temp_token,'secretkeyforjsonwebtoken');
+            //         res.json({token});
+            //
+            //     });
+            //
+            // });
+
+            ////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////
+
+
             // if verify the user, send credential token to client
             // jwt.sign(payload, secret)
             // payload: an object, can be decoded on client
             // secret: for encrypt the token and verify
             // success, then send token back
-
-            var temp_token = {
-                email: user.email,
-                userName: data.userName,
-                accountType: user.accountType,
-                id: data._id,
-                proImg: data.proImg,
-                searchHistory: data.searchHistory,
-                favorites: data.favorites
-            }
-
-            var this_user = {
-                user_id: data._id,
-                user_name: data.userName
-            }
-
-
-            DescriptionSchema.find(this_user, function(err,data){
-                var addresses = [];
-                if(err){
-                    console.log(err);
-                }else if(!data){
-                    console.log("No contribution yet");
-                }else{
-                    console.log("Descriptions: "+data[0]);
-                    var user_descriptions = [];
-                    for(var i = 0; i<data.length; i++){
-                        var this_description={
-                            location: data[i].placeFullAddr,
-                            description: data[i].description_content,
-                            create_date:data[i].date
-                        }
-                        addresses.push(data[i].placeFullAddr);
-                        user_descriptions.push(this_description);
-                       // console.log("Pushed "+user_descriptions.length);
-                    }
-
-                }
-
-                temp_token.descriptions = user_descriptions;
-
-
-                GooglePlaces.find({addr:{$in:addresses}},function(err,data){
-                    if(err){
-                        console.log("Error finding google places "+err);
-                    }else if(!data){
-                        console.log("Cannot find in googleplaces");
-                    }else {
-                        console.log("MATCHING google palce "+data[0]);
-                        for(var i = 0; i< data.length;i++){
-                            for(var j = 0; j<user_descriptions.length;j++){
-                                if(data[i].addr=== user_descriptions[j].location){
-                                    user_descriptions[i].image = data[i].image;
-                                }
-                            }
-
-                        }
-                    }
-
-                    console.log("With token: "+JSON.stringify(temp_token));
-                    const token = jwt.sign(temp_token,'secretkeyforjsonwebtoken');
-                    res.json({token});
-
-                });
-
-            });
 
             // console.log(user_descriptions.length);
             // const token = jwt.sign({
@@ -180,6 +188,8 @@ router.post('/login', (req, res) => {
             //     descriptions: user_descriptions
             // }, 'secretkeyforjsonwebtoken');
             // res.json({token});
+
+
         }
 
     });
@@ -192,9 +202,7 @@ router.post('/loginSocial', (req, res) => {
     var user = {
         email: req.body.email,
         password: req.body.password,
-        accountType: req.body.accountType,
-        //imageFile: req.body.imageFile
-    }
+        accountType: req.body.accountType}
 
     var newUser = {
         email: req.body.email,
@@ -203,49 +211,47 @@ router.post('/loginSocial', (req, res) => {
         imageFile: req.body.imageFile
     }
 
-    User.findOne(user,function(err,data){
+    User.findOne(user,function(err,user){
         let errors = {};
         console.log("Auth step 1: Authentication going");
         console.log("Auth step 2: ", user.email+","+user.password);
-        console.log(data);
+        console.log(user);
         if(err){
             console.log(err);
-        }else if(!data){
-            console.log(data);
+        }else if(!user){
+            //console.log(user);
             console.log("Account does not exist. So create");
             //errors.login = "Account does not exist or wrong password";
-            User.create(newUser,function(err,newData){
+            User.create(newUser,function(err,newUser){
                 console.log("Writing to db");
                 if(err){
                     console.log(err.statusCode);
-                }else if(!newData){
+                }else if(!newUser){
                     console.log(err.statusCode);
                     console.log("Error saving");
                 }else{
                     console.log(res.statusCode);
                     console.log("Registered");
                     // success, then send token to client
-                    const token = jwt.sign({
-                        email: newUser.email,
-                        accountType: newUser.accountType,
-                        id: newData._id,
-                        imageFile: newUser.imageFile
-                    }, 'secretkeyforjsonwebtoken');
-                    res.json({token});
+                    const user_info = newUser._doc
+                    //console.log("login: ", user_info);
+                    const token = jwt.sign( user_info.email, 'secretkeyforjsonwebtoken');
+                    console.log("token: ", token);
+                    //console.log("Logged in " + data.searchHistory);
+                    res.json({  token: token,
+                        user: user_info});
                 }
 
             });
         }else{
             //user already there.
-            const token = jwt.sign({
-                email: user.email,
-                accountType: user.accountType,
-                id: data._id,
-                imageFile: newUser.imageFile,
-                userName: data.userName
-            }, 'secretkeyforjsonwebtoken');
-            console.log("Logged in");
-            res.json({token});
+            const user_info = user._doc
+            //console.log("login: ", user_info);
+            const token = jwt.sign( user_info.email, 'secretkeyforjsonwebtoken');
+            console.log("token: ", token);
+            //console.log("Logged in " + data.searchHistory);
+            res.json({  token: token,
+                user: user_info});
         }
 
     });
@@ -275,32 +281,14 @@ router.post('/addName', (req, res) => {
             errors.login = "Account does not exist.";
             res.status(400).json(errors);
         }else{
-            User.findByIdAndUpdate(data._id, { $set: {userName: userName} }, {new: true}, function (err, data) {
+            User.findByIdAndUpdate(data._id, { $set: {userName: userName} }, {new: true}, function (err, user) {
                 if (err) {
                     console.log("Adding UserNAme update error");
                     errors.login = "Adding UserNAme update error";
                     res.status(400).json(errors);
                 } else {
-                    // console.log("update success: " + data);
-                    // const token = jwt.sign({
-                    //     email: user.email,
-                    //     userName: data.userName,
-                    //     accountType: data.accountType,
-                    //     id: data._id,
-                    //     proImg: data.proImg
-                    // }, 'secretkeyforjsonwebtoken');
-                    // console.log("add name " + data);
-                    // res.json({token});
-
-                    const token = jwt.sign({
-                        email: data.email,
-                        userName: data.userName,
-                        accountType: data.accountType,
-                        id: data._id,
-                        proImg: data.proImg
-                    }, 'secretkeyforjsonwebtoken');
-                    console.log("add name " + data);
-                    res.json({token});
+                    const user_info = user._doc;
+                    res.json({user: user_info});
                 }
             });
         }

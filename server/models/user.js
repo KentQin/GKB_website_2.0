@@ -6,8 +6,8 @@ var userSchema = new Schema({
     email: {type: String, require: true},
     password: {type: String, require: true},
     accountType: {type: String, require: true},
-    proImg: { data: Buffer, contentType: String },
-    imageFile: {type: Object},
+    proImg: { data: {type: Buffer},
+                contentType: {type: String} },
     contributions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element' }],
     searchHistory: [{
         element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},

@@ -5,7 +5,7 @@ class LinkToHome extends React.Component{
     render(){
         return(
             <div className="btn-close-float">
-                <Link to="home" > x </Link>
+                <Link to="/home" > x </Link>
             </div>
         );
     }

@@ -9,7 +9,7 @@ import { updateCoordsRequest} from '../../actions/updateCoords';
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
 import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
-import { addLikeRequest } from '../../actions/addLikeAction';
+//import { addLikeRequest } from '../../actions/addLikeAction';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
 import { searchBarTestGoAction } from '../../actions/searchBarTestGoAction'
@@ -52,27 +52,29 @@ class HomePage extends React.Component {
     // showSearchResult={this.showSearchResult}
 
     render() {
-
         const { isAuthenticated } = this.props.login;
-        const { showSearchResult } = this.props.login.user;
+        // const { showSearchResult } = this.props.login.user;
+        //const { showSearchResult } = this.props.searchResult.searchResultPageConfig;
         const searchResult = this.props.searchResult;
+
         var searchResultFlag;
         if (searchResult) {
-          if (searchResult.searchResultPageConfig) {
-            if (searchResult.searchResultPageConfig.showSearchResult == true) {
-                searchResultFlag = true
+            if (searchResult.searchResultPageConfig) {
+                if (searchResult.searchResultPageConfig.showSearchResult == true) {
+                    searchResultFlag = true
+                } else {
+                    searchResultFlag = false
+                }
             } else {
-              searchResultFlag = false
+                searchResultFlag = false;
             }
-          } else {
-            searchResultFlag = false;
-          }
         } else {
-          searchResultFlag = false
+            searchResultFlag = false
         }
         console.log("searchResult in HomePage render: ", searchResult)
+
         const descriptionArray = this.props.descriptionArray;
-        // const { showSearchResult } = this.props.searchResult.searchResultPageConfig;
+
 
         return (
             <div className="container loginPage float_on_the_map">
@@ -83,8 +85,8 @@ class HomePage extends React.Component {
                 <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest}
                                    updateCoordsRequest={this.props.updateCoordsRequest}
                                    setShowSearchResult={this.props.setShowSearchResult}
-
-                                   setDescriptionArray={this.props.setDescriptionArray}/>
+                                   setDescriptionArray={this.props.setDescriptionArray}
+                                   landingPageFlag = {false}/>
 
 
                 {searchResultFlag && <SearchResultList searchResult={searchResult}
@@ -93,9 +95,9 @@ class HomePage extends React.Component {
                                                        login={this.props.login}
                                                        setDescriptionArray={this.props.setDescriptionArray}
                                                        updateShowSearchResult={this.props.updateShowSearchResult}
+                                                       user_id={this.props.login.user._id}
                                                        addToFavoritesAction={this.props.addToFavoritesAction}
-                                                       addLikeRequest={this.props.addLikeRequest}/>}
-
+                                                        />}
             </div>
         )
     }
@@ -108,8 +110,7 @@ HomePage.propTypes = {
     updateCoordsRequest: React.PropTypes.func.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
-    addToFavoritesAction: React.PropTypes.func.isRequired,
-    addLikeRequest: React.PropTypes.func.isRequired
+    addToFavoritesAction: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -126,6 +127,4 @@ export default connect(mapStateToProps, { logout,
                                         setShowSearchResult,
                                         setDescriptionArray,
                                         updateShowSearchResult,
-                                        addToFavoritesAction,
-                                        addLikeRequest})(HomePage);
-//export default connect(mapStateToProps, { logout, searchBarRequest, searchBarTestGoAction })(HomePage);
+                                        addToFavoritesAction,})(HomePage);

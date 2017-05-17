@@ -3,6 +3,7 @@ import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
 import { SET_CURRENT_USER_LOGIN } from '../actions/types';
 import { SET_CURRENT_USER_LOGOUT } from '../actions/types';
+import { UNSET_SHOW_SEARCH_RESULT } from '../actions/types'
 
 // pure redux function, action creator
 export function setCurrentUser(user) {
@@ -19,11 +20,19 @@ export function removeCurrentUser(user) {
     }
 }
 
+export function removeSearchResultList(conf) {
+    return {
+        type: UNSET_SHOW_SEARCH_RESULT,
+        data: conf
+    }
+}
+
 export function logout() {
     return dispatch => {
         sessionStorage.removeItem('loginToken');
         setAuthorizationToken(false);
         dispatch(removeCurrentUser({}));
+        dispatch(removeSearchResultList({}));
     }
 }
 
@@ -31,14 +40,17 @@ export function login(userData) {
     return dispatch => {
         return axios.post('/api/users/login', userData).then(res =>{
             const token = res.data.token;
-            console.log('token: ' ,token);
+            const user = res.data.user;
+            // console.log('token: ' ,token);
             // get token from server side, and store the token into session storage
             sessionStorage.setItem('loginToken', token);
+            sessionStorage.setItem('loginUser', jwt.sign( user, 'secretkeyforjsonwebtoken'));
+            // set token into head info
             setAuthorizationToken(token);
             // decode token, get user msg from it
-            console.log('decode: ',jwt.decode(token));
+            console.log('token: ',token);
             // dispatch action 'setCurrentUser' to change state
-            dispatch(setCurrentUser(jwt.decode(token)));
+            dispatch(setCurrentUser(user));
         });
     }
 }

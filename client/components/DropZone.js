@@ -66,7 +66,6 @@ class DropzoneDemo extends React.Component {
             var userProfile = 'data:'+proImg.contentType+';base64,'+base64;
         }
         return (
-
             <div className="">
                 <Dropzone className="drop-zone"
                           onDrop={this.onDrop}

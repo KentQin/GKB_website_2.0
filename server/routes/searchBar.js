@@ -6,7 +6,7 @@ import curl from 'curlrequest';
 import jwt from 'jsonwebtoken';
 // import moment from 'moment';
 
-var rest = require('rest')
+var rest = require('rest');
 var ElementEl = require('./../models/node.js');
 var User = require('./../models/user.js');
 var DescriptionSchema = require('./../models/placeDescription');
@@ -17,55 +17,13 @@ let router = express.Router();
 
 router.post('/', (req, res) => {
     console.log(req.body);
-    console.log("id: " + req.body.id);
+    console.log("id: " + req.body.user_id);
     console.log("searchStr: " + req.body.searchStr);
     console.log("finally in searchBar route");
     console.log("fulladdr: ", req.body.fulladdr);
     console.log("DATE: ", Date());
 
     const query = { placeFullAddr: req.body.fulladdr}
-    // DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
-    //     if (err) return handleError(err);
-    //     //console.log(docs);
-    //     var counter = 1
-    //     var descriptionArray = [];
-    //     console.log(docs);
-    //     if(docs.length == 0){
-    //         res.status(400).json({data: null});
-    //     }else{
-    //         docs.forEach((doc) => {
-    //             //console.log(doc);
-    //             var temp = {};
-    //             User.findById(doc.user_id, 'proImg', function (err, img) {
-    //                 temp.doc = doc;
-    //                 temp.proImg = img.proImg;
-    //                 descriptionArray.push(temp);
-    //                 //console.log(temp);
-    //                 if (counter == docs.length){
-    //                     //console.log("All done")
-    //                     descriptionArray.sort((a,b)=>{
-    //                         if( a.doc.like > b.doc.like){
-    //                             return -1;
-    //                         }else if( a.doc.like < b.doc.like ){
-    //                             return 1;
-    //                         }
-    //                         return 0;
-    //                     });
-    //                     res.status(400).json(descriptionArray);
-    //                 }
-    //                 counter+=1;
-    //             });
-    //         });
-    //     }
-
-    // const data = {
-    //     user_imgs: user_imgs,
-    //     docs: docs
-    // }
-    //console.log(user_imgs);
-
-    // }).sort({ like: -1 });
-
 
     const button = req.body.button
 
@@ -75,7 +33,7 @@ router.post('/', (req, res) => {
         //places
 
         var ret = {};
-        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
+        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.user_id, function(ret) {
             //console.log("ret: ", ret)
 
             if (ret.error == 1) {
@@ -113,122 +71,124 @@ router.post('/', (req, res) => {
     } else {
 
         var ret = {};
-        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.id, function(ret) {
-            //console.log("ret: ", ret)
+        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.user_id, function(ret) {
+            console.log("ret: ", ret)
             if (ret.error == 1) {
 
                 console.log("not in jena, but in google");
-                var errors = ret.errors
-                res.status(400).json(errors);
-                // DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
-                //     if (err) return handleError(err);
-                //     //console.log(docs);
-                //     var counter = 1
-                //     var descriptionArray = [];
-                //     console.log(docs);
-                //     if(docs.length == 0){
-                //         res.status(400).json({errors: null,
-                //                               descriptionArray: null});
-                //     }else{
-                //         docs.forEach((doc) => {
-                //             //console.log(doc);
-                //             var temp = {};
-                //             User.findById(doc.user_id, 'proImg', function (err, img) {
-                //                 temp.doc = doc;
-                //                 if (img.proImg) {
-                //                   temp.proImg = img.proImg;
-                //                 }
-                //                 descriptionArray.push(temp);
-                //                 //console.log(temp);
-                //                 if (counter == docs.length){
-                //                     //console.log("All done")
-                //                     descriptionArray.sort((a,b)=>{
-                //                         if( a.doc.like > b.doc.like){
-                //                             return -1;
-                //                         }else if( a.doc.like < b.doc.like ){
-                //                             return 1;
-                //                         }
-                //                         return 0;
-                //                     });
-                //                     //res.status(400).json(descriptionArray);
-                //                     // To send to the front end if not in jena, with descriptionArray
-                //                     var errors = {
-                //                       errors: ret.errors,
-                //                       descriptionArray: descriptionArray
-                //                     }
-                //                     console.log("not in jena, but in google. With descriptionArray")
-                //                     res.status(400).json(errors);
-                //                 }
-                //                 counter+=1;
-                //             });
-                //         });
-                //     }
-                //
-                //     // const data = {
-                //     //     user_imgs: user_imgs,
-                //     //     docs: docs
-                //     // }
-                //     // console.log(user_imgs);
-                //
-                // }).sort({ like: -1 });
-              console.log("not in jena, but in google");
-              var errors = ret.errors
-              res.status(400).json(ret);
-              // DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
-              //     if (err) return handleError(err);
-              //     //console.log(docs);
-              //     var counter = 1
-              //     var descriptionArray = [];
-              //     console.log(docs);
-              //     if(docs.length == 0){
-              //         res.status(400).json({errors: null,
-              //                               descriptionArray: null});
-              //     }else{
-              //         docs.forEach((doc) => {
-              //             //console.log(doc);
-              //             var temp = {};
-              //             User.findById(doc.user_id, 'proImg', function (err, img) {
-              //                 temp.doc = doc;
-              //                 if (img.proImg) {
-              //                   temp.proImg = img.proImg;
-              //                 }
-              //                 descriptionArray.push(temp);
-              //                 //console.log(temp);
-              //                 if (counter == docs.length){
-              //                     //console.log("All done")
-              //                     descriptionArray.sort((a,b)=>{
-              //                         if( a.doc.like > b.doc.like){
-              //                             return -1;
-              //                         }else if( a.doc.like < b.doc.like ){
-              //                             return 1;
-              //                         }
-              //                         return 0;
-              //                     });
-              //                     //res.status(400).json(descriptionArray);
-              //                     // To send to the front end if not in jena, with descriptionArray
-              //                     var errors = {
-              //                       errors: ret.errors,
-              //                       descriptionArray: descriptionArray
-              //                     }
-              //                     console.log("not in jena, but in google. With descriptionArray")
-              //                     res.status(400).json(errors);
-              //                 }
-              //                 counter+=1;
-              //             });
-              //         });
-              //     }
-              //
-              //     // const data = {
-              //     //     user_imgs: user_imgs,
-              //     //     docs: docs
-              //     // }
-              //     // console.log(user_imgs);
-              //
-              // }).sort({ like: -1 });
+                var errors = ret.errors;
+                // res.status(400).json(ret);
+                const query = { placeFullAddr: req.body.fulladdr}
+                User.findById(req.body.id, function (err, s_user) {
+                    // data.user = s_user;
+                    DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+                        if (err) return handleError(err);
+                        //console.log(docs);
+                        var counter = 1
+                        var descriptionArray = [];
+                        //console.log(docs);
+                        if(docs.length == 0){
+                            res.status(400).json({errors: null,
+                                searchHistory: ret.searchHistory,
+                                descriptionArray: null,
+                            });
+                        }else{
+                            docs.forEach((doc) => {
+                                //console.log(doc);
+                                var temp = {};
+                                //console.log("user_id: ", doc);
+                                User.findById(doc.user_id, 'proImg', function (err, user) {
+                                    temp.doc = doc;
+                                    //console.log("test111111111111111111")
+                                    //console.log(" user: proimg " , )
+                                    //console.log("user: ***************", user);
+
+                                    temp.proImg = user.proImg;
+                                    //console.log("temp   ", temp);
+                                    descriptionArray.push(temp);
+                                    //console.log(temp);
+                                    if (counter == docs.length){
+                                        //console.log("All done")
+                                        descriptionArray.sort((a,b)=>{
+                                            if( a.doc.like > b.doc.like){
+                                                return -1;
+                                            }else if( a.doc.like < b.doc.like ){
+                                                return 1;
+                                            }
+                                            return 0;
+                                        });
+                                        var errors = {
+                                            errors: ret.errors,
+                                            searchHistory: ret.searchHistory,
+                                            descriptionArray: descriptionArray
+                                        }
+                                        console.log("not in jena, but in google. With descriptionArray", errors)
+                                        res.status(400).json(errors);
+                                    }
+                                    counter+=1;
+                                });
+                            });
+                        }
+                    });
+                });
 
             } else {
                 var token = ret.token
-                res.json({token});
+
+                const query = { placeFullAddr: req.body.fulladdr}
+                User.findById(id, function (err, s_user) {
+                    // data.user = s_user;
+                    DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+                        if (err) return handleError(err);
+                        //console.log(docs);
+                        var counter = 1
+                        var descriptionArray = [];
+                        //console.log(docs);
+                        if(docs.length == 0){
+                            res.status(400).json({errors: null,
+                                descriptionArray: null});
+                        }else{
+                            docs.forEach((doc) => {
+                                //console.log(doc);
+                                var temp = {};
+                                //console.log("user_id: ", doc);
+                                User.findById(doc.user_id, 'proImg', function (err, user) {
+                                    temp.doc = doc;
+                                    //console.log("test111111111111111111")
+                                    //console.log(" user: proimg " , )
+                                    //console.log("user: ***************", user);
+
+                                    temp.proImg = user.proImg;
+                                    //console.log("temp   ", temp);
+                                    descriptionArray.push(temp);
+                                    //console.log(temp);
+                                    if (counter == docs.length){
+                                        //console.log("All done")
+                                        descriptionArray.sort((a,b)=>{
+                                            if( a.doc.like > b.doc.like){
+                                                return -1;
+                                            }else if( a.doc.like < b.doc.like ){
+                                                return 1;
+                                            }
+                                            return 0;
+                                        });
+                                        // var errors = {
+                                        //   errors: ret.errors,
+                                        //   searchHistory: ret.searchHistory,
+                                        //   descriptionArray: descriptionArray
+                                        // }
+                                        console.log(" in jena, With descriptionArray")
+                                        token.descriptionArray = descriptionArray
+                                        res.json({token});
+                                    }
+                                    counter+=1;
+                                });
+                            });
+                        }
+                    });
+                });
+
+                // res.json({token});
             }
         });
     }
@@ -267,100 +227,108 @@ function queryJena(searchStr, fulladdr, id, callback) {
                 console.log("No docs2");
                 errors.searchBar = "We could not find " + searchStr
                 //res.status(400).json(errors);
-                var ret = {
-                    error:1,
-                    errors:errors
-                }
+                // var ret = {
+                //     error:1,
+                //     errors:errors
+                // }
                 // Then store the searchstr in searchStr in db with google type.
+                if (id != null) {
+                    User.findOne({_id: id},function(err,data2) {
+                        let errors = {};
+                        var searchHistoryStore = [];
+                        console.log("data2: " + data2);
+                        searchHistoryStore = data2.searchHistory;
+                        console.log("searchHistoryStore: ", searchHistoryStore)
+                        if(err){
+                            console.log(err);
+                        }else if(!data2){
+                            //errors.login = "Email does not exist or wrong password";
+                            //res.status(400).json(errors);
+                        }else{
+                            var insertToSearchHistory = {
+                                type: "google",
+                                searchStr: fulladdr,
+                                //date: new Date()
+                            }
+                            //Update searchHistory in user Model.
+                            User.update(
+                                { _id: id, searchHistory: insertToSearchHistory},
+                                {$addToSet: { searchHistory: insertToSearchHistory}},
+                                function(err, user) {
+                                    if (err) {
+                                        console.log("error in searchhistory update");
+                                    } else {
+                                        console.log("succes in updataing searchHistory11111", user);
 
-                User.findOne({_id: id},function(err,data2) {
-                    let errors = {};
-                    var searchHistoryStore = [];
-                    console.log("data2: " + data2);
-                    searchHistoryStore = data2.searchHistory;
-                    console.log("searchHistoryStore: ", searchHistoryStore)
-                    if(err){
-                        console.log(err);
-                    }else if(!data2){
-                        //errors.login = "Email does not exist or wrong password";
-                        //res.status(400).json(errors);
-                    }else{
+                                        User.findOne({_id:id,'searchHistory.searchStr': fulladdr}, function(err, data) {
 
+                                            if(err) {
+                                                console.log("1111111111111 google");
+                                            } else if (!data){
+                                                console.log("2222222222222 google");
+                                                var insertToSearchHistoryNew = {
+                                                    type: "google",
+                                                    searchStr: fulladdr,
+                                                    date: new Date()
+                                                }
+                                                User.update(
+                                                    { _id: id},
+                                                    {$addToSet: { searchHistory: insertToSearchHistoryNew}},
+                                                    function(err, user) {
+                                                        if (err) {
+                                                            console.log("in 2nd update error")
+                                                        } else {
+                                                            console.log("in 2nd update success");
 
-                        var insertToSearchHistory = {
-                            type: "google",
-                            searchStr: fulladdr,
-                            //date: new Date()
-                        }
-                        //Update searchHistory in user Model.
-                        User.update(
-                            { _id: id, searchHistory: insertToSearchHistory},
-                            {$addToSet: { searchHistory: insertToSearchHistory}},
-                            function(err, user) {
-                                if (err) {
-                                    console.log("error in searchhistory update");
-                                } else {
-                                    console.log("succes in updataing searchHistory11111", user);
+                                                            searchHistoryStore.push(insertToSearchHistoryNew);
+                                                            console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
+                                                            var ret = {
+                                                                error:1,
+                                                                errors:errors,
+                                                                searchHistory:searchHistoryStore
+                                                            }
+                                                            callback(ret);
+                                                        }
+                                                    })
 
+                                            } else {
+                                                console.log("333333333333333 google")
+                                                User.update(
+                                                    { 'searchHistory.searchStr': fulladdr},
+                                                    {$set: { 'searchHistory.$.date': new Date()}},
+                                                    function(err, user2) {
+                                                        if (err) {
+                                                            console.log("error date updated");
+                                                        } else {
+                                                            console.log("updating date",  user2);
+                                                            var ret = {
+                                                                error:1,
+                                                                errors:errors,
+                                                                searchHistory: data2.searchHistory
+                                                            }
+                                                            callback(ret);
+                                                        }
 
-
-                                    User.findOne({_id:id,'searchHistory.searchStr': fulladdr}, function(err, data) {
-
-                                        if(err) {
-                                            console.log("1111111111111 google");
-                                        } else if (!data){
-                                            console.log("2222222222222 google");
-                                            var insertToSearchHistoryNew = {
-                                                type: "google",
-                                                searchStr: fulladdr,
-                                                date: new Date()
+                                                    })
                                             }
-                                            User.update(
-                                                { _id: id},
-                                                {$addToSet: { searchHistory: insertToSearchHistoryNew}},
-                                                function(err, user) {
-                                                    if (err) {
-                                                        console.log("in 2nd update error")
-                                                    } else {
-                                                        console.log("in 2nd update success");
+                                        })
 
-                                                        searchHistoryStore.push(insertToSearchHistoryNew);
-                                                        console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
-                                                        var ret = {
-                                                            error:1,
-                                                            errors:errors,
-                                                            searchHistory:searchHistoryStore
-                                                        }
-                                                        callback(ret);
-                                                    }
-                                                })
+                                    }
+                                });
+                        }
+                    });
+                } else {
+                    // no user. Guest user trying to search
+                    console.log("In google searchbar line 312, in else part of no user.");
+                    errors.searchBar = "We could not find " + searchStr
 
-                                        } else {
-                                            console.log("333333333333333 google")
-                                            User.update(
-                                                { 'searchHistory.searchStr': fulladdr},
-                                                {$set: { 'searchHistory.$.date': new Date()}},
-                                                function(err, user2) {
-                                                    if (err) {
-                                                        console.log("error date updated");
-                                                    } else {
-                                                        console.log("updating date",  user2);
-                                                        var ret = {
-                                                            error:1,
-                                                            errors:errors,
-                                                            searchHistory: data2.searchHistory
-                                                        }
-                                                        callback(ret);
-                                                    }
-
-                                                })
-                                        }
-                                    })
-
-                                }
-                            });
+                    var ret = {
+                        error:1,
+                        errors:errors,
+                        searchHistory:null
                     }
-                });
+                    callback(ret);
+                }
 
 
 
@@ -498,22 +466,34 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                     if (err) {
                                                                                         console.log("in 2nd update error")
                                                                                     } else {
-                                                                                      searchHistoryStore.push(insertToSearchHistoryNew);
-                                                                                      console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
+                                                                                        searchHistoryStore.push(insertToSearchHistoryNew);
+                                                                                        console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
 
                                                                                         console.log("in 2nd update success");
-                                                                                        const token = jwt.sign({
+                                                                                        // const token = jwt.sign({
+                                                                                        //     email: data2.email,
+                                                                                        //     userName: data2.userName,
+                                                                                        //     accountType: data2.accountType,
+                                                                                        //     id: data2._id,
+                                                                                        //     proImg: data2.proImg,
+                                                                                        //     coords: coords2,
+                                                                                        //     placeFullAddr: fulladdr,
+                                                                                        //     placePhoto: "",
+                                                                                        //     searchHistory: searchHistoryStore
+                                                                                        //     // showSearchResult: true
+                                                                                        // }, 'secretkeyforjsonwebtoken');
+                                                                                        const token = {
                                                                                             email: data2.email,
                                                                                             userName: data2.userName,
                                                                                             accountType: data2.accountType,
-                                                                                            id: data2._id,
+                                                                                            _id: data2._id,
                                                                                             proImg: data2.proImg,
                                                                                             coords: coords2,
                                                                                             placeFullAddr: fulladdr,
                                                                                             placePhoto: "",
                                                                                             searchHistory: searchHistoryStore
                                                                                             // showSearchResult: true
-                                                                                        }, 'secretkeyforjsonwebtoken');
+                                                                                        }
                                                                                         console.log("search bar sending token ");
                                                                                         //res.json({token});
                                                                                         var ret = {
@@ -534,18 +514,18 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                         console.log("error date updated");
                                                                                     } else {
                                                                                         console.log("updating date",  user2);
-                                                                                        const token = jwt.sign({
+                                                                                        const token = {
                                                                                             email: data2.email,
                                                                                             userName: data2.userName,
                                                                                             accountType: data2.accountType,
-                                                                                            id: data2._id,
+                                                                                            _id: data2._id,
                                                                                             proImg: data2.proImg,
                                                                                             coords: coords2,
                                                                                             placeFullAddr: fulladdr,
                                                                                             placePhoto: "",
                                                                                             searchHistory: data2.searchHistory
                                                                                             // showSearchResult: true
-                                                                                        }, 'secretkeyforjsonwebtoken');
+                                                                                        }
                                                                                         console.log("search bar sending token ");
                                                                                         //res.json({token});
                                                                                         var ret = {
@@ -602,18 +582,19 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                     longt: longt2
                                                 }
                                                 console.log("coords2: ", coords2);
-                                                const token = jwt.sign({
+                                                const token = {
                                                     email: null,
                                                     userName: null,
                                                     accountType: null,
-                                                    id: null,
+                                                    _id: null,
                                                     proImg: null,
                                                     coords: coords2,
                                                     placeFullAddr: fulladdr,
                                                     placePhoto: "",
                                                     searchHistory: null
                                                     // showSearchResult: true
-                                                }, 'secretkeyforjsonwebtoken');
+                                                    // }, 'secretkeyforjsonwebtoken');
+                                                }
                                                 console.log("search bar sending token2 ");
                                                 updatedDbSendTokenFlag = 1
                                                 //res.json({token});
@@ -648,9 +629,9 @@ function queryJena(searchStr, fulladdr, id, callback) {
                             if (updatedDbSendTokenFlag == 0) {
                                 if (id != null) {
                                     User.findOne({_id: id},function(err,data){
-                                      var searchHistoryStore = [];
-                                      // console.log("data: " + data);
-                                      searchHistoryStore = data.searchHistory;
+                                        var searchHistoryStore = [];
+                                        // console.log("data: " + data);
+                                        searchHistoryStore = data.searchHistory;
                                         let errors = {};
                                         console.log("data", data);
                                         if(err){
@@ -710,18 +691,18 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                 searchHistoryStore.push(insertToSearchHistoryNew);
                                                                                 console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
                                                                                 console.log("in 2nd update success");
-                                                                                const token = jwt.sign({
+                                                                                const token = {
                                                                                     email: data.email,
                                                                                     userName: data.userName,
                                                                                     accountType: data.accountType,
-                                                                                    id: data._id,
+                                                                                    _id: data._id,
                                                                                     proImg: data.proImg,
                                                                                     coords: coords,
                                                                                     placeFullAddr: fulladdr,
                                                                                     placePhoto: "",
                                                                                     searchHistory: searchHistoryStore
                                                                                     // showSearchResult: true
-                                                                                }, 'secretkeyforjsonwebtoken');
+                                                                                }
                                                                                 console.log("search bar sending token ");
                                                                                 //res.json({token});
                                                                                 var ret = {
@@ -742,11 +723,11 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                 console.log("error date updated");
                                                                             } else {
                                                                                 console.log("updating date",  user2);
-                                                                                const token = jwt.sign({
+                                                                                const token = {
                                                                                     email: data.email,
                                                                                     userName: data.userName,
                                                                                     accountType: data.accountType,
-                                                                                    id: data._id,
+                                                                                    _id: data._id,
                                                                                     proImg: data.proImg,
                                                                                     coords: coords,
                                                                                     placeFullAddr: fulladdr,
@@ -754,7 +735,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                     searchHistory: data.searchHistory
 
                                                                                     // showSearchResult: true
-                                                                                }, 'secretkeyforjsonwebtoken');
+                                                                                }
                                                                                 console.log("search bar sending token ");
                                                                                 //res.json({token});
                                                                                 var ret = {
@@ -802,18 +783,18 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                         longt: longt
                                     }
                                     console.log("no user coords: ", coords);
-                                    const token = jwt.sign({
+                                    const token = {
                                         email: null,
                                         userName: null,
                                         accountType: null,
-                                        id: null,
+                                        _id: null,
                                         proImg: null,
                                         coords: coords,
                                         placeFullAddr: fulladdr,
                                         placePhoto: "",
                                         searchHistory: null
                                         // showSearchResult: true
-                                    }, 'secretkeyforjsonwebtoken');
+                                    }
                                     console.log("search bar sending token lplpl ");
                                     //res.json({token});
                                     var ret = {
@@ -831,7 +812,6 @@ function queryJena(searchStr, fulladdr, id, callback) {
         }
     })
 }
-
 // handle search_bar location search
 // test version
 router.get('/testgo', (req, res) => {
@@ -858,14 +838,14 @@ router.post('/addDescription', (req, res) => {
         console.log("in addDescription google places add");
 
         var query = {
-          addr: req.body.placeFullAddr,
+            addr: req.body.placeFullAddr,
         }
 
         var place = {
-          addr: req.body.placeFullAddr,
-          image: req.body.image,
-          coords: req.body.coords,
-          // date: Date(),
+            addr: req.body.placeFullAddr,
+            image: req.body.image,
+            coords: req.body.coords,
+            // date: Date(),
         }
 
         GooglePlaces.find(query).count(function(err, count){
@@ -931,9 +911,14 @@ router.post('/addDescription', (req, res) => {
                 docs.forEach((doc) => {
                     //console.log(doc);
                     var temp = {};
-                    User.findById(doc.user_id, 'proImg', function (err, img) {
+                    User.findById(doc.user_id, 'proImg', function (err, user) {
                         temp.doc = doc;
-                        temp.proImg = img.proImg;
+                        console.log("user: ***************", user);
+                        if(user.proImg == null){
+                            temp.proImg = null
+                        }else{
+                            temp.proImg = user.proImg;
+                        }
                         descriptionArray.push(temp);
                         //console.log(temp);
                         if (counter == docs.length){
@@ -952,7 +937,7 @@ router.post('/addDescription', (req, res) => {
                         counter+=1;
                     });
                 });
-            }).sort({ like: -1 });
+            });
 
         }
     })
@@ -960,23 +945,31 @@ router.post('/addDescription', (req, res) => {
 });
 
 router.post('/addLike', (req, res) => {
-    const {id} = req.body;
-    const query = {_id: id}
-
-    //User.findByIdAndUpdate(data._id, { $set: {password: req.body.password} }, {new: true}, function (err, model) {});
-    DescriptionSchema.findByIdAndUpdate(id, { $inc: {like: 1} }, {new: true},function (err, description) {
-        if (err) return handleError(err);
-        res.status(200).json(description);
-        // console.log(description);
+    const {des_id} = req.body;
+    const {user_id} = req.body;
+    // check if the user already liked this one
+    var liked = false;
+    DescriptionSchema.findById(des_id, function (err, description) {
+        const {user_like_array} = description;
+        var response = {};
+        if (user_like_array.indexOf(user_id) === -1){
+            // user haven't like this one
+            DescriptionSchema.findByIdAndUpdate(des_id, { $inc: {like: 1}, $push: {user_like_array: user_id} }, {new: true}, function (err, description) {
+                if (err) return handleError(err);
+                response.ans = true;
+                // return accepted as signal
+                res.status(200).json(response);
+            });
+        }else{
+            // user already liked this one
+            response.ans = false;
+            // return refused as signal
+            res.status(200).json(response);
+        }
     });
 
-    // DescriptionSchema.findOne(query, '_id user_name description_content like', function (err, description) {
-    //     if (err) return handleError(err);
-    //     console.log('%s %s %s.', description._id, description.user_name, description.like) // Space Ghost is a talk show host.
-    // });
-
-    // console.log(id);
 });
+
 
 // simulate load query result from db
 function loadResultList(location) {

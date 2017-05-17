@@ -20,19 +20,13 @@ export function setCurrentUser(user) {
 }
 
 export function updateCoordsRequest(userData) {
-    console.log("inside updateCoordsRequest, ", userData);
-    if (userData.id == null) {
+    console.log("in updateCoordsRequest:, ", userData);
+    if (userData._id == null) {
       return dispatch => {
-              // sessionStorage.removeItem('loginToken');
-              // sessionStorage.setItem('loginToken', userData);
-              // setAuthorizationToken(userData);
               return dispatch(setCurrentUserGuest(userData));
       }
     } else {
       return dispatch => {
-              // sessionStorage.removeItem('loginToken');
-              // sessionStorage.setItem('loginToken', userData);
-              // setAuthorizationToken(userData);
               return dispatch(setCurrentUser(userData));
       }
   }
