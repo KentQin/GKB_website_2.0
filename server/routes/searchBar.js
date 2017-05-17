@@ -145,8 +145,11 @@ router.post('/', (req, res) => {
                         var descriptionArray = [];
                         //console.log(docs);
                         if(docs.length == 0){
-                            res.status(400).json({errors: null,
-                            descriptionArray: null});
+                            // res.status(400).json({errors: null,
+                            // descriptionArray: null});
+                            console.log(" in jena, Without descriptionArray")
+                            token.descriptionArray = null
+                            res.json({token});
                         }else{
                             docs.forEach((doc) => {
                                 //console.log(doc);

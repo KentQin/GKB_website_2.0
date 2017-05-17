@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
     var placePhoto = req.body.photo
     var addr = req.body.location
     var coords = req.body.coords
-    var id = req.body.user.id
+    var id = req.body.user._id
 
     console.log("placePhoto: ", placePhoto)
     console.log("addr: ", addr)
@@ -206,9 +206,9 @@ router.post('/', (req, res) => {
                           User.findOne({_id:id,'favorites.searchStr': addr}, function(err, data) {
 
                               if(err) {
-                                  console.log("1111111111111  favoritesgoogle");
+                                  console.log("1111111111111  favoritesjena");
                               } else if (!data){
-                                  console.log("2222222222222 favorites google");
+                                  console.log("2222222222222 favorites jena");
                                   var insertToFavoritesNew = {
                                       type: "jena",
                                       searchStr: addr,
@@ -235,7 +235,7 @@ router.post('/', (req, res) => {
                                       })
 
                               } else {
-                                  console.log("333333333333333 favorites google")
+                                  console.log("333333333333333 favorites jena")
                                   User.update(
                                       { 'favorites.searchSt': addr},
                                       {$set: { 'favorites.$.date': new Date()}},

@@ -74,6 +74,7 @@ class MyGoogleSuggest extends Component {
               // decode token, get user msg from it
               console.log('decode token: ',token);
               var userData = token
+              userData.directions = directionsResponse.routes[0].overview_path;
               if (userData._id == null) {
                   //dispatch(setCurrentUserGuest(jwt.decode(token)));
                   this.props.updateCoordsRequest(userData);
