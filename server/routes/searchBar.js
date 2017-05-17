@@ -135,6 +135,8 @@ router.post('/', (req, res) => {
             } else {
                 var token = ret.token
 
+                console.log("return from jena");
+
                 const query = { placeFullAddr: req.body.fulladdr}
                 User.findById(req.body.user_id, function (err, s_user) {
                     // data.user = s_user;
@@ -181,7 +183,9 @@ router.post('/', (req, res) => {
                                         //   descriptionArray: descriptionArray
                                         // }
                                         console.log(" in jena, With descriptionArray")
+
                                         token.descriptionArray = descriptionArray
+                                        //console.log(token);
                                         res.json({token});
                                     }
                                     counter+=1;
