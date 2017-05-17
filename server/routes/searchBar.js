@@ -79,7 +79,7 @@ router.post('/', (req, res) => {
               var errors = ret.errors;
               // res.status(400).json(ret);
               const query = { placeFullAddr: req.body.fulladdr}
-              User.findById(req.body.id, function (err, s_user) {
+              User.findById(req.body.user_id, function (err, s_user) {
                   // data.user = s_user;
                   DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
                       if (err) return handleError(err);
@@ -136,7 +136,7 @@ router.post('/', (req, res) => {
                 var token = ret.token
 
                 const query = { placeFullAddr: req.body.fulladdr}
-                User.findById(id, function (err, s_user) {
+                User.findById(req.body.user_id, function (err, s_user) {
                     // data.user = s_user;
                     DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
                         if (err) return handleError(err);
@@ -206,6 +206,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
     ElementEl.find({name: searchStr},function(err,docs){
         let errors = {};
         console.log("in elementEL find");
+        console.log("check docs: ", docs);
         if (err) {
             console.log(err);
         } else if (!docs) {
@@ -220,7 +221,6 @@ function queryJena(searchStr, fulladdr, id, callback) {
             console.log("ret in fn, ", ret)
             callback(ret);
         } else {
-
             console.log("docs present: " + docs)
             console.log("docs size", docs.length)
             if (docs.length == 0) {
