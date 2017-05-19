@@ -11,6 +11,7 @@ import resetpwd from './routes/resetpwd';
 import addProfile from './routes/addProfile'
 import changePswd from './routes/changePswd';
 import searchBar from './routes/searchBar';
+import searchBar2 from './routes/searchBar2'
 import updatePswd from './routes/updatePswd';
 import addFavorites from './routes/addFavorites'
 import session from 'express-session';
@@ -63,7 +64,8 @@ app.use(webpackHotMiddleware(compiler));
 app.use('/api/users', users);
 app.use('/api/resetpwd', resetpwd);
 app.use('/api/changePswd', changePswd);
-app.use('/api/searchBar', searchBar);
+// app.use('/api/searchBar', searchBar);
+app.use('/api/searchBar', searchBar2);
 app.use('/api/searchBar/testgo', searchBar);
 app.use('/api/addProfilePic', addProfile);
 app.use('/api/updatePswd', updatePswd);

@@ -832,7 +832,7 @@ a.list-group-item:hover {
     padding:0;
 }
 
-.auto-comment{
+div.auto-comment{
     height: 40px;
     background-color: white;
     text-align: center;
@@ -844,6 +844,18 @@ a.list-group-item:hover {
     left: 0;
     margin:3% auto;
 }
+
+p.auto-comment{
+    /*width: 322px;
+    height: 21px;*/
+    font-family: Oxygen;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: -0.3px;
+    color: #979797;
+    color: var(--warm-grey);
+}
+
 
 .comment{
     padding:10px;

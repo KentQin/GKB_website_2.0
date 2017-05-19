@@ -11,7 +11,8 @@ var userSchema = new Schema({
                 contentType: {type: String} },
     contributions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Element' }],
     searchHistory: [{
-        element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
+        // element: { type: mongoose.Schema.Types.ObjectId, ref: 'Element'},
+        element: {type: String},
         searchStr: { type: String },
         date: { type: Date },
         type: {type: String}
