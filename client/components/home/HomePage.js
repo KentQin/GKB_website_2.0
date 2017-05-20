@@ -8,6 +8,7 @@ import { searchBarRequest } from '../../actions/searchBarAction';
 import { updateCoordsRequest} from '../../actions/updateCoords';
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
+import { setGoButtonResultsArray } from '../../actions/goButtonResults'
 import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
 //import { addLikeRequest } from '../../actions/addLikeAction';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
@@ -86,6 +87,7 @@ class HomePage extends React.Component {
                                    updateCoordsRequest={this.props.updateCoordsRequest}
                                    setShowSearchResult={this.props.setShowSearchResult}
                                    setDescriptionArray={this.props.setDescriptionArray}
+                                   setGoButtonResultsArray={this.props.setGoButtonResultsArray}
                                    landingPageFlag = {false}/>
 
 
@@ -110,7 +112,8 @@ HomePage.propTypes = {
     updateCoordsRequest: React.PropTypes.func.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
-    addToFavoritesAction: React.PropTypes.func.isRequired
+    addToFavoritesAction: React.PropTypes.func.isRequired,
+    setGoButtonResultsArray: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -127,4 +130,5 @@ export default connect(mapStateToProps, { logout,
                                         setShowSearchResult,
                                         setDescriptionArray,
                                         updateShowSearchResult,
-                                        addToFavoritesAction,})(HomePage);
+                                        setGoButtonResultsArray,
+                                        addToFavoritesAction})(HomePage);

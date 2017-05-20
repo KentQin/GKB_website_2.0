@@ -31,41 +31,95 @@ router.post('/', (req, res) => {
     // if button was clicked, different way of dealing
     if (button) {
         console.log("go button clicked")
-        //places
+        var results = [];
+        // using google text search api, results in json format
+        rest('http://freegeoip.net/json/').then(function(response) {
+            var parsedData = JSON.parse(response.entity)
+            var pos = {
+                lat: parsedData.latitude,
+                lng: parsedData.longitude
+            };
 
-        var ret = {};
-        ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.user_id, function(ret) {
-            //console.log("ret: ", ret)
+            var encodeRes = encodeURIComponent(req.body.searchStr)
+            var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + encodeRes + "&location=" + pos.lat +"," + pos.lng + "&radius=20&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
+            // https://maps.googleapis.com/maps/api/place/textsearch/json?query=coles&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
+            // https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=<>&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
+            console.log("url: ", url)
+            var options = { url: url};
+            var errors = {}
+            curl.request(options, function (err, res1) {
+                if (err) {
+                    errors.searchBar = "google api error, We could not find " + req.body.searchStr
+                    res.status(400).json(errors);
+                } else {
+                    var element = JSON.parse(res1)
+                    if (!element.results[0]) {
+                        console.log("not in google search")
+                        errors.searchBar = "We could not find " + req.body.searchStr
+                        res.status(400).json(errors);
+                    } else {
+                        // console.log("element google results: ", element.results)
+                        // var elem = element.results[0];
+                        //     var lat = elem.geometry.location.lat;
+                        //     var lng = elem.geometry.location.lng;
+                        //     if (elem.photos[0]) {
+                        //         var photo_ref = elem.photos[0].photo_reference;
+                        //     } else {
+                        //         var photo_ref = null
+                        //     }
+                        //     // var photo_ref = elem.photos[0].photo_reference;
+                        //     console.log("lat: ", lat);
+                        //     console.log("lng: ", lng)
+                        //     console.log("photo ref: ", photo_ref)
+                        for (var i = 0; i < element.results.length; i++) {
+                            var elem = element.results[i];
+                            // console.log("elem: ", elem.photos[0])
+                            var lat = element.results[i].geometry.location.lat;
+                            var lng = element.results[i].geometry.location.lng;
+                            var addr = elem.formatted_address;
+                            var name = elem.name;
+                            if (elem.photos) {
+                                var photo_ref = elem.photos[0].photo_reference;
+                            } else {
+                                var photo_ref = null
+                            }
+                            // var photo_ref = elem.photos[0].photo_reference
 
-            if (ret.error == 1) {
-                var errors = ret.errors
-                res.status(400).json(errors);
-                // so search google now
-                //https://maps.googleapis.com/maps/api/place/textsearch/json?query=IGA&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
-                //autocomplete
-                //https://maps.googleapis.com/maps/api/place/autocomplete/json?input=hawthorn&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
+                            var url2 = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo_ref + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
+                            var options2 = { url: url2};
+                            curl.request(options2, function (err, res2) {
+                                if (err) {
+                                    console.log("photo ref error")
+                                } else {
+                                    console.log("photo url available")
+                                    var obj = {
+                                        lat: lat,
+                                        lng: lng,
+                                        photo: res2,
+                                        addr: addr,
+                                        name: name
+                                    }
+                                    // console.log("photo: ", res2);
+                                    results.push(obj)
+                                    console.log("results array: ", results.length);
+                                    if (results.length == element.results.length) {
+                                        console.log("its time to return to client side")
+                                        res.json({results});
+                                    }
+                                }
+                            });
+                            var obj = {
+                                lat: lat,
+                                lng: lng,
+                                photo_ref: photo_ref
+                            }
+                            // results.push(obj)
+                        }
+                        // console.log("results array: ", results);
+                    }
 
-                console.log("not present in jena, so gooogle");
-                rest('http://freegeoip.net/json/').then(function(response) {
-                    var parsedData = JSON.parse(response.entity)
-                    var pos = {
-                        lat: parsedData.latitude,
-                        lng: parsedData.longitude
-                    };
-
-                    var options = { url: url};
-                    curl.request(options, function (err, res1) {
-
-                    });
-
-                });
-
-            } else {
-                //send jena results
-                console.log("present in jena")
-                var token = ret.token
-                res.json({token});
-            }
+                }
+            });
 
         });
 

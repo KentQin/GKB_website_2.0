@@ -25,8 +25,41 @@ class MyGoogleSuggest extends Component {
     buttonClick(e) {
 
         //console.log('GO is clicked ************');
-        this.props.showSearchResult();
+        // this.props.showSearchResult();
+        const {user} = this.props.login;
+        this.setState({errors: {} });
+        var toSend;
+        if (user._id == null) {
+            toSend = {
+                searchStr: this.state.searchStr,
+                user_id: null,
+                fulladdr: "",
+                button: true
+            }
+        } else {
+            toSend = {
+                searchStr: this.state.searchStr,
+                user_id: user._id,
+                fulladdr: "",
+                button: true
+            }
+        }
+        console.log("searchBarRequest button:", toSend);
+        this.props.searchBarRequest(toSend)
+            .then(
+                // after server response then...
+                // if successful
+                //var userUpdated = this.props.login.user;
+                (res) => {
+                    console.log("success in clicking button, back to clientside");
+                    console.log("res data", res.data.results)
+                    this.props.setGoButtonResultsArray(res.data.results)
+                },
+                (err) => {
+                    console.log("err in clicking button, back to clientside");
 
+                }
+            );
 
     }
 
@@ -46,13 +79,15 @@ class MyGoogleSuggest extends Component {
             toSend = {
                 searchStr: suggest.terms[0].value,
                 user_id: null,
-                fulladdr: suggest.description
+                fulladdr: suggest.description,
+                button: false
             }
         } else {
             toSend = {
                 searchStr: suggest.terms[0].value,
                 user_id: user._id,
                 fulladdr: suggest.description,
+                button: false
             }
         }
         console.log("searchBarRequest:", toSend);
@@ -236,6 +271,7 @@ MyGoogleSuggest.propTypes = {
     login: React.PropTypes.object.isRequired,
     updateCoordsRequest: React.PropTypes.func.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
+    setGoButtonResultsArray: React.PropTypes.func.isRequired,
     landingPageFlag: React.PropTypes.any
 }
 
