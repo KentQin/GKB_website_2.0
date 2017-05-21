@@ -1,6 +1,6 @@
 import React from 'react';
-import thumbPic from '../img/thumb.png';
-import userPic from '../img/user.png';
+import thumbSrc from '../img/thumb.png';
+import thumbUpSrc from '../img/thumbUp.png'
 import classNames from 'classnames';
 import defaultPhoto from '../img/default-profile-picture.jpg';
 import axios from 'axios';
@@ -12,7 +12,7 @@ class SearchResultItem extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            clicked: false,
+            clicked: this.props.preThumbUp,
             like: this.props.like
         }
         this.onThumbClicker = this.onThumbClicker.bind(this);
@@ -34,6 +34,8 @@ class SearchResultItem extends React.Component {
                     des_id :this.props.des_id,
                     user_id :this.props.user_id
                 };
+
+                //this.props.updateLike(addLikeRequest);
 
                 axios.post('/api/searchBar/addLike', addLikeRequest).then(res =>{
                     //const description = res.data;
@@ -61,12 +63,16 @@ class SearchResultItem extends React.Component {
 
     render() {
 
-        var btnClass = classNames({
-            'thumb': true,
-            'thumbUp': this.state.clicked,
-            'thumbUp': this.props.preThumbUp
-        });
+        const preThumbUpL = (this.state.clicked  || this.props.preThumbUp);
+
         var userProfile;
+        var thumbPic;
+
+        if(preThumbUpL){
+            thumbPic = thumbUpSrc
+        }else{
+            thumbPic = thumbSrc
+        }
 
         if(!lodash.isEmpty(this.props.proImg)){
             const proImg = this.props.proImg;
@@ -84,10 +90,10 @@ class SearchResultItem extends React.Component {
                     <div>
                         <img src = {thumbPic}
                              onClick = {this.onThumbClicker}
-                             className = {btnClass}/>
+                             className = "thumb"/>
                     </div >
                     <div>
-                        <span> {this.state.like}</span>
+                        <span className="like_num"> {this.state.like}</span>
                     </div>
                 </div>
                 <div className = "user_box" >
@@ -96,9 +102,11 @@ class SearchResultItem extends React.Component {
                          className = "user" />
                     <span> {this.props.userName} </span>
                 </div>
-                <p>
-	                <span><strong> Discription: </strong></span > {this.props.discription}
-                </p>
+                <div className="description">
+                    <p>
+                        <span><strong> Discription: </strong></span > {this.props.discription}
+                    </p>
+                </div>
             </div >
         );
     }

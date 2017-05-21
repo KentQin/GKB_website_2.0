@@ -9,6 +9,7 @@ import { updateCoordsRequest} from '../../actions/updateCoords';
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
 import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
+//import { updateLike } from '../../actions/updateLike';
 //import { addLikeRequest } from '../../actions/addLikeAction';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
@@ -95,6 +96,7 @@ class HomePage extends React.Component {
                                                        login={this.props.login}
                                                        setDescriptionArray={this.props.setDescriptionArray}
                                                        updateShowSearchResult={this.props.updateShowSearchResult}
+                                                       //updateLike = {this.props.updateLike}
                                                        user_id={this.props.login.user._id}
                                                        addToFavoritesAction={this.props.addToFavoritesAction}
                                                         />}
@@ -109,7 +111,10 @@ HomePage.propTypes = {
     searchBarRequest: React.PropTypes.func.isRequired,
     updateCoordsRequest: React.PropTypes.func.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
+    // for result list -> AddDescription to add new description
     updateShowSearchResult: React.PropTypes.func.isRequired,
+    // for result list -> item to update like number
+    //updateLike:React.PropTypes.func.isRequired,
     addToFavoritesAction: React.PropTypes.func.isRequired
 }
 
@@ -127,4 +132,5 @@ export default connect(mapStateToProps, { logout,
                                         setShowSearchResult,
                                         setDescriptionArray,
                                         updateShowSearchResult,
+                                        //updateLike,
                                         addToFavoritesAction,})(HomePage);

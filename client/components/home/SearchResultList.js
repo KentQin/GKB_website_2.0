@@ -91,6 +91,7 @@ class SearchResultList extends React.Component {
         // console.log(descriptionArray);
         if(!lodash.isEmpty(array)){
             const numList = array.length;
+            //console.log("descriptons array:", array);
             for (var i = 0; i < numList; i++) {
                 //console.log(resultArray.length);
                 const user_id = this.props.user_id;
@@ -98,7 +99,7 @@ class SearchResultList extends React.Component {
                 var thumbUp = false;
                 if(user_like_array != undefined){
                     if(user_like_array.indexOf(user_id) != -1){
-                        console.log("exist");
+                        //console.log("exist");
                         thumbUp = true;
                     }
                 }
@@ -112,7 +113,10 @@ class SearchResultList extends React.Component {
                                                              isAuthenticated = {isAuthenticated}
                                                              user_id = {user_id}
                                                              preThumbUp = {thumbUp}
-                                                             discription={array[i].doc.description_content}/>
+                                                             discription={array[i].doc.description_content}
+                                                            // func: update Like number
+                                                             //updateLike = {this.props.updateLike}
+                                                            />
                     </td></tr>
                 );
             }
@@ -176,4 +180,4 @@ SearchResultList.propTypes = {
 
 
 //export default SearchResultList;
-export default connect(null, {}) (SearchResultList);
+export default SearchResultList;

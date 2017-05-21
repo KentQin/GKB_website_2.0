@@ -71,6 +71,7 @@ router.post('/', (req, res) => {
     } else {
 
         var ret = {};
+        console.log("start queryJena");
         ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.user_id, function(ret) {
             console.log("ret: ", ret)
             if (ret.error == 1) {
@@ -81,7 +82,7 @@ router.post('/', (req, res) => {
               const query = { placeFullAddr: req.body.fulladdr}
               User.findById(req.body.user_id, function (err, s_user) {
                   // data.user = s_user;
-                  DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+                  DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
                       if (err) return handleError(err);
                       //console.log(docs);
                       var counter = 1
@@ -140,7 +141,7 @@ router.post('/', (req, res) => {
                 const query = { placeFullAddr: req.body.fulladdr}
                 User.findById(req.body.user_id, function (err, s_user) {
                     // data.user = s_user;
-                    DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+                    DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
                         if (err) return handleError(err);
                         //console.log(docs);
                         var counter = 1
@@ -210,6 +211,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
     var wayFlag = 0;
     var updatedDbSendTokenFlag = 0;
     var doc_id;
+    console.log("start queryJena in side func");
 
     ElementEl.find({name: searchStr},function(err,docs){
         let errors = {};
@@ -912,7 +914,7 @@ router.post('/addDescription', (req, res) => {
             //     if (err) return handleError(err);
             //     console.log('%s %s %s.', place.user_email, place.placeFullAddr, place.like) // Space Ghost is a talk show host.
             // });
-            DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+            DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
                 if (err) console.log(err);
                 var counter = 1
                 var descriptionArray = [];
@@ -959,6 +961,7 @@ router.post('/addLike', (req, res) => {
     var liked = false;
     DescriptionSchema.findById(des_id, function (err, description) {
         const {user_like_array} = description;
+        console.log(description);
         var response = {};
         if (user_like_array.indexOf(user_id) === -1){
             // user haven't like this one

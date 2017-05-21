@@ -28,6 +28,10 @@ class SearchHistoryList extends React.Component{
 
         const searchHistory = this.props.searchHistory;
 
+        searchHistory.sort(function(a,b) {
+            return  new Date(b.date).getTime() - new Date(a.date).getTime()
+        });
+
         searchHistory.forEach(function(history){
             history.formatedDate = moment(history.date).format('MMMM Do YYYY');
             console.log(history);
