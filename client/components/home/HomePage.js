@@ -134,10 +134,6 @@ export default connect(mapStateToProps, { logout,
                                         setShowSearchResult,
                                         setDescriptionArray,
                                         updateShowSearchResult,
-<<<<<<< HEAD
                                         //updateLike,
-                                        addToFavoritesAction,})(HomePage);
-=======
                                         setGoButtonResultsArray,
                                         addToFavoritesAction})(HomePage);
->>>>>>> 70fe5f2ff684c5dc24e1dbd51df000874d2aa870
