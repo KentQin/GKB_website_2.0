@@ -2,7 +2,7 @@ import React from 'react';
 import SearchHistoryEntryList from './SearchHistoryEntryList';
 import {connect} from 'react-redux';
 import moment from 'moment';
-
+import { Link } from 'react-router'
 class SearchHistoryList extends React.Component{
     constructor(props){
         super(props);
@@ -42,8 +42,12 @@ class SearchHistoryList extends React.Component{
                     {/*<SearchHistoryEntryList entryArray = {searchHistory[i].search}/>*/}
                     {/*<h5 className="search-history-date-title">data</h5>*/}
                     <div className="search-entry-content col-md-offset-2 col-md-8">
-                        <p>{searchHistory[i].searchStr}</p>
+                        <Link>{searchHistory[i].searchStr}
+                            <input className="checkbox-on-entry" name="cb" id="cb" type="checkbox"/>
+                        </Link>
                     </div>
+
+
                 </div>
 
             )

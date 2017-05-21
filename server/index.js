@@ -85,7 +85,7 @@ app.post('/resetpwd', (req, res) => {
 });
 
 if (config.dev) {
-  console.log(app.listen(9000, () => console.log('Running on localhost:9000')));
+  console.log(app.listen(8800, () => console.log('Running on localhost:8800')));
 } else {
   console.log(app.listen(80, () => console.log('Running on server which is public.')));
 }

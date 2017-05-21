@@ -1009,8 +1009,19 @@ p.auto-comment{
 }
 
 .search-entry-content{
-    margin:auto;
+    margin:auto auto 20px auto;
+    color: black;
 }
+
+.search-entry-content:hover{
+    background-color: rgba(222, 225, 243, 0.27);
+    color: #4a90e2;
+}
+
+.search-entry-content:hover + checkbox-on-entry{
+    display: block;
+}
+
 
 .link-on-form{
     position: inherit;
@@ -1026,3 +1037,7 @@ p.auto-comment{
     box-shadow: 2px 2px 5px #888888;
 }
 
+
+.checkbox-on-entry{
+    float:right;
+}
