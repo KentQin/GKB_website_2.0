@@ -1,9 +1,38 @@
 import React from 'react';
 import LinkToHome from '../common/LinkToHome';
 import ContributionList from './ContributonList';
-
+import {descriptionRequest} from '../../actions/getDescriptionAction';
+import {connect} from 'react-redux';
+import axios from 'axios';
 class Contributions extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+
+        };
+        this.beforeRender = this.beforeRender.bind(this);
+    }
+
+    beforeRender(){
+        console.log("In contribution compoenent "+this.props.user._id);
+        const user_id = {
+            id: this.props.user._id
+        }
+
+        axios.post('/api/description', user_id).then(res =>{
+            console.log("Here in description action "+JSON.stringify(res.data));
+            // this.setState({descriptions: res.data});
+            var descriptions = res.data;
+            console.log("Before return rendering "+descriptions);
+            return descriptions;
+
+        });
+
+    }
+
     render(){
+
+        // var data = this.beforeRender();
 
         return(
             <div className="vertical-block col-md-offset-1 col-md-8 window-drop-shadow">
@@ -37,7 +66,7 @@ class Contributions extends React.Component{
                     </div>
 
                     <div className="vertical-block-content-right col-md-9">
-                        <ContributionList />
+                        <ContributionList descriptions = {this.beforeRender()}/>
                     </div>
                 </div>
             </div>
@@ -45,4 +74,11 @@ class Contributions extends React.Component{
     }
 }
 
-export default Contributions;
+
+function mapStateToProps(state) {
+    return {
+        user: state.login.user
+    };
+}
+
+export default connect( mapStateToProps, { descriptionRequest }) (Contributions);

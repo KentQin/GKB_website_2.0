@@ -6,24 +6,26 @@ import {connect} from 'react-redux';
 class ContributonList extends React.Component{
     constructor(props){
         super(props);
+        console.log("IN contribution list: " + this.props.descriptions);
         this.state = {
 
         }
     }
 
-    render() {
-        // const entry = {
-        //     location: "Carlton",
-        //     img: {testImg},
-        //     description: "blablabalbalabalablabalabalbalab"
-        // }
+    componentWillMount(){
+        console.log("to be mount "+this.props.descriptions);
+    }
 
+    render() {
+
+
+        console.log(this.props.descriptions);
         const {user} = this.props.login;
         var items = [];
         var {descriptions} = this.props.login.user;
 
-        //console.log("User in contribution "+JSON.stringify(descriptions[0]));
-        if (typeof(descriptions) != 'undefined') {
+        // console.log("User in contribution "+JSON.stringify(descriptions[0]));
+        if (typeof(this.props.descriptions) != 'undefined') {
             for (var i = 0; i < descriptions.length; i++) {
                 console.log("Processing "+JSON.stringify(descriptions[i])+'\n');
                 items.push(<div><ContributionItem location={descriptions[i].location}
@@ -50,4 +52,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps,null)(ContributonList);
+export default connect(mapStateToProps)(ContributonList);

@@ -4,15 +4,12 @@ import contribution from './../img/contributions.png';
 import favourites from './../img/heart.png';
 import history from './../img/history.png';
 import { Link } from 'react-router';
-import {connect} from 'react-redux';
-import {getDescriptionRequest} from '../../actions/getDescriptionAction';
 
 class ProfileContent extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-        }
         this.logout = this.logout.bind(this);
+        console.log("In constructor "+this.props.userId);
     }
 
     logout(e){
@@ -23,9 +20,6 @@ class ProfileContent extends React.Component{
         this.props.logout();
     }
 
-    onClickSubmit() {
-        console.log("clicking my favorites" + this.props.getDescriptionRequest);
-    }
 
     render(){
         return(
@@ -44,7 +38,8 @@ class ProfileContent extends React.Component{
 
 ProfileContent.PropTypes={
     logout: React.PropTypes.func.isRequired,
-    login: React.PropTypes.func.isRequired
+    login: React.PropTypes.func.isRequired,
 }
+
 
 export default ProfileContent;

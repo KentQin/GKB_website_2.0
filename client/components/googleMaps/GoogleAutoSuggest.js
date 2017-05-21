@@ -57,136 +57,136 @@ class MyGoogleSuggest extends Component {
         }
         console.log("searchBarRequest:", toSend);
 
-      this.props.searchBarRequest(toSend)
-          .then(
-          // after server response then...
-          // if successful
-          //var userUpdated = this.props.login.user;
-          (res) => {
-              console.log("we are back in searchBar clientside");
+        this.props.searchBarRequest(toSend)
+            .then(
+                // after server response then...
+                // if successful
+                //var userUpdated = this.props.login.user;
+                (res) => {
+                    console.log("we are back in searchBar clientside");
 
-              const token = res.data.token;
-              // console.log('token: ' ,token);
-              // get token from server side, and store the token into session storage
-              // sessionStorage.removeItem('loginToken');
-              // sessionStorage.setItem('loginToken', token);
-              // setAuthorizationToken(token);
-              // decode token, get user msg from it
-              console.log('decode token: ',token);
-              var userData = token
-              if (userData._id == null) {
-                  //dispatch(setCurrentUserGuest(jwt.decode(token)));
-                  this.props.updateCoordsRequest(userData);
-                  const conf = {
-                      showSearchResult: true,
-                      placeFullAddr:userData.placeFullAddr,
-                      placePhoto: "",
-                      type: "jena"
-                  }
-                  console.log("conf conf: ", conf)
-                  //dispatch(setSearchResultList(conf));
-                  if (token.descriptionArray) {
-                    console.log("token descriptionArray line 90 googleAuto");
-                    this.props.setDescriptionArray(token.descriptionArray);
-                  } else {
-                    this.props.setDescriptionArray({});
-                  }
-                  this.props.setShowSearchResult(conf);
-              } else {
-              // dispatch action 'setCurrentUser' to change state
-                //dispatch(setCurrentUser(jwt.decode(token)));
-                this.props.updateCoordsRequest(userData);
-                // set show result component
-                const conf = {
-                    showSearchResult: true,
-                    placeFullAddr:userData.placeFullAddr,
-                    placePhoto: "",
-                    type: "jena"
+                    const token = res.data.token;
+                    // console.log('token: ' ,token);
+                    // get token from server side, and store the token into session storage
+                    // sessionStorage.removeItem('loginToken');
+                    // sessionStorage.setItem('loginToken', token);
+                    // setAuthorizationToken(token);
+                    // decode token, get user msg from it
+                    console.log('decode token: ',token);
+                    var userData = token
+                    if (userData._id == null) {
+                        //dispatch(setCurrentUserGuest(jwt.decode(token)));
+                        this.props.updateCoordsRequest(userData);
+                        const conf = {
+                            showSearchResult: true,
+                            placeFullAddr:userData.placeFullAddr,
+                            placePhoto: "",
+                            type: "jena"
+                        }
+                        console.log("conf conf: ", conf)
+                        //dispatch(setSearchResultList(conf));
+                        if (token.descriptionArray) {
+                            console.log("token descriptionArray line 90 googleAuto");
+                            this.props.setDescriptionArray(token.descriptionArray);
+                        } else {
+                            this.props.setDescriptionArray({});
+                        }
+                        this.props.setShowSearchResult(conf);
+                    } else {
+                        // dispatch action 'setCurrentUser' to change state
+                        //dispatch(setCurrentUser(jwt.decode(token)));
+                        this.props.updateCoordsRequest(userData);
+                        // set show result component
+                        const conf = {
+                            showSearchResult: true,
+                            placeFullAddr:userData.placeFullAddr,
+                            placePhoto: "",
+                            type: "jena"
+                        }
+                        console.log("conf conf: ", conf)
+                        //dispatch(setSearchResultList(conf));
+                        if (token.descriptionArray) {
+                            console.log("token descriptionArray line 110 googleAuto");
+                            this.props.setDescriptionArray(token.descriptionArray);
+                        } else {
+                            this.props.setDescriptionArray({});
+                        }
+                        this.props.setShowSearchResult(conf);
+                    }
+
+
+
+                    if (this.props.landingPageFlag == true) {
+                        console.log("just before routing to mapContainer")
+                        browserHistory.push('/home');
+                    }
+
+                },
+                // if server response any error message, set it into state errors
+                (err) => {
+                    var photo = "";
+                    this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
+                        if (place.photos) {
+                            console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
+                            photo = place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35})
+                        } else {
+                            photo = ""
+                        };
+
+
+                        // var userData = {
+                        //   email: user.email,
+                        //   userName: user.userName,
+                        //   accountType: user.accountType,
+                        //   proImg: user.proImg,
+                        //   _id: user._id,
+                        //     proImg: user.proImg,
+                        //     showSearchResult: true,
+                        //   coords: {
+                        //     lat: this.state.selectedCoordinate.latitude,
+                        //     longt: this.state.selectedCoordinate.longitude
+                        //   },
+                        //   directions:directionsResponse.routes[0].overview_path,
+                        //
+                        // }
+
+                        let tempCoords = {  lat: coordinate.latitude,
+                            longt:coordinate.longitude
+                        };
+                        user.coords = tempCoords;
+                        user.directions = directionsResponse.routes[0].overview_path;
+                        console.log("err  response: ", err.response)
+                        if (err.response.data.searchHistory) {
+                            console.log("err.response.searchHistory: ", err.response.data.searchHistory)
+                            user.searchHistory = err.response.data.searchHistory;
+                        }
+
+                        //const descriptionArray = err.response.descriptionArray
+                        // Changing thw whole functionality. For now let descriptionArray is null
+                        var descriptionArray = err.response.data.descriptionArray;
+                        const conf = {
+                            showSearchResult: true,
+                            placeFullAddr:suggest.description,
+                            placePhoto: photo,
+                            type: "google"
+                        }
+                        console.log("conf conf: ", conf)
+                        this.props.setShowSearchResult(conf);
+
+                        if (descriptionArray) {
+                            this.props.setDescriptionArray(descriptionArray);
+                        } else {
+                            this.props.setDescriptionArray({});
+                        }
+                        this.props.updateCoordsRequest(user);
+                        if (this.props.landingPageFlag == true) {
+                            console.log("just before routing to mapContainer")
+                            browserHistory.push('/home');
+                        }
+
+                    })
                 }
-                console.log("conf conf: ", conf)
-                //dispatch(setSearchResultList(conf));
-                if (token.descriptionArray) {
-                  console.log("token descriptionArray line 110 googleAuto");
-                  this.props.setDescriptionArray(token.descriptionArray);
-                } else {
-                  this.props.setDescriptionArray({});
-                }
-                this.props.setShowSearchResult(conf);
-              }
-
-
-
-              if (this.props.landingPageFlag == true) {
-                  console.log("just before routing to mapContainer")
-                  browserHistory.push('/home');
-              }
-
-          },
-          // if server response any error message, set it into state errors
-          (err) => {
-              var photo = "";
-              this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
-                  if (place.photos) {
-                    console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
-                    photo = place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35})
-                  } else {
-                    photo = ""
-                  };
-
-
-                  // var userData = {
-                  //   email: user.email,
-                  //   userName: user.userName,
-                  //   accountType: user.accountType,
-                  //   proImg: user.proImg,
-                  //   _id: user._id,
-                  //     proImg: user.proImg,
-                  //     showSearchResult: true,
-                  //   coords: {
-                  //     lat: this.state.selectedCoordinate.latitude,
-                  //     longt: this.state.selectedCoordinate.longitude
-                  //   },
-                  //   directions:directionsResponse.routes[0].overview_path,
-                  //
-                  // }
-
-                  let tempCoords = {  lat: coordinate.latitude,
-                      longt:coordinate.longitude
-                  };
-                  user.coords = tempCoords;
-                  user.directions = directionsResponse.routes[0].overview_path;
-                  console.log("err  response: ", err.response)
-                  if (err.response.data.searchHistory) {
-                      console.log("err.response.searchHistory: ", err.response.data.searchHistory)
-                      user.searchHistory = err.response.data.searchHistory;
-                  }
-
-                  //const descriptionArray = err.response.descriptionArray
-                  // Changing thw whole functionality. For now let descriptionArray is null
-                  var descriptionArray = err.response.data.descriptionArray;
-                  const conf = {
-                      showSearchResult: true,
-                      placeFullAddr:suggest.description,
-                      placePhoto: photo,
-                      type: "google"
-                  }
-                  console.log("conf conf: ", conf)
-                  this.props.setShowSearchResult(conf);
-
-                  if (descriptionArray) {
-                    this.props.setDescriptionArray(descriptionArray);
-                  } else {
-                    this.props.setDescriptionArray({});
-                  }
-                  this.props.updateCoordsRequest(user);
-                  if (this.props.landingPageFlag == true) {
-                      console.log("just before routing to mapContainer")
-                      browserHistory.push('/home');
-                  }
-
-              })
-          }
-      );
+            );
 // =======
 //         this.setState({searchStr: suggest.description,
 //                         selectedCoordinate: coordinate});

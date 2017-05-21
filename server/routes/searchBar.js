@@ -6,11 +6,11 @@ import curl from 'curlrequest';
 import jwt from 'jsonwebtoken';
 // import moment from 'moment';
 
-var rest = require('rest');
+var rest = require('rest')
 var ElementEl = require('./../models/node.js');
 var User = require('./../models/user.js');
 var DescriptionSchema = require('./../models/placeDescription');
-var GooglePlaces = require('./../models/googlePlaces');
+var GooglePlaces = require('./../models/googlePlaces')
 //var rest = require('rest')
 
 let router = express.Router();
@@ -74,7 +74,6 @@ router.post('/', (req, res) => {
         ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.user_id, function(ret) {
             console.log("ret: ", ret)
             if (ret.error == 1) {
-
                 console.log("not in jena, but in google");
                 var errors = ret.errors;
                 // res.status(400).json(ret);
@@ -88,6 +87,10 @@ router.post('/', (req, res) => {
                         var descriptionArray = [];
                         //console.log(docs);
                         if(docs.length == 0){
+                            console.log("IN search bar: "+{errors: null,
+                                    searchHistory: ret.searchHistory,
+                                    descriptionArray: null,
+                                });
                             res.status(400).json({errors: null,
                                 searchHistory: ret.searchHistory,
                                 descriptionArray: null,
@@ -133,10 +136,9 @@ router.post('/', (req, res) => {
                 });
 
             } else {
-                var token = ret.token
-
+                var token = ret.token;
                 const query = { placeFullAddr: req.body.fulladdr}
-                User.findById(id, function (err, s_user) {
+                User.findById(req.body.user_id, function (err, s_user) {
                     // data.user = s_user;
                     DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
                         if (err) return handleError(err);
@@ -206,6 +208,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
     ElementEl.find({name: searchStr},function(err,docs){
         let errors = {};
         console.log("in elementEL find");
+        console.log("check docs: "+docs);
         if (err) {
             console.log(err);
         } else if (!docs) {
@@ -220,7 +223,6 @@ function queryJena(searchStr, fulladdr, id, callback) {
             console.log("ret in fn, ", ret)
             callback(ret);
         } else {
-
             console.log("docs present: " + docs)
             console.log("docs size", docs.length)
             if (docs.length == 0) {

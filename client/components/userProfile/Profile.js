@@ -47,10 +47,12 @@ class Profile extends React.Component {
                             <Dropzone user = {user} addProImgAction={addProImgAction}/>
 
                             <div className="center-text">{user.userName}</div>
+
+                            <div className="profile-att">
+                                <ProfileContent userId = {user._id} logout={ this.props.logout} hideProfile={this.hideProfile}/>
+                            </div>
                         </div>
-                        <div className="profile-att">
-                            <ProfileContent logout={ this.props.logout} hideProfile={this.hideProfile}/>
-                        </div>
+
                     </div>
                 </div>
             </div>

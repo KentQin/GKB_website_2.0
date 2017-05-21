@@ -31,7 +31,7 @@ body{
 }
 
 .login-page-block>form{
-    margin:30% auto;
+    margin:25% auto;
 }
 
 .welcome-block{
@@ -187,6 +187,7 @@ body{
     left:25%;
     top:25%;
     z-index: +1;
+    padding: 20px;
 }
 
 .email-sent-block>div {
@@ -418,13 +419,15 @@ body{
     User profile, Side bar
  */
 .profile-section{
-    height:400px;
-    padding:30px;
+    height:100%;
     border-bottom: rgba(255,255,255,0.75);
+    padding: 30px 0;
 }
 
 .profile-att{
-    width:100%
+    width:100%;
+    position: absolute;
+    bottom: 0;
 }
 
 .center-text{
@@ -953,7 +956,6 @@ a.list-group-item:hover {
 .favourite-content{
     height:100%;
     float: initial;
-    background-color: lavender;
 }
 .favourite-content-title{
     width:100%;
