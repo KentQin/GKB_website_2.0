@@ -168,8 +168,8 @@ class MapContainer extends Component {
         }]
       }
 
-      console.log("path_Arr: ", path_arr);
-      console.log("markers: ", markers);
+      //console.log("path_Arr: ", path_arr);
+      //console.log("markers: ", markers);
 
       const GettingStartedGoogleMap = withGoogleMap(props => {
         return (

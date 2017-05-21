@@ -28,29 +28,68 @@ class SearchHistoryList extends React.Component{
 
         const searchHistory = this.props.searchHistory;
 
+        searchHistory.sort(function(a,b) {
+            console.log("History date here: "+new Date(b.date).getTime());
+            return  new Date(b.date).getTime() - new Date(a.date).getTime()
+        });
+
         searchHistory.forEach(function(history){
             history.formatedDate = moment(history.date).format('MMMM Do YYYY');
-            console.log(history);
+            console.log(history.formatedDate);
 
         });
 
         //console.log(searchHistory);
-
+        var currentDate = null;
+        var j = 100;
         for(var i = 0; i< searchHistory.length;i++){
-            items.push(
-                <div key={i} className="entry-block">
-                    {/*<SearchHistoryEntryList entryArray = {searchHistory[i].search}/>*/}
-                    {/*<h5 className="search-history-date-title">data</h5>*/}
-                    <div className="search-entry-content col-md-offset-2 col-md-8">
-                        <Link>{searchHistory[i].searchStr}
-                            <input className="checkbox-on-entry" name="cb" id="cb" type="checkbox"/>
-                        </Link>
+            console.log(searchHistory[i].formatedDate+","+i+','+currentDate);
+            if(searchHistory[i].formatedDate ===currentDate) {
+                items.push(
+                    <div key={i} className="entry-block">
+                        <div className="search-entry-content col-md-11">
+                            <Link>{searchHistory[i].searchStr}
+                                <input className="checkbox-on-entry" name="cb" id="cb" type="checkbox"/>
+                            </Link>
+                        </div>
+
+
                     </div>
 
+                )
+                // console.log(currentDate+','+searchHistory[i].formatedDate);
+                // items.push(
+                //     <div key={j} className="entry-block">
+                //         <div className="search-entry-date col-md-offset-1 col-md-4">
+                //             <p>{searchHistory[i].formatedDate}
+                //             </p>
+                //         </div>
+                //     </div>
+                // )
+                // j++;
 
-                </div>
+            } else {
+                currentDate = searchHistory[i].formatedDate;
+                items.push(
+                    <div key={i} className="entry-block">
+                        <div className="search-entry-date col-md-4">
+                            <p>{searchHistory[i].formatedDate}
+                            </p>
+                        </div>
+                        {/*<SearchHistoryEntryList entryArray = {searchHistory[i].search}/>*/}
+                        {/*<h5 className="search-history-date-title">data</h5>*/}
+                        <div className="search-entry-content col-md-11">
+                            <Link>{searchHistory[i].searchStr}
+                                <input className="checkbox-on-entry" name="cb" id="cb" type="checkbox"/>
+                            </Link>
+                        </div>
 
-            )
+
+                    </div>
+
+                )
+            }
+
         }
         return(
             <div className="search-history-block">

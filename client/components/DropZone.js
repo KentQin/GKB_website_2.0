@@ -57,8 +57,8 @@ class DropzoneDemo extends React.Component {
 
     render() {
         const {proImg} = this.props.user;
-        console.log(proImg);
-        console.log(lodash.isEmpty(proImg));
+        //console.log(proImg);
+        //console.log(lodash.isEmpty(proImg));
         if(lodash.isEmpty(proImg)){
             var userProfile = defaultPhoto;
         }else{

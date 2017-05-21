@@ -71,66 +71,68 @@ router.post('/', (req, res) => {
     } else {
 
         var ret = {};
+        console.log("start queryJena");
         ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.user_id, function(ret) {
             console.log("ret: ", ret)
             if (ret.error == 1) {
 
-                console.log("not in jena, but in google");
-                var errors = ret.errors;
-                // res.status(400).json(ret);
-                const query = { placeFullAddr: req.body.fulladdr}
-                User.findById(req.body.user_id, function (err, s_user) {
-                    // data.user = s_user;
-                    DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
-                        if (err) return handleError(err);
-                        //console.log(docs);
-                        var counter = 1
-                        var descriptionArray = [];
-                        //console.log(docs);
-                        if(docs.length == 0){
-                            res.status(400).json({errors: null,
-                                searchHistory: ret.searchHistory,
-                                descriptionArray: null,
-                            });
-                        }else{
-                            docs.forEach((doc) => {
-                                //console.log(doc);
-                                var temp = {};
-                                //console.log("user_id: ", doc);
-                                User.findById(doc.user_id, 'proImg', function (err, user) {
-                                    temp.doc = doc;
-                                    //console.log("test111111111111111111")
-                                    //console.log(" user: proimg " , )
-                                    //console.log("user: ***************", user);
+              console.log("not in jena, but in google");
+              var errors = ret.errors;
+              // res.status(400).json(ret);
+              const query = { placeFullAddr: req.body.fulladdr}
+              User.findById(req.body.user_id, function (err, s_user) {
+                  // data.user = s_user;
+                  DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
+                      if (err) return handleError(err);
+                      //console.log(docs);
+                      var counter = 1
+                      var descriptionArray = [];
+                      //console.log(docs);
+                      if(docs.length == 0){
+                          res.status(400).json({errors: null,
+                                                searchHistory: ret.searchHistory,
+                                                descriptionArray: null,
+                                                });
+                      }else{
+                          docs.forEach((doc) => {
+                              //console.log(doc);
+                              var temp = {};
+                              //console.log("user_id: ", doc);
+                              User.findById(doc.user_id, 'proImg', function (err, user) {
+                                  temp.doc = doc;
+                                  //console.log("test111111111111111111")
+                                  //console.log(" user: proimg " , )
+                                  //console.log("user: ***************", user);
 
-                                    temp.proImg = user.proImg;
-                                    //console.log("temp   ", temp);
-                                    descriptionArray.push(temp);
-                                    //console.log(temp);
-                                    if (counter == docs.length){
-                                        //console.log("All done")
-                                        descriptionArray.sort((a,b)=>{
-                                            if( a.doc.like > b.doc.like){
-                                                return -1;
-                                            }else if( a.doc.like < b.doc.like ){
-                                                return 1;
-                                            }
-                                            return 0;
-                                        });
-                                        var errors = {
-                                            errors: ret.errors,
-                                            searchHistory: ret.searchHistory,
-                                            descriptionArray: descriptionArray
-                                        }
-                                        console.log("not in jena, but in google. With descriptionArray", errors)
-                                        res.status(400).json(errors);
-                                    }
-                                    counter+=1;
-                                });
-                            });
-                        }
-                    });
-                });
+                                  temp.proImg = user.proImg;
+                                  //console.log("temp   ", temp);
+                                  descriptionArray.push(temp);
+                                  //console.log(temp);
+                                  if (counter == docs.length){
+                                      //console.log("All done")
+                                      descriptionArray.sort((a,b)=>{
+                                          if( a.doc.like > b.doc.like){
+                                              return -1;
+                                          }else if( a.doc.like < b.doc.like ){
+                                              return 1;
+                                          }
+                                          return 0;
+                                      });
+                                      var errors = {
+                                        errors: ret.errors,
+                                        searchHistory: ret.searchHistory,
+                                        descriptionArray: descriptionArray
+                                      }
+                                      console.log("not in jena, but in google. With descriptionArray", errors)
+                                      res.status(400).json(errors);
+                                  }
+                                  counter+=1;
+                              });
+                          });
+                      }
+                  });
+              });
+
 
             } else {
                 var token = ret.token
@@ -140,7 +142,7 @@ router.post('/', (req, res) => {
                 const query = { placeFullAddr: req.body.fulladdr}
                 User.findById(req.body.user_id, function (err, s_user) {
                     // data.user = s_user;
-                    DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+                    DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
                         if (err) return handleError(err);
                         //console.log(docs);
                         var counter = 1
@@ -209,6 +211,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
     var wayFlag = 0;
     var updatedDbSendTokenFlag = 0;
     var doc_id;
+    console.log("start queryJena in side func");
 
     ElementEl.find({name: searchStr},function(err,docs){
         let errors = {};
@@ -911,7 +914,7 @@ router.post('/addDescription', (req, res) => {
             //     if (err) return handleError(err);
             //     console.log('%s %s %s.', place.user_email, place.placeFullAddr, place.like) // Space Ghost is a talk show host.
             // });
-            DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+            DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
                 if (err) console.log(err);
                 var counter = 1
                 var descriptionArray = [];
@@ -958,6 +961,7 @@ router.post('/addLike', (req, res) => {
     var liked = false;
     DescriptionSchema.findById(des_id, function (err, description) {
         const {user_like_array} = description;
+        console.log(description);
         var response = {};
         if (user_like_array.indexOf(user_id) === -1){
             // user haven't like this one

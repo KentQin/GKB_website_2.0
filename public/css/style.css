@@ -679,14 +679,16 @@ a.list-group-item:hover {
 }
 
 .result_box{
-    width: 700px;
-    border: 1px solid gray;
-    border-width: 1px 0px 0px 0px;
     position: relative;
-    padding-bottom: 10px;
-    padding-left: 20px;
     font-size: 0.9em;
     float: left;
+    width: 638px;
+    height: 149px;
+    border: solid 2px red;
+    background-color: #ffffff;
+    background-color: var(--white);
+    box-shadow: 0 2px 3px 0 rgba(56, 60, 79, 0.37);
+    box-shadow: 0 2px 3px 0 var(--charcoal-grey-37);
 }
 
 .first_result_box{
@@ -696,12 +698,19 @@ a.list-group-item:hover {
 }
 
 .user_box{
-    width: 49%;
-    /*border: 1px solid black;*/
-    float: left;
-    /*margin-left: 10px;*/
-    font-size: 1.2em;
-    text-align: left;
+    width: 80%;
+    height: 40%;
+    float: right;
+    /*font-size: 1.2em;*/
+    /*text-align: left;*/
+    background-color: yellowgreen;
+}
+
+.description{
+    width: 80%;
+    height: 60%;
+    float: right;
+    background-color: darkcyan;
 }
 
 .user{
@@ -710,12 +719,15 @@ a.list-group-item:hover {
     margin:0px 20px 0px 20px;
     position: relative;
     top: 10px;
+    border-radius:50%;
 }
 
 .like_box{
-    width: 49%;
-    /*border: 1px solid black;*/
+    width: 20%;
     float: left;
+    height: 100%;
+    /*!*border: 1px solid black;*!*/
+    background-color: royalblue;
 }
 
 .like_box span{
@@ -732,6 +744,7 @@ a.list-group-item:hover {
     width: 30px;
     position: relative;
     left: 30%;
+    object-fit: contain;
 }
 
 .first_thumb{
@@ -743,11 +756,18 @@ a.list-group-item:hover {
     height: 30px;
     width: 30px;
     position: relative;
+    left: 30%;
     transform: rotate(-30deg);
     -ms-transform: rotate(-30deg);		/* IE 9 */
     -webkit-transform: rotate(-30deg);	/* Safari and Chrome */
     -o-transform: rotate(-30deg);		/* Opera */
     -moz-transform: rotate(-30deg);		/* Firefox */
+}
+
+.like_num{
+    font-family: Oxygen;
+    font-size: 15px;
+    letter-spacing: -0.3px;
 }
 
 .first_thumbUp{
@@ -780,8 +800,12 @@ a.list-group-item:hover {
 
 .scrollit{
     overflow:scroll;
-    height:300px;
+    height:450px;
     background-color: white;
+    width: 638px;
+    border-radius: 1px;
+    background-color: rgba(250, 248, 248, 0.77);
+    box-shadow: 3px 2px 12px 0 rgba(56, 60, 79, 0.37);
 }
 
 
@@ -894,6 +918,8 @@ p.auto-comment{
 .search-result-content{
     height:60%;
 }
+
+
 
 .place-sec>p{
     margin:0;
@@ -1009,8 +1035,13 @@ p.auto-comment{
 }
 
 .search-entry-content{
-    margin:auto auto 20px auto;
+    margin:auto auto 20px 20px;
     color: black;
+
+}
+
+search-entry-date{
+    float:left;
 }
 
 .search-entry-content:hover{
