@@ -11,6 +11,7 @@ var config = {
     dstPort:27017,
 };
 
+
 var server = tunnel(config, function (error, server) {
     if(error){
         console.log("SSH connection error: " + error);
@@ -24,4 +25,15 @@ var server = tunnel(config, function (error, server) {
         }
     });
 });
+
+
+
+// mongoose.connect('mongodb://localhost/mydb', function(err) {
+//     if (err) {
+//         console.log(err);
+//         console.log("database not conencted");
+//     } else {
+//         console.log("database connected to great");
+//     }
+// });
 

@@ -97,7 +97,7 @@ class SearchResultItem extends React.Component {
                     <span> {this.props.userName} </span>
                 </div>
                 <p>
-	                <span><strong> Discription: </strong></span > {this.props.discription}
+	                <span><strong> Description: </strong></span > {this.props.discription}
                 </p>
             </div >
         );

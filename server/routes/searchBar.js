@@ -74,11 +74,12 @@ router.post('/', (req, res) => {
         ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.user_id, function(ret) {
             console.log("ret: ", ret)
             if (ret.error == 1) {
+
                 console.log("not in jena, but in google");
                 var errors = ret.errors;
                 // res.status(400).json(ret);
                 const query = { placeFullAddr: req.body.fulladdr}
-                User.findById(req.body.id, function (err, s_user) {
+                User.findById(req.body.user_id, function (err, s_user) {
                     // data.user = s_user;
                     DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
                         if (err) return handleError(err);
@@ -87,10 +88,6 @@ router.post('/', (req, res) => {
                         var descriptionArray = [];
                         //console.log(docs);
                         if(docs.length == 0){
-                            console.log("IN search bar: "+{errors: null,
-                                    searchHistory: ret.searchHistory,
-                                    descriptionArray: null,
-                                });
                             res.status(400).json({errors: null,
                                 searchHistory: ret.searchHistory,
                                 descriptionArray: null,
@@ -136,7 +133,10 @@ router.post('/', (req, res) => {
                 });
 
             } else {
-                var token = ret.token;
+                var token = ret.token
+
+                console.log("return from jena");
+
                 const query = { placeFullAddr: req.body.fulladdr}
                 User.findById(req.body.user_id, function (err, s_user) {
                     // data.user = s_user;
@@ -147,8 +147,11 @@ router.post('/', (req, res) => {
                         var descriptionArray = [];
                         //console.log(docs);
                         if(docs.length == 0){
-                            res.status(400).json({errors: null,
-                                descriptionArray: null});
+                            // res.status(400).json({errors: null,
+                            // descriptionArray: null});
+                            console.log(" in jena, Without descriptionArray")
+                            token.descriptionArray = null
+                            res.json({token});
                         }else{
                             docs.forEach((doc) => {
                                 //console.log(doc);
@@ -180,7 +183,9 @@ router.post('/', (req, res) => {
                                         //   descriptionArray: descriptionArray
                                         // }
                                         console.log(" in jena, With descriptionArray")
+
                                         token.descriptionArray = descriptionArray
+                                        //console.log(token);
                                         res.json({token});
                                     }
                                     counter+=1;
@@ -208,7 +213,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
     ElementEl.find({name: searchStr},function(err,docs){
         let errors = {};
         console.log("in elementEL find");
-        console.log("check docs: "+docs);
+        console.log("check docs: ", docs);
         if (err) {
             console.log(err);
         } else if (!docs) {

@@ -214,8 +214,8 @@ router.post('/loginSocial', (req, res) => {
     User.findOne(user,function(err,user){
         let errors = {};
         console.log("Auth step 1: Authentication going");
-        console.log("Auth step 2: ", user.email+","+user.password);
-        console.log(user);
+        // console.log("Auth step 2: ", user.email+","+user.password);
+        // console.log(user);
         if(err){
             console.log(err);
         }else if(!user){
