@@ -23,16 +23,17 @@ class Favourites extends React.Component{
                                 </span>
                             </div>
 
+                            <div className="mid-block-favourite-left">
                             <h5>Sort By</h5>
-                            <a href="#" className="list-group-item">Newest</a>
-                            <a href="#" className="list-group-item">Oldest</a>
-                            <a className="list-group-item">Highest Rank</a>
-                            <a className="list-group-item">Lowest Rank</a>
-                            <br/>
+                                <a href="#" className=" list-group-item list-group-item-white">Newest</a>
+                                <a href="#" className=" list-group-item list-group-item-white">Oldest</a>
+                                <br/>
 
-                            <h5>Filter By</h5>
-                            <a className="list-group-item">Country</a>
-                            <a className="list-group-item">Location Type</a>
+                                <h5>Filter By</h5>
+                                <a className="list-group-item list-group-item-white">Country</a>
+                                <a className="list-group-item list-group-item-white">Location Type</a>
+                            </div>
+
                         </div>
                     </div>
 
