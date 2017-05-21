@@ -31,7 +31,7 @@ body{
 }
 
 .login-page-block>form{
-    margin:30% auto;
+    margin:25% auto;
 }
 
 .welcome-block{
@@ -187,6 +187,7 @@ body{
     left:25%;
     top:25%;
     z-index: +1;
+    padding: 20px;
 }
 
 .email-sent-block>div {
@@ -418,13 +419,15 @@ body{
     User profile, Side bar
  */
 .profile-section{
-    height:400px;
-    padding:30px;
+    height:100%;
     border-bottom: rgba(255,255,255,0.75);
+    padding: 30px 0;
 }
 
 .profile-att{
-    width:100%
+    width:100%;
+    position: absolute;
+    bottom: 0;
 }
 
 .center-text{
@@ -856,7 +859,7 @@ a.list-group-item:hover {
     padding:0;
 }
 
-.auto-comment{
+div.auto-comment{
     height: 40px;
     background-color: white;
     text-align: center;
@@ -868,6 +871,18 @@ a.list-group-item:hover {
     left: 0;
     margin:3% auto;
 }
+
+p.auto-comment{
+    /*width: 322px;
+    height: 21px;*/
+    font-family: Oxygen;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: -0.3px;
+    color: #979797;
+    color: var(--warm-grey);
+}
+
 
 .comment{
     padding:10px;
@@ -970,14 +985,13 @@ a.list-group-item:hover {
 }
 
 .favourite-img{
-    background-color: darkgray;
+    background-color: transparent;
     height:100%;
 }
 
 .favourite-content{
     height:100%;
     float: initial;
-    background-color: lavender;
 }
 .favourite-content-title{
     width:100%;
@@ -1021,3 +1035,18 @@ a.list-group-item:hover {
 .search-entry-content{
     margin:auto;
 }
+
+.link-on-form{
+    position: inherit;
+    top:90%;
+}
+
+.link-on-home-form{
+    position: inherit;
+    top:70%;
+}
+
+.window-drop-shadow{
+    box-shadow: 2px 2px 5px #888888;
+}
+

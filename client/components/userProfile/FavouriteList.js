@@ -1,24 +1,34 @@
 import React from 'react';
 import FavouriteItem from './FavouriteItem';
 import testImg from './../img/default-profile-picture.jpg';
+import {connect} from 'react-redux';
 
 class FavouriteList extends React.Component{
-    render() {
-        const entry = {
-            location: "Carlton",
-            img: {testImg},
-            description: "blablabalbalabalablabalabalbalab"
+    constructor(props){
+        super(props);
+        this.state = {
+
         }
+    }
 
+    render() {
+        // const entry = {
+        //     location: "Carlton",
+        //     img: {testImg},
+        //     description: "blablabalbalabalablabalabalbalab"
+        // }
+
+        const {user} = this.props.login;
         var items = [];
-        var entryArray = [entry, entry, entry, entry];
+        var {favorites} = this.props.login.user;
+        console.log("Favorites page: "+JSON.stringify(favorites[0]));
 
-        if (typeof(entryArray) != 'undefined') {
-            for (var i = 0; i < entryArray.length; i++) {
+        if (typeof(favorites) != 'undefined') {
+            for (var i = 0; i < favorites.length; i++) {
                 console.log("Processing "+i);
-                items.push(<div><FavouriteItem location={entryArray[i].location}
-                                               img={entryArray[i].img}
-                                               description={entryArray[i].description}/>
+                items.push(<div><FavouriteItem location={favorites[i].searchStr}
+                                               img={favorites[i].image}
+                                               description={favorites[i].description}/>
                     </div>
                 );
             }
@@ -34,4 +44,10 @@ class FavouriteList extends React.Component{
     }
 }
 
-export default FavouriteList;
+function mapStateToProps(state) {
+    return {
+        login: state.login
+    };
+}
+
+export default connect(mapStateToProps,null)(FavouriteList);

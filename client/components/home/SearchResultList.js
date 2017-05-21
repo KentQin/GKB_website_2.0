@@ -129,6 +129,14 @@ class SearchResultList extends React.Component {
             );
         }
 
+        const {autoDescription} = this.props.login
+        var autoDesc;
+        if (autoDescription) {
+          autoDesc = autoDescription;
+        } else {
+          autoDesc = "No computer generated description available"
+        }
+
         // }
 
         return (
@@ -137,7 +145,7 @@ class SearchResultList extends React.Component {
                     <tbody>
                         <tr>
                             <td>
-                                <SearchResultHead autoComment = "autoComment"
+                                <SearchResultHead autoComment = {autoDesc}
                                                   location = {placeFullAddr}
                                                   photo = {placePhoto}
                                                   addToFavoritesAction = {this.props.addToFavoritesAction}/>

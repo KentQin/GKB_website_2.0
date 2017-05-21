@@ -5,6 +5,7 @@ import Dropzone from '../DropZone';
 import {addProImgAction} from '../../actions/addProImgAction.js'
 import {userProfilePicUploadRequest} from '../../actions/addUserProfilePicAction.js'
 import { logout } from '../../actions/authAction';
+//import { getDescriptionRequest } from '../../actions/getDescriptionAction';
 import { connect } from 'react-redux';
 
 class Profile extends React.Component {
@@ -46,10 +47,12 @@ class Profile extends React.Component {
                             <Dropzone user = {user} addProImgAction={addProImgAction}/>
 
                             <div className="center-text">{user.userName}</div>
+
+                            <div className="profile-att">
+                                <ProfileContent userId = {user._id} logout={ this.props.logout} hideProfile={this.hideProfile}/>
+                            </div>
                         </div>
-                        <div className="profile-att">
-                            <ProfileContent logout={ this.props.logout} hideProfile={this.hideProfile}/>
-                        </div>
+
                     </div>
                 </div>
             </div>

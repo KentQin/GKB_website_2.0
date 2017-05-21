@@ -133,6 +133,7 @@ router.post('/', (req, res) => {
                   });
               });
 
+
             } else {
                 var token = ret.token
 
@@ -148,12 +149,11 @@ router.post('/', (req, res) => {
                         var descriptionArray = [];
                         //console.log(docs);
                         if(docs.length == 0){
+                            // res.status(400).json({errors: null,
+                            // descriptionArray: null});
                             console.log(" in jena, Without descriptionArray")
-                            //console.log(token);
-                            res.status(400).json({errors: null,
-                                searchHistory: ret.searchHistory,
-                                descriptionArray: null,}
-                                );
+                            token.descriptionArray = null
+                            res.json({token});
                         }else{
                             docs.forEach((doc) => {
                                 //console.log(doc);
@@ -328,16 +328,16 @@ function queryJena(searchStr, fulladdr, id, callback) {
                         }
                     });
                 } else {
-                  // no user. Guest user trying to search
-                  console.log("In google searchbar line 312, in else part of no user.");
-                  errors.searchBar = "We could not find " + searchStr
+                    // no user. Guest user trying to search
+                    console.log("In google searchbar line 312, in else part of no user.");
+                    errors.searchBar = "We could not find " + searchStr
 
-                  var ret = {
-                      error:1,
-                      errors:errors,
-                      searchHistory:null
-                  }
-                  callback(ret);
+                    var ret = {
+                        error:1,
+                        errors:errors,
+                        searchHistory:null
+                    }
+                    callback(ret);
                 }
 
 
@@ -476,8 +476,8 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                                     if (err) {
                                                                                         console.log("in 2nd update error")
                                                                                     } else {
-                                                                                      searchHistoryStore.push(insertToSearchHistoryNew);
-                                                                                      console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
+                                                                                        searchHistoryStore.push(insertToSearchHistoryNew);
+                                                                                        console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
 
                                                                                         console.log("in 2nd update success");
                                                                                         // const token = jwt.sign({
@@ -603,7 +603,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                     placePhoto: "",
                                                     searchHistory: null
                                                     // showSearchResult: true
-                                                // }, 'secretkeyforjsonwebtoken');
+                                                    // }, 'secretkeyforjsonwebtoken');
                                                 }
                                                 console.log("search bar sending token2 ");
                                                 updatedDbSendTokenFlag = 1
@@ -639,9 +639,9 @@ function queryJena(searchStr, fulladdr, id, callback) {
                             if (updatedDbSendTokenFlag == 0) {
                                 if (id != null) {
                                     User.findOne({_id: id},function(err,data){
-                                      var searchHistoryStore = [];
-                                      // console.log("data: " + data);
-                                      searchHistoryStore = data.searchHistory;
+                                        var searchHistoryStore = [];
+                                        // console.log("data: " + data);
+                                        searchHistoryStore = data.searchHistory;
                                         let errors = {};
                                         console.log("data", data);
                                         if(err){
@@ -848,14 +848,14 @@ router.post('/addDescription', (req, res) => {
         console.log("in addDescription google places add");
 
         var query = {
-          addr: req.body.placeFullAddr,
+            addr: req.body.placeFullAddr,
         }
 
         var place = {
-          addr: req.body.placeFullAddr,
-          image: req.body.image,
-          coords: req.body.coords,
-          // date: Date(),
+            addr: req.body.placeFullAddr,
+            image: req.body.image,
+            coords: req.body.coords,
+            // date: Date(),
         }
 
         GooglePlaces.find(query).count(function(err, count){

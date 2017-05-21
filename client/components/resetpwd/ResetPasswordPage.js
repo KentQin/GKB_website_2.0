@@ -10,18 +10,14 @@ class ResetPasswordPage extends React.Component{
 
         const { resetpwdRequest } = this.props;
         return(
-           <div className="ResetPasswordPage float_on_the_map ">
-               <LinkToHome/>
+           <div className="float_on_the_map ">
                <div className="row centered">
-                   <div className="col-md-3">
-                   </div>
-                   <div className="col-md-2 welcome-block reset-pwd-page-block">
+                   <div className="col-md-offset-3 col-md-2 welcome-block reset-pwd-page-block window-drop-shadow">
                        <ForgotPwd />
                    </div>
-                   <div className="col-md-4 reset-pwd-block reset-pwd-page-block">
+                   <div className="col-md-4 reset-pwd-block reset-pwd-page-block window-drop-shadow">
+                       <LinkToHome/>
                        <ResetPwd resetpwdRequest={resetpwdRequest}/>
-                   </div>
-                   <div className="col-md-3">
                    </div>
                </div>
            </div>

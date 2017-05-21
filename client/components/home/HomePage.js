@@ -8,6 +8,7 @@ import { searchBarRequest } from '../../actions/searchBarAction';
 import { updateCoordsRequest} from '../../actions/updateCoords';
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
+import { setGoButtonResultsArray } from '../../actions/goButtonResults'
 import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
 //import { updateLike } from '../../actions/updateLike';
 //import { addLikeRequest } from '../../actions/addLikeAction';
@@ -87,6 +88,7 @@ class HomePage extends React.Component {
                                    updateCoordsRequest={this.props.updateCoordsRequest}
                                    setShowSearchResult={this.props.setShowSearchResult}
                                    setDescriptionArray={this.props.setDescriptionArray}
+                                   setGoButtonResultsArray={this.props.setGoButtonResultsArray}
                                    landingPageFlag = {false}/>
 
 
@@ -115,7 +117,7 @@ HomePage.propTypes = {
     updateShowSearchResult: React.PropTypes.func.isRequired,
     // for result list -> item to update like number
     //updateLike:React.PropTypes.func.isRequired,
-    addToFavoritesAction: React.PropTypes.func.isRequired
+    setGoButtonResultsArray: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -132,5 +134,10 @@ export default connect(mapStateToProps, { logout,
                                         setShowSearchResult,
                                         setDescriptionArray,
                                         updateShowSearchResult,
+<<<<<<< HEAD
                                         //updateLike,
                                         addToFavoritesAction,})(HomePage);
+=======
+                                        setGoButtonResultsArray,
+                                        addToFavoritesAction})(HomePage);
+>>>>>>> 70fe5f2ff684c5dc24e1dbd51df000874d2aa870

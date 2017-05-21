@@ -54,7 +54,7 @@ class SearchHistoryList extends React.Component{
         }
         return(
             <div className="search-history-block">
-                    {items}
+                {items}
             </div>
         );
     }

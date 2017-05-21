@@ -8,7 +8,7 @@ class EmailSentPage extends React.Component{
           <div className="container loginPage float_on_the_map">
               <LinkToHome/>
                 <div className="row centered">
-                    <div className="col-md-6 col-md-offset-4 email-sent-block">
+                    <div className="col-md-6 col-md-offset-4 email-sent-block window-drop-shadow">
                         <EmailSent/>
                     </div>
                 </div>

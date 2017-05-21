@@ -44,44 +44,44 @@ export function setCurrentUserGuest(user) {
 
 export function searchBarRequest(userData) {
 
-        //axios.post('/api/searchBar', userData);
+    //axios.post('/api/searchBar', userData);
     return dispatch => {
         return axios.post('/api/searchBar', userData)
 // <<<<<<< HEAD
-            // .then(res =>{
-            //     const token = res.data.token;
-            //     console.log('token: ' ,token);
-            //     // get token from server side, and store the token into session storage
-            //     sessionStorage.removeItem('loginToken');
-            //     sessionStorage.setItem('loginToken', token);
-            //     setAuthorizationToken(token);
-            //     // decode token, get user msg from it
-            //     console.log('decode: ',jwt.decode(token));
-            //     if (jwt.decode(token).id == null) {
-            //         dispatch(setCurrentUserGuest(jwt.decode(token)));
-            //         const conf = {
-            //             showSearchResult: true,
-            //             placeFullAddr:userData.fulladdr,
-            //             placePhoto: "",
-            //             type: "jena"
-            //         }
-            //         console.log("conf conf: ", conf)
-            //         dispatch(setSearchResultList(conf));
-            //     } else {
-            //     // dispatch action 'setCurrentUser' to change state
-            //       dispatch(setCurrentUser(jwt.decode(token)));
-            //       // set show result component
-            //       const conf = {
-            //           showSearchResult: true,
-            //           placeFullAddr:userData.fulladdr,
-            //           placePhoto: "",
-            //           type: "jena"
-            //       }
-            //       console.log("conf conf: ", conf)
-            //       dispatch(setSearchResultList(conf));
-            //     }
-            //  //dispatch(setCurrentUser(jwt.decode(token)));
-            //  });
+        // .then(res =>{
+        //     const token = res.data.token;
+        //     console.log('token: ' ,token);
+        //     // get token from server side, and store the token into session storage
+        //     sessionStorage.removeItem('loginToken');
+        //     sessionStorage.setItem('loginToken', token);
+        //     setAuthorizationToken(token);
+        //     // decode token, get user msg from it
+        //     console.log('decode: ',jwt.decode(token));
+        //     if (jwt.decode(token).id == null) {
+        //         dispatch(setCurrentUserGuest(jwt.decode(token)));
+        //         const conf = {
+        //             showSearchResult: true,
+        //             placeFullAddr:userData.fulladdr,
+        //             placePhoto: "",
+        //             type: "jena"
+        //         }
+        //         console.log("conf conf: ", conf)
+        //         dispatch(setSearchResultList(conf));
+        //     } else {
+        //     // dispatch action 'setCurrentUser' to change state
+        //       dispatch(setCurrentUser(jwt.decode(token)));
+        //       // set show result component
+        //       const conf = {
+        //           showSearchResult: true,
+        //           placeFullAddr:userData.fulladdr,
+        //           placePhoto: "",
+        //           type: "jena"
+        //       }
+        //       console.log("conf conf: ", conf)
+        //       dispatch(setSearchResultList(conf));
+        //     }
+        //  //dispatch(setCurrentUser(jwt.decode(token)));
+        //  });
 // =======
 //             .then(
 //                 (res) => {

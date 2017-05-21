@@ -1,17 +1,19 @@
-import {SET_DESCRIPTION_ARRAY} from '../actions/types';
+import {SET_GO_BUTTON_RESULTS} from '../actions/types';
+
 
 const initialState = {
-    descriptionArray: {}
+    goButtonResultsArray: {}
 };
 
 export default (state = initialState, action) => {
+
     switch (action.type) {
 
         //called by login page
-        case SET_DESCRIPTION_ARRAY:
+        case SET_GO_BUTTON_RESULTS:
             return {
                 //action object contains user
-                array: action.data
+                goButtonResultsArray: action.data
             }
 
         default: return state;

@@ -2,7 +2,8 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 
 var User = require('./../models/user.js');
-
+var DescriptionSchema = require('./../models/placeDescription');
+var GooglePlaces =require('./../models/googlePlaces');
 let router = express.Router();
 
 router.post('/signup', (req, res) => {
@@ -54,6 +55,7 @@ router.post('/signup', (req, res) => {
             res.status(400).json(errors);
         }
     });
+
 });
 
 router.post('/login', (req, res) => {
@@ -85,18 +87,109 @@ router.post('/login', (req, res) => {
             errors.login = "Email does not exist or wrong password";
             res.status(400).json(errors);
         }else{
-            // if verify the user, send credential token to client
-            // jwt.sign(payload, secret)
-            // payload: an object, can be decoded on client
-            // secret: for encrypt the token and verify
-            // success, then send token back
             const user_info = user._doc
             //console.log("login: ", user_info);
             const token = jwt.sign( user_info.email, 'secretkeyforjsonwebtoken');
             console.log("token: ", token);
             //console.log("Logged in " + data.searchHistory);
             res.json({  token: token,
-                        user: user_info});
+                user: user_info});
+
+
+            ////////////////////////////////////////////////////////////
+            ////////////////  Contributions  ///////////////////////////
+            ////////////////////////////////////////////////////////////
+
+            // var temp_token = {
+            //     email: user.email,
+            //     userName: data.userName,
+            //     accountType: user.accountType,
+            //     id: data._id,
+            //     proImg: data.proImg,
+            //     searchHistory: data.searchHistory,
+            //     favorites: data.favorites
+            // }
+            //
+            // var this_user = {
+            //     user_id: data._id,
+            //     user_name: data.userName
+            // }
+
+
+            // DescriptionSchema.find(this_user, function(err,data){
+            //     var addresses = [];
+            //     if(err){
+            //         console.log(err);
+            //     }else if(!data){
+            //         console.log("No contribution yet");
+            //     }else{
+            //         console.log("Descriptions: "+data[0]);
+            //         var user_descriptions = [];
+            //         for(var i = 0; i<data.length; i++){
+            //             var this_description={
+            //                 location: data[i].placeFullAddr,
+            //                 description: data[i].description_content,
+            //                 create_date:data[i].date
+            //             }
+            //             addresses.push(data[i].placeFullAddr);
+            //             user_descriptions.push(this_description);
+            //            // console.log("Pushed "+user_descriptions.length);
+            //         }
+            //
+            //     }
+            //
+            //     temp_token.descriptions = user_descriptions;
+            //
+            //
+            //     GooglePlaces.find({addr:{$in:addresses}},function(err,data){
+            //         if(err){
+            //             console.log("Error finding google places "+err);
+            //         }else if(!data){
+            //             console.log("Cannot find in googleplaces");
+            //         }else {
+            //             console.log("MATCHING google palce "+data[0]);
+            //             for(var i = 0; i< data.length;i++){
+            //                 for(var j = 0; j<user_descriptions.length;j++){
+            //                     if(data[i].addr=== user_descriptions[j].location){
+            //                         user_descriptions[i].image = data[i].image;
+            //                     }
+            //                 }
+            //
+            //             }
+            //         }
+            //
+            //         console.log("With token: "+JSON.stringify(temp_token));
+            //         const token = jwt.sign(temp_token,'secretkeyforjsonwebtoken');
+            //         res.json({token});
+            //
+            //     });
+            //
+            // });
+
+            ////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////
+
+
+            // if verify the user, send credential token to client
+            // jwt.sign(payload, secret)
+            // payload: an object, can be decoded on client
+            // secret: for encrypt the token and verify
+            // success, then send token back
+
+            // console.log(user_descriptions.length);
+            // const token = jwt.sign({
+            //     email: user.email,
+            //     userName: data.userName,
+            //     accountType: user.accountType,
+            //     id: data._id,
+            //     proImg: data.proImg,
+            //     searchHistory: data.searchHistory,
+            //     descriptions: user_descriptions
+            // }, 'secretkeyforjsonwebtoken');
+            // res.json({token});
+
+
         }
 
     });
@@ -121,8 +214,8 @@ router.post('/loginSocial', (req, res) => {
     User.findOne(user,function(err,user){
         let errors = {};
         console.log("Auth step 1: Authentication going");
-        console.log("Auth step 2: ", user.email+","+user.password);
-        console.log(user);
+        // console.log("Auth step 2: ", user.email+","+user.password);
+        // console.log(user);
         if(err){
             console.log(err);
         }else if(!user){
@@ -162,6 +255,8 @@ router.post('/loginSocial', (req, res) => {
         }
 
     });
+
+
 });
 
 router.post('/addName', (req, res) => {

@@ -63,7 +63,8 @@ class SearchResultHead extends React.Component{
         const location = this.props.location;
         var imgSrc = this.props.photo;
         if(imgSrc == ''){
-            imgSrc = photoDef
+            // imgSrc = photoDef
+            imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
         }
         return(
             <div>
@@ -102,7 +103,7 @@ class SearchResultHead extends React.Component{
                             </div>
 
                             <div className="auto-comment">
-                                <p>
+                                <p className="auto-comment">
                                     {autoComment}
                                 </p>
                             </div>
