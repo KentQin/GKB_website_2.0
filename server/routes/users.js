@@ -88,12 +88,8 @@ router.post('/login', (req, res) => {
             res.status(400).json(errors);
         }else{
             const user_info = user._doc
-            //console.log("login: ", user_info);
-            const token = jwt.sign( user_info.email, 'secretkeyforjsonwebtoken');
-            console.log("token: ", token);
-            //console.log("Logged in " + data.searchHistory);
-            res.json({  token: token,
-                user: user_info});
+            // console.log("user doc login: ", user_info);
+
 
 
             ////////////////////////////////////////////////////////////
@@ -110,61 +106,69 @@ router.post('/login', (req, res) => {
             //     favorites: data.favorites
             // }
             //
-            // var this_user = {
-            //     user_id: data._id,
-            //     user_name: data.userName
-            // }
+            var this_user = {
+                user_id: user_info._id,
+                user_name: user_info.userName
+            }
 
 
-            // DescriptionSchema.find(this_user, function(err,data){
-            //     var addresses = [];
-            //     if(err){
-            //         console.log(err);
-            //     }else if(!data){
-            //         console.log("No contribution yet");
-            //     }else{
-            //         console.log("Descriptions: "+data[0]);
-            //         var user_descriptions = [];
-            //         for(var i = 0; i<data.length; i++){
-            //             var this_description={
-            //                 location: data[i].placeFullAddr,
-            //                 description: data[i].description_content,
-            //                 create_date:data[i].date
-            //             }
-            //             addresses.push(data[i].placeFullAddr);
-            //             user_descriptions.push(this_description);
-            //            // console.log("Pushed "+user_descriptions.length);
-            //         }
-            //
-            //     }
-            //
-            //     temp_token.descriptions = user_descriptions;
-            //
-            //
-            //     GooglePlaces.find({addr:{$in:addresses}},function(err,data){
-            //         if(err){
-            //             console.log("Error finding google places "+err);
-            //         }else if(!data){
-            //             console.log("Cannot find in googleplaces");
-            //         }else {
-            //             console.log("MATCHING google palce "+data[0]);
-            //             for(var i = 0; i< data.length;i++){
-            //                 for(var j = 0; j<user_descriptions.length;j++){
-            //                     if(data[i].addr=== user_descriptions[j].location){
-            //                         user_descriptions[i].image = data[i].image;
-            //                     }
-            //                 }
-            //
-            //             }
-            //         }
-            //
-            //         console.log("With token: "+JSON.stringify(temp_token));
-            //         const token = jwt.sign(temp_token,'secretkeyforjsonwebtoken');
-            //         res.json({token});
-            //
-            //     });
-            //
-            // });
+            DescriptionSchema.find(this_user, function(err,data){
+                var addresses = [];
+                if(err){
+                    console.log(err);
+                }else if(!data){
+                    console.log("No contribution yet");
+                }else{
+                    console.log("Descriptions: "+data[0]);
+                    var user_descriptions = [];
+                    for(var i = 0; i<data.length; i++){
+                        var this_description={
+                            location: data[i].placeFullAddr,
+                            description: data[i].description_content,
+                            create_date:data[i].date
+                        }
+                        addresses.push(data[i].placeFullAddr);
+                        user_descriptions.push(this_description);
+                       // console.log("Pushed "+user_descriptions.length);
+                    }
+
+                }
+
+                // temp_token.descriptions = user_descriptions;
+
+
+                GooglePlaces.find({addr:{$in:addresses}},function(err,data){
+                    if(err){
+                        console.log("Error finding google places "+err);
+                    }else if(!data){
+                        console.log("Cannot find in googleplaces");
+                    }else {
+                        console.log("MATCHING google palce "+data[0]);
+                        for(var i = 0; i< data.length;i++){
+                            for(var j = 0; j<user_descriptions.length;j++){
+                                if(data[i].addr=== user_descriptions[j].location){
+                                    user_descriptions[i].image = data[i].image;
+                                }
+                            }
+
+                        }
+                    }
+
+                    // console.log("With token: "+JSON.stringify(temp_token));
+                    // const token = jwt.sign(temp_token,'secretkeyforjsonwebtoken');
+                    // res.json({token});
+
+                    user_info.contribution = user_descriptions;
+                    const token = jwt.sign( user_info.email, 'secretkeyforjsonwebtoken');
+                    console.log("token: ", token);
+
+                    //console.log("Logged in " + data.searchHistory);
+                    res.json({  token: token,
+                        user: user_info});
+                });
+
+
+            });
 
             ////////////////////////////////////////////////////////////
             ////////////////////////////////////////////////////////////

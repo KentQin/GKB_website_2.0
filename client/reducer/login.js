@@ -18,6 +18,7 @@ export default (state = initialState, action) => {
 
         //called by login page
         case SET_CURRENT_USER_LOGIN:
+            console.log("doing user login");
             return {
                 //action object contains user
                 isAuthenticated: true,
@@ -43,7 +44,7 @@ export default (state = initialState, action) => {
 
         // called by welcome page
         case SET_CURRENT_USER_ADD_NAME:
-            //console.log('reducer:',action.user);
+            console.log('reducer:',action.user);
             return {
                 //action object contains user
                 isAuthenticated: !lodash.isEmpty(action.user),

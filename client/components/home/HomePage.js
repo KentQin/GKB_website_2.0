@@ -8,6 +8,7 @@ import { searchBarRequest } from '../../actions/searchBarAction';
 import { updateCoordsRequest} from '../../actions/updateCoords';
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
+import {setContributionArray } from '../../actions/setContributionArray';
 import { setGoButtonResultsArray } from '../../actions/goButtonResults'
 import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
 //import { updateLike } from '../../actions/updateLike';
@@ -117,7 +118,8 @@ HomePage.propTypes = {
     updateShowSearchResult: React.PropTypes.func.isRequired,
     // for result list -> item to update like number
     //updateLike:React.PropTypes.func.isRequired,
-    setGoButtonResultsArray: React.PropTypes.func.isRequired
+    setGoButtonResultsArray: React.PropTypes.func.isRequired,
+    setContributionArray: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -125,6 +127,7 @@ function mapStateToProps(state) {
         login: state.login,
         searchResult: state.searchResult,
         descriptionArray: state.descriptionArray
+
     };
 }
 
