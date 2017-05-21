@@ -15,6 +15,7 @@ import searchBar from './routes/searchBar';
 import searchBar2 from './routes/searchBar2'
 import updatePswd from './routes/updatePswd';
 import addFavorites from './routes/addFavorites'
+import googlePlaceSearch from './routes/googlePlaceSearch';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import './database';
@@ -72,6 +73,7 @@ app.use('/api/searchBar/testgo', searchBar);
 app.use('/api/addProfilePic', addProfile);
 app.use('/api/updatePswd', updatePswd);
 app.use('/api/favorites', addFavorites);
+app.use('/api/googlePlaceSearch', googlePlaceSearch);
 
 
 
@@ -85,7 +87,7 @@ app.post('/resetpwd', (req, res) => {
 });
 
 if (config.dev) {
-  console.log(app.listen(8800, () => console.log('Running on localhost:8800')));
+  console.log(app.listen(9000, () => console.log('Running on localhost:9000')));
 } else {
   console.log(app.listen(80, () => console.log('Running on server which is public.')));
 }

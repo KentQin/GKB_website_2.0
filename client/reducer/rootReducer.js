@@ -5,6 +5,7 @@ import descriptionArray from './descriptionArray'
 import setFavorites from './setFavorites'
 import goButtonResultsArray from './goButtonResultsArray'
 import contributionArray from './contributionArray'
+import setGoogleResults from './setGoogleResults'
 
 export default combineReducers({
     login,
@@ -12,5 +13,6 @@ export default combineReducers({
     descriptionArray,
     setFavorites,
     goButtonResultsArray,
-    contributionArray
+    contributionArray,
+    setGoogleResults
 })
