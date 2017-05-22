@@ -19,23 +19,23 @@ class ContributonList extends React.Component{
     render() {
 
 
-        const {user} = this.props.login;
+        const {array} = this.props.contributionArray;
         var items = [];
 
 
         // console.log("User in contribution "+JSON.stringify(descriptions[0]));
-        if (typeof(user.contribution) != 'undefined') {
-            for (var i = 0; i < user.contribution.length; i++) {
-                console.log("Processing "+JSON.stringify(user.contribution[i])+'\n');
-                items.push(<div><ContributionItem location={user.contribution[i].location}
-                                               img={user.contribution[i].image}
-                                               description={user.contribution[i].description}/>
+        // if (typeof(user.contribution) != 'undefined') {
+            for (var i = 0; i < array.length; i++) {
+                console.log("Processing "+JSON.stringify(array[i])+'\n');
+                items.push(<div key = {i}><ContributionItem location={array[i].location}
+                                               img={array[i].image}
+                                               description={array[i].description}/>
                     </div>
                 );
             }
-        }else{
-            console.log("Empty array");
-        }
+        // }else{
+        //     console.log("Empty array");
+        // }
 
         return(
             <div className="favourite-list-block">
@@ -47,7 +47,7 @@ class ContributonList extends React.Component{
 
 function mapStateToProps(state) {
     return {
-        login: state.login
+        contributionArray: state.contributionArray
     };
 }
 

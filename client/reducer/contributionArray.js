@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
 
         //called by login page
         case SET_CONTRIBUTION_ARRAY:
-            console.log("Contribution array reducer "+action);
+            console.log("Contribution array reducer "+JSON.stringify(action));
             return {
                 //action object contains user
                 array: action.data
