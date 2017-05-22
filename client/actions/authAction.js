@@ -6,6 +6,14 @@ import { SET_CURRENT_USER_LOGOUT } from '../actions/types';
 import { UNSET_SHOW_SEARCH_RESULT } from '../actions/types';
 import {SET_CONTRIBUTION_ARRAY} from '../actions/types';
 
+
+export function setContributionArray(array){
+    console.log("Storing contribution array");
+    return {
+        type: SET_CONTRIBUTION_ARRAY,
+        data: array
+    }
+}
 // pure redux function, action creator
 export function setCurrentUser(user) {
     console.log("DOING FIRST STEP HERE");
@@ -33,6 +41,7 @@ export function removeSearchResultList(conf) {
 export function logout() {
     return dispatch => {
         sessionStorage.removeItem('loginToken');
+        sessionStorage.removeItem('contributions');
         setAuthorizationToken(false);
         dispatch(removeCurrentUser({}));
         dispatch(removeSearchResultList({}));
@@ -44,19 +53,23 @@ export function login(userData) {
         return axios.post('/api/users/login', userData).then(res =>{
             const token = res.data.token;
             const user = res.data.user;
-            // const contributionArray = res.data.contributionArray;
+            const contributionArray = res.data.contributionArray;
+
+            const contributions = {data :contributionArray};
 
             // console.log('token: ' ,token);
             // get token from server side, and store the token into session storage
             sessionStorage.setItem('loginToken', token);
             sessionStorage.setItem('loginUser', jwt.sign( user, 'secretkeyforjsonwebtoken'));
+            sessionStorage.setItem('contributions', jwt.sign(contributions, 'secretkeyforjsonwebtoken'));
             // set token into head info
             setAuthorizationToken(token);
             // decode token, get user msg from it
-            // console.log("auth action array "+contributionArray.length);
+            // console.log("auth action array "+contributionArray);
             console.log('token: ',token);
             // dispatch action 'setCurrentUser' to change state
             dispatch(setCurrentUser(user));
+            dispatch(setContributionArray(contributionArray));
         });
     }
 }
