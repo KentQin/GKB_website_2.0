@@ -1,6 +1,7 @@
 import React from 'react';
 import thumbSrc from '../img/thumb.png';
-import thumbUpSrc from '../img/thumbUp.png'
+import thumbUpSrc from '../img/thumbUp.png';
+import star from '../img/star.png';
 import classNames from 'classnames';
 import defaultPhoto from '../img/default-profile-picture.jpg';
 import axios from 'axios';
@@ -87,6 +88,7 @@ class SearchResultItem extends React.Component {
         return (
             <div className = "result_box">
                 <div className = "like_box" >
+                    {(this.props.num == 1) && <div className="path-2"></div>}
                     <div>
                         <img src = {thumbPic}
                              onClick = {this.onThumbClicker}
@@ -104,7 +106,7 @@ class SearchResultItem extends React.Component {
                 </div>
                 <div className="description">
                     <p>
-                        <span><strong> Discription: </strong></span > {this.props.discription}
+                        {this.props.discription}
                     </p>
                 </div>
             </div >

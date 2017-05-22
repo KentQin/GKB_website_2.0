@@ -121,8 +121,12 @@ class SearchResultList extends React.Component {
                 );
             }
         }else{
-            items.push(<tr key={1}><td><div className = "result_box">
-                                    <h3>There is no description, waiting for your contribution</h3>
+            items.push(<tr key={1}><td><div className = "empty_result_box">
+                                    <div className="no-user-submitted-de">No user-submitted descriptions available…</div>
+                                    <div className="contribute-your-own">Contribute your own description for this location</div>
+                                    <div className="add_box">
+                                        {addImg}
+                                    </div>
                                 </div>
                 </td></tr>
 
@@ -140,22 +144,23 @@ class SearchResultList extends React.Component {
         // }
 
         return (
-            <div>
-                <table className = 'result_table' >
+            <div className="table_container">
+                <table className = "result_table" >
                     <tbody>
                         <tr>
                             <td>
                                 <SearchResultHead autoComment = {autoDesc}
                                                   location = {placeFullAddr}
                                                   photo = {placePhoto}
-                                                  addToFavoritesAction = {this.props.addToFavoritesAction}/>
+                                                  addToFavoritesAction = {this.props.addToFavoritesAction}
+                                                  hideSearchResult={this.props.hideSearchResult}/>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <div className="left-text">
                                     <span> Location Descriptions </span>
-                                    <div id = "add_dis_box" >
+                                    <div className="add_dis_box" >
                                         {addImg}
                                     </div>
                                 </div>

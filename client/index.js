@@ -14,6 +14,7 @@ import setAuthorizationToken from './utils/setAuthorizationToken';
 import rootReduce from './reducer/rootReducer';
 import jwt from 'jsonwebtoken';
 import { setCurrentUser } from './actions/authAction';
+import {setContributionArray} from './actions/authAction';
 import GoogleAutoSuggest from './components/googleMaps/GoogleAutoSuggest'
 import MapContainer from './components/googleMaps/MapContainer'
 import HttpsRedirect from 'react-https-redirect';
@@ -37,10 +38,13 @@ const store = createStore(
     )
 )
 
+
 if (sessionStorage.loginToken) {
     setAuthorizationToken(sessionStorage.loginToken);
     store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginUser)));
+    store.dispatch(setContributionArray((jwt.decode(sessionStorage.contributions)).data));
 }
+
 
 window.addEventListener('storage', function(e) {
     console.log('I heard storage changed');
@@ -52,8 +56,11 @@ window.addEventListener('storage', function(e) {
         console.log('I am already login, I will write loginToken into localstorage');
         const token = sessionStorage.getItem('loginToken');
         const user = sessionStorage.getItem('loginUser');
+        const contributions = sessionStorage.getItem('contributions');
+        console.log("local storage get contrbutions: "+JSON.stringify(contributions));
         localStorage.setItem('loginToken',token);
         localStorage.setItem('loginUser', user);
+        localStorage.setItem('contributions',contributions.array);
         console.log('loginToken is in localstorage');
         //localStorage.removeItem('getSessionStorage');
         //console.log('getSessionStorage is removed from localstorage')
@@ -61,12 +68,16 @@ window.addEventListener('storage', function(e) {
         console.log('I am the new tag')
         const token = localStorage.getItem('loginToken');
         const user = sessionStorage.getItem('loginUser');
+        const contributions = sessionStorage.getItem('contributions');
         localStorage.removeItem('getSessionStorage');
         localStorage.removeItem('loginToken');
+        localStorage.removeItem('contributions');
         sessionStorage.setItem('loginToken',token);
         sessionStorage.setItem('loginUser',user);
+        sessionStorage.setItem('contributions',contributions);
         localStorage.removeItem('loginToken');
         localStorage.removeItem('loginUser');
+        localStorage.removeItem('contributions');
         setAuthorizationToken(sessionStorage.loginToken);
         store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginUser)));
     }

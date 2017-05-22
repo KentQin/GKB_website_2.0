@@ -156,7 +156,7 @@ router.post('/', (req, res) => {
               const query = { placeFullAddr: req.body.fulladdr}
               User.findById(req.body.user_id, function (err, s_user) {
                   // data.user = s_user;
-                  DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+                  DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
                       if (err) return handleError(err);
                       //console.log(docs);
                       var counter = 1
@@ -215,7 +215,7 @@ router.post('/', (req, res) => {
                 const query = { placeFullAddr: req.body.fulladdr}
                 User.findById(req.body.user_id, function (err, s_user) {
                     // data.user = s_user;
-                    DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+                    DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
                         if (err) return handleError(err);
                         //console.log(docs);
                         var counter = 1
@@ -723,7 +723,7 @@ router.post('/addDescription', (req, res) => {
             //     if (err) return handleError(err);
             //     console.log('%s %s %s.', place.user_email, place.placeFullAddr, place.like) // Space Ghost is a talk show host.
             // });
-            DescriptionSchema.find(query, '_id user_name user_id description_content like',function (err, docs) {
+            DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
                 if (err) console.log(err);
                 var counter = 1
                 var descriptionArray = [];

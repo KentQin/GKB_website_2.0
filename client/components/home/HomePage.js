@@ -15,6 +15,7 @@ import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
 //import { addLikeRequest } from '../../actions/addLikeAction';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
+import AutoSuggestList from './AutoSuggestList';
 import { searchBarTestGoAction } from '../../actions/searchBarTestGoAction'
 import { addToFavoritesAction } from '../../actions/addToFavorites'
 
@@ -23,10 +24,12 @@ class HomePage extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            showProfile: false
+            showProfile: false,
+            showSearchResult: true
         }
         this.showProfile = this.showProfile.bind(this);
         this.hideProfile = this.hideProfile.bind(this);
+        this.hideSearchResult = this.hideSearchResult.bind(this);
     }
 
     showProfile(){
@@ -39,6 +42,12 @@ class HomePage extends React.Component {
     hideProfile(){
         this.setState({
             showProfile: false
+        })
+    }
+
+    hideSearchResult(){
+        this.setState({
+            showSearchResult: false
         })
     }
 
@@ -77,6 +86,7 @@ class HomePage extends React.Component {
         console.log("searchResult in HomePage render: ", searchResult)
 
         const descriptionArray = this.props.descriptionArray;
+        const goButtonResultsArray = this.props.goButtonResultsArray;
 
 
         return (
@@ -93,7 +103,7 @@ class HomePage extends React.Component {
                                    landingPageFlag = {false}/>
 
 
-                {searchResultFlag && <SearchResultList searchResult={searchResult}
+                {(searchResultFlag&&this.state.showSearchResult) && <SearchResultList searchResult={searchResult}
                                                        isAuthenticated = {isAuthenticated}
                                                        descriptionArray = {descriptionArray}
                                                        login={this.props.login}
@@ -102,7 +112,10 @@ class HomePage extends React.Component {
                                                        //updateLike = {this.props.updateLike}
                                                        user_id={this.props.login.user._id}
                                                        addToFavoritesAction={this.props.addToFavoritesAction}
+                                                       hideSearchResult={this.hideSearchResult}
                                                         />}
+                {/*{?? && <AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>}*/}
+                <AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>
             </div>
         )
     }
@@ -124,8 +137,8 @@ function mapStateToProps(state) {
     return {
         login: state.login,
         searchResult: state.searchResult,
-        descriptionArray: state.descriptionArray
-
+        descriptionArray: state.descriptionArray,
+        goButtonResultsArray: state.goButtonResultsArray
     };
 }
 

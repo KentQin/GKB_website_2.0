@@ -158,13 +158,13 @@ router.post('/login', (req, res) => {
                     // const token = jwt.sign(temp_token,'secretkeyforjsonwebtoken');
                     // res.json({token});
 
-                    user_info.contribution = user_descriptions;
+                    // user_info.contribution = user_descriptions;
                     const token = jwt.sign( user_info.email, 'secretkeyforjsonwebtoken');
                     console.log("token: ", token);
 
                     //console.log("Logged in " + data.searchHistory);
                     res.json({  token: token,
-                        user: user_info});
+                        user: user_info, contributionArray:user_descriptions});
                 });
 
 
