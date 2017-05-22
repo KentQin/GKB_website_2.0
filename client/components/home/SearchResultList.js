@@ -145,7 +145,7 @@ class SearchResultList extends React.Component {
 
         return (
             <div className="table_container">
-                <table className = 'result_table' >
+                <table className = "result_table" >
                     <tbody>
                         <tr>
                             <td>

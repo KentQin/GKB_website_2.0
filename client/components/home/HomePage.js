@@ -15,6 +15,7 @@ import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
 //import { addLikeRequest } from '../../actions/addLikeAction';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
+import AutoSuggestList from './AutoSuggestList';
 import { searchBarTestGoAction } from '../../actions/searchBarTestGoAction'
 import { addToFavoritesAction } from '../../actions/addToFavorites'
 
@@ -85,6 +86,7 @@ class HomePage extends React.Component {
         console.log("searchResult in HomePage render: ", searchResult)
 
         const descriptionArray = this.props.descriptionArray;
+        const goButtonResultsArray = this.props.goButtonResultsArray;
 
 
         return (
@@ -112,6 +114,8 @@ class HomePage extends React.Component {
                                                        addToFavoritesAction={this.props.addToFavoritesAction}
                                                        hideSearchResult={this.hideSearchResult}
                                                         />}
+                {/*{?? && <AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>}*/}
+                <AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>
             </div>
         )
     }
@@ -133,8 +137,8 @@ function mapStateToProps(state) {
     return {
         login: state.login,
         searchResult: state.searchResult,
-        descriptionArray: state.descriptionArray
-
+        descriptionArray: state.descriptionArray,
+        goButtonResultsArray: state.goButtonResultsArray
     };
 }
 
