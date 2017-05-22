@@ -77,6 +77,7 @@ router.post('/', (req, res) => {
                             var lat = element.results[i].geometry.location.lat;
                             var lng = element.results[i].geometry.location.lng;
                             var addr = elem.formatted_address;
+                            console.log("addr111: ", addr)
                             var name = elem.name;
                             if (elem.photos) {
                                 var photo_ref = elem.photos[0].photo_reference;
@@ -87,32 +88,51 @@ router.post('/', (req, res) => {
 
                             var url2 = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo_ref + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
                             var options2 = { url: url2};
-                            curl.request(options2, function (err, res2) {
-                                if (err) {
-                                    console.log("photo ref error")
-                                } else {
-                                    console.log("photo url available")
-                                    var obj = {
-                                        lat: lat,
-                                        lng: lng,
-                                        photo: res2,
-                                        addr: addr,
-                                        name: name
-                                    }
-                                    // console.log("photo: ", res2);
-                                    results.push(obj)
-                                    console.log("results array: ", results.length);
-                                    if (results.length == element.results.length) {
-                                        console.log("its time to return to client side")
-                                        res.json({results});
-                                    }
-                                }
-                            });
-                            var obj = {
-                                lat: lat,
-                                lng: lng,
-                                photo_ref: photo_ref
-                            }
+
+                            tempfunc(options2, photo_ref, addr, lat, lng, name, function(obj) {
+                                      // var obj = {
+                                      //     lat: lat,
+                                      //     lng: lng,
+                                      //     photo: res2,
+                                      //     addr: addr,
+                                      //     name: name
+                                      // }
+                                      // console.log("photo: ", res2);
+                                      console.log("obj addr: ", obj.addr)
+                                      results.push(obj)
+                                      console.log("results array: ", results.length);
+                                      if (results.length == element.results.length) {
+                                          console.log("its time to return to client side")
+                                          res.json({results});
+                                      }
+                            })
+                            // curl.request(options2, function (err, res2) {
+                            //     if (err) {
+                            //         console.log("photo ref error")
+                            //     } else {
+                            //         console.log("photo url available")
+                            //         var obj = {
+                            //             lat: lat,
+                            //             lng: lng,
+                            //             // photo: res2,
+                            //             addr: addr,
+                            //             name: name
+                            //         }
+                            //         // console.log("photo: ", res2);
+                            //         console.log("addr: ", addr)
+                            //         // results.push(obj)
+                            //         // console.log("results array: ", results.length);
+                            //         // if (results.length == element.results.length) {
+                            //         //     console.log("its time to return to client side")
+                            //         //     res.json({results});
+                            //         // }
+                            //     }
+                            // });
+                            // var obj = {
+                            //     lat: lat,
+                            //     lng: lng,
+                            //     photo_ref: photo_ref
+                            // }
                             // results.push(obj)
                         }
                         // console.log("results array: ", results);
@@ -257,6 +277,49 @@ router.post('/', (req, res) => {
     //res.redirect('/home');
 });
 
+function tempfunc(options2, photo_ref, addr, lat, lng, name, callback) {
+  if (photo_ref) {
+    curl.request(options2, function (err, res2) {
+        if (err) {
+            console.log("photo ref error")
+        } else {
+            console.log("photo url available")
+            // var obj = {
+            //     lat: lat,
+            //     lng: lng,
+            //     // photo: res2,
+            //     addr: addr,
+            //     name: name
+            // }
+            // // console.log("photo: ", res2);
+            // console.log("addr: ", addr)
+            // results.push(obj)
+            var obj = {
+               photo: res2,
+               addr: addr,
+               lat: lat,
+               lng: lng,
+               name: name
+            }
+            callback(obj)
+            // console.log("results array: ", results.length);
+            // if (results.length == element.results.length) {
+            //     console.log("its time to return to client side")
+            //     res.json({results});
+            // }
+        }
+    });
+  } else {
+    var obj = {
+       photo: null,
+       addr: addr,
+       lat: lat,
+       lng: lng,
+       name: name
+    }
+    callback(obj)
+  }
+}
 
 function queryJena(searchStr, fulladdr, id, callback) {
 
