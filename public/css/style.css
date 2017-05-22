@@ -679,7 +679,7 @@ a.list-group-item:hover {
     float:left;
 }
 
-.s
+
 /* searchResultList and searchResultItem */
 *{
     margin: 0;
@@ -692,11 +692,12 @@ a.list-group-item:hover {
     float: left;
     width: 638px;
     height: 149px;
-    border: solid 2px red;
+    border: solid 1px aliceblue;
     background-color: #ffffff;
     background-color: var(--white);
     box-shadow: 0 2px 3px 0 rgba(56, 60, 79, 0.37);
     box-shadow: 0 2px 3px 0 var(--charcoal-grey-37);
+
 }
 
 .first_result_box{
@@ -707,26 +708,40 @@ a.list-group-item:hover {
 
 .user_box{
     width: 80%;
-    height: 40%;
+    height: 50%;
     float: right;
+    text-align: left;
+    background-color: #ffffff;
     /*font-size: 1.2em;*/
     /*text-align: left;*/
-    background-color: yellowgreen;
+}
+
+.user_box span{
+    position: relative;
+    top: 15px;
+    font-family: Oxygen;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: -0.3px;
 }
 
 .description{
     width: 80%;
-    height: 60%;
+    height: 50%;
     float: right;
-    background-color: darkcyan;
+    background-color: #ffffff;
+    font-family: Oxygen;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: -0.3px;
 }
 
 .user{
     height: 40px;
     width: 40px;
-    margin:0px 20px 0px 20px;
     position: relative;
-    top: 10px;
+    top: 12px;
     border-radius:50%;
 }
 
@@ -734,15 +749,11 @@ a.list-group-item:hover {
     width: 20%;
     float: left;
     height: 100%;
-
+    background-color: #ffffff;
     /*!*border: 1px solid black;*!*/
-    background-color: royalblue;
+
 }
 
-.like_box span{
-    position: relative;
-    left: 30%;
-}
 
 .like_box img{
     margin-top:5px;
@@ -752,7 +763,7 @@ a.list-group-item:hover {
     height: 30px;
     width: 30px;
     position: relative;
-    top: 40px;
+    top: 20px;
     object-fit: contain;
 }
 
@@ -777,7 +788,11 @@ a.list-group-item:hover {
     font-family: Oxygen;
     font-size: 15px;
     letter-spacing: -0.3px;
+    position: relative;
+    top: 25px;
+    text-align: center;
 }
+
 
 .first_thumbUp{
     height: 40px;
@@ -822,11 +837,14 @@ a.list-group-item:hover {
     float: right;
     width: auto;
     margin-right: 20px;
+    position: relative;
+    bottom: 5px;
 }
 
 #add{
     height: 40px;
     width: 40px;
+
 }
 
 .add_description{
@@ -901,19 +919,22 @@ p.auto-comment{
     height:134px;
     width:201px;
     margin:auto;
-    margin-top: 15%;
 
 }
 
 .photo-gallery{
     padding:0;
     height:100%;
+    position: relative;
+    top: 20px;
 }
 
 .result-info{
 
 }
-
+.share-sec{
+    margin-left: 30px;
+}
 .small-icon-sq{
     height:25px;
     width:25px;
@@ -937,15 +958,19 @@ p.auto-comment{
 .place-sec{
     float:left;
     padding:10px;
-    margin:5px;
+    width: 210px;
+    height: auto;
 }
 .result-info>div{
     display: inline-block;
-    margin: auto 2px;
+    /*margin: auto 2px;*/
+    margin-bottom: auto;
+    margin-top: auto;
     text-align: left;
 }
 
 .result-btn{
+    position: relative;
     margin:3%;
     float:left;
 }
@@ -959,15 +984,23 @@ p.auto-comment{
 
 .icon-place{
     float: left;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
     position: relative;
     top: 10px;
     left: 10px;
-    margin: 5px;
+
 }
 
 .left-text{
     text-align: left;
-    padding:8px;
+    padding-top: 10px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    font-family: Oxygen;
+    font-size: 17px;
+    letter-spacing: -0.3px;
 }
 
 .landing-search-bar>div>div{
