@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import rest from 'rest'
 import curl from 'curlrequest';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import { Link } from 'react-router'
 class SearchHistoryList extends React.Component{
@@ -28,9 +29,9 @@ class SearchHistoryList extends React.Component{
         var toSend;
         if (user._id == null) {
             toSend = {
-                searchStr: suggest.terms[0].value,
+                searchStr: "",
                 user_id: null,
-                fulladdr: suggest.description,
+                fulladdr: searchStr,
                 button: false
             }
         } else {
@@ -102,10 +103,11 @@ class SearchHistoryList extends React.Component{
 
 
 
-                    if (this.props.landingPageFlag == true) {
-                        console.log("just before routing to mapContainer")
-                        browserHistory.push('/home');
-                    }
+                    // if (this.props.landingPageFlag == true) {
+                    //     console.log("just before routing to mapContainer")
+                    //     browserHistory.push('/home');
+                    // }
+                    browserHistory.push('/home');
 
                 },
                 // if server response any error message, set it into state errors
@@ -150,10 +152,11 @@ class SearchHistoryList extends React.Component{
                                 this.props.setDescriptionArray({});
                             }
                             this.props.updateCoordsRequest(user);
-                            if (this.props.landingPageFlag == true) {
-                                console.log("just before routing to mapContainer")
-                                browserHistory.push('/home');
-                            }
+                            // if (this.props.landingPageFlag == true) {
+                            //     console.log("just before routing to mapContainer")
+                            //     browserHistory.push('/home');
+                            // }
+                            browserHistory.push('/home');
                         },
                         (err) => {
                             console.log("in googlePlaceSearch error client");

@@ -297,7 +297,7 @@ function tempfunc(options2, photo_ref, addr, lat, lng, name, callback) {
             // console.log("addr: ", addr)
             // results.push(obj)
             var obj = {
-               photo: res2,
+               photo: photo_ref,
                addr: addr,
                lat: lat,
                lng: lng,

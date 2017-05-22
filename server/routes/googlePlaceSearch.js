@@ -63,6 +63,9 @@ router.post('/', (req, res) => {
                           var name = elem.name;
                           if (elem.photos) {
                               var photo_ref = elem.photos[0].photo_reference;
+                              // var temp_url = elem.photos[0].getUrl({ 'maxWidth': 35, 'maxHeight': 35 })
+                              // console.log("temp_url: ", temp_url)
+                              console.log("photo_ref: ", photo_ref)
                           } else {
                               var photo_ref = null
                           }
@@ -78,7 +81,7 @@ router.post('/', (req, res) => {
                                   var obj = {
                                       lat: lat,
                                       lng: lng,
-                                      photo: res2,
+                                      photo: photo_ref,
                                       addr: addr,
                                       name: name
                                   }

@@ -70,6 +70,9 @@ class SearchResultHead extends React.Component{
         if(imgSrc == ''){
             // imgSrc = photoDef
             imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
+        } else if (imgSrc.indexOf("https")) {
+            // result is from google place photo => photo_ref
+            imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
         }
         return(
             <div>
