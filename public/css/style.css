@@ -1175,20 +1175,39 @@ search-entry-date{
     height:100%;
 }
 
-.auto_item{
+.auto-item{
     position: relative;
     font-size: 0.9em;
     float: left;
     width: 638px;
     height: 149px;
-    border: solid 1px aliceblue;
+    padding:30px;
+    border: solid 1px grey;
     background-color: white;
+
 }
+
 
 .auto_list{
     margin-top: 80px;
     width: 200px;
     border-collapse:collapse;
     border:1px solid gray;
-    background-color: red;
+    background-color: white;
+    text-align: center;
+}
+
+.auto-item-right{
+    float: left;
+    width: 60%;
+    text-align: left;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+
+
+.auto-item-left{
+    height: 80px;
+    width: 160px;
+    background-color: aliceblue;
 }
