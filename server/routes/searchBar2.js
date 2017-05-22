@@ -166,6 +166,7 @@ router.post('/', (req, res) => {
                           res.status(400).json({errors: null,
                                                 searchHistory: ret.searchHistory,
                                                 descriptionArray: null,
+                                                favorites: null
                                                 });
                       }else{
                           docs.forEach((doc) => {
@@ -195,7 +196,8 @@ router.post('/', (req, res) => {
                                       var errors = {
                                         errors: ret.errors,
                                         searchHistory: ret.searchHistory,
-                                        descriptionArray: descriptionArray
+                                        descriptionArray: descriptionArray,
+                                        favorites: ret.favorites
                                       }
                                       console.log("not in jena, but in google. With descriptionArray", errors)
                                       res.status(400).json(errors);
@@ -400,7 +402,8 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                             error:1,
                                                             errors:errors,
                                                             searchHistory:searchHistoryStore,
-                                                            autoDescription: null
+                                                            autoDescription: null,
+                                                            favorites: data2.favorites
                                                         }
                                                         callback(ret);
                                                     }
@@ -420,7 +423,8 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                             error:1,
                                                             errors:errors,
                                                             searchHistory: data2.searchHistory,
-                                                            autoDescription: null
+                                                            autoDescription: null,
+                                                            favorites: data2.favorites
                                                         }
                                                         callback(ret);
                                                     }
@@ -442,7 +446,8 @@ function queryJena(searchStr, fulladdr, id, callback) {
                   error:1,
                   errors:errors,
                   searchHistory:null,
-                  autoDescription: null
+                  autoDescription: null,
+                  favorites: null
               }
               callback(ret);
             }
@@ -538,7 +543,8 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                       placeFullAddr: fulladdr,
                                                                       placePhoto: "",
                                                                       searchHistory: searchHistoryStore,
-                                                                      autoDescription: autoDescription
+                                                                      autoDescription: autoDescription,
+                                                                      favorites: data2.favorites
                                                                       // showSearchResult: true
                                                                   }
                                                                   console.log("search bar sending token ");
@@ -571,7 +577,8 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                       placeFullAddr: fulladdr,
                                                                       placePhoto: "",
                                                                       searchHistory: data2.searchHistory,
-                                                                      autoDescription: autoDescription
+                                                                      autoDescription: autoDescription,
+                                                                      favorites: data2.favorites
                                                                       // showSearchResult: true
                                                                   }
                                                                   console.log("search bar sending token ");
@@ -609,7 +616,8 @@ function queryJena(searchStr, fulladdr, id, callback) {
                               placeFullAddr: fulladdr,
                               placePhoto: "",
                               searchHistory: null,
-                              autoDescription: autoDescription
+                              autoDescription: autoDescription,
+                              favorites: null
                               // showSearchResult: true
                           // }, 'secretkeyforjsonwebtoken');
                           }
