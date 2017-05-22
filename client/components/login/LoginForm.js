@@ -48,9 +48,9 @@ class LoginForm extends React.Component {
                 // if server response any error message, set it into state errors
                 (err) => {
                     console.log("Login Form: login failed");
-                    //console.log(err.response.data);
-                    // this.setState({ errors: err.response.data});
-                    console.log("this.state.errors: ", err);
+                    console.log(err.response.data);
+                    this.setState({ errors: err.response.data});
+                    console.log("this.state.errors: ", this.state.errors);
                 });
         }
     }
