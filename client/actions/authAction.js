@@ -42,6 +42,8 @@ export function logout() {
     return dispatch => {
         sessionStorage.removeItem('loginToken');
         sessionStorage.removeItem('contributions');
+        //sessionStorage.removeItem('loginToken');
+        sessionStorage.clear();
         setAuthorizationToken(false);
         dispatch(removeCurrentUser({}));
         dispatch(removeSearchResultList({}));
@@ -56,6 +58,7 @@ export function login(userData) {
             const contributionArray = res.data.contributionArray;
 
             const contributions = {data :contributionArray};
+            //const contributionArray = res.data.contributionArray;
 
             // console.log('token: ' ,token);
             // get token from server side, and store the token into session storage

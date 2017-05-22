@@ -114,12 +114,10 @@ HomePage.propTypes = {
     searchBarRequest: React.PropTypes.func.isRequired,
     updateCoordsRequest: React.PropTypes.func.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
-    // for result list -> AddDescription to add new description
     updateShowSearchResult: React.PropTypes.func.isRequired,
-    // for result list -> item to update like number
-    //updateLike:React.PropTypes.func.isRequired,
     setGoButtonResultsArray: React.PropTypes.func.isRequired,
-    setContributionArray: React.PropTypes.func.isRequired
+    setContributionArray: React.PropTypes.func.isRequired,
+    addToFavoritesAction: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -137,6 +135,6 @@ export default connect(mapStateToProps, { logout,
                                         setShowSearchResult,
                                         setDescriptionArray,
                                         updateShowSearchResult,
-                                        //updateLike,
+                                        setContributionArray,
                                         setGoButtonResultsArray,
                                         addToFavoritesAction})(HomePage);

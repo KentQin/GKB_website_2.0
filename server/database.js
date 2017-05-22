@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import tunnel from 'tunnel-ssh';
 
+
 var config = {
     username:"ubuntu",
     host:"115.146.90.170",
@@ -24,6 +25,7 @@ var server = tunnel(config, function (error, server) {
         }
     });
 });
+
 
 
 

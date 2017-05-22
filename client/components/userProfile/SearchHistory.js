@@ -1,7 +1,13 @@
 import React from 'react';
 import LinkToHome from '../common/LinkToHome';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
 import SearchHistoryList from './SearchHistoryList';
+import { searchBarRequest } from '../../actions/searchBarAction';
+import { updateCoordsRequest} from '../../actions/updateCoords';
+import { setShowSearchResult } from '../../actions/setShowSearchResult';
+import { setDescriptionArray }from '../../actions/setDescriptionArray';
+import { googlePlaceSearchRequest } from '../../actions/googlePlaceSearch.js';
 
 
 class SearchHistory extends React.Component{
@@ -25,7 +31,12 @@ class SearchHistory extends React.Component{
 
 
                     <div>
-                        <SearchHistoryList searchHistory={this.props.searchHistory}/>
+                        <SearchHistoryList searchHistory={this.props.searchHistory}
+                                           searchBarRequest={this.props.searchBarRequest}
+                                           updateCoordsRequest={this.props.updateCoordsRequest}
+                                           setShowSearchResult={this.props.setShowSearchResult}
+                                           setDescriptionArray={this.props.setDescriptionArray}
+                                           googlePlaceSearchRequest={this.props.googlePlaceSearchRequest}/>
                     </div>
                 </div>
 
@@ -35,7 +46,27 @@ class SearchHistory extends React.Component{
 }
 
 SearchHistory.propTypes = {
-    searchHistory: React.PropTypes.array.isRequired
+    searchHistory: React.PropTypes.array.isRequired,
+    login: React.PropTypes.object.isRequired,
+    searchBarRequest: React.PropTypes.func.isRequired,
+    updateCoordsRequest: React.PropTypes.func.isRequired,
+    setDescriptionArray: React.PropTypes.func.isRequired,
+    setShowSearchResult: React.PropTypes.func.isRequired,
+    googlePlaceSearchRequest: React.PropTypes.func.isRequired
 }
 
-export default SearchHistory;
+function mapStateToProps(state) {
+    return {
+        login: state.login,
+        searchResult: state.searchResult,
+        descriptionArray: state.descriptionArray
+
+    };
+}
+
+export default connect(mapStateToProps, { searchBarRequest,
+                                        updateCoordsRequest,
+                                        setShowSearchResult,
+                                        setDescriptionArray,
+                                        setShowSearchResult,
+                                        googlePlaceSearchRequest})(SearchHistory);
