@@ -163,8 +163,8 @@ class MyGoogleSuggest extends Component {
                     var photo = "";
                     this.setState({searchStr: suggest.description, selectedCoordinate: coordinate}, function() {
                         if (place.photos) {
-                            console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35}));
-                            photo = place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35})
+                            console.log("photo1: ", place.photos[0].getUrl({'maxWidth': 402, 'maxHeight': 268}));
+                            photo = place.photos[0].getUrl({'maxWidth': 402, 'maxHeight': 268})
                         } else {
                             photo = ""
                         };

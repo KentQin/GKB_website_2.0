@@ -7,6 +7,8 @@ import { searchBarRequest } from '../../actions/searchBarAction';
 import { updateCoordsRequest} from '../../actions/updateCoords'
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
+import {setContributionArray} from '../../actions/setContributionArray';
+import { setGoButtonResultsArray } from '../../actions/goButtonResults'
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest'
 import MapContainer from '../googleMaps/MapContainer'
 //<GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest} updateCoordsRequest={this.props.updateCoordsRequest}/>
@@ -27,10 +29,11 @@ class landingPage extends React.Component{
                     <h3 className="title-white">Locate your destination in one sentence</h3>
                     <div className="landing-search-bar" >
                         <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest}
-                                          updateCoordsRequest={this.props.updateCoordsRequest}
-                                          setShowSearchResult={this.props.setShowSearchResult}
-                                          setDescriptionArray={this.props.setDescriptionArray}
-                                          landingPageFlag = {true}>
+                                           updateCoordsRequest={this.props.updateCoordsRequest}
+                                           setShowSearchResult={this.props.setShowSearchResult}
+                                           setDescriptionArray={this.props.setDescriptionArray}
+                                           setGoButtonResultsArray={this.props.setGoButtonResultsArray}
+                                           landingPageFlag = {true}>
 
                             <Router history={browserHistory}>
                                 <Route path="/" component={MapContainer}/>
@@ -54,7 +57,8 @@ landingPage.propTypes = {
     login: React.PropTypes.object.isRequired,
     searchBarRequest: React.PropTypes.func.isRequired,
     updateCoordsRequest: React.PropTypes.func.isRequired,
-    setDescriptionArray: React.PropTypes.func.isRequired,
+    setGoButtonResultsArray: React.PropTypes.func.isRequired,
+    setDescriptionArray: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -62,4 +66,4 @@ function mapStateToProps(state) {
         login: state.login,
     };
 }
-export default connect(mapStateToProps,{ searchBarRequest, updateCoordsRequest, setDescriptionArray, setShowSearchResult})(landingPage);
+export default connect(mapStateToProps,{ searchBarRequest, updateCoordsRequest, setContributionArray, setGoButtonResultsArray, setDescriptionArray, setShowSearchResult})(landingPage);

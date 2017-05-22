@@ -15,6 +15,7 @@ import searchBar from './routes/searchBar';
 import searchBar2 from './routes/searchBar2'
 import updatePswd from './routes/updatePswd';
 import addFavorites from './routes/addFavorites'
+import googlePlaceSearch from './routes/googlePlaceSearch';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import './database';
@@ -72,6 +73,7 @@ app.use('/api/searchBar/testgo', searchBar);
 app.use('/api/addProfilePic', addProfile);
 app.use('/api/updatePswd', updatePswd);
 app.use('/api/favorites', addFavorites);
+app.use('/api/googlePlaceSearch', googlePlaceSearch);
 
 
 

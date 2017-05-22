@@ -37,6 +37,7 @@ const store = createStore(
     )
 )
 
+
 if (sessionStorage.loginToken) {
     setAuthorizationToken(sessionStorage.loginToken);
     store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginUser)));

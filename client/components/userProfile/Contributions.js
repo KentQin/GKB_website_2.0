@@ -10,30 +10,30 @@ class Contributions extends React.Component{
         this.state = {
 
         };
-        this.beforeRender = this.beforeRender.bind(this);
+        // this.beforeRender = this.beforeRender.bind(this);
     }
 
-    beforeRender(){
-        console.log("In contribution compoenent "+this.props.user._id);
-        const user_id = {
-            id: this.props.user._id
-        }
-
-        axios.post('/api/description', user_id).then(res =>{
-            console.log("Here in description action "+JSON.stringify(res.data));
-            // this.setState({descriptions: res.data});
-            var descriptions = res.data;
-            console.log("Before return rendering "+descriptions);
-            return descriptions;
-
-        });
-
-    }
+    // beforeRender(){
+    //     console.log("In contribution compoenent "+this.props.user._id);
+    //     const user_id = {
+    //         id: this.props.user._id
+    //     }
+    //
+    //     axios.post('/api/description', user_id).then(res =>{
+    //         console.log("Here in description action "+JSON.stringify(res.data));
+    //         // this.setState({descriptions: res.data});
+    //         var descriptions = res.data;
+    //         console.log("Before return rendering "+descriptions);
+    //         return descriptions;
+    //
+    //     });
+    //
+    // }
 
     render(){
 
         // var data = this.beforeRender();
-
+        // const {user} = this.props.login;
         return(
             <div className="vertical-block col-md-offset-1 col-md-8 window-drop-shadow">
                 <div className="vertical-block-title">
@@ -52,21 +52,22 @@ class Contributions extends React.Component{
                                 </span>
                             </div>
 
-                            <h5>Sort By</h5>
-                            <a href="#" className="list-group-item">Newest</a>
-                            <a href="#" className="list-group-item">Oldest</a>
-                            <a className="list-group-item">Highest Rank</a>
-                            <a className="list-group-item">Lowest Rank</a>
+                            <div className="mid-block-favourite-left">
+                                <h5>Sort By</h5>
+                                <a href="#" className="list-group-item list-group-item-white">Newest</a>
+                                <a href="#" className="list-group-item list-group-item-white">Oldest</a>
 
-                            <br/>
-                            <h5>Filter By</h5>
-                            <a href="#" className="list-group-item">Country</a>
-                            <a href="#" className="list-group-item">Location Type</a>
+                                <br/>
+                                <h5>Filter By</h5>
+                                <a href="#" className="list-group-item list-group-item-white">Country</a>
+                                <a href="#" className="list-group-item list-group-item-white">Location Type</a>
+                            </div>
+
                         </div>
                     </div>
 
                     <div className="vertical-block-content-right col-md-9">
-                        <ContributionList descriptions = {this.beforeRender()}/>
+                        <ContributionList />
                     </div>
                 </div>
             </div>
@@ -75,10 +76,5 @@ class Contributions extends React.Component{
 }
 
 
-function mapStateToProps(state) {
-    return {
-        user: state.login.user
-    };
-}
 
-export default connect( mapStateToProps, { descriptionRequest }) (Contributions);
+export default Contributions;

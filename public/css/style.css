@@ -449,6 +449,14 @@ a.list-group-item{
     background-color: rgba(10, 19, 58, 0.93);
 }
 
+a.list-group-item-white{
+    background-color:white;
+    color: rgba(10, 19, 58, 0.93);
+    /*text-align: center;*/
+}
+.mid-block-favourite-left{
+    text-align: center;
+}
 a.list-group-item:hover {
     color:white;
     background-color: rgba(24, 35, 85, 0.44);
@@ -726,6 +734,7 @@ a.list-group-item:hover {
     width: 20%;
     float: left;
     height: 100%;
+
     /*!*border: 1px solid black;*!*/
     background-color: royalblue;
 }
@@ -743,7 +752,7 @@ a.list-group-item:hover {
     height: 30px;
     width: 30px;
     position: relative;
-    left: 30%;
+    top: 40px;
     object-fit: contain;
 }
 
@@ -889,8 +898,8 @@ p.auto-comment{
 }
 
 .photo-gallery>img{
-    height:94px;
-    width:128px;
+    height:134px;
+    width:201px;
     margin:auto;
     margin-top: 15%;
 
@@ -918,6 +927,8 @@ p.auto-comment{
 .search-result-content{
     height:60%;
 }
+
+
 
 .place-sec>p{
     margin:0;
@@ -979,7 +990,7 @@ p.auto-comment{
 
 .favourite-item-box{
     width:100%;
-    margin-bottom:2%;
+    margin-bottom:4%;
     padding:0;
     height:50px;
 }
@@ -1033,8 +1044,24 @@ p.auto-comment{
 }
 
 .search-entry-content{
-    margin:auto;
+    margin:auto auto 20px 20px;
+    color: black;
+
 }
+
+search-entry-date{
+    float:left;
+}
+
+.search-entry-content:hover{
+    background-color: rgba(222, 225, 243, 0.27);
+    color: #4a90e2;
+}
+
+.search-entry-content:hover + checkbox-on-entry{
+    display: block;
+}
+
 
 .link-on-form{
     position: inherit;
@@ -1050,3 +1077,12 @@ p.auto-comment{
     box-shadow: 2px 2px 5px #888888;
 }
 
+
+.checkbox-on-entry{
+    float:right;
+}
+
+.stretch-img{
+    width:100%;
+    height:100%;
+}
