@@ -1,7 +1,6 @@
 import React from 'react';
 import LinkToHome from '../common/LinkToHome';
 import ContributionList from './ContributonList';
-import {descriptionRequest} from '../../actions/getDescriptionAction';
 import {connect} from 'react-redux';
 import axios from 'axios';
 class Contributions extends React.Component{
@@ -37,7 +36,7 @@ class Contributions extends React.Component{
         return(
             <div className="vertical-block col-md-offset-1 col-md-8 window-drop-shadow">
                 <div className="vertical-block-title">
-                    <h3>My Contributions</h3>
+                    <h4>My Contributions</h4>
                     <LinkToHome/>
                 </div>
 

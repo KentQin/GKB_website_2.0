@@ -1,24 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose} from 'redux';
-
-import LoginPage from './components/login/LoginPage';
-import SignupPage from './components/signup/SignupPage';
-import ResetPasswordPage from './components/resetpwd/ResetPasswordPage';
-import EmailSentPage from './components/resetpwd/EmailSentPage';
-import NewPwdPage from './components/newpassword/NewPwdPage';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import rootReduce from './reducer/rootReducer';
 import jwt from 'jsonwebtoken';
 import { setCurrentUser } from './actions/authAction';
 import {setContributionArray} from './actions/authAction';
-import GoogleAutoSuggest from './components/googleMaps/GoogleAutoSuggest'
 import MapContainer from './components/googleMaps/MapContainer'
-import HttpsRedirect from 'react-https-redirect';
-import LandingPage from './components/landing/landingPage';
+import lodash from 'lodash';
+
 /*
 * createStore(reducer, [preloadedState], enhancer)
 * Here, set an empty func (state = {}) => state as reducer
@@ -42,7 +34,16 @@ const store = createStore(
 if (sessionStorage.loginToken) {
     setAuthorizationToken(sessionStorage.loginToken);
     store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginUser)));
-    store.dispatch(setContributionArray((jwt.decode(sessionStorage.contributions)).data));
+    if(sessionStorage.contributions){
+        console.log("test dispatch",jwt.decode(sessionStorage.contributions));
+        store.dispatch(setContributionArray((jwt.decode(sessionStorage.contributions)).data));
+    }
+}
+
+if(!sessionStorage.length) {
+// 这个调用能触发目标事件，从而达到共享数据的目的
+    localStorage.setItem('getSessionStorage',true)
+    console.log("set getSessionStorage")
 }
 
 
@@ -50,9 +51,12 @@ window.addEventListener('storage', function(e) {
     console.log('I heard storage changed');
 
     const newSession = localStorage.getItem('getSessionStorage');
+    console.log("newSession",newSession);
 
     // 如果是已经登入的页面 写入当前的sessionstorage到localstorage
     if(newSession && sessionStorage.loginToken) {
+
+
         console.log('I am already login, I will write loginToken into localstorage');
         const token = sessionStorage.getItem('loginToken');
         const user = sessionStorage.getItem('loginUser');
@@ -60,35 +64,36 @@ window.addEventListener('storage', function(e) {
         console.log("local storage get contrbutions: "+JSON.stringify(contributions));
         localStorage.setItem('loginToken',token);
         localStorage.setItem('loginUser', user);
-        localStorage.setItem('contributions',contributions.array);
+        localStorage.setItem('contributions',contributions);
         console.log('loginToken is in localstorage');
         //localStorage.removeItem('getSessionStorage');
         //console.log('getSessionStorage is removed from localstorage')
     } else if (newSession && !sessionStorage.length){
         console.log('I am the new tag')
         const token = localStorage.getItem('loginToken');
-        const user = sessionStorage.getItem('loginUser');
-        const contributions = sessionStorage.getItem('contributions');
+        const user = localStorage.getItem('loginUser');
+        const contributions = localStorage.getItem('contributions');
         localStorage.removeItem('getSessionStorage');
-        localStorage.removeItem('loginToken');
-        localStorage.removeItem('contributions');
         sessionStorage.setItem('loginToken',token);
         sessionStorage.setItem('loginUser',user);
         sessionStorage.setItem('contributions',contributions);
         localStorage.removeItem('loginToken');
         localStorage.removeItem('loginUser');
         localStorage.removeItem('contributions');
-        setAuthorizationToken(sessionStorage.loginToken);
-        store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginUser)));
+        console.log("sessionStorage.loginToken: ", sessionStorage.loginToken);
+        console.log("sessionStorage.loginToken length: ", sessionStorage.loginToken.length);
+        if(sessionStorage.loginToken.length > 4){
+            console.log("despatch states");
+            setAuthorizationToken(sessionStorage.loginToken);
+            store.dispatch(setCurrentUser(jwt.decode(sessionStorage.loginUser)));
+            store.dispatch(setContributionArray((jwt.decode(sessionStorage.contributions)).data));
+        }
+
     }
 });
 
 
-if(!sessionStorage.length) {
-// 这个调用能触发目标事件，从而达到共享数据的目的
-    localStorage.setItem('getSessionStorage',true)
-    console.log("set getSessionStorage")
-}
+
 
 render(
     <Provider store={store}>

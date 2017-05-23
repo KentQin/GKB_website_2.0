@@ -41,8 +41,15 @@ class AddDescription extends React.Component{
             image: this.props.searchResult.searchResultPageConfig.placePhoto,
             coords: user.coords
         }
+
+        const this_user = {
+            user_id: _id,
+            user_name: userName
+        }
         // console.log(this.props);
-        this.props.updateShowSearchResult(description).then(this.props.hideAddWindow());
+        this.props.updateShowSearchResult(description).then(this.props.hideAddWindow())
+            // .then(this.props.updateContributionArray(this_user));
+
         // axios.post('/api/searchBar/addDescription', description).then(res =>{
         //     console.log('ans from server')
         //     this.props.hideAddWindow();

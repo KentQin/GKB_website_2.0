@@ -172,9 +172,9 @@ class AutoSuggestItem extends React.Component {
     }
 
     render() {
-
+        // const base64 = (Buffer.from(this.props.photo).toString('base64'));
+        // var userProfile = 'data:image/png;base64,'+this.props.photo;
       /* PLEASE THE BLOW CODE FOR IMAGES */
-
       // const { placePhoto } = this.props.searchResult.searchResultPageConfig;
       var imgSrc = this.props.photo
       if(imgSrc == ''){
@@ -198,7 +198,6 @@ class AutoSuggestItem extends React.Component {
                     <Link onClick={this.linkClick.bind(this, location)}>{this.props.addr}</Link>
                 </div>
 
-                {/*<div>{img src = }</div>*/}
             </div>
         )
     }

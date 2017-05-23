@@ -774,7 +774,63 @@ router.post('/addDescription', (req, res) => {
                                 }
                                 return 0;
                             });
-                            res.status(200).json(descriptionArray);
+
+                            ////////////////////////////////////
+                            ////Update contribution here////////
+                            ////////////////////////////////////
+
+                            var this_user = {
+                                user_id: description.user_id,
+                                user_name: description.user_name
+                            }
+                            console.log("Im this user:" + JSON.stringify(description));
+
+                            DescriptionSchema.find(this_user, function(err,data){
+                                var addresses = [];
+                                if(err){
+                                    console.log(err);
+                                }else if(!data){
+                                    console.log("No contribution yet");
+                                }else{
+                                    console.log("Descriptions: "+data[0]);
+                                    var user_descriptions = [];
+                                    for(var i = 0; i<data.length; i++){
+                                        var this_description={
+                                            location: data[i].placeFullAddr,
+                                            description: data[i].description_content,
+                                            create_date:data[i].date
+                                        }
+                                        addresses.push(data[i].placeFullAddr);
+                                        user_descriptions.push(this_description);
+                                        // console.log("Pushed "+user_descriptions.length);
+                                    }
+
+                                }
+
+
+                                GooglePlaces.find({addr:{$in:addresses}},function(err,data){
+                                    if(err){
+                                        console.log("Error finding google places "+err);
+                                    }else if(!data){
+                                        console.log("Cannot find in googleplaces");
+                                    }else {
+                                        console.log("MATCHING google palce "+data.length);
+                                        for(var i = 0; i< data.length;i++){
+                                            for(var j = 0; j<user_descriptions.length;j++){
+                                                if(data[i].addr=== user_descriptions[j].location){
+                                                    user_descriptions[i].image = data[i].image;
+                                                }
+                                            }
+
+                                        }
+                                    }
+
+
+                                res.status(200).json({descriptionArray:descriptionArray, contributionArray:user_descriptions});
+
+                                });
+                            });
+
                         }
                         counter+=1;
                     });
@@ -785,6 +841,13 @@ router.post('/addDescription', (req, res) => {
     })
 
 });
+
+router.post('/updateContribution',(req,res)=>{
+    console.log("UPDATING CONTRIBUTION ARRAY IN HERE 1");
+    res.status(200).json({});
+
+});
+
 
 router.post('/addLike', (req, res) => {
     const {des_id} = req.body;

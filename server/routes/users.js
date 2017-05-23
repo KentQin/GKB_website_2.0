@@ -1,5 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 var User = require('./../models/user.js');
 var DescriptionSchema = require('./../models/placeDescription');
@@ -18,6 +19,9 @@ router.post('/signup', (req, res) => {
     var email = {
         email: req.body.email
     }
+    const saltRounds = 10;
+    const cPassword = bcrypt.hashSync(user.password, saltRounds);
+    user.password = cPassword;
 
     // console.log('Server: You Signup');
     // const token = jwt.sign({
@@ -62,23 +66,18 @@ router.post('/login', (req, res) => {
     // console.log("Message for LoginForm ",req.body);
     var user = {
         email:req.body.email,
-        password: req.body.password,
+        // password: req.body.password,
         accountType: 'local'
     };
 
-    // console.log('Server: You Logged in');
-    // const token = jwt.sign({
-    //     email: user.email,
-    //     userName: 'GKB User'
-    // }, 'secretkeyforjsonwebtoken');
-    // res.json({token});
-
+    var password = req.body.password;
 
     User.findOne(user,function(err,user){
         let errors = {};
         // console.log("Auth step 1: Authentication going");
         // console.log("Auth step 2: ", user.email+","+user.password);
-        console.log(user);
+        const bool = bcrypt.compareSync(password, user.password);
+        // console.log("bool:", bool);
         if(err){
             console.log(err);
         }else if(!user){
@@ -86,7 +85,12 @@ router.post('/login', (req, res) => {
             console.log("Email does not exist or wrong password");
             errors.login = "Email does not exist or wrong password";
             res.status(400).json(errors);
-        }else{
+        }else if(!bool){
+            console.log("Email does not exist or wrong password");
+            errors.login = "Email does not exist or wrong password";
+            res.status(400).json(errors);
+        }
+        else{
             const user_info = user._doc
             // console.log("user doc login: ", user_info);
 
@@ -300,89 +304,6 @@ router.post('/addName', (req, res) => {
     });
 });
 
-//
-// import crypto from 'crypto'
-// import path from 'path'
-//
-//
-// var storage = multer.diskStorage({
-//     destination: 'F:/Uni Melb/4th sem/Research Project/GKB/GKB_final/images',
-//     filename: function (req, file, cb) {
-//         crypto.pseudoRandomBytes(16, function (err, raw) {
-//             if (err) return cb(err)
-//
-//             cb(null, raw.toString('hex') + path.extname(file.originalname))
-//         })
-//     }
-// })
-//
-// var upload = multer({ storage: storage })
-//
-// router.post('/addProfilePic/:userid', upload.single('photo'), function(req, res, next) {
-//     console.log("object id: " + req.params.userid);
-//     console.log("req.files: ", req.files);
-//     console.log("req file: ", req.file);
-//     var userId = req.params.userid;
-//     //res.end(req.files);
-//     User.findByIdAndUpdate(userId, { $set: {imageFile: req.file} }, {new: true}, function (err, model) {
-//         if (err) {
-//             console.log("Adding imageFile update error");
-//             errors.login = "Adding imageFile update error";
-//             res.status(400).json(errors);
-//         } else {
-//             console.log("update success: " + model);
-//             const token = jwt.sign({
-//                 email: model.email,
-//                 userName: model.userName,
-//                 id: model.id,
-//                 imageFile: model.imageFile
-//             }, 'secretkeyforjsonwebtoken');
-//             //res.json({token});
-//             res.end("sucess");
-//             //res.end(model.imageFile);
-//         }
-//     });
-// });
-
-// router.post('/addProfilePic', (req, res) => {
-//
-//     console.log("req body imageFile ", req.body.imageFile)
-//     console.log("req body id: ", req.body.id)
-//     console.log("REQ FILES: ", req.files);
-//     // const user = {
-//     //     //userName: req.body.userName,
-//     //     imageFile: req.body.imageFile,
-//     //     id: req.body.id
-//     // };
-//     //
-//     // var newPath = __dirname;
-//     // console.log("newPath: " + newPath);
-//     //   // write file to uploads/fullsize folder
-//     //   require('fs').writeFile(newPath, user.imageFile, function (err) {
-//     //     // let's see it
-//     //     //res.redirect("/uploads/fullsize/" + imageName);
-//     //     console.log("I think we are close");
-//     //   });
-//     //
-//     // console.log("User info from WelcomeForm: ", user);
-//     // console.log("user image: " + user.imageFile);
-//     //
-//     // User.findByIdAndUpdate(user.id, { $set: {imageFile: user.imageFile} }, {new: true}, function (err, model) {
-//     //   if (err) {
-//     //     console.log("Adding imageFile update error");
-//     //     errors.login = "Adding imageFile update error";
-//     //     res.status(400).json(errors);
-//     //   } else {
-//     //       console.log("update success: " + model);
-//     //       const token = jwt.sign({
-//     //           email: model.email,
-//     //           userName: model.userName,
-//     //           id: model.id
-//     //       }, 'secretkeyforjsonwebtoken');
-//     //       res.json({token});
-//     //   }
-//     // });
-// });
 
 
 export default router;

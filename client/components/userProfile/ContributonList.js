@@ -29,6 +29,7 @@ class ContributonList extends React.Component{
                 console.log("Processing "+JSON.stringify(array[i])+'\n');
                 items.push(<div key = {i}><ContributionItem location={array[i].location}
                                                img={array[i].image}
+                                                            date={array[i].create_date}
                                                description={array[i].description}/>
                     </div>
                 );

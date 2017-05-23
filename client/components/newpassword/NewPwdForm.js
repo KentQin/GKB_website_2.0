@@ -45,7 +45,7 @@ class NewPwdForm extends React.Component{
                 // if successful
                 (res) => {
                     console.log("I am here in changePswdRequest");
-                    this.context.router.push('/home')
+                    this.context.router.push('/login')
                 },
                 // if server response any error message, set it into state errors
                 (err) => {
