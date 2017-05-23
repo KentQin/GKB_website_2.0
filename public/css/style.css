@@ -1216,11 +1216,12 @@ search-entry-date{
 
 .auto_list{
     margin-top: 80px;
-    width: 200px;
-    border-collapse:collapse;
-    /*border:1px solid gray;*/
-    background-color: white;
+    width: 100%;
+    border-collapse: collapse;
     text-align: center;
+    background: transparent;
+    height: 450px;
+    overflow: scroll;
 
 }
 
