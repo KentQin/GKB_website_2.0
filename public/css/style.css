@@ -672,6 +672,10 @@ a.list-group-item:hover {
     float: right;
 }
 
+.search-history-block{
+    height:300px;
+    overflow: scroll;
+}
 .search-history-entry{
     background-color: honeydew;
     margin-bottom: 1%;
@@ -1068,10 +1072,11 @@ p.auto-comment{
 
 .vertical-block-content-left{
     height:100%;
+    border-left: 1px darkgray;
 }
 
 .vertical-block-content-right{
-    height:100%;
+    height:300px;
     overflow:scroll;
 }
 
@@ -1098,6 +1103,11 @@ p.auto-comment{
 
 .favourite-content-body{
     width:100%;
+}
+
+.favourite-content-date > h6{
+    color:darkgray;
+    font-weight: lighter;
 }
 
 .small-window{

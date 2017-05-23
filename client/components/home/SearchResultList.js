@@ -175,6 +175,7 @@ class SearchResultList extends React.Component {
                 {this.state.showAddDescription && <AddDescription hideAddWindow={this.hideAddWindow}
                                                                   setDescriptionArray = {this.props.setDescriptionArray}
                                                                   updateShowSearchResult={this.props.updateShowSearchResult}
+                                                                  updateContributionArray = {this.props.updateContributionArray}
                                                                   />}
             </div>
         )
@@ -188,7 +189,8 @@ SearchResultList.propTypes = {
     descriptionArray: React.PropTypes.object.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
-    addToFavoritesAction: React.PropTypes.func.isRequired
+    addToFavoritesAction: React.PropTypes.func.isRequired,
+    updateContributionArray: React.PropTypes.func.isRequired
 }
 
 
