@@ -190,7 +190,7 @@ class AutoSuggestItem extends React.Component {
         return(
             <div className="auto-item">
                 <div className="auto-item-left">
-                    <img src={imgSrc}/>
+                    <img className="" src={imgSrc}/>
                 </div>
                 <div className="auto-item-right">
                     <Link onClick={this.linkClick.bind(this, location)}>{this.props.name}</Link>
