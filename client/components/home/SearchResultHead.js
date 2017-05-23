@@ -7,6 +7,7 @@ import place from '../img/ic-place-black-48-dp.png';
 import add from '../img/heart-light-filled-green.png';
 import share from '../img/ic-share-black-48-dp.png';
 import {Link} from 'react-router';
+import config from '../../../server/config.js';
 
 class SearchResultHead extends React.Component{
 
@@ -66,12 +67,13 @@ class SearchResultHead extends React.Component{
         const autoComment = this.props.autoComment;
         const location = this.props.location;
         var imgSrc = this.props.photo;
-        if(imgSrc == ''){
+        if(imgSrc == '' || imgSrc == null){
             // imgSrc = photoDef
             imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
         } else if (imgSrc.indexOf("https") < 0) {
             // result is from google place photo => photo_ref
-            imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
+            imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=" + config.googlePlaceApiKey
+            // var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + encodeRes + "&location=" + pos.lat +"," + pos.lng + "&radius=20&key=" + config.googlePlaceApiKey
         }
         return(
             <div>

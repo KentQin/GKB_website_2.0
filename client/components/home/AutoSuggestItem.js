@@ -7,6 +7,7 @@ import { setDescriptionArray }from '../../actions/setDescriptionArray';
 import { googlePlaceSearchRequest } from '../../actions/googlePlaceSearch.js';
 import {connect} from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import config from '../../../server/config.js'
 
 class AutoSuggestItem extends React.Component {
 
@@ -174,16 +175,16 @@ class AutoSuggestItem extends React.Component {
         // const base64 = (Buffer.from(this.props.photo).toString('base64'));
         // var userProfile = 'data:image/png;base64,'+this.props.photo;
       /* PLEASE THE BLOW CODE FOR IMAGES */
-        var imgSrc = this.props.photo;
-
-        if(imgSrc == ''){
-            // imgSrc = photoDef
-            imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
-        } else if (imgSrc.indexOf("https") < 0) {
-            // result is from google place photo => photo_ref
-            imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
-        }
-
+      // const { placePhoto } = this.props.searchResult.searchResultPageConfig;
+      var imgSrc = this.props.photo
+      if(imgSrc == '' || imgSrc == null){
+          // imgSrc = photoDef
+          imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
+      } else if (imgSrc.indexOf("https") < 0) {
+          // result is from google place photo => photo_ref
+          // imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
+          imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=" + config.googlePlaceApiKey
+      }
 
         var location = this.props.name + this.props.addr
         return(

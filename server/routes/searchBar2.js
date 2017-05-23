@@ -41,7 +41,8 @@ router.post('/', (req, res) => {
             };
 
             var encodeRes = encodeURIComponent(req.body.searchStr)
-            var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + encodeRes + "&location=" + pos.lat +"," + pos.lng + "&radius=20&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
+
+            var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + encodeRes + "&location=" + pos.lat +"," + pos.lng + "&radius=20&key=" + config.googlePlaceApiKey
             // https://maps.googleapis.com/maps/api/place/textsearch/json?query=coles&location=-37.8103,144.9544&radius=20&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
             // https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=<>&key=AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM
             console.log("url: ", url)
@@ -86,8 +87,7 @@ router.post('/', (req, res) => {
                             }
                             // var photo_ref = elem.photos[0].photo_reference
 
-                            var url2 = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo_ref + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
-                            var options2 = { url: url2};
+
                             var obj = {
                                 lat: lat,
                                 lng: lng,
