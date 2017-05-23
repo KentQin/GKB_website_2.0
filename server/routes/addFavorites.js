@@ -110,12 +110,19 @@ router.post('/', (req, res) => {
                                                                   console.log("in 2nd update favorites error")
                                                               } else {
                                                                   console.log("in 2nd update favorites success", user2);
+                                                                  console.log("before pushing new favorite "+ data2.favorites);
+                                                                  var favorites = data2.favorites;
+                                                                  favorites.push(insertToFavoritesNew);
+                                                                  data2.favorites = favorites;
+                                                                  console.log("after pushing new favorite "+ favorites);
                                                                   var token = {
                                                                       addr: dataGoogle.addr,
                                                                       image: dataGoogle.image,
                                                                       coords: dataGoogle.coords,
+                                                                      user: data2._doc
                                                                   }
                                                                   console.log("GooglePlaces" + dataGoogle);
+                                                                  console.log("Updated favorite user "+ data2);
                                                                   // res.json(token);
                                                                   res.status(200).json({token});
                                                               }

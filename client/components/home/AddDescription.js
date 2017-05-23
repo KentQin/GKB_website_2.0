@@ -65,7 +65,7 @@ class AddDescription extends React.Component{
 
     render(){
         return(
-            <div className="small-window col-md-offset-3 col-md-6 add_description">
+            <div className="small-window col-md-offset-3 col-md-6 add_description window-drop-shadow">
                 <div className="form-group-n">
                     <div className="form-title">
                         <h4>Add Description</h4>

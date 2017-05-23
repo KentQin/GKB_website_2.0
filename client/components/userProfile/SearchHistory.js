@@ -15,7 +15,7 @@ class SearchHistory extends React.Component{
         return(
             <div className="vertical-block col-md-offset-1 col-md-8 window-drop-shadow">
                 <div className="vertical-block-title">
-                    <h3>Search History</h3>
+                    <h4>Search History</h4>
                     <LinkToHome/>
                 </div>
 

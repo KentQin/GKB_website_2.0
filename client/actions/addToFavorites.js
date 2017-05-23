@@ -1,5 +1,6 @@
 import { SET_FAVORITES } from '../actions/types';
 import axios from 'axios';
+import {SET_CURRENT_USER_LOGIN} from '../actions/types';
 // pure redux function, action creator
 export function setFavoriteAction(favoriteData) {
     return {
@@ -8,15 +9,30 @@ export function setFavoriteAction(favoriteData) {
     }
 }
 
+export function setCurrentUser(user){
+    return {
+        type:SET_CURRENT_USER_LOGIN,
+        user
+    }
+}
+
 export function addToFavoritesAction(favorite) {
     return dispatch => {
         return axios.post('/api/favorites', favorite).then(res =>{
             // const descriptionArray = res.data;
             // console.log("*************")
-            // console.log(res.data)
-            var favoriteData = res.data
-            console.log("favoriteData: ", favoriteData)
+            console.log("JUst back to favorite action "+JSON.stringify(res.data.token));
+            console.log("Just back to favorite action "+JSON.stringify(res.data.token.user));
+            var favoriteData = {
+
+                addr: res.data.token.addr,
+                image: res.data.token.image,
+                coords: res.data.token.coords
+            }
+            const user= res.data.token.user;
+            console.log("favoriteData: ", favoriteData);
             dispatch(setFavoriteAction(favoriteData));
+            dispatch(setCurrentUser(user));
         });
 
         // dispatch(updateSearchResultList(conf));

@@ -6,8 +6,8 @@ import photoDef from '../img/landing_page_photo.png';
 import place from '../img/ic-place-black-48-dp.png';
 import add from '../img/heart-light-filled-green.png';
 import share from '../img/ic-share-black-48-dp.png';
-import config from '../../../server/config.js'
-
+import {Link} from 'react-router';
+import config from '../../../server/config.js';
 
 class SearchResultHead extends React.Component{
 
@@ -64,7 +64,7 @@ class SearchResultHead extends React.Component{
 
     render(){
 
-        const autoComment = this.props.autoComment;
+        var  autoComment = this.props.autoComment;
         const location = this.props.location;
         var imgSrc = this.props.photo;
         if(imgSrc == '' || imgSrc == null){
@@ -84,10 +84,9 @@ class SearchResultHead extends React.Component{
                     <div className="search-result-bar">
                         {/*<button data-dismiss="modal" className="btn btn-default btn-fold-sidebar">《 </button>*/}
                         <div className="search-result-content">
-                            <div className="close_search" > <button className="btn btn-default btn-unfold-sidebar" onClick={this.closeSearchResult}>《</button></div>
+                            <div className="close_search" > <button className="btn" onClick={this.closeSearchResult}>《 </button></div>
                             <div className="photo-gallery col-md-5">
                                 <img src={imgSrc}/>
-
                             </div>
 
                             <div className="search-result-right">
@@ -100,22 +99,20 @@ class SearchResultHead extends React.Component{
                                     </div>
                                 </div>
                             <div className="result-info result-btn">
-                                <div className="add-sec">
-                                    <img className="small-icon-sq" src={add} onClick={this.addFavorite}/>
+                                <Link className="add-sec" onClick={this.addFavorite}>
+                                    <img className="small-icon-sq" src={add} />
                                     Add to Favourites
-                                </div>
+                                </Link>
 
-                                <div className="share-sec">
+                                <Link className="share-sec">
                                     <img className="small-icon-sq" src={share}/>
                                     Share
-                                </div>
+                                </Link>
                             </div>
                             </div>
 
                             <div className="auto-comment">
-                                <p className="auto-comment">
                                     {autoComment}
-                                </p>
                             </div>
                         </div>
 

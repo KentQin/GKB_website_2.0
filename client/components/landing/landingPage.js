@@ -33,7 +33,9 @@ class landingPage extends React.Component{
                                            setShowSearchResult={this.props.setShowSearchResult}
                                            setDescriptionArray={this.props.setDescriptionArray}
                                            setGoButtonResultsArray={this.props.setGoButtonResultsArray}
-                                           landingPageFlag = {true}>
+                                           landingPageFlag = {true}
+                                           showAutoSuggest={this.showAutoSuggest}
+                                           hideSearchResult={this.hideSearchResult}>
 
                             <Router history={browserHistory}>
                                 <Route path="/" component={MapContainer}/>

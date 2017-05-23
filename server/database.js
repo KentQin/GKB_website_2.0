@@ -26,8 +26,6 @@ import tunnel from 'tunnel-ssh';
 // });
 
 
-
-
 mongoose.connect('mongodb://localhost/mydb', function(err) {
     if (err) {
         console.log(err);
