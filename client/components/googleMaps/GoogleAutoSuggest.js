@@ -55,8 +55,10 @@ class MyGoogleSuggest extends Component {
                 //var userUpdated = this.props.login.user;
                 (res) => {
                     console.log("success in clicking button, back to clientside");
-                    console.log("res data", res.data.results)
-                    this.props.setGoButtonResultsArray(res.data.results)
+                    console.log("res data", res.data.results);
+                    this.props.setGoButtonResultsArray(res.data.results);
+                    this.props.showAutoSuggest();
+                    this.props.hideSearchResult();
                 },
                 (err) => {
                     console.log("err in clicking button, back to clientside");
