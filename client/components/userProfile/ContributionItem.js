@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-var default_img =  '../img/default.jpg';
+var default_img =  'http://www.mozmagic.com/files/assets/img/ui/no-image-available.png';
 import { searchBarRequest } from '../../actions/searchBarAction';
 import { updateCoordsRequest} from '../../actions/updateCoords';
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
@@ -176,7 +176,7 @@ class ContributionItem extends React.Component{
         // console.log("img "+this.props.img);
         var {img} = this.props;
         console.log("img type in favourite "+ img);
-        if(typeof(img)=='undefined') {
+        if(typeof(img)=='undefined' ||  img=='') {
             console.log("Favourtie default img needed");
             img = default_img;
         }

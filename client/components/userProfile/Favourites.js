@@ -8,7 +8,7 @@ class Favourites extends React.Component{
         return(
             <div className="vertical-block col-md-offset-1 col-md-8 window-drop-shadow">
                 <div className="vertical-block-title">
-                    <h3>My Favourites</h3>
+                    <h4>My Favourites</h4>
                     <LinkToHome/>
                 </div>
 
