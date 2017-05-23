@@ -6,7 +6,7 @@ var config = {
     username:"ubuntu",
     host:"115.146.90.170",
     agent : process.env.SSH_AUTH_SOCK,
-    privateKey:require('fs').readFileSync('/Users/zhangruoq/pb'),
+    privateKey:require('fs').readFileSync('C:/Users/prajith/publicKey'),
     port:22,
     dstPort:27017,
 };
@@ -24,8 +24,6 @@ var server = tunnel(config, function (error, server) {
         }
     });
 });
-
-
 
 
 // mongoose.connect('mongodb://localhost/mydb', function(err) {

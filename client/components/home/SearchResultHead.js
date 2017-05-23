@@ -28,12 +28,14 @@ class SearchResultHead extends React.Component{
         var location = this.props.location;
         var photo = this.props.photo
         const {user} = this.props.login;
+        var  autoComment = this.props.autoComment
         var description = {
             location : location,
             photo : photo,
             coords: user.coords,
             user_id: user._id,
-            type: this.props.searchResult.searchResultPageConfig.type
+            type: this.props.searchResult.searchResultPageConfig.type,
+            autoComment: autoComment
         }
         // console.log(this.props);
 
@@ -64,7 +66,7 @@ class SearchResultHead extends React.Component{
 
     render(){
 
-        const autoComment = this.props.autoComment;
+        var  autoComment = this.props.autoComment;
         const location = this.props.location;
         var imgSrc = this.props.photo;
         if(imgSrc == '' || imgSrc == null){
@@ -87,7 +89,6 @@ class SearchResultHead extends React.Component{
                             <div className="close_search" > <button className="btn" onClick={this.closeSearchResult}>《 </button></div>
                             <div className="photo-gallery col-md-5">
                                 <img src={imgSrc}/>
-
                             </div>
 
                             <div className="search-result-right">
@@ -113,9 +114,7 @@ class SearchResultHead extends React.Component{
                             </div>
 
                             <div className="auto-comment">
-                                <p className="auto-comment">
                                     {autoComment}
-                                </p>
                             </div>
                         </div>
 

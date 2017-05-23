@@ -951,8 +951,7 @@ a.list-group-item:hover {
     background-image: linear-gradient(to top, #e6e7f2, rgba(254, 254, 255, 0.98) 49%, #f3f5fb);
 }
 
-div.auto-comment{
-    height: 50px;
+.auto-comment{
     background-color: white;
     text-align: center;
     display: inline-block;
@@ -961,19 +960,12 @@ div.auto-comment{
     position: relative;
     bottom: 0;
     left: 0;
-    margin: 3% auto;
     box-shadow: 1px 0px 3px 0px rgba(0,0,0,0.5);
-}
-
-p.auto-comment{
-    /*width: 322px;
-    height: 21px;*/
+    float: left;
     font-family: Oxygen;
     font-size: 17px;
     font-weight: 300;
     letter-spacing: -0.3px;
-    color: #979797;
-    color: var(--warm-grey);
 }
 
 

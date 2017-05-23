@@ -29,8 +29,10 @@ export function addToFavoritesAction(favorite) {
                 image: res.data.token.image,
                 coords: res.data.token.coords
             }
-            const user= res.data.token.user;
-            console.log("favoriteData: ", favoriteData);
+            var user= res.data.token.user;
+            user.autoDescription = res.data.token.autoComment
+            console.log("favorite in action return: ", favorite);
+            console.log("favorite user:", user)
             dispatch(setFavoriteAction(favoriteData));
             dispatch(setCurrentUser(user));
         });
