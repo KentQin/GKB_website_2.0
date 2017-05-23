@@ -142,6 +142,7 @@ router.post('/', (req, res) => {
                                                                       addr: dataGoogle.addr,
                                                                       image: dataGoogle.image,
                                                                       coords: dataGoogle.coords,
+                                                                      user:data2._doc
                                                                   }
                                                                   console.log("GooglePlaces" + dataGoogle);
                                                                   // res.json(token);
@@ -225,10 +226,17 @@ router.post('/', (req, res) => {
                                                           console.log("in 2nd update favorites error")
                                                       } else {
                                                           console.log("in 2nd update favorites success", user2);
+
+                                                          var favorites = data2.favorites;
+                                                          favorites.push(insertToFavoritesNew);
+                                                          data2.favorites = favorites;
+                                                          console.log("after pushing new favorite "+ favorites);
+
                                                           var token = {
                                                               addr: addr,
                                                               image: placePhoto,
                                                               coords: coords,
+                                                              user:data2._doc
                                                           }
                                                           // res.json(token);
                                                           res.status(200).json({token});
@@ -249,6 +257,7 @@ router.post('/', (req, res) => {
                                                               addr: addr,
                                                               image: placePhoto,
                                                               coords: coords,
+                                                              user:data2._doc
                                                           }
                                                           // res.json(token);
                                                           res.status(200).json({token});
@@ -319,10 +328,15 @@ router.post('/', (req, res) => {
                                               console.log("in 2nd update favorites error")
                                           } else {
                                               console.log("in 2nd update favorites success", user2);
+                                              var favorites = data2.favorites;
+                                              favorites.push(insertToFavoritesNew);
+                                              data2.favorites = favorites;
+                                              console.log("after pushing new favorite "+ favorites);
                                               var token = {
                                                   addr: addr,
                                                   image: placePhoto,
                                                   coords: coords,
+                                                  user:data2._doc
                                               }
                                               // res.json(token);
                                               res.status(200).json({token});
@@ -343,6 +357,7 @@ router.post('/', (req, res) => {
                                                   addr: addr,
                                                   image: placePhoto,
                                                   coords: coords,
+                                                  user:data2._doc
                                               }
                                               // res.json(token);
                                               res.status(200).json({token});

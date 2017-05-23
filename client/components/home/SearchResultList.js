@@ -133,7 +133,7 @@ class SearchResultList extends React.Component {
             );
         }
 
-        const {autoDescription} = this.props.login
+        const {autoDescription} = this.props.login.user
         var autoDesc;
         if (autoDescription) {
           autoDesc = autoDescription;
