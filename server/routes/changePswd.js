@@ -2,6 +2,7 @@ import express from 'express';
 import lodash from 'lodash';
 import validator from 'validator';
 import config from '../config'
+import bcrypt from 'bcrypt';
 var User = require('./../models/user.js');
 
 let router = express.Router();
@@ -14,7 +15,9 @@ router.post('/:email', (req, res) => {
         accountType: 'local'
     };
 
-    console.log("password: " + req.body.password)
+    var newPassword = req.body.password;
+    console.log("password: " + newPassword)
+
 
     User.findOne(user,function(err,data){
         let errors = {};
@@ -27,7 +30,10 @@ router.post('/:email', (req, res) => {
             errors.login = "Email does not exist or wrong password";
             res.status(400).json(errors);
         }else{
-            User.findByIdAndUpdate(data._id, { $set: {password: req.body.password} }, {new: true}, function (err, model) {
+            console.log('newPassword:',newPassword);
+            const saltRounds = 10;
+            const cPassword = bcrypt.hashSync(newPassword, saltRounds);
+            User.findByIdAndUpdate(data._id, { $set: {password: cPassword} }, {new: true}, function (err, model) {
                 if (err) {
                     console.log("password update error");
                     errors.login = "password update error";

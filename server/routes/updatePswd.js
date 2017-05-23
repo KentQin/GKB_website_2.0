@@ -1,4 +1,5 @@
 import express from 'express';
+import bcrypt from 'bcrypt';
 import lodash from 'lodash';
 import validator from 'validator';
 import config from '../config'
@@ -12,15 +13,19 @@ router.post('/', (req, res) => {
 
     var user = {
         email:req.body.email,
-        password: req.body.password,
         accountType: 'local'
     };
+
+    var password = req.body.password;
+    var newPassword = req.body.newPassword;
 
     console.log("password: " + req.body.password)
 
     User.findOne(user,function(err,data){
         let errors = {};
         console.log(data);
+        const bool = bcrypt.compareSync(password, data.password);
+        // console.log("bool:", bool);
         if(err){
             console.log("Error finding in update pswd")
             console.log(err);
@@ -29,8 +34,14 @@ router.post('/', (req, res) => {
             console.log("Email does not exist or wrong password");
             errors.login = "Email does not exist or wrong password";
             res.status(400).json(errors);
+        }else if(!bool){
+            console.log("Email does not exist or wrong password");
+            errors.login = "Email does not exist or wrong password";
+            res.status(400).json(errors);
         }else{
-            User.findByIdAndUpdate(data._id, { $set: {password: req.body.newPassword} }, {new: true}, function (err, model) {
+            const saltRounds = 10;
+            const cPassword = bcrypt.hashSync(newPassword, saltRounds);
+            User.findByIdAndUpdate(data._id, { $set: {password: cPassword} }, {new: true}, function (err, model) {
                 if (err) {
                     console.log("password update error");
                     errors.login = "password update error";
