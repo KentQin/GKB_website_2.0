@@ -28,12 +28,14 @@ class SearchResultHead extends React.Component{
         var location = this.props.location;
         var photo = this.props.photo
         const {user} = this.props.login;
+        var  autoComment = this.props.autoComment
         var description = {
             location : location,
             photo : photo,
             coords: user.coords,
             user_id: user._id,
-            type: this.props.searchResult.searchResultPageConfig.type
+            type: this.props.searchResult.searchResultPageConfig.type,
+            autoComment: autoComment
         }
         // console.log(this.props);
 
