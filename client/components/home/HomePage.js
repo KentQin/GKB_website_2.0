@@ -25,11 +25,14 @@ class HomePage extends React.Component {
         super(props);
         this.state = {
             showProfile: false,
-            showSearchResult: true
+            showSearchResult: true,
+            showAutoSuggest: false
         }
         this.showProfile = this.showProfile.bind(this);
         this.hideProfile = this.hideProfile.bind(this);
         this.hideSearchResult = this.hideSearchResult.bind(this);
+        this.showAutoSuggest = this.showAutoSuggest.bind(this);
+        this.hideAutoSuggest = this.hideAutoSuggest.bind(this);
     }
 
     showProfile(){
@@ -48,6 +51,18 @@ class HomePage extends React.Component {
     hideSearchResult(){
         this.setState({
             showSearchResult: false
+        })
+    }
+
+    showAutoSuggest(){
+        this.setState({
+            showAutoSuggest: true
+        })
+    }
+
+    hideAutoSuggest(){
+        this.setState({
+            showAutoSuggest: false
         })
     }
 
@@ -100,7 +115,10 @@ class HomePage extends React.Component {
                                    setShowSearchResult={this.props.setShowSearchResult}
                                    setDescriptionArray={this.props.setDescriptionArray}
                                    setGoButtonResultsArray={this.props.setGoButtonResultsArray}
-                                   landingPageFlag = {false}/>
+                                   landingPageFlag = {false}
+                                   showAutoSuggest={this.showAutoSuggest}
+                                   hideSearchResult={this.hideSearchResult}
+                />
 
 
                 {(searchResultFlag&&this.state.showSearchResult) && <SearchResultList searchResult={searchResult}
@@ -114,8 +132,9 @@ class HomePage extends React.Component {
                                                        addToFavoritesAction={this.props.addToFavoritesAction}
                                                        hideSearchResult={this.hideSearchResult}
                                                         />}
-                {/*{?? && <AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>}*/}
-                <AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>
+
+                {this.state.showAutoSuggest && <AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>}
+                {/*<AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>*/}
             </div>
         )
     }
