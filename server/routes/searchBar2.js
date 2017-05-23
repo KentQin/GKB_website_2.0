@@ -11,7 +11,7 @@ var ElementEl = require('./../models/node.js');
 var User = require('./../models/user.js');
 var DescriptionSchema = require('./../models/placeDescription');
 var GooglePlaces = require('./../models/googlePlaces')
-var autoDescription = require('./../models/autoDescription')
+var autoDescription = require('./../models/autoDescription.js')
 //var rest = require('rest')
 
 let router = express.Router();
@@ -477,16 +477,19 @@ function queryJena(searchStr, fulladdr, id, callback) {
               console.log("coords longt: ", elem.lon)
               console.log("osm_id: ", elem.osm_id)
 
-              autoDescription.findOne({element: elem.osm_id}, function (err, doc) {
+              autoDescription.findOne({'element': elem.osm_id}, function (err, res) {
                   if (err) {
                      console.log("err in autoDescription findone")
                   } else {
                       console.log("no err in autodescription")
+                      console.log("res: ", res)
                       var autoDescription;
-                      if (doc) {
-                          autoDescription = doc.autoDescription;
+                      if (res) {
+                          autoDescription = res.autoDescription;
+                          console.log("in doc success")
                       } else {
                           autoDescription = null
+                          console.log("in doc err")
                       }
                       if (id != null) {
                           User.findOne({_id: id},function(err,data2){
@@ -545,7 +548,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                                   console.log("in 2nd update error")
                                                               } else {
                                                                 searchHistoryStore.push(insertToSearchHistoryNew);
-                                                                console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
+                                                                // console.log("in searchHistoryStore adding new location: ", searchHistoryStore)
 
                                                                   console.log("in 2nd update success");
                                                                   const token = {
@@ -581,7 +584,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                                               if (err) {
                                                                   console.log("error date updated");
                                                               } else {
-                                                                  console.log("updating date",  user2);
+                                                                  // console.log("updating date",  user2);
                                                                   const token = {
                                                                       email: data2.email,
                                                                       userName: data2.userName,
