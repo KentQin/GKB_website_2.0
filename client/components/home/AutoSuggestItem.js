@@ -183,14 +183,14 @@ class AutoSuggestItem extends React.Component {
       } else if (imgSrc.indexOf("https") < 0) {
           // result is from google place photo => photo_ref
           // imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
-          imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=" + config.googlePlaceApiKey
+          imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=160&photoreference=" + imgSrc + "&key=" + config.googlePlaceApiKey
       }
 
         var location = this.props.name + this.props.addr
         return(
             <div className="auto-item">
                 <div className="auto-item-left">
-                    <img className="" src={imgSrc}/>
+                    <img className="img-goButton-auto" src={imgSrc}/>
                 </div>
                 <div className="auto-item-right">
                     <Link onClick={this.linkClick.bind(this, location)}>{this.props.name}</Link>
