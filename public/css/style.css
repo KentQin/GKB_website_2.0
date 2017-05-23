@@ -672,6 +672,10 @@ a.list-group-item:hover {
     float: right;
 }
 
+.search-history-block{
+    height:300px;
+    overflow: scroll;
+}
 .search-history-entry{
     background-color: honeydew;
     margin-bottom: 1%;
