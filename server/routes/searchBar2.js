@@ -88,24 +88,39 @@ router.post('/', (req, res) => {
 
                             var url2 = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo_ref + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
                             var options2 = { url: url2};
+                            var obj = {
+                                lat: lat,
+                                lng: lng,
+                                photo: photo_ref,
+                                addr: addr,
+                                name: name
+                            }
+                            // console.log("photo: ", res2);
+                            console.log("obj addr: ", obj.addr)
+                            results.push(obj)
+                            console.log("results array: ", results.length);
+                            if (results.length == element.results.length) {
+                                console.log("its time to return to client side")
+                                res.json({results});
+                            }
 
-                            tempfunc(options2, photo_ref, addr, lat, lng, name, function(obj) {
-                                      // var obj = {
-                                      //     lat: lat,
-                                      //     lng: lng,
-                                      //     photo: res2,
-                                      //     addr: addr,
-                                      //     name: name
-                                      // }
-                                      // console.log("photo: ", res2);
-                                      console.log("obj addr: ", obj.addr)
-                                      results.push(obj)
-                                      console.log("results array: ", results.length);
-                                      if (results.length == element.results.length) {
-                                          console.log("its time to return to client side")
-                                          res.json({results});
-                                      }
-                            })
+                            // tempfunc(options2, photo_ref, addr, lat, lng, name, function(obj) {
+                            //           // var obj = {
+                            //           //     lat: lat,
+                            //           //     lng: lng,
+                            //           //     photo: res2,
+                            //           //     addr: addr,
+                            //           //     name: name
+                            //           // }
+                            //           // console.log("photo: ", res2);
+                            //           console.log("obj addr: ", obj.addr)
+                            //           results.push(obj)
+                            //           console.log("results array: ", results.length);
+                            //           if (results.length == element.results.length) {
+                            //               console.log("its time to return to client side")
+                            //               res.json({results});
+                            //           }
+                            // })
                             // curl.request(options2, function (err, res2) {
                             //     if (err) {
                             //         console.log("photo ref error")
@@ -147,7 +162,7 @@ router.post('/', (req, res) => {
         console.log("clicked on google Auto suggestion");
         var ret = {};
         ret = queryJena(req.body.searchStr, req.body.fulladdr, req.body.user_id, function(ret) {
-            console.log("ret: ", ret)
+            // console.log("ret: ", ret)
             if (ret.error == 1) {
 
               console.log("not in jena, but in google");
@@ -352,9 +367,9 @@ function queryJena(searchStr, fulladdr, id, callback) {
                 User.findOne({_id: id},function(err,data2) {
                     let errors = {};
                     var searchHistoryStore = [];
-                    console.log("data2: " + data2);
+                    // console.log("data2: " + data2);
                     searchHistoryStore = data2.searchHistory;
-                    console.log("searchHistoryStore: ", searchHistoryStore)
+                    // console.log("searchHistoryStore: ", searchHistoryStore)
                     if(err){
                         console.log(err);
                     }else if(!data2){
@@ -374,7 +389,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                 if (err) {
                                     console.log("error in searchhistory update");
                                 } else {
-                                    console.log("succes in updataing searchHistory11111", user);
+                                    // console.log("succes in updataing searchHistory11111", user);
 
                                     User.findOne({_id:id,'searchHistory.searchStr': fulladdr}, function(err, data) {
 
@@ -477,7 +492,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                           User.findOne({_id: id},function(err,data2){
                               var searchHistoryStore = [];
                               let errors = {};
-                              console.log("data2: " + data2);
+                              // console.log("data2: " + data2);
                               searchHistoryStore = data2.searchHistory;
                               if(err){
                                   console.log(err);
@@ -506,7 +521,7 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                           if (err) {
                                               console.log("error in searchhistory update");
                                           } else {
-                                              console.log("succes in updataing searchHistory11111", user);
+                                              console.log("succes in updataing searchHistory11111");
 
 
 

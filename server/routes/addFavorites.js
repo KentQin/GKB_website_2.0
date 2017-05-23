@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
     var placePhoto = req.body.photo
     var addr = req.body.location
     var coords = req.body.coords
-    var id = req.body.user._id
+    var id = req.body.user_id
 
     console.log("placePhoto: ", placePhoto)
     console.log("addr: ", addr)

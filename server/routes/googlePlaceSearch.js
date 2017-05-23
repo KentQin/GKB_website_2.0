@@ -69,26 +69,36 @@ router.post('/', (req, res) => {
                           } else {
                               var photo_ref = null
                           }
+                          var obj = {
+                              lat: lat,
+                              lng: lng,
+                              photo: photo_ref,
+                              addr: addr,
+                              name: name
+                          }
+
+                          res.json({obj});
+
                           // var photo_ref = elem.photos[0].photo_reference
 
-                          var url2 = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo_ref + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
-                          var options2 = { url: url2};
-                          curl.request(options2, function (err, res2) {
-                              if (err) {
-                                  console.log("photo ref error")
-                              } else {
-                                  console.log("photo url available")
-                                  var obj = {
-                                      lat: lat,
-                                      lng: lng,
-                                      photo: photo_ref,
-                                      addr: addr,
-                                      name: name
-                                  }
-
-                                  res.json({obj});
-                              }
-                          });
+                          // var url2 = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photo_ref + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
+                          // var options2 = { url: url2};
+                          // curl.request(options2, function (err, res2) {
+                          //     if (err) {
+                          //         console.log("photo ref error")
+                          //     } else {
+                          //         console.log("photo url available")
+                          //         var obj = {
+                          //             lat: lat,
+                          //             lng: lng,
+                          //             photo: photo_ref,
+                          //             addr: addr,
+                          //             name: name
+                          //         }
+                          //
+                          //         res.json({obj});
+                          //     }
+                          // });
 
                   }
 

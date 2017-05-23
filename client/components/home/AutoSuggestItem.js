@@ -175,20 +175,21 @@ class AutoSuggestItem extends React.Component {
       /* PLEASE THE BLOW CODE FOR IMAGES */
 
       // const { placePhoto } = this.props.searchResult.searchResultPageConfig;
-      // var imgSrc = placePhoto
-      // if(imgSrc == ''){
-      //     // imgSrc = photoDef
-      //     imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
-      // } else if (imgSrc.indexOf("https")) {
-      //     // result is from google place photo => photo_ref
-      //     imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
-      // }
+      var imgSrc = this.props.photo
+      if(imgSrc == ''){
+          // imgSrc = photoDef
+          imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
+      } else if (imgSrc.indexOf("https") < 0) {
+          // result is from google place photo => photo_ref
+          // imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
+          imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
+      }
 
         var location = this.props.name + this.props.addr
         return(
             <div className="auto-item">
                 <div className="auto-item-left">
-                    <img src=""/>
+                    <img src={imgSrc}/>
                 </div>
                 <div className="auto-item-right">
                     <Link onClick={this.linkClick.bind(this, location)}>{this.props.name}</Link>
