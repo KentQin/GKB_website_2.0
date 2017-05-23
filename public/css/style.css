@@ -1230,3 +1230,8 @@ search-entry-date{
     background-color: aliceblue;
     float:left;
 }
+
+.img-goButton-auto{
+  height: 80px;
+  width: 160px;
+}
