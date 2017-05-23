@@ -32,7 +32,7 @@ class SearchResultHead extends React.Component{
             location : location,
             photo : photo,
             coords: user.coords,
-            user: user,
+            user_id: user._id,
             type: this.props.searchResult.searchResultPageConfig.type
         }
         // console.log(this.props);
@@ -51,7 +51,7 @@ class SearchResultHead extends React.Component{
         },
         // if server response any error message, set it into state errors
         (err) => {
-            console.log("Login Form: login failed");
+            console.log("addFavorite failed");
             //console.log(err.response.data);
             this.setState({ errors: err.response.data});
             console.log("this.state.errors: ", this.state.errors);
@@ -70,7 +70,7 @@ class SearchResultHead extends React.Component{
         if(imgSrc == ''){
             // imgSrc = photoDef
             imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
-        } else if (imgSrc.indexOf("https")) {
+        } else if (imgSrc.indexOf("https") < 0) {
             // result is from google place photo => photo_ref
             imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
         }

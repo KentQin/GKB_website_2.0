@@ -184,6 +184,7 @@ class AutoSuggestItem extends React.Component {
             imgSrc = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + imgSrc + "&key=AIzaSyDDE-vIbUTEYtUmLRwf_iXCIOAz7UP23QQ"
         }
 
+
         var location = this.props.name + this.props.addr
         return(
             <div className="auto-item">
