@@ -6,8 +6,7 @@ import photoDef from '../img/landing_page_photo.png';
 import place from '../img/ic-place-black-48-dp.png';
 import add from '../img/heart-light-filled-green.png';
 import share from '../img/ic-share-black-48-dp.png';
-
-
+import {Link} from 'react-router';
 
 class SearchResultHead extends React.Component{
 
@@ -99,15 +98,15 @@ class SearchResultHead extends React.Component{
                                     </div>
                                 </div>
                             <div className="result-info result-btn">
-                                <div className="add-sec">
-                                    <img className="small-icon-sq" src={add} onClick={this.addFavorite}/>
+                                <Link className="add-sec" onClick={this.addFavorite}>
+                                    <img className="small-icon-sq" src={add} />
                                     Add to Favourites
-                                </div>
+                                </Link>
 
-                                <div className="share-sec">
+                                <Link className="share-sec">
                                     <img className="small-icon-sq" src={share}/>
                                     Share
-                                </div>
+                                </Link>
                             </div>
                             </div>
 
