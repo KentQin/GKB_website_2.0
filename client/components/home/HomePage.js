@@ -11,6 +11,7 @@ import { setDescriptionArray }from '../../actions/setDescriptionArray';
 import {setContributionArray } from '../../actions/setContributionArray';
 import { setGoButtonResultsArray } from '../../actions/goButtonResults'
 import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
+import { updateContributionArray } from '../../actions/updateContributionArray';
 //import { updateLike } from '../../actions/updateLike';
 //import { addLikeRequest } from '../../actions/addLikeAction';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
@@ -109,6 +110,7 @@ class HomePage extends React.Component {
                                                        login={this.props.login}
                                                        setDescriptionArray={this.props.setDescriptionArray}
                                                        updateShowSearchResult={this.props.updateShowSearchResult}
+                                                                                      updateContributionArray={this.props.updateContributionArray}
                                                        //updateLike = {this.props.updateLike}
                                                        user_id={this.props.login.user._id}
                                                        addToFavoritesAction={this.props.addToFavoritesAction}
@@ -130,7 +132,8 @@ HomePage.propTypes = {
     updateShowSearchResult: React.PropTypes.func.isRequired,
     setGoButtonResultsArray: React.PropTypes.func.isRequired,
     setContributionArray: React.PropTypes.func.isRequired,
-    addToFavoritesAction: React.PropTypes.func.isRequired
+    addToFavoritesAction: React.PropTypes.func.isRequired,
+    updateContributionArray: React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -148,6 +151,7 @@ export default connect(mapStateToProps, { logout,
                                         setShowSearchResult,
                                         setDescriptionArray,
                                         updateShowSearchResult,
+                                        updateContributionArray,
                                         setContributionArray,
                                         setGoButtonResultsArray,
                                         addToFavoritesAction})(HomePage);

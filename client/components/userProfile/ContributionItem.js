@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 var default_img =  '../img/default.jpg';
+import moment from 'moment';
 
 class ContributionItem extends React.Component{
     render(){
@@ -12,6 +13,7 @@ class ContributionItem extends React.Component{
             img = default_img;
         }
 
+        var formattedDate = moment(this.props.date).format('MMMM Do YYYY');
         return(
             <div className="favourite-item-box">
                 <div className="favourite-img col-md-2">
@@ -22,6 +24,9 @@ class ContributionItem extends React.Component{
                         <h5>{this.props.location}</h5>
                     </Link>
 
+                    <div className="favourite-content-date">
+                        <h6>{formattedDate}</h6>
+                    </div>
                     <div className="favourite-content-body">
                         <h6>{this.props.description}</h6>
                     </div>
