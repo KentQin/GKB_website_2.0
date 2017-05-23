@@ -177,7 +177,7 @@ class AutoSuggestItem extends React.Component {
       /* PLEASE THE BLOW CODE FOR IMAGES */
       // const { placePhoto } = this.props.searchResult.searchResultPageConfig;
       var imgSrc = this.props.photo
-      if(imgSrc == ''){
+      if(imgSrc == '' || imgSrc == null){
           // imgSrc = photoDef
           imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
       } else if (imgSrc.indexOf("https") < 0) {

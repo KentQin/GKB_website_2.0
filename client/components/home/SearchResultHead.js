@@ -67,7 +67,7 @@ class SearchResultHead extends React.Component{
         const autoComment = this.props.autoComment;
         const location = this.props.location;
         var imgSrc = this.props.photo;
-        if(imgSrc == ''){
+        if(imgSrc == '' || imgSrc == null){
             // imgSrc = photoDef
             imgSrc = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
         } else if (imgSrc.indexOf("https") < 0) {
