@@ -4,7 +4,8 @@ import jwt from 'jsonwebtoken';
 import { SET_CURRENT_USER_LOGIN } from '../actions/types';
 import { SET_CURRENT_USER_LOGOUT } from '../actions/types';
 import { UNSET_SHOW_SEARCH_RESULT } from '../actions/types';
-import {SET_CONTRIBUTION_ARRAY} from '../actions/types';
+import { SET_CONTRIBUTION_ARRAY } from '../actions/types';
+import { REMOVE_CONTRIBUTION } from '../actions/types';
 
 
 export function setContributionArray(array){
@@ -38,6 +39,13 @@ export function removeSearchResultList(conf) {
     }
 }
 
+export function removeContributionArray(conf){
+    return {
+        type: REMOVE_CONTRIBUTION,
+        data: conf
+    }
+}
+
 export function logout() {
     return dispatch => {
         sessionStorage.removeItem('loginToken');
@@ -47,6 +55,7 @@ export function logout() {
         setAuthorizationToken(false);
         dispatch(removeCurrentUser({}));
         dispatch(removeSearchResultList({}));
+        dispatch(removeContributionArray({}));
     }
 }
 
