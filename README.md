@@ -40,3 +40,141 @@ to this wiki
 page](https://github.com/jedireza/drywall/wiki/bcrypt-Installation-Trouble).
 
 We use [`nodemailer`](https://nodemailer.com/about/) for email transport.
+
+
+## Installation
+
+```bash
+$ git clone https://github.com/KentQin/GKB_website_2.0.git && cd ./GKB_website_2.0
+$ npm install
+```
+
+
+## Setup
+
+First you need to setup your config file in ./server/config.js to setup your google, firebase API keys.
+Then you need to setup your nodemailer email transport service in ./server/mailServer.js
+
+
+## Running the app
+
+```bash
+$ npm start
+
+> nodemon --watch server --exec babel-node -- server/index.js
+
+[nodemon] 1.11.0
+
+[nodemon] watching: F:\Uni Melb\4th sem\Research Project\GKB\GKB_final\GKB_website_2.0_latest\GKB_website_2.0\server/**/*
+
+[nodemon] starting `babel-node server/index.js`
+express-session deprecated undefined saveUninitialized option; provide saveUninitialized option server\index.js:108:38
+Server {
+  domain: null,
+  _events:
+   { request:
+      { [Function: app]
+        domain: undefined,
+        _events: [Object],
+        _maxListeners: undefined,
+        setMaxListeners: [Function: setMaxListeners],
+        getMaxListeners: [Function: getMaxListeners],
+        emit: [Function: emit],
+        addListener: [Function: addListener],
+        on: [Function: addListener],
+        prependListener: [Function: prependListener],
+        once: [Function: once],
+        prependOnceListener: [Function: prependOnceListener],
+        removeListener: [Function: removeListener],
+        removeAllListeners: [Function: removeAllListeners],
+        listeners: [Function: listeners],
+        listenerCount: [Function: listenerCount],
+        eventNames: [Function: eventNames],
+        init: [Function: init],
+        defaultConfiguration: [Function: defaultConfiguration],
+        lazyrouter: [Function: lazyrouter],
+        handle: [Function: handle],
+        use: [Function: use],
+        route: [Function: route],
+        engine: [Function: engine],
+        param: [Function: param],
+        set: [Function: set],
+        path: [Function: path],
+        enabled: [Function: enabled],
+        disabled: [Function: disabled],
+        enable: [Function: enable],
+        disable: [Function: disable],
+        acl: [Function],
+        bind: [Function],
+        checkout: [Function],
+        connect: [Function],
+        copy: [Function],
+        delete: [Function],
+        get: [Function],
+        head: [Function],
+        link: [Function],
+        lock: [Function],
+        'm-search': [Function],
+        merge: [Function],
+        mkactivity: [Function],
+        mkcalendar: [Function],
+        mkcol: [Function],
+        move: [Function],
+        notify: [Function],
+        options: [Function],
+        patch: [Function],
+        post: [Function],
+        propfind: [Function],
+        proppatch: [Function],
+        purge: [Function],
+        put: [Function],
+        rebind: [Function],
+        report: [Function],
+        search: [Function],
+        subscribe: [Function],
+        trace: [Function],
+        unbind: [Function],
+        unlink: [Function],
+        unlock: [Function],
+        unsubscribe: [Function],
+        all: [Function: all],
+        del: [Function],
+        render: [Function: render],
+        listen: [Function: listen],
+        request: [Object],
+        response: [Object],
+        cache: {},
+        engines: {},
+        settings: [Object],
+        _eventsCount: 1,
+        locals: [Object],
+        mountpath: '/',
+        _router: [Object] },
+     connection: [Function: connectionListener],
+     listening: { [Function: g] listener: [Function] } },
+  _eventsCount: 3,
+  _maxListeners: undefined,
+  _connections: 0,
+  _handle:
+   TCP {
+     bytesRead: 0,
+     _externalStream: {},
+     fd: -1,
+     reading: false,
+     owner: [Circular],
+     onread: null,
+     onconnection: [Function: onconnection],
+     writeQueueSize: 0 },
+  _usingSlaves: false,
+  _slaves: [],
+  _unref: false,
+  allowHalfOpen: true,
+  pauseOnConnect: false,
+  httpAllowHalfOpen: false,
+  timeout: 120000,
+  _pendingResponseData: 0,
+  _connectionKey: '6::::9000' }
+Running on localhost:9000
+database connected to great
+webpack built 865acd360d562fcabbb5 in 34617ms
+```
