@@ -19,10 +19,24 @@ We're using [Webpack](https://webpack.js.org/) for the asset pipeline.
 
 | On The Server | On The Client  | Development |
 | ------------- | -------------- | ----------- |
-  Node            React
+| Node          | React          |
 | Express       | Redux          | es2015      |
 | Mongoose      | Bootstrap      | Babel       |
 | Firebase      | Underscore.js  | Webpack     |
 | Nodemailer    | Font-Awesome   |             |
 | Curlrequest   | Moment.js      |             |
 
+
+## Requirements
+
+You need [Node.js](http://nodejs.org/download/) and
+[MongoDB](http://www.mongodb.org/downloads) installed and running.
+
+You need [`babel-cli`], for es2015 javascript code to be compiled.
+
+We use [`bcrypt`](https://github.com/ncb000gt/node.bcrypt.js) for hashing
+secrets. If you have issues during installation related to `bcrypt` then [refer
+to this wiki
+page](https://github.com/jedireza/drywall/wiki/bcrypt-Installation-Trouble).
+
+We use [`nodemailer`](https://nodemailer.com/about/) for email transport.
