@@ -19,7 +19,7 @@ class HomeSignup extends React.Component {
         console.log("Singup Page send: ",{ userSignupRequest }," to Signup From");
 
         return (
-            <div className="container loginPage float_on_the_map">
+            <div className="container loginPage float_on_the_map-large">
                 <LinkToHome/>
                 <div className="row centered col-md-offset-3 col-md-6">
 

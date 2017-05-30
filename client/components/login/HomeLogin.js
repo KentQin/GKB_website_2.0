@@ -11,7 +11,7 @@ class HomeLogin extends React.Component {
     render() {
         const { login, userLoginSocialRequest } = this.props;
         return (
-            <div className="container loginPage float_on_the_map">
+            <div className="container loginPage float_on_the_map-large">
                 <LinkToHome />
                 <div className="row centered col-md-offset-3 col-md-6">
                     <div className="col-md-7 login-page-block login-block">

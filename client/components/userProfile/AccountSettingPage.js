@@ -43,7 +43,7 @@ class AccountSettingPage extends React.Component{
 
     render(){
         return(
-            <div className="container float_on_the_map">
+            <div className="container float_on_the_map-large">
                 <LinkToHome/>
                 <div className="row centered ">
                     <div className="col-md-2 col-md-offset-3 welcome-block setting-menu-block window-drop-shadow">

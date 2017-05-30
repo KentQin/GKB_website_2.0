@@ -251,17 +251,17 @@ class MyGoogleSuggest extends Component {
 
 
                 <div className="col-lg-6">
-                    <div className="input-group">
+                    <div className="input-group search-bar-box">
                         <input
                             type="text"
                             value={searchStr}
                             className="form-control"
-                            placeholder="Search a location"
+                            placeholder="City, State, Country"
                             onChange={this.handleSearchChange}
                         />
 
                         <span className="input-group-btn">
-                    <button className="btn btn-default" type="button" onClick={this.buttonClick}>Go!</button>
+                    <button className="btn btn-default" type="button" onClick={this.buttonClick}> > </button>
                   </span>
                     </div>
                 </div>

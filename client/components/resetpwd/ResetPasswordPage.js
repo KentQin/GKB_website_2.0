@@ -10,7 +10,7 @@ class ResetPasswordPage extends React.Component{
 
         const { resetpwdRequest } = this.props;
         return(
-           <div className="float_on_the_map ">
+           <div className="float_on_the_map-large ">
                <div className="row centered">
                    <div className="col-md-offset-3 col-md-2 welcome-block reset-pwd-page-block window-drop-shadow">
                        <ForgotPwd />
