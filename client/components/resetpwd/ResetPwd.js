@@ -56,7 +56,7 @@ class ResetPwd extends React.Component{
         const { errors } = this.state;
         return (
             <form className="form-horizontal" onSubmit={this.onSubmit}>
-                <h1 className="h-e-a-d-e-r-t-e-x-t">RESET PASSWORD</h1>
+                <h3 className="h-e-a-d-e-r-t-e-x-t">RESET PASSWORD</h3>
                 {errors.login && <span className={classnames("help-block", { 'has-error': errors.login})} >{errors.login}</span> }
                 <div className={classnames("form-group", { 'has-error': errors.email})}>
                     <input

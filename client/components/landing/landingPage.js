@@ -27,6 +27,7 @@ class landingPage extends React.Component{
                         <NavBar login={this.props.login}/>
                     </div>
                     <h3 className="title-white">Locate your destination in one sentence</h3>
+                    <br/>
                     <div className="landing-search-bar" >
                         <GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest}
                                            updateCoordsRequest={this.props.updateCoordsRequest}

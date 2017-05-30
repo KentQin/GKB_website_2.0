@@ -84,7 +84,7 @@ class LoginForm extends React.Component {
                     {errors.password && <span className="help-block">{errors.password}</span> }
                 </div>
                 <div className="form-group">
-                    <Link to="/resetpassword" >Forget Password?</Link>
+                    <Link to="/resetpassword" className="forgot-password-text">Forget Password?</Link>
                 </div>
                 <button type="submit" className="btn btn-default btn-login">Login</button>
             </form>
