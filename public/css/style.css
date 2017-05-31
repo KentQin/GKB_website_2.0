@@ -890,10 +890,12 @@ a.list-group-item:hover {
 }
 
 .result_table{
-    margin-top: 40px;
+    margin-top: 60px;
     width: 200px;
     border-collapse:collapse;
-    background-color: #E0FFFF;
+    background-color: rgba(255,255,255,0.6);
+    box-shadow: 1px 0px 3px 0px rgba(0,0,0,0.5);
+    margin-left: 20px;
 }
 
 /*.result_table tr:first-child td{*/
@@ -914,8 +916,8 @@ a.list-group-item:hover {
     background-color: white;
     width: 638px;
     border-radius: 1px;
-    background-color: rgba(250, 248, 248, 0.77);
     box-shadow: 3px 2px 12px 0 rgba(56, 60, 79, 0.37);
+    margin-top:2px;
 }
 
 
@@ -986,6 +988,7 @@ a.list-group-item:hover {
     font-size: 17px;
     font-weight: 300;
     letter-spacing: -0.3px;
+    margin-bottom: 20px;
 }
 
 
@@ -1079,6 +1082,8 @@ a.list-group-item:hover {
     font-family: Oxygen;
     font-size: 17px;
     letter-spacing: -0.3px;
+    background-color: #FCFCFF;
+    box-shadow: 1px 0px 3px 0px rgba(0,0,0,0.5);
 }
 
 .landing-search-bar>div>div{
