@@ -106,7 +106,7 @@ class HomePage extends React.Component {
 
 
         return (
-            <div className="container loginPage float_on_the_map">
+            <div className="container loginPage float_on_the_map_outer">
                 <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile} />
 
                 {isAuthenticated && <Profile login = {this.props.login} />}

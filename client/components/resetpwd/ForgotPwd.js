@@ -4,7 +4,7 @@ import lockIcon from '../img/lock-symbol.png';
 class ForgotPwd extends React.Component{
     render(){
         return(
-            <div>
+            <div className="reset-pwd-page-block-left">
                 <h1 className="welcome-title">FORGOT PASSWORD?</h1>
                 <br/>
                 <div >

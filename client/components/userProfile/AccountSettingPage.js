@@ -61,7 +61,6 @@ class AccountSettingPage extends React.Component{
                         {this.state.showOverview && <OverviewContent />}
                         {this.state.showPassword && <PasswordContent />}
                     </div>
-
                 </div>
             </div>
 
