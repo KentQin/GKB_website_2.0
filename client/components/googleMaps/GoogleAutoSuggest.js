@@ -205,6 +205,8 @@ class MyGoogleSuggest extends Component {
                         if (err.response.data.autoDescription) {
                             console.log("err.response.autoDescription: ", err.response.data.autoDescription)
                             user.autoDescription = err.response.data.autoDescription;
+                        } else {
+                            user.autoDescription = null
                         }
 
                         //const descriptionArray = err.response.descriptionArray
