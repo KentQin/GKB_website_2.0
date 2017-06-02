@@ -9,6 +9,7 @@ import { googlePlaceSearchRequest } from '../../actions/googlePlaceSearch.js';
 import {connect} from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import moment from 'moment';
+import config from '../../../server/config.js';
 
 class ContributionItem extends React.Component{
 
@@ -176,9 +177,11 @@ class ContributionItem extends React.Component{
         // console.log("img "+this.props.img);
         var {img} = this.props;
         console.log("img type in favourite "+ img);
-        if(typeof(img)=='undefined' ||  img=='') {
-            console.log("Favourtie default img needed");
-            img = default_img;
+        if(img == '' || img == null){
+            img = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
+        } else if (img.indexOf("https") < 0) {
+            // result is from google place photo => photo_ref
+            img = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + img + "&key=" + config.googlePlaceApiKey
         }
 
         var formattedDate = moment(this.props.date).format('MMMM Do YYYY');
