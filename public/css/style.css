@@ -169,9 +169,16 @@ body{
     padding:0;
     height:70%;
 }
-.reset-pwd-page-block>div {
+.reset-pwd-page-block-dark {
+    text-align: center;
+    padding:0;
+    height:70%;
+    background-color: #1b2242;
+}
+
+.reset-pwd-page-block-left{
     display: inline-block;
-    margin:30% auto;
+    margin:50% auto;
 }
 
 .reset-pwd-block>form{
@@ -389,6 +396,21 @@ body{
     height: 100%;
 }
 
+.float_on_the_map_outer{
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 0;
+    z-index: +1;
+    height: 100%;
+    width: 100%;
+    padding-top:20px;
+}
+
+
 .float_on_the_map-large{
     text-align: center;
     position: absolute;
@@ -491,6 +513,8 @@ a.list-group-item:hover {
     top:0;
     z-index: +1;
     right:0;
+    margin-top: 2%;
+    margin-right: 2%;
 }
 
 .profile-btn-on-map{
@@ -640,7 +664,6 @@ a.list-group-item:hover {
     right:0;
     left:0;
     text-align: center;
-    margin-top: 5%;
     padding:10% 0;
 }
 
@@ -938,9 +961,7 @@ a.list-group-item:hover {
 .add_description{
     position: absolute;
     left: 0;
-    top: 0;
-    right: 0;
-    bottom: -600px;
+    right: -50%;
     margin: auto;
     background-color: white;
     z-index: 2;
@@ -1139,7 +1160,14 @@ a.list-group-item:hover {
 
 .small-window{
     position:absolute;
-    top:5%;
+    top:40%;
+    background: white;
+    padding:3%;
+}
+
+.welcome-window{
+    position:absolute;
+    top:15%;
     background: white;
     padding:3%;
 }
