@@ -51,7 +51,7 @@ class WelcomeForm extends React.Component{
                 onSubmit={this.onSubmit}
                 className="form-horizontal "
             >
-                <div className="col-md-6 email-sent-block-wel window-drop-shadow" >
+                <div className="col-md-6 email-sent-block-wel window-drop-shadow welcome-window" >
                     <h1 className="h-e-a-d-e-r-t-e-x-t-wel">WELCOME!</h1>
                     <div className="welcome-text-dark-wel">
                         <span>Before we begin, please set your public username.

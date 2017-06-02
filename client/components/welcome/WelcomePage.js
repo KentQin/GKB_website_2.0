@@ -10,7 +10,7 @@ class WelcomePage extends React.Component {
         return (
             <div>
                 <div className="row centered">
-                    <div className="float_on_the_map-large">
+                    <div className="float_on_the_map">
                         <WelcomeForm login={this.props.login} addNameRequest = {this.props.addNameRequest}/>
                     </div>
                 </div>

@@ -389,6 +389,18 @@ body{
     height: 100%;
 }
 
+.float_on_the_map_mid{
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: -90%;
+    right: 0;
+    bottom: 0;
+    margin: 0 0;
+    z-index: +1;
+    height: 100%;
+}
+
 .float_on_the_map-large{
     text-align: center;
     position: absolute;
@@ -938,9 +950,7 @@ a.list-group-item:hover {
 .add_description{
     position: absolute;
     left: 0;
-    top: 0;
-    right: 0;
-    bottom: -600px;
+    right: -50%;
     margin: auto;
     background-color: white;
     z-index: 2;
@@ -1139,7 +1149,14 @@ a.list-group-item:hover {
 
 .small-window{
     position:absolute;
-    top:5%;
+    top:40%;
+    background: white;
+    padding:3%;
+}
+
+.welcome-window{
+    position:absolute;
+    top:15%;
     background: white;
     padding:3%;
 }
