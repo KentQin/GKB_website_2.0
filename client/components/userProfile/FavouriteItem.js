@@ -8,6 +8,7 @@ import { setDescriptionArray }from '../../actions/setDescriptionArray';
 import { googlePlaceSearchRequest } from '../../actions/googlePlaceSearch.js';
 import {connect} from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import config from '../../../server/config.js';
 
 class FavouriteItem extends React.Component{
 
@@ -174,9 +175,17 @@ class FavouriteItem extends React.Component{
     render(){
         var {img} = this.props;
         console.log("img type in favourite "+ img);
-        if(img=='') {
-            console.log("Favourtie default img needed");
-            img = default_img;
+        // if(img=='') {
+        //     console.log("Favourtie default img needed");
+        //     img = default_img;
+        // }
+        if(img == '' || img == null){
+            // imgSrc = photoDef
+            img = "http://www.mozmagic.com/files/assets/img/ui/no-image-available.png"
+        } else if (img.indexOf("https") < 0) {
+            // result is from google place photo => photo_ref
+            img = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + img + "&key=" + config.googlePlaceApiKey
+            // var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + encodeRes + "&location=" + pos.lat +"," + pos.lng + "&radius=20&key=" + config.googlePlaceApiKey
         }
 
         return(

@@ -64,7 +64,7 @@ router.post('/signup', (req, res) => {
 
 router.post('/login', (req, res) => {
     // console.log("Message for LoginForm ",req.body);
-    var user = {
+    var user1 = {
         email:req.body.email,
         // password: req.body.password,
         accountType: 'local'
@@ -72,11 +72,15 @@ router.post('/login', (req, res) => {
 
     var password = req.body.password;
 
-    User.findOne(user,function(err,user){
+    User.findOne(user1,function(err,user){
         let errors = {};
         // console.log("Auth step 1: Authentication going");
         // console.log("Auth step 2: ", user.email+","+user.password);
-        const bool = bcrypt.compareSync(password, user.password);
+        var bool;
+        if (user) {
+          console.log("user: ", user)
+          bool = bcrypt.compareSync(password, user.password);
+        }
         // console.log("bool:", bool);
         if(err){
             console.log(err);

@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
         // only when form info is valid, we make the request
         if (this.isValid()) {
             this.setState({errors: {} });
-            console.log("Login page: ", this.props.login);
+            console.log("Login page: ", this.state);
             this.props.login(this.state).then(
                 // after server response then...
                 // if successful
