@@ -394,6 +394,7 @@ body{
     margin: 0 0;
     z-index: +1;
     height: 100%;
+    pointer-events: none;
 }
 
 .float_on_the_map_outer{
@@ -408,6 +409,7 @@ body{
     height: 100%;
     width: 100%;
     padding-top:20px;
+    pointer-events: none;
 }
 
 
@@ -418,6 +420,7 @@ body{
     margin: auto;
     z-index:+1;
     height:100%;
+    pointer-events: none;
 }
 
 
@@ -1261,13 +1264,14 @@ search-entry-date{
 }
 
 .auto_list{
-    margin-top: 80px;
-    width: 100%;
+    margin-top: 60px;
     border-collapse: collapse;
     text-align: center;
     background: transparent;
     height: 450px;
+    width: 50%;
     overflow: scroll;
+    margin-left: 20px;
 
 }
 
