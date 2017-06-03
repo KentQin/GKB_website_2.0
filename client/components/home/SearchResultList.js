@@ -144,7 +144,7 @@ class SearchResultList extends React.Component {
         // }
 
         return (
-            <div className="table_container">
+            <div className="table_container no-click-through">
                 <table className = "result_table" >
                     <tbody>
                         <tr>

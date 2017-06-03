@@ -107,6 +107,7 @@ class HomePage extends React.Component {
 
         return (
             <div className="container loginPage float_on_the_map_outer">
+                {/*<div>*/}
                 <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile} />
 
                 {isAuthenticated && <Profile login = {this.props.login} />}
@@ -137,6 +138,7 @@ class HomePage extends React.Component {
 
                 {this.state.showAutoSuggest && <AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>}
                 {/*<AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>*/}
+                {/*</div>*/}
             </div>
         )
     }

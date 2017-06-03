@@ -36,7 +36,7 @@ class Profile extends React.Component {
         const { user } = this.props.login;
         const { addProImgAction } = this.props;
         return(
-            <div>
+            <div  className ="no-click-through">
                 <button className="btn btn-default profile-btn-on-map  btn-unfold-sidebar"
                         data-toggle="modal" data-target="#profile-modal"> 》 </button>
 
