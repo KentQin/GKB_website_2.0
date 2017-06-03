@@ -44,9 +44,7 @@ class MyGoogleSuggest extends Component {
                 button: true
             }
         }
-        this.setState({
-            searchStr: ""
-        })
+
         console.log("searchBarRequest button:", toSend);
         this.props.searchBarRequest(toSend)
             .then(
@@ -59,6 +57,9 @@ class MyGoogleSuggest extends Component {
                     this.props.setGoButtonResultsArray(res.data.results);
                     this.props.showAutoSuggest();
                     this.props.hideSearchResult();
+                    this.setState({
+                        searchStr: ""
+                    })
                 },
                 (err) => {
                     console.log("err in clicking button, back to clientside");

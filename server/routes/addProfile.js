@@ -56,7 +56,10 @@ router.post('/',function(req,res,next) {
 
         // console.log(newPath);
         // rename and relocate the uploaded file(img) to the new path
-        fs.rename(files.my_file.path, newPath);
+        // fs.rename(files.my_file.path, newPath);
+        console.log("start rename");
+        fs.renameSync(files.my_file.path, newPath);
+        console.log("finish rename");
 
         // store an img in binary in mongo
         // read email info from uploaded form, read img type info
@@ -64,11 +67,16 @@ router.post('/',function(req,res,next) {
             email: fields.email,
             accountType: fields.accountType
         }
-        console.log();
+        console.log("xxx");
+
 
         //
-        const proImg = {data: fs.readFileSync(newPath), contentType: files.my_file.type};
+        console.log("start load data");
+        //fs.readFileSync(newPath);
 
+
+        const proImg = {data: fs.readFileSync(newPath), contentType: files.my_file.type};
+        console.log("finish load data");
 
 
         User.findOne(user, function(err, data){
