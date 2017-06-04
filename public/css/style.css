@@ -394,7 +394,7 @@ body{
     margin: 0 0;
     z-index: +1;
     height: 100%;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 .float_on_the_map_outer{
@@ -409,7 +409,7 @@ body{
     height: 100%;
     width: 100%;
     padding-top:20px;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 
@@ -420,7 +420,7 @@ body{
     margin: auto;
     z-index:+1;
     height:100%;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 
