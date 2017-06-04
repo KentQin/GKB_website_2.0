@@ -5,6 +5,7 @@
 }
 
   .placesSuggest_suggests {
+    pointer-events: auto;
     position: absolute;
     top: 100%;
     left: 0;

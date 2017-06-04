@@ -965,7 +965,6 @@ a.list-group-item:hover {
     position: absolute;
     left: 0;
     right: -50%;
-    margin: auto;
     background-color: white;
     z-index: 2;
     height: 300px;
