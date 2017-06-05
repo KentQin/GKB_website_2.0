@@ -35,7 +35,6 @@ class SignupPage extends React.Component {
 
                     <div className="col-md-5 login-page-block login-block">
                         <SignupFrom userSignupRequest={userSignupRequest}/>
-                        <Link to ='/login' className="link-on-form">Return to Login </Link>
                     </div>
                     <div className="col-md-4 login-page-block login-block">
                         <OuterAuth userLoginSocialRequest={userLoginSocialRequest}/>
