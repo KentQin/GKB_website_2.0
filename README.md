@@ -57,7 +57,7 @@ Then you need to setup your nodemailer email transport service in ./server/mailS
 There will be 2 files naming, index.js and index.css. These 2 files have to be copied into the /node_modules/react-google-places-suggest/ . 
 
 ## File structure
-Client Folder: all front-end files.  
+Client Folder: all front-end files.
 +   Acions Folder: all redux action files.  
 +   Components Folder: all react componenet files.  
 +   Reducer Folder: all reducer files.  
@@ -66,12 +66,11 @@ Client Folder: all front-end files.
   
 Public Folder: Css file and temporary img file.  
 
-Server Folder: all back-end files.  
+Server Folder: all back-end files.
 +   models Folder: all data schema files.  
 +   routes Folder: HTTP requests are proccessed here.  
 +   shared Folder:  
-> This is a blockquote
-        ........validations: all files to do back-end data valisation work.  
+   +   validations: all files to do back-end data valisation work.  
 
 
 ## Running the app
