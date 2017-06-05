@@ -1,3 +1,7 @@
+/*
+ * This route handles requests for quering descriptions of a place
+ */
+
 import express from 'express';
 import jwt from 'jsonwebtoken';
 

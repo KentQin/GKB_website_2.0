@@ -1,5 +1,8 @@
-import express from 'express';
+/*
+ * This route handles favorite requests
+ */
 
+import express from 'express';
 var User = require('./../models/user.js');
 var GooglePlaces = require('./../models/googlePlaces')
 

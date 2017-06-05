@@ -435,6 +435,7 @@ body{
 
 .help-block{
     color:red;
+    margin: 0;
 }
 
 .drop-zone {

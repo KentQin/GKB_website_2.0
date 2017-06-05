@@ -1,3 +1,7 @@
+/*
+ * This route handles update password requests
+ */
+
 import express from 'express';
 import bcrypt from 'bcrypt';
 var User = require('./../models/user.js');

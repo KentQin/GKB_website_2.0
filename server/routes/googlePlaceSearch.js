@@ -3,7 +3,6 @@ import config from '../config'
 import curl from 'curlrequest';
 import rest from 'rest';
 
-
 let router = express.Router();
 
 router.post('/', (req, res) => {

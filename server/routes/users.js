@@ -1,3 +1,7 @@
+/*
+ * This route handles user authtication, signup, login, etc.
+ */
+
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';

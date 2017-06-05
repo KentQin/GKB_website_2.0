@@ -1,3 +1,8 @@
+/*
+ * This route handles requests for search a place
+ * When the request comes in, the sever will search Apache Jena first, if no result, the sever will seach result from Google.
+ */
+
 import express from 'express';
 import lodash from 'lodash';
 import validator from 'validator';

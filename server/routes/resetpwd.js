@@ -1,3 +1,7 @@
+/*
+ * This route handles forget password requests
+ */
+
 import express from 'express';
 import lodash from 'lodash';
 import validator from 'validator';

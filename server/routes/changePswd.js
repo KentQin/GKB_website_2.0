@@ -1,3 +1,8 @@
+/*
+ * This route handles forget password requests
+ * This will be triggered when user click the link in our offical email
+ */
+
 import express from 'express';
 import bcrypt from 'bcrypt';
 var User = require('./../models/user.js');

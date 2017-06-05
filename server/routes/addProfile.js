@@ -1,3 +1,7 @@
+/*
+ * This route handles update user profile requests
+ */
+
 import express from 'express';
 import formidable from 'formidable'
 import fs from 'fs';
