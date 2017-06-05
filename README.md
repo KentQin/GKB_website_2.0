@@ -70,6 +70,7 @@ Server Folder: all back-end files.
 +   models Folder: all data schema files.  
 +   routes Folder: HTTP requests are proccessed here.  
 +   shared Folder:  
+> This is a blockquote
         ........validations: all files to do back-end data valisation work.  
 
 
