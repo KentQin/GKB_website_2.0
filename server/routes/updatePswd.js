@@ -1,8 +1,5 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
-import lodash from 'lodash';
-import validator from 'validator';
-import config from '../config'
 var User = require('./../models/user.js');
 
 let router = express.Router();
@@ -54,8 +51,6 @@ router.post('/', (req, res) => {
         }
 
     });
-    //res.redirect('/home');
 });
 
-//we need to get data from post request
 export default router;

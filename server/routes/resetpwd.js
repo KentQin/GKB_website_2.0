@@ -39,9 +39,7 @@ router.post('/', (req, res) => {
     if (!isValid) {
         res.status(400).json(errors);
     } else {
-        // Perfect
         console.log("Before sending mail");
-        // I am doing this for using email api
         // setup email data with unicode symbols
         var temp = email
         var url = "http://localhost:9000/newpwd/${temp}"
@@ -67,16 +65,12 @@ router.post('/', (req, res) => {
                 res.status(400).json(error);
             }else {
                 console.log('Message %s sent: %s', info.messageId, info.response);
-                //res.status(300).send();
                 res.redirect('/emailsentpage');
             }
         });
-        //res.status(300).send();
-        //res.redirect('/emailsentpage');
     }
 
 });
 
-//we need to get data from post request
 
 export default router;

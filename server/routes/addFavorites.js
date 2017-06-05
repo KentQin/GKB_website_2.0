@@ -1,15 +1,7 @@
 import express from 'express';
-import lodash from 'lodash';
-import validator from 'validator';
-import config from '../config'
-import curl from 'curlrequest';
-import jwt from 'jsonwebtoken';
 
-var ElementEl = require('./../models/node.js');
 var User = require('./../models/user.js');
-var DescriptionSchema = require('./../models/placeDescription');
 var GooglePlaces = require('./../models/googlePlaces')
-//var rest = require('rest')
 
 let router = express.Router();
 
@@ -53,14 +45,6 @@ router.post('/', (req, res) => {
                       }else{
                           console.log(res.statusCode);
                           console.log("Registered");
-                          // success, then send token to client
-                          // const token = jwt.sign({
-                          //     email: user.email,
-                          //     accountType: user.accountType,
-                          //     id: data._id
-                          // }, 'secretkeyforjsonwebtoken');
-                          // res.json({token});
-
 
                           User.findOne({_id: id},function(err,data2) {
                               let errors = {};
@@ -76,7 +60,6 @@ router.post('/', (req, res) => {
                                   var insertToFavorites = {
                                       type: "google",
                                       searchStr: addr
-                                      //date: new Date()
                                   }
                                   //Update searchHistory in user Model.
                                   User.update(
@@ -159,16 +142,6 @@ router.post('/', (req, res) => {
                               }
                           });
 
-
-
-                          // var token = {
-                          //     addr: data.addr,
-                          //     image: data.image,
-                          //     coords: data.coords,
-                          // }
-                          // console.log("GooglePlaces" + data);
-                          // // res.json(token);
-                          // res.status(200).json({token});
                       }
 
                   });
@@ -192,7 +165,6 @@ router.post('/', (req, res) => {
                           var insertToFavorites = {
                               type: "google",
                               searchStr: addr
-                              //date: new Date()
                           }
                           //Update searchHistory in user Model.
                           User.update(
@@ -362,7 +334,6 @@ router.post('/', (req, res) => {
                                                         user:data2._doc,
                                                         autoComment: autoComment
                                                     }
-                                                    // res.json(token);
                                                     res.status(200).json({token});
                                                 }
 
