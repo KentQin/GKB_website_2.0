@@ -1,15 +1,20 @@
+/*
+ * This component is responsible for forming a single contribution entry
+ * This is used by contribution list
+ */
+
 import React from 'react';
-import {Link} from 'react-router';
-var default_img =  'http://www.mozmagic.com/files/assets/img/ui/no-image-available.png';
+import { Link } from 'react-router';
 import { searchBarRequest } from '../../actions/searchBarAction';
 import { updateCoordsRequest} from '../../actions/updateCoords';
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
 import { googlePlaceSearchRequest } from '../../actions/googlePlaceSearch.js';
-import {connect} from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import moment from 'moment';
 import config from '../../../server/config.js';
+
 
 class ContributionItem extends React.Component{
 
@@ -27,9 +32,6 @@ class ContributionItem extends React.Component{
       console.log("link click in searchHistory")
       console.log("searchStr", searchStr)
       const {user} = this.props.login;
-      // // console.log("this props landingpage flag: ", this.props.landingPageFlag);
-      // // var flag = this.props.landingPageFlag;
-      // // console.log("search term to jena: ", suggest.terms[0].value);
       this.setState({errors: {} });
       var toSend;
       if (user._id == null) {
@@ -106,12 +108,6 @@ class ContributionItem extends React.Component{
                       this.props.setShowSearchResult(conf);
                   }
 
-
-
-                  // if (this.props.landingPageFlag == true) {
-                  //     console.log("just before routing to mapContainer")
-                  //     browserHistory.push('/home');
-                  // }
                   browserHistory.push('/home');
 
               },
@@ -143,7 +139,6 @@ class ContributionItem extends React.Component{
                               user.autoDescription = null
                           }
 
-                          //const descriptionArray = err.response.descriptionArray
                           // Changing thw whole functionality. For now let descriptionArray is null
                           var descriptionArray = err.response.data.descriptionArray;
                           const conf = {
@@ -161,10 +156,6 @@ class ContributionItem extends React.Component{
                               this.props.setDescriptionArray({});
                           }
                           this.props.updateCoordsRequest(user);
-                          // if (this.props.landingPageFlag == true) {
-                          //     console.log("just before routing to mapContainer")
-                          //     browserHistory.push('/home');
-                          // }
                           browserHistory.push('/home');
                       },
                       (err) => {
@@ -178,7 +169,6 @@ class ContributionItem extends React.Component{
     }
 
     render(){
-        // console.log("img "+this.props.img);
         var {img} = this.props;
         console.log("img type in favourite "+ img);
         if(img == '' || img == null){
@@ -223,10 +213,8 @@ ContributionItem.propTypes = {
 
 function mapStateToProps(state) {
     console.log('mapStateToProps: ',state.login);
-    //console.log('mapStateToPropsCoords: ',state.coords);
     return {
-        login: state.login,
-        //coords: state.coords
+        login: state.login
     };
 }
 

@@ -1,3 +1,8 @@
+/*
+ * Root reducer
+ * Root reduce is composed by 7 reducers, each reducer is able to access and update a global state in redux store
+ */
+
 import { combineReducers } from 'redux';
 import login from './login';
 import searchResult from './searchResult'

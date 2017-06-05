@@ -1,9 +1,14 @@
+/*
+ * This component renders the profile menu
+ * This is used by profile
+ */
 import React from 'react';
 import setting from './../img/account-settings.png';
 import contribution from './../img/contributions.png';
 import favourites from './../img/heart.png';
 import history from './../img/history.png';
 import { Link } from 'react-router';
+
 
 class ProfileContent extends React.Component{
     constructor(props){
@@ -15,8 +20,6 @@ class ProfileContent extends React.Component{
     logout(e){
         e.preventDefault();
         this.props.hideProfile();
-        //console.log(this.props);
-        // this.props.hideProfile();
         this.props.logout();
     }
 

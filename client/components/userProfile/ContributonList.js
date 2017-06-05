@@ -1,20 +1,21 @@
+/*
+ * This component renders a list of contributions, which is formed by a list of contribution items
+ * This is used by contribution component
+ */
 import React from 'react';
 import ContributionItem from './ContributionItem';
 import testImg from './../img/default-profile-picture.jpg';
 import {connect} from 'react-redux';
 
+
 class ContributonList extends React.Component{
     constructor(props){
         super(props);
-        // console.log("IN contribution list: " + this.props.descriptions);
         this.state = {
 
         }
     }
 
-    // componentWillMount(){
-    //     console.log("to be mount "+this.props.descriptions);
-    // }
 
     render() {
 
@@ -22,21 +23,15 @@ class ContributonList extends React.Component{
         const {array} = this.props.contributionArray;
         var items = [];
 
-
-        // console.log("User in contribution "+JSON.stringify(descriptions[0]));
-        // if (typeof(user.contribution) != 'undefined') {
-            for (var i = 0; i < array.length; i++) {
-                console.log("Processing "+JSON.stringify(array[i])+'\n');
-                items.push(<div key = {i}><ContributionItem location={array[i].location}
-                                               img={array[i].image}
-                                                            date={array[i].create_date}
-                                               description={array[i].description}/>
-                    </div>
-                );
-            }
-        // }else{
-        //     console.log("Empty array");
-        // }
+        for (var i = 0; i < array.length; i++) {
+            console.log("Processing "+JSON.stringify(array[i])+'\n');
+            items.push(<div key = {i}><ContributionItem location={array[i].location}
+                                           img={array[i].image}
+                                                        date={array[i].create_date}
+                                           description={array[i].description}/>
+                </div>
+            );
+        }
 
         return(
             <div className="favourite-list-block">

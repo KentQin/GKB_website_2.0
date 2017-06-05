@@ -1,3 +1,7 @@
+/*
+ * All the auto suggested items are rendered in this component
+ */
+
 import React from 'react';
 import {Link} from 'react-router';
 import { searchBarRequest } from '../../actions/searchBarAction';
@@ -6,7 +10,7 @@ import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
 import { googlePlaceSearchRequest } from '../../actions/googlePlaceSearch.js';
 import {connect} from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import config from '../../../server/config.js'
 
 class AutoSuggestItem extends React.Component {
@@ -25,9 +29,6 @@ class AutoSuggestItem extends React.Component {
       console.log("link click in searchHistory")
       console.log("searchStr", searchStr)
       const {user} = this.props.login;
-      // // console.log("this props landingpage flag: ", this.props.landingPageFlag);
-      // // var flag = this.props.landingPageFlag;
-      // // console.log("search term to jena: ", suggest.terms[0].value);
       this.setState({errors: {} });
       var toSend;
       if (user._id == null) {
@@ -51,17 +52,10 @@ class AutoSuggestItem extends React.Component {
           .then(
               // after server response then...
               // if successful
-              //var userUpdated = this.props.login.user;
               (res) => {
                   console.log("we are back in searchHistory clientside");
 
                   const token = res.data.token;
-                  // console.log('token: ' ,token);
-                  // get token from server side, and store the token into session storage
-                  // sessionStorage.removeItem('loginToken');
-                  // sessionStorage.setItem('loginToken', token);
-                  // setAuthorizationToken(token);
-                  // decode token, get user msg from it
                   console.log('decode token: ',token);
                   var userData = token
                   if (userData._id == null) {

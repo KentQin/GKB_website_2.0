@@ -1,3 +1,8 @@
+/*
+ * This component renders 2 components to form the complete user profile
+ * This is used by map
+ * It connects to redux store and pass the data as props to other components
+ */
 import React from 'react';
 import ProfileContent from './ProfileContent';
 import Dropzone from '../DropZone';
@@ -5,7 +10,6 @@ import Dropzone from '../DropZone';
 import {addProImgAction} from '../../actions/addProImgAction.js'
 import {userProfilePicUploadRequest} from '../../actions/addUserProfilePicAction.js'
 import { logout } from '../../actions/authAction';
-//import { getDescriptionRequest } from '../../actions/getDescriptionAction';
 import { connect } from 'react-redux';
 
 class Profile extends React.Component {

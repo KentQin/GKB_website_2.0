@@ -1,3 +1,7 @@
+/*
+ * This component renders the complete favourite list of a user
+ */
+
 import React from 'react';
 import LinkToHome from '../common/LinkToHome';
 import FavouriteList from './FavouriteList';

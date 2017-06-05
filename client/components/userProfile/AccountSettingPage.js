@@ -1,3 +1,8 @@
+/*
+ * This component renders the account setting page from user profile
+ * This is used by user profile
+ */
+
 import React from 'react';
 import OverviewContent from './OverviewContent';
 import LinkToHome from './../common/LinkToHome';

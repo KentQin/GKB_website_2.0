@@ -1,3 +1,7 @@
+/*
+ * This route handles user authtication, signup, login, etc.
+ */
+
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
@@ -22,12 +26,6 @@ router.post('/signup', (req, res) => {
     const saltRounds = 10;
     const cPassword = bcrypt.hashSync(user.password, saltRounds);
     user.password = cPassword;
-
-    // console.log('Server: You Signup');
-    // const token = jwt.sign({
-    //     email: user.email
-    // }, 'secretkeyforjsonwebtoken');
-    // res.json({token});
 
     User.find(email).count(function(err, count){
         let errors = {}
@@ -66,7 +64,6 @@ router.post('/login', (req, res) => {
     // console.log("Message for LoginForm ",req.body);
     var user1 = {
         email:req.body.email,
-        // password: req.body.password,
         accountType: 'local'
     };
 
@@ -81,7 +78,6 @@ router.post('/login', (req, res) => {
           console.log("user: ", user)
           bool = bcrypt.compareSync(password, user.password);
         }
-        // console.log("bool:", bool);
         if(err){
             console.log(err);
         }else if(!user){
@@ -96,24 +92,11 @@ router.post('/login', (req, res) => {
         }
         else{
             const user_info = user._doc
-            // console.log("user doc login: ", user_info);
-
-
 
             ////////////////////////////////////////////////////////////
             ////////////////  Contributions  ///////////////////////////
             ////////////////////////////////////////////////////////////
 
-            // var temp_token = {
-            //     email: user.email,
-            //     userName: data.userName,
-            //     accountType: user.accountType,
-            //     id: data._id,
-            //     proImg: data.proImg,
-            //     searchHistory: data.searchHistory,
-            //     favorites: data.favorites
-            // }
-            //
             var this_user = {
                 user_id: user_info._id,
                 user_name: user_info.userName
@@ -142,9 +125,6 @@ router.post('/login', (req, res) => {
 
                 }
 
-                // temp_token.descriptions = user_descriptions;
-
-
                 GooglePlaces.find({addr:{$in:addresses}},function(err,data){
                     if(err){
                         console.log("Error finding google places "+err);
@@ -162,10 +142,6 @@ router.post('/login', (req, res) => {
                         }
                     }
 
-                    // console.log("With token: "+JSON.stringify(temp_token));
-                    // const token = jwt.sign(temp_token,'secretkeyforjsonwebtoken');
-                    // res.json({token});
-
                     // user_info.contribution = user_descriptions;
                     const token = jwt.sign( user_info.email, 'secretkeyforjsonwebtoken');
                     console.log("token: ", token);
@@ -177,30 +153,6 @@ router.post('/login', (req, res) => {
 
 
             });
-
-            ////////////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////////////
-
-
-            // if verify the user, send credential token to client
-            // jwt.sign(payload, secret)
-            // payload: an object, can be decoded on client
-            // secret: for encrypt the token and verify
-            // success, then send token back
-
-            // console.log(user_descriptions.length);
-            // const token = jwt.sign({
-            //     email: user.email,
-            //     userName: data.userName,
-            //     accountType: user.accountType,
-            //     id: data._id,
-            //     proImg: data.proImg,
-            //     searchHistory: data.searchHistory,
-            //     descriptions: user_descriptions
-            // }, 'secretkeyforjsonwebtoken');
-            // res.json({token});
-
 
         }
 

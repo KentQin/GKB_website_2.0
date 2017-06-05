@@ -1,31 +1,28 @@
+/*
+ * This route handles update user profile requests
+ */
+
 import express from 'express';
-import multer from 'multer';
 import formidable from 'formidable'
-import profile from '../models/profile';
-import jwt from 'jsonwebtoken';
 import fs from 'fs';
 import User from './../models/user.js';
-import mongoose from 'mongoose';
 let router = express.Router();
-let Schema = mongoose.Schema;
-var upload = multer({ dest: 'uploads/' });
 
 __dirname = process.cwd();
 
-router.post('/',function(req,res,next) {
-    var form = new formidable.IncomingForm();   //创建上传表单
-    form.encoding = 'utf-8';    //设置编辑
-    form.uploadDir = __dirname+'/public/img/';  //设置上传目录
-    form.keepExtensions = true;  //保留后缀
-    form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+router.post('/',function(req,res) {
+    var form = new formidable.IncomingForm();   //create submission form
+    form.encoding = 'utf-8';                    //set encoding method
+    form.uploadDir = __dirname+'/public/img/';  //setup uploading path
+    form.keepExtensions = true;                 // keep extension: true
+    form.maxFieldsSize = 2 * 1024 * 1024;       // set file size limitation
     form.parse(req, function(err, fields, files) {
         if (err) {
             res.locals.error = err;
             console.log(err);
-            //console.log('has error -01');
             return;
         }
-        var extName = '';  //后缀名
+        var extName = '';  //extension name
         switch (files.my_file.type) {
             case 'image/pjpeg':
                 extName = 'jpg';
@@ -54,7 +51,6 @@ router.post('/',function(req,res,next) {
         // define a new path: path/new.ext
         var newPath = form.uploadDir + avatarName;
 
-        // console.log(newPath);
         // rename and relocate the uploaded file(img) to the new path
         // fs.rename(files.my_file.path, newPath);
         console.log("start rename");

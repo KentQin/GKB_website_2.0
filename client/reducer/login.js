@@ -1,3 +1,7 @@
+/*
+ * This reducer controls login state in redux store
+ */
+
 import { SET_CURRENT_USER_LOGIN } from '../actions/types';
 import { SET_CURRENT_USER_SIGNUP } from '../actions/types';
 import { SET_CURRENT_USER_LOGOUT } from '../actions/types';

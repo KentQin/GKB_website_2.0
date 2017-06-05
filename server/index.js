@@ -30,16 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
-//app.use(bodyParser.urlencoded({extended: true}));
-// app.use(multer({dest:'./uploads/'}).single('photo'));
-// bb.extend(app, {
-//     upload: true,
-//     path: '/',
-//     allowedPath: /./
-// });
-// app.use(busboy());
-// // app.use(busboyBodyParser({ limit: '5mb' }));
-// app.use(fileUpload());
+
 
 app.use(cookieParser());
 app.use(session({

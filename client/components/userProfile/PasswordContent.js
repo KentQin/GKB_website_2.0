@@ -1,3 +1,9 @@
+
+/*
+ * This component renders change password page
+ * This is used by account setting
+ */
+
 import React from 'react';
 import { updatePswdAction } from './../../actions/updatePswdAction';
 import validateInput from './../../../server/shared/validations/updatePswd';

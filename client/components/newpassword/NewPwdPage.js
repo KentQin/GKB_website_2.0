@@ -1,6 +1,11 @@
+/*
+ * This component renders the page when a user have forgot password and need to reset.
+ * It is rendered on top of the map
+ * It uses redux store to get the data from state
+ */
+
 import React from 'react';
 import NewPwdForm from './NewPwdForm';
-import LinkToHome from './../common/LinkToHome';
 import {changePswdRequest} from '../../actions/changePswdRequestAction';
 import { connect } from 'react-redux';
 
@@ -24,7 +29,4 @@ NewPwdPage.propTypes = {
     email: React.PropTypes.string
 }
 
-//export default ResetPasswordPage;
 export default connect( (state)=>{ return{}}, { changePswdRequest }) (NewPwdPage);
-
-//export default NewPwdPage;

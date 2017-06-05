@@ -1,6 +1,9 @@
+/*
+ * Landing page is the first view when a user visit this applicaiton
+ */
+
 import React from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import SearchBar from './../home/SearchBar';
+import { Router, Route, browserHistory } from 'react-router';
 import NavBar from '../home/NavBar';
 import {connect} from 'react-redux';
 import { searchBarRequest } from '../../actions/searchBarAction';
@@ -11,13 +14,9 @@ import {setContributionArray} from '../../actions/setContributionArray';
 import { setGoButtonResultsArray } from '../../actions/goButtonResults'
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest'
 import MapContainer from '../googleMaps/MapContainer'
-//<GoogleAutoSuggest searchBarRequest={this.props.searchBarRequest} updateCoordsRequest={this.props.updateCoordsRequest}/>
 
 class landingPage extends React.Component{
     render(){
-
-        const { isAuthenticated } = this.props.login;
-        // const searchResult = this.props.searchResult;
 
         return(
             <div className="jumbotron">

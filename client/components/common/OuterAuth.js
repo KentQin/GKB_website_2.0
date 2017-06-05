@@ -1,7 +1,11 @@
+/*
+ * This react component is responsible for handing Outer Authentication, like Google, Facebook and Twitter.
+ * It is used by Login component and Signup component.
+ * This component imports firebase to implement the core function.
+ */
+
 import React from 'react';
-import { browserHistory } from 'react-router';
 import firebase from '../../../server/firebase';
-import Dropzone from '../DropZone'
 import { connect } from 'react-redux';
 
 class OuterAuth extends React.Component {
@@ -32,7 +36,6 @@ class OuterAuth extends React.Component {
         });
 
         this.props.userLoginSocialRequest(this.state).then(
-            //const {user} = this.props.login;
             // after server response then...
             // if successful
             (res) => {
@@ -157,13 +160,10 @@ OuterAuth.contextTypes = {
 }
 
 function mapStateToProps(state) {
-    //console.log('mapStateToProps: ',state.login);
     return {
         login: state.login
     };
 }
 
-//export default DropzoneDemo;
 export default connect(mapStateToProps, {})(OuterAuth);
 
-// export default OuterAuth;

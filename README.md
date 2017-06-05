@@ -56,6 +56,21 @@ First you need to setup your config file in ./server/config.js to setup your goo
 Then you need to setup your nodemailer email transport service in ./server/mailServer.js
 There will be 2 files naming, index.js and index.css. These 2 files have to be copied into the /node_modules/react-google-places-suggest/ . 
 
+## File structure
+client Folder: all front-end files.
++   acions Folder: all redux action files.  
++   components Folder: all react componenet files.  
++   reducer Folder: all reducer files.  
++   utils Folder: set authentication token.  
++   index File: the entry of the front-end part; sessionStorage and loacalStroage is set from here.  
+  
+public Folder: Css file and temporary img file.  
+
+server Folder: all back-end files.
++   models Folder: all data schema files.  
++   routes Folder: HTTP requests are proccessed here.  
++   shared Folder:  contains validations folder which contains all files to do back-end data valisation work.  
+
 
 ## Running the app
 

@@ -1,9 +1,7 @@
 import axios from 'axios';
-import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
 import { SET_CURRENT_USER_ADD_PROIMG } from '../actions/types';
 
-// pure redux function, action creator
 export function setCurrentUser(user) {
     return {
         type: SET_CURRENT_USER_ADD_PROIMG,

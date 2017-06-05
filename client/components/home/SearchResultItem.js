@@ -1,8 +1,10 @@
+/*
+ * SearchResultItem is a UI component, only render the data sent from SearchResultList
+ */
+
 import React from 'react';
 import thumbSrc from '../img/thumb.png';
 import thumbUpSrc from '../img/thumbUp.png';
-import star from '../img/star.png';
-import classNames from 'classnames';
 import defaultPhoto from '../img/default-profile-picture.jpg';
 import axios from 'axios';
 import lodash from 'lodash';
@@ -35,9 +37,6 @@ class SearchResultItem extends React.Component {
                     des_id :this.props.des_id,
                     user_id :this.props.user_id
                 };
-
-                //this.props.updateLike(addLikeRequest);
-
                 axios.post('/api/searchBar/addLike', addLikeRequest).then(res =>{
                     //const description = res.data;
                     console.log("*************");
@@ -51,8 +50,6 @@ class SearchResultItem extends React.Component {
                     }else{
                         alert("alread liked this one");
                     }
-                    // return res.data;
-                    // dispatch(setSearchResultList(descriptionArray));
                 });
 
             }
@@ -80,8 +77,6 @@ class SearchResultItem extends React.Component {
             const base64 = (Buffer.from(proImg.data).toString('base64'));
             userProfile = 'data:'+proImg.contentType+';base64,'+base64;
         }else{
-            // console.log("********************");
-            // console.log(this.props.proImg);
             userProfile = defaultPhoto;
         }
 

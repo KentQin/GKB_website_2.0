@@ -1,3 +1,8 @@
+/*
+ * This component renders 2 components that forms reset password page
+ * It uses the state from redux store
+ */
+
 import React from 'react';
 import ForgotPwd from './ForgotPwd';
 import ResetPwd from './ResetPwd';

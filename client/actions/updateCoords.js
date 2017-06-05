@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken';
 import { SET_CURRENT_COORDS } from '../actions/types';
 import { SET_CURRENT_USER_LOGIN } from '../actions/types';
 
-// pure redux function, action creator
 export function setCurrentUserGuest(user) {
     return {
         type: SET_CURRENT_COORDS,

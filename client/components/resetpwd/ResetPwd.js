@@ -1,7 +1,10 @@
+/*
+ * This component renderrs the form for user to put email in
+ * It is used by new password page
+ */
 import React from 'react';
 import { Link } from 'react-router';
-import axios from 'axios';
-import { Router, Route, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import classnames from 'classnames';
 import validateInput from '../../../server/shared/validations/resetpassword';
 
@@ -35,7 +38,6 @@ class ResetPwd extends React.Component{
     onSubmit(e) {
 
         e.preventDefault();
-        //axios.post('/api/resetpwd', this.state);
         this.props.resetpwdRequest(this.state).then(
             // after server response then...
             // if successful

@@ -1,17 +1,15 @@
-import express from 'express';
-import lodash from 'lodash';
-import validator from 'validator';
-import config from '../config'
-import curl from 'curlrequest';
-import jwt from 'jsonwebtoken';
-// import moment from 'moment';
+/*
+ * This route handles requests for search a place
+ * When the request comes in, the sever will search Apache Jena first, if no result, the sever will seach result from Google.
+ */
 
+import express from 'express';
+import curl from 'curlrequest';
 var rest = require('rest')
 var ElementEl = require('./../models/node.js');
 var User = require('./../models/user.js');
 var DescriptionSchema = require('./../models/placeDescription');
 var GooglePlaces = require('./../models/googlePlaces')
-//var rest = require('rest')
 
 let router = express.Router();
 
@@ -1008,7 +1006,5 @@ function loadResultList(location) {
 function rnd(start, end){
     return Math.floor(Math.random() * (end - start) + start);
 }
-
-//we need to get data from post request
 
 export default router;

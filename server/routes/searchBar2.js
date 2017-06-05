@@ -1,18 +1,20 @@
+/*
+ * This route handles requests for search a place
+ * When the request comes in, the sever will search Apache Jena first, if no result, the sever will seach result from Google.
+ */
+
 import express from 'express';
 import lodash from 'lodash';
 import validator from 'validator';
 import config from '../config'
 import curl from 'curlrequest';
 import jwt from 'jsonwebtoken';
-// import moment from 'moment';
-
-var rest = require('rest')
-var ElementEl = require('./../models/node.js');
-var User = require('./../models/user.js');
-var DescriptionSchema = require('./../models/placeDescription');
-var GooglePlaces = require('./../models/googlePlaces')
-var autoDescription = require('./../models/autoDescription.js')
-//var rest = require('rest')
+import rest from 'rest';
+import ElementEl from './../models/node.js';
+import User from './../models/user.js';
+import DescriptionSchema from './../models/placeDescription';
+import GooglePlaces from './../models/googlePlaces';
+import autoDescription from './../models/autoDescription.js';
 
 let router = express.Router();
 
@@ -59,19 +61,6 @@ router.post('/', (req, res) => {
                         errors.searchBar = "We could not find " + req.body.searchStr
                         res.status(400).json(errors);
                     } else {
-                        // console.log("element google results: ", element.results)
-                        // var elem = element.results[0];
-                        //     var lat = elem.geometry.location.lat;
-                        //     var lng = elem.geometry.location.lng;
-                        //     if (elem.photos[0]) {
-                        //         var photo_ref = elem.photos[0].photo_reference;
-                        //     } else {
-                        //         var photo_ref = null
-                        //     }
-                        //     // var photo_ref = elem.photos[0].photo_reference;
-                        //     console.log("lat: ", lat);
-                        //     console.log("lng: ", lng)
-                        //     console.log("photo ref: ", photo_ref)
                         for (var i = 0; i < element.results.length; i++) {
                             var elem = element.results[i];
                             // console.log("elem: ", elem.photos[0])
@@ -85,9 +74,6 @@ router.post('/', (req, res) => {
                             } else {
                                 var photo_ref = null
                             }
-                            // var photo_ref = elem.photos[0].photo_reference
-
-
                             var obj = {
                                 lat: lat,
                                 lng: lng,
@@ -104,53 +90,7 @@ router.post('/', (req, res) => {
                                 res.json({results});
                             }
 
-                            // tempfunc(options2, photo_ref, addr, lat, lng, name, function(obj) {
-                            //           // var obj = {
-                            //           //     lat: lat,
-                            //           //     lng: lng,
-                            //           //     photo: res2,
-                            //           //     addr: addr,
-                            //           //     name: name
-                            //           // }
-                            //           // console.log("photo: ", res2);
-                            //           console.log("obj addr: ", obj.addr)
-                            //           results.push(obj)
-                            //           console.log("results array: ", results.length);
-                            //           if (results.length == element.results.length) {
-                            //               console.log("its time to return to client side")
-                            //               res.json({results});
-                            //           }
-                            // })
-                            // curl.request(options2, function (err, res2) {
-                            //     if (err) {
-                            //         console.log("photo ref error")
-                            //     } else {
-                            //         console.log("photo url available")
-                            //         var obj = {
-                            //             lat: lat,
-                            //             lng: lng,
-                            //             // photo: res2,
-                            //             addr: addr,
-                            //             name: name
-                            //         }
-                            //         // console.log("photo: ", res2);
-                            //         console.log("addr: ", addr)
-                            //         // results.push(obj)
-                            //         // console.log("results array: ", results.length);
-                            //         // if (results.length == element.results.length) {
-                            //         //     console.log("its time to return to client side")
-                            //         //     res.json({results});
-                            //         // }
-                            //     }
-                            // });
-                            // var obj = {
-                            //     lat: lat,
-                            //     lng: lng,
-                            //     photo_ref: photo_ref
-                            // }
-                            // results.push(obj)
                         }
-                        // console.log("results array: ", results);
                     }
 
                 }
@@ -167,10 +107,8 @@ router.post('/', (req, res) => {
 
               console.log("not in jena, but in google");
               var errors = ret.errors;
-              // res.status(400).json(ret);
               const query = { placeFullAddr: req.body.fulladdr}
               User.findById(req.body.user_id, function (err, s_user) {
-                  // data.user = s_user;
                   DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
                       if (err) return handleError(err);
                       //console.log(docs);
@@ -190,16 +128,10 @@ router.post('/', (req, res) => {
                               //console.log("user_id: ", doc);
                               User.findById(doc.user_id, 'proImg', function (err, user) {
                                   temp.doc = doc;
-                                  //console.log("test111111111111111111")
-                                  //console.log(" user: proimg " , )
-                                  //console.log("user: ***************", user);
-
                                   temp.proImg = user.proImg;
                                   //console.log("temp   ", temp);
                                   descriptionArray.push(temp);
-                                  //console.log(temp);
                                   if (counter == docs.length){
-                                      //console.log("All done")
                                       descriptionArray.sort((a,b)=>{
                                           if( a.doc.like > b.doc.like){
                                               return -1;
@@ -231,7 +163,6 @@ router.post('/', (req, res) => {
 
                 const query = { placeFullAddr: req.body.fulladdr}
                 User.findById(req.body.user_id, function (err, s_user) {
-                    // data.user = s_user;
                     DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
                         if (err) return handleError(err);
                         //console.log(docs);
@@ -239,8 +170,6 @@ router.post('/', (req, res) => {
                         var descriptionArray = [];
                         //console.log(docs);
                         if(docs.length == 0){
-                            // res.status(400).json({errors: null,
-                            // descriptionArray: null});
                             console.log(" in jena, Without descriptionArray")
                             token.descriptionArray = null
                             res.json({token});
@@ -251,10 +180,6 @@ router.post('/', (req, res) => {
                                 //console.log("user_id: ", doc);
                                 User.findById(doc.user_id, 'proImg', function (err, user) {
                                     temp.doc = doc;
-                                    //console.log("test111111111111111111")
-                                    //console.log(" user: proimg " , )
-                                    //console.log("user: ***************", user);
-
                                     temp.proImg = user.proImg;
                                     //console.log("temp   ", temp);
                                     descriptionArray.push(temp);
@@ -269,15 +194,9 @@ router.post('/', (req, res) => {
                                             }
                                             return 0;
                                         });
-                                        // var errors = {
-                                        //   errors: ret.errors,
-                                        //   searchHistory: ret.searchHistory,
-                                        //   descriptionArray: descriptionArray
-                                        // }
-                                        console.log(" in jena, With descriptionArray")
 
+                                        console.log(" in jena, With descriptionArray")
                                         token.descriptionArray = descriptionArray
-                                        //console.log(token);
                                         res.json({token});
                                     }
                                     counter+=1;
@@ -287,11 +206,9 @@ router.post('/', (req, res) => {
                     });
                 });
 
-                // res.json({token});
             }
         });
     }
-    //res.redirect('/home');
 });
 
 function tempfunc(options2, photo_ref, addr, lat, lng, name, callback) {
@@ -301,16 +218,6 @@ function tempfunc(options2, photo_ref, addr, lat, lng, name, callback) {
             console.log("photo ref error")
         } else {
             console.log("photo url available")
-            // var obj = {
-            //     lat: lat,
-            //     lng: lng,
-            //     // photo: res2,
-            //     addr: addr,
-            //     name: name
-            // }
-            // // console.log("photo: ", res2);
-            // console.log("addr: ", addr)
-            // results.push(obj)
             var obj = {
                photo: photo_ref,
                addr: addr,
@@ -319,11 +226,6 @@ function tempfunc(options2, photo_ref, addr, lat, lng, name, callback) {
                name: name
             }
             callback(obj)
-            // console.log("results array: ", results.length);
-            // if (results.length == element.results.length) {
-            //     console.log("its time to return to client side")
-            //     res.json({results});
-            // }
         }
     });
   } else {
@@ -357,11 +259,6 @@ function queryJena(searchStr, fulladdr, id, callback) {
         if (!element[0]) {
             console.log("not in nominatim jena service")
             errors.searchBar = "We could not find " + fulladdr
-            //res.status(400).json(errors);
-            // var ret = {
-            //     error:1,
-            //     errors:errors
-            // }
             // Then store the searchstr in searchStr in db with google type.
             if (id != null) {
                 User.findOne({_id: id},function(err,data2) {
@@ -379,7 +276,6 @@ function queryJena(searchStr, fulladdr, id, callback) {
                         var insertToSearchHistory = {
                             type: "google",
                             searchStr: fulladdr,
-                            //date: new Date()
                         }
                         //Update searchHistory in user Model.
                         User.update(
@@ -389,7 +285,6 @@ function queryJena(searchStr, fulladdr, id, callback) {
                                 if (err) {
                                     console.log("error in searchhistory update");
                                 } else {
-                                    // console.log("succes in updataing searchHistory11111", user);
 
                                     User.findOne({_id:id,'searchHistory.searchStr': fulladdr}, function(err, data) {
 

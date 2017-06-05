@@ -1,3 +1,8 @@
+/*
+ * elementSchema contains 2 fields, it is the node of Apache Jena
+ */
+
+
 import mongoose from 'mongoose';
 
 var Schema = mongoose.Schema;

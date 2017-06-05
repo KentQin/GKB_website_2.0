@@ -1,3 +1,8 @@
+
+/*
+ * This component renders the complete welcome page
+ * This is used on top of map
+ */
 import React from 'react';
 import WelcomeForm from './WelcomeForm';
 import { connect } from 'react-redux';

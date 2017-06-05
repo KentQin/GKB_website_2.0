@@ -1,5 +1,10 @@
+/*
+ * This component renders when a user requests to reset password
+ */
+
 import React from 'react';
 import lockIcon from '../img/lock-symbol.png';
+
 
 class ForgotPwd extends React.Component{
     render(){

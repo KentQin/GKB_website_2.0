@@ -1,7 +1,12 @@
+/*
+ * This component renders the list of favourite items, which is forme by a list of single favourite item
+ * This is used by favourite page
+ */
+
 import React from 'react';
 import FavouriteItem from './FavouriteItem';
-import testImg from './../img/default-profile-picture.jpg';
 import {connect} from 'react-redux';
+
 
 class FavouriteList extends React.Component{
     constructor(props){
@@ -12,16 +17,10 @@ class FavouriteList extends React.Component{
     }
 
     render() {
-        // const entry = {
-        //     location: "Carlton",
-        //     img: {testImg},
-        //     description: "blablabalbalabalablabalabalbalab"
-        // }
 
         const {user} = this.props.login;
         var items = [];
         var {favorites} = this.props.login.user;
-        // console.log("Favorites page: "+JSON.stringify(favorites[0]));
 
         if (typeof(favorites) != 'undefined') {
             for (var i = 0; i < favorites.length; i++) {

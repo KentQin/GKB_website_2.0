@@ -1,7 +1,9 @@
+/*
+ * This route handles forget password requests
+ * This will be triggered when user click the link in our offical email
+ */
+
 import express from 'express';
-import lodash from 'lodash';
-import validator from 'validator';
-import config from '../config'
 import bcrypt from 'bcrypt';
 var User = require('./../models/user.js');
 
@@ -46,9 +48,6 @@ router.post('/:email', (req, res) => {
         }
 
     });
-    //res.redirect('/home');
 });
-
-//we need to get data from post request
 
 export default router;
