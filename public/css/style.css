@@ -1221,9 +1221,8 @@ search-entry-date{
 
 
 .link-on-form{
-    position: absolute;
-    top:82%;
-    left:42%;
+    position: inherit;
+    top:-20%;
 }
 
 .link-on-home-form{
