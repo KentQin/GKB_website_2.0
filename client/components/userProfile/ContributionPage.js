@@ -1,10 +1,11 @@
-import React from 'react';
-import Contributions from './Contributions';
-import {connect} from 'react-redux';
 /*
  * This component renders the all contributions of a user
  * This is used by profile
  */
+
+import React from 'react';
+import Contributions from './Contributions';
+import {connect} from 'react-redux';
 
 class ContributionPage extends React.Component{
     render(){

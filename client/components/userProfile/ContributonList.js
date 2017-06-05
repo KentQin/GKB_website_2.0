@@ -1,12 +1,12 @@
+/*
+ * This component renders a list of contributions, which is formed by a list of contribution items
+ * This is used by contribution component
+ */
 import React from 'react';
 import ContributionItem from './ContributionItem';
 import testImg from './../img/default-profile-picture.jpg';
 import {connect} from 'react-redux';
 
-/*
- * This component renders a list of contributions, which is formed by a list of contribution items
- * This is used by contribution component
- */
 
 class ContributonList extends React.Component{
     constructor(props){

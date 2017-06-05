@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-
 /*
  * This component renders the user overview page
  * This is used by account setting
  */
+
+import React from 'react';
+import { connect } from 'react-redux';
 
 class OverviewContent extends React.Component{
 

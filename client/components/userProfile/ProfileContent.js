@@ -1,3 +1,7 @@
+/*
+ * This component renders the profile menu
+ * This is used by profile
+ */
 import React from 'react';
 import setting from './../img/account-settings.png';
 import contribution from './../img/contributions.png';
@@ -5,10 +9,6 @@ import favourites from './../img/heart.png';
 import history from './../img/history.png';
 import { Link } from 'react-router';
 
-/*
- * This component renders the profile menu
- * This is used by profile
- */
 
 class ProfileContent extends React.Component{
     constructor(props){

@@ -1,9 +1,9 @@
-import React from 'react';
-
 /*
  * This component renders the account setting menu
  * This is used by account setting page
  */
+
+import React from 'react';
 
 class AccountSettingMenu extends React.Component{
     constructor(props){
