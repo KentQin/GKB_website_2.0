@@ -58,19 +58,19 @@ There will be 2 files naming, index.js and index.css. These 2 files have to be c
 
 ## File structure
 Client Folder: all front-end files.  
-   Acions Folder: all redux action files.  
-   Components Folder: all react componenet files.  
-   Reducer Folder: all reducer files.  
-   Utils Folder: set authentication token.  
-   index File: the entry of the front-end part; sessionStorage and loacalStroage is set from here.  
++   Acions Folder: all redux action files.  
++   Components Folder: all react componenet files.  
++   Reducer Folder: all reducer files.  
++   Utils Folder: set authentication token.  
++   index File: the entry of the front-end part; sessionStorage and loacalStroage is set from here.  
   
 Public Folder: Css file and temporary img file.  
 
 Server Folder: all back-end files.  
-	models Folder: all data schema files.  
-	routes Folder: HTTP requests are proccessed here.  
-	shared Folder:  
-		validations: all files to do back-end data valisation work.  
++   models Folder: all data schema files.  
++   routes Folder: HTTP requests are proccessed here.  
++   shared Folder:  
+        ........validations: all files to do back-end data valisation work.  
 
 
 ## Running the app
