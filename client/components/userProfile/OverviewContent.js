@@ -1,6 +1,10 @@
 import React from 'react';
-import Dropzone from './../DropZone';
 import { connect } from 'react-redux';
+
+/*
+ * This component renders the user overview page
+ * This is used by account setting
+ */
 
 class OverviewContent extends React.Component{
 

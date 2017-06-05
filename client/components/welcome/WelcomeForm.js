@@ -1,5 +1,10 @@
 import React from 'react';
 
+/*
+ * This component renders forms that asks user to set a public name after the first time they sign in
+ * This is used by welcome page component
+ */
+
 class WelcomeForm extends React.Component{
 
     constructor(props) {

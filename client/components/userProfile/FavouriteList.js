@@ -1,7 +1,11 @@
 import React from 'react';
 import FavouriteItem from './FavouriteItem';
-import testImg from './../img/default-profile-picture.jpg';
 import {connect} from 'react-redux';
+
+/*
+ * This component renders the list of favourite items, which is forme by a list of single favourite item
+ * This is used by favourite page
+ */
 
 class FavouriteList extends React.Component{
     constructor(props){

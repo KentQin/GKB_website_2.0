@@ -2,7 +2,11 @@ import React from 'react';
 import NewPwdForm from './NewPwdForm';
 import {changePswdRequest} from '../../actions/changePswdRequestAction';
 import { connect } from 'react-redux';
-
+/*
+ * This component renders the page when a user have forgot password and need to reset.
+ * It is rendered on top of the map
+ * It uses redux store to get the data from state
+ */
 class NewPwdPage extends React.Component{
     render(){
 

@@ -2,6 +2,11 @@ import React from 'react';
 import classnames from 'classnames';
 import validateInput from '../../../server/shared/validations/signup';
 
+/*
+ * This component renders the login form
+ * It is used by homepage and map login
+ */
+
 class SignupForm extends React.Component {
 
     constructor(props) {

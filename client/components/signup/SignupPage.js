@@ -7,6 +7,12 @@ import { userSignupRequest } from '../../actions/signupAction';
 import { userLoginSocialRequest } from '../../actions/loginActionSocial'
 import LinkToHome from './../common/LinkToHome';
 import {Link} from 'react-router';
+
+/*
+ * This component renders 3 components to for the complete login page
+ * It is used by homepage and map login
+ */
+
 class SignupPage extends React.Component {
 
     render() {

@@ -3,6 +3,11 @@ import Dropzone from 'react-dropzone';
 import defaultPhoto from './img/default-profile-picture.jpg';
 import lodash from 'lodash';
 
+/*
+ * This component renders a section that allow users to drag and drop a photo on to change profile picture
+ * This is used by user profile
+ * It uses react-dropzone package
+ */
 
 class DropzoneDemo extends React.Component {
 

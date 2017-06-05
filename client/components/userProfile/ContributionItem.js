@@ -10,6 +10,11 @@ import { browserHistory } from 'react-router';
 import moment from 'moment';
 import config from '../../../server/config.js';
 
+/*
+ * This component is responsible for forming a single contribution entry
+ * This is used by contribution list
+ */
+
 class ContributionItem extends React.Component{
 
   constructor(props){

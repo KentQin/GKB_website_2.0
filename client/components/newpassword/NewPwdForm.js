@@ -1,6 +1,9 @@
 import React from 'react';
 import validateInput from '../../../server/shared/validations/changePswd';
-
+/*
+ * This component renders the form when a user have forgot password and need to reset.
+ * It is used by new password page
+ */
 class NewPwdForm extends React.Component{
 
     constructor(props) {

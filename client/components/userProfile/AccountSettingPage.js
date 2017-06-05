@@ -3,6 +3,11 @@ import OverviewContent from './OverviewContent';
 import LinkToHome from './../common/LinkToHome';
 import PasswordContent from './PasswordContent';
 
+/*
+ * This component renders the account setting page from user profile
+ * This is used by user profile
+ */
+
 class AccountSettingPage extends React.Component{
     constructor(props){
         super(props);

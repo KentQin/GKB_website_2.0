@@ -3,6 +3,12 @@ import WelcomeForm from './WelcomeForm';
 import { connect } from 'react-redux';
 import { addNameRequest } from '../../actions/addNameAction';
 
+/*
+ * This component renders the complete welcome page
+ * This is used on top of map
+ */
+
+
 class WelcomePage extends React.Component {
 
 

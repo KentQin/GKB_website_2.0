@@ -4,6 +4,10 @@ import { browserHistory } from 'react-router';
 import classnames from 'classnames';
 import validateInput from '../../../server/shared/validations/resetpassword';
 
+/*
+ * This component renderrs the form for user to put email in
+ * It is used by new password page
+ */
 
 class ResetPwd extends React.Component{
     constructor(props) {

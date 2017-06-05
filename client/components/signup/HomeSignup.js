@@ -6,6 +6,11 @@ import { userSignupRequest } from '../../actions/signupAction';
 import { userLoginSocialRequest } from '../../actions/loginActionSocial'
 import LinkToHome from './../common/LinkToHome';
 
+/*
+ * This component renders the login window
+ * It is used on top of map when a guest user commits an action
+ */
+
 class HomeSignup extends React.Component {
     render() {
 
@@ -14,7 +19,6 @@ class HomeSignup extends React.Component {
 
         // 2. Here, take { userSignupRequest } from props, and it will be passed to <SignupFrom />
         const { userSignupRequest, userLoginSocialRequest } = this.props;
-        //const { userLoginSocialRequest } = this.props;
         console.log("Singup Page say: ", this.props );
         console.log("Singup Page send: ",{ userSignupRequest }," to Signup From");
 

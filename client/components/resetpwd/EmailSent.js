@@ -2,6 +2,10 @@ import React from 'react';
 import emailIcon from '../img/email-icon.png';
 import { Link } from 'react-router';
 
+/*
+ * This component renders as the notificaiton of successfully sending a reset password email
+ */
+
 class EmailSent extends React.Component{
     render(){
         return(

@@ -9,6 +9,11 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import config from '../../../server/config.js';
 
+/*
+ * This component forms a single favourite location entry
+ * This is used by favourite list
+ */
+
 class FavouriteItem extends React.Component{
 
   constructor(props){
