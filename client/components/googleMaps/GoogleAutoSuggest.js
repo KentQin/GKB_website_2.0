@@ -3,8 +3,9 @@ import GoogleMapLoader from "react-google-maps-loader";
 import GooglePlacesSuggest from "react-google-places-suggest";
 import "react-google-places-suggest/lib/index.css";
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { addSearchHistory } from '../../actions/addSearchHistory';
+import axios from 'axios';
 
 const MY_API_KEY = "AIzaSyBYNqtR2RJBsq44d31RZe2Znch8_SX4RXM"
 
@@ -23,6 +24,8 @@ class MyGoogleSuggest extends Component {
 
     buttonClick(e) {
 
+        //console.log('GO is clicked ************');
+        // this.props.showSearchResult();
         const {user} = this.props.login;
         this.setState({errors: {} });
         var toSend;
@@ -47,6 +50,7 @@ class MyGoogleSuggest extends Component {
             .then(
                 // after server response then...
                 // if successful
+                //var userUpdated = this.props.login.user;
                 (res) => {
                     console.log("success in clicking button, back to clientside");
                     console.log("res data", res.data.results);
@@ -72,6 +76,8 @@ class MyGoogleSuggest extends Component {
     handleSelectSuggest(suggest, coordinate, place, directionsResponse) {
         // query apache jena database, if not then go with google.
         const {user} = this.props.login;
+        // console.log("this props landingpage flag: ", this.props.landingPageFlag);
+        // var flag = this.props.landingPageFlag;
         console.log("search term to jena: ", suggest.terms[0].value);
         this.setState({errors: {} });
         var toSend;
@@ -101,6 +107,7 @@ class MyGoogleSuggest extends Component {
                     console.log("we are back in searchBar clientside");
 
                     const token = res.data.token;
+                    // console.log('token: ' ,token);
                     // get token from server side, and store the token into session storage
                     // sessionStorage.removeItem('loginToken');
                     // sessionStorage.setItem('loginToken', token);
@@ -128,6 +135,8 @@ class MyGoogleSuggest extends Component {
                         }
                         this.props.setShowSearchResult(conf);
                     } else {
+                        // dispatch action 'setCurrentUser' to change state
+                        //dispatch(setCurrentUser(jwt.decode(token)));
                         this.props.updateCoordsRequest(userData);
                         // set show result component
                         const conf = {
@@ -166,6 +175,23 @@ class MyGoogleSuggest extends Component {
                             photo = ""
                         };
 
+
+                        // var userData = {
+                        //   email: user.email,
+                        //   userName: user.userName,
+                        //   accountType: user.accountType,
+                        //   proImg: user.proImg,
+                        //   _id: user._id,
+                        //     proImg: user.proImg,
+                        //     showSearchResult: true,
+                        //   coords: {
+                        //     lat: this.state.selectedCoordinate.latitude,
+                        //     longt: this.state.selectedCoordinate.longitude
+                        //   },
+                        //   directions:directionsResponse.routes[0].overview_path,
+                        //
+                        // }
+
                         let tempCoords = {  lat: coordinate.latitude,
                             longt:coordinate.longitude
                         };
@@ -184,6 +210,7 @@ class MyGoogleSuggest extends Component {
                             user.autoDescription = null
                         }
 
+                        //const descriptionArray = err.response.descriptionArray
                         // Changing thw whole functionality. For now let descriptionArray is null
                         var descriptionArray = err.response.data.descriptionArray;
                         const conf = {
@@ -216,6 +243,7 @@ class MyGoogleSuggest extends Component {
     render() {
         const {searchStr} = this.state;
         const {googleMaps} = this.props;
+//{errors.searchBar && <span className="help-block">{errors.searchBar}</span> }
 
         return (
             <GooglePlacesSuggest
@@ -261,10 +289,17 @@ MyGoogleSuggest.contextTypes = {
 
 function mapStateToProps(state) {
     console.log('mapStateToProps: ',state.login);
+    //console.log('mapStateToPropsCoords: ',state.coords);
     return {
-        login: state.login
+        login: state.login,
+        //coords: state.coords
     };
 }
+
+// GoogleMapLoader(MyGoogleSuggest, {
+//   libraries: ["places"],
+//   key: MY_API_KEY,
+// })
 
 export default connect(mapStateToProps, { addSearchHistory })(GoogleMapLoader(MyGoogleSuggest, {
     libraries: ["places"],
