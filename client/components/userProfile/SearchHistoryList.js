@@ -1,13 +1,13 @@
+/*
+ * This component renders the content of search history page
+ * This is used by search history component
+ */
+
 import React from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router'
-
-/*
- * This component renders the content of search history page
- * This is used by search history component
- */
 
 class SearchHistoryList extends React.Component{
     constructor(props){

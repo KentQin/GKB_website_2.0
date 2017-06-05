@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router';
-import logo from '../img/welcome-icon.png';
-
 /*
  * This component renders a welcome section on login page
  * It is used by homepage and map login
  */
+
+import React from 'react';
+import { Link } from 'react-router';
+import logo from '../img/welcome-icon.png';
 
 class WelToLogin extends React.Component {
     render() {

@@ -1,11 +1,12 @@
-import React from 'react';
-import LinkToHome from '../common/LinkToHome';
-import ContributionList from './ContributonList';
-
 /*
  * This component renders the contribution list and the title of contribution page
  * This is used by contribution page
  */
+
+import React from 'react';
+import LinkToHome from '../common/LinkToHome';
+import ContributionList from './ContributonList';
+
 
 class Contributions extends React.Component{
 

@@ -1,3 +1,8 @@
+/*
+ * This component is responsible for forming a single contribution entry
+ * This is used by contribution list
+ */
+
 import React from 'react';
 import { Link } from 'react-router';
 import { searchBarRequest } from '../../actions/searchBarAction';
@@ -10,10 +15,6 @@ import { browserHistory } from 'react-router';
 import moment from 'moment';
 import config from '../../../server/config.js';
 
-/*
- * This component is responsible for forming a single contribution entry
- * This is used by contribution list
- */
 
 class ContributionItem extends React.Component{
 

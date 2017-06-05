@@ -1,3 +1,7 @@
+/*
+ * This component renders components to form a complete search history page
+ * This is used by user profile
+ */
 import React from 'react';
 import LinkToHome from '../common/LinkToHome';
 import {Link} from 'react-router';
@@ -8,11 +12,6 @@ import { updateCoordsRequest} from '../../actions/updateCoords';
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
 import { googlePlaceSearchRequest } from '../../actions/googlePlaceSearch.js';
-
-/*
- * This component renders components to form a complete search history page
- * This is used by user profile
- */
 
 class SearchHistory extends React.Component{
     render(){
