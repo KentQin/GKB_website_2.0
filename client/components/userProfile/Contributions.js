@@ -1,33 +1,7 @@
 import React from 'react';
 import LinkToHome from '../common/LinkToHome';
 import ContributionList from './ContributonList';
-import {connect} from 'react-redux';
-import axios from 'axios';
 class Contributions extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-
-        };
-        // this.beforeRender = this.beforeRender.bind(this);
-    }
-
-    // beforeRender(){
-    //     console.log("In contribution compoenent "+this.props.user._id);
-    //     const user_id = {
-    //         id: this.props.user._id
-    //     }
-    //
-    //     axios.post('/api/description', user_id).then(res =>{
-    //         console.log("Here in description action "+JSON.stringify(res.data));
-    //         // this.setState({descriptions: res.data});
-    //         var descriptions = res.data;
-    //         console.log("Before return rendering "+descriptions);
-    //         return descriptions;
-    //
-    //     });
-    //
-    // }
 
     render(){
 

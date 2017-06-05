@@ -10,8 +10,6 @@ export function setContribution(array) {
 
 export function setContributionArray(array) {
     return dispatch => {
-        // console.log("*******************");
-        // console.log(array);
         dispatch(setContributionArray(array));
 
     }

@@ -15,8 +15,6 @@ class ProfileContent extends React.Component{
     logout(e){
         e.preventDefault();
         this.props.hideProfile();
-        //console.log(this.props);
-        // this.props.hideProfile();
         this.props.logout();
     }
 

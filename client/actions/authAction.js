@@ -15,7 +15,7 @@ export function setContributionArray(array){
         data: array
     }
 }
-// pure redux function, action creator
+
 export function setCurrentUser(user) {
     console.log("DOING FIRST STEP HERE");
     return {

@@ -8,14 +8,13 @@ import { userLoginSocialRequest } from '../../actions/loginActionSocial'
 import LinkToHome from './../common/LinkToHome';
 import {Link} from 'react-router';
 class SignupPage extends React.Component {
+
     render() {
 
         // 1. import action creator, { userSignupRequest }, from outside, and it will be added to this.props by connect
         // in other words, { userSignupRequest } comes from connect
-
         // 2. Here, take { userSignupRequest } from props, and it will be passed to <SignupFrom />
         const { userSignupRequest, userLoginSocialRequest } = this.props;
-        //const { userLoginSocialRequest } = this.props;
         console.log("Singup Page say: ", this.props );
         console.log("Singup Page send: ",{ userSignupRequest }," to Signup From");
 

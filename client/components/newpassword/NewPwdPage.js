@@ -1,6 +1,5 @@
 import React from 'react';
 import NewPwdForm from './NewPwdForm';
-import LinkToHome from './../common/LinkToHome';
 import {changePswdRequest} from '../../actions/changePswdRequestAction';
 import { connect } from 'react-redux';
 
@@ -24,7 +23,4 @@ NewPwdPage.propTypes = {
     email: React.PropTypes.string
 }
 
-//export default ResetPasswordPage;
 export default connect( (state)=>{ return{}}, { changePswdRequest }) (NewPwdPage);
-
-//export default NewPwdPage;

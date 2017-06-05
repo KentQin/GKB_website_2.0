@@ -6,7 +6,6 @@ import { login } from '../../actions/authAction';
 import { userLoginSocialRequest } from '../../actions/loginActionSocial'
 import LinkToHome from './../common/LinkToHome';
 import { Link } from 'react-router';
-import HomeSignup from '../signup/HomeSignup';
 class HomeLogin extends React.Component {
     render() {
         const { login, userLoginSocialRequest } = this.props;

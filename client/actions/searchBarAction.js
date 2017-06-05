@@ -1,7 +1,4 @@
 import axios from 'axios';
-import lodash from 'lodash';
-import setAuthorizationToken from '../utils/setAuthorizationToken';
-import jwt from 'jsonwebtoken';
 import { SET_CURRENT_USER_SEARCH_BAR } from '../actions/types';
 import { SET_CURRENT_COORDS } from '../actions/types';
 import { SET_SHOW_SEARCH_RESULT } from '../actions/types';

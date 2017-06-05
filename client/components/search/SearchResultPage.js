@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchResult from './SearchResult';
 import photo from '../img/landing_page_photo.png';
 import place from '../img/ic-place-black-48-dp.png';
 import add from '../img/heart-light-filled-green.png';

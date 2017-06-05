@@ -1,4 +1,3 @@
-//var curl = require('curlrequest');
 import React, {Component} from "react"
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Polyline } from "react-google-maps";
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -13,12 +12,10 @@ import {connect} from 'react-redux'
 import AccountSetting from '../userProfile/AccountSettingPage';
 import SearchHistory from '../userProfile/SearchHistoryPage';
 import MyFavourites from '../userProfile/FavouritesPage';
-import AddDescription from '../home/AddDescription';
 import Landing from '../landing/landingPage';
 import HomeLogin from '../login/HomeLogin';
 import HomeSignup from '../signup/HomeSignup';
 import MyContributions from '../userProfile/ContributionPage';
-//import GettingStartedGoogleMap from "./GMap"
 
 class MapContainer extends Component {
 
