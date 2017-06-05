@@ -754,14 +754,50 @@ router.post('/addLike', (req, res) => {
     var liked = false;
     DescriptionSchema.findById(des_id, function (err, description) {
         const {user_like_array} = description;
+        console.log(description);
         var response = {};
         if (user_like_array.indexOf(user_id) === -1){
             // user haven't like this one
             DescriptionSchema.findByIdAndUpdate(des_id, { $inc: {like: 1}, $push: {user_like_array: user_id} }, {new: true}, function (err, description) {
                 if (err) return handleError(err);
-                response.ans = true;
                 // return accepted as signal
-                res.status(200).json(response);
+                ////////////
+                ////////////
+                ////////////
+                ////////////
+                const query = { placeFullAddr: description.placeFullAddr};
+                console.log("query",query);
+                DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
+                    if (err) console.log(err);
+                    var counter = 1
+                    var descriptionArray = [];
+                    docs.forEach((doc) => {
+                        var temp = {};
+                        User.findById(doc.user_id, 'proImg', function (err, user) {
+                            temp.doc = doc;
+                            if(user.proImg == null){
+                                temp.proImg = null
+                            }else{
+                                temp.proImg = user.proImg;
+                            }
+                            descriptionArray.push(temp);
+                            if (counter == docs.length){
+                                descriptionArray.sort((a,b)=>{
+                                    if( a.doc.like > b.doc.like){
+                                        return -1;
+                                    }else if( a.doc.like < b.doc.like ){
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                console.log("return with description array")
+                                response.descriptionArray = descriptionArray
+                                res.status(200).json(response);
+                            }
+                            counter+=1;
+                        });
+                    });
+                });
             });
         }else{
             // user already liked this one

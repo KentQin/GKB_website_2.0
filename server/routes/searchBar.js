@@ -967,6 +967,47 @@ router.post('/addLike', (req, res) => {
                 if (err) return handleError(err);
                 response.ans = true;
                 // return accepted as signal
+                ////////////
+                ////////////
+                ////////////
+                ////////////
+                const query = { placeFullAddr: description.placeFullAddr};
+                DescriptionSchema.find(query, '_id user_name user_id description_content like user_like_array',function (err, docs) {
+                    if (err) console.log(err);
+                    var counter = 1
+                    var descriptionArray = [];
+                    docs.forEach((doc) => {
+                        //console.log(doc);
+                        var temp = {};
+                        User.findById(doc.user_id, 'proImg', function (err, user) {
+                            temp.doc = doc;
+                            console.log("user: ***************", user);
+                            if(user.proImg == null){
+                                temp.proImg = null
+                            }else{
+                                temp.proImg = user.proImg;
+                            }
+                            descriptionArray.push(temp);
+                            //console.log(temp);
+                            if (counter == docs.length){
+                                //console.log("All done")
+                                //console.log(descriptionArray);
+                                descriptionArray.sort((a,b)=>{
+                                    if( a.doc.like > b.doc.like){
+                                        return -1;
+                                    }else if( a.doc.like < b.doc.like ){
+                                        return 1;
+                                    }
+                                    return 0;
+                                });
+                                console.log("return with description array")
+                                res.status(200).json(descriptionArray);
+                            }
+                            counter+=1;
+                        });
+                    });
+                });
+                console.log("return with ans")
                 res.status(200).json(response);
             });
         }else{

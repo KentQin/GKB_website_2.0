@@ -21,6 +21,17 @@ class SearchResultItem extends React.Component {
         this.onThumbClicker = this.onThumbClicker.bind(this);
     }
 
+    componentWillReceiveProps(){
+        this.setState({
+            clicked: this.props.preThumbUp,
+            like: this.props.like
+        });
+    };
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return true
+    }
+
     onThumbClicker(){
 
         const isAuthenticated = this.props.isAuthenticated;
@@ -37,26 +48,12 @@ class SearchResultItem extends React.Component {
                     des_id :this.props.des_id,
                     user_id :this.props.user_id
                 };
-                axios.post('/api/searchBar/addLike', addLikeRequest).then(res =>{
-                    //const description = res.data;
-                    console.log("*************");
-                    console.log(res.data);
-                    const {ans} = res.data;
-                    if (ans)  {
-                        this.setState({
-                        clicked: !this.state.clicked,
-                        like: this.state.like + 1
-                        });
-                    }else{
-                        alert("alread liked this one");
-                    }
-                });
+                this.props.updateShowSearchResultLike(addLikeRequest);
 
             }
         }else{
             alert("please login");
         }
-
     }
 
     render() {
@@ -90,7 +87,7 @@ class SearchResultItem extends React.Component {
                              className = "thumb"/>
                     </div >
                     <div>
-                        <span className="like_num"> {this.state.like}</span>
+                        <span className="like_num"> {this.props.like}</span>
                     </div>
                 </div>
                 <div className = "user_box" >
