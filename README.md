@@ -52,9 +52,10 @@ $ npm install
 
 ## Setup
 
-First you need to setup your config file in ./server/config.js to setup your google, firebase API keys.
-Then you need to setup your nodemailer email transport service in ./server/mailServer.js
-There will be 2 files naming, index.js and index.css. These 2 files have to be copied into the /node_modules/react-google-places-suggest/ . 
+1. First you need to setup your config file in ./server/config.js to setup your google and dev mode. If dev mode is true, database in server will be connected using ssh, whereas if dev mode is false database will be connected locally.
+2. Then set up firebase API keys in ./server/firebase.js
+3. Then you need to setup your nodemailer email transport service in ./server/mailServer.js
+4. There will be 2 files naming, index.js and index.css. These 2 files have to be copied into the /node_modules/react-google-places-suggest/
 
 ## File structure
 client Folder: all front-end files.
@@ -195,6 +196,7 @@ database connected to great
 webpack built 865acd360d562fcabbb5 in 34617ms
 ```
 
+If system does not find any npm package, please install it.
 
 ## Philosophy
 
