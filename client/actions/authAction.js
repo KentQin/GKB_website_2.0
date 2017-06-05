@@ -67,9 +67,6 @@ export function login(userData) {
             const contributionArray = res.data.contributionArray;
 
             const contributions = {data :contributionArray};
-            //const contributionArray = res.data.contributionArray;
-
-            // console.log('token: ' ,token);
             // get token from server side, and store the token into session storage
             sessionStorage.setItem('loginToken', token);
             sessionStorage.setItem('loginUser', jwt.sign( user, 'secretkeyforjsonwebtoken'));
@@ -77,8 +74,6 @@ export function login(userData) {
             // set token into head info
             setAuthorizationToken(token);
             // decode token, get user msg from it
-            // console.log("auth action array "+contributionArray);
-            console.log('token: ',token);
             // dispatch action 'setCurrentUser' to change state
             dispatch(setCurrentUser(user));
             dispatch(setContributionArray(contributionArray));

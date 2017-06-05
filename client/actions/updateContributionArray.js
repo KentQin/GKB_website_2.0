@@ -1,6 +1,6 @@
 import { SET_CONTRIBUTION_ARRAY } from '../actions/types';
 import axios from 'axios';
-// pure redux function, action creator
+
 export function setContributionArray(array) {
     return {
         type: SET_CONTRIBUTION_ARRAY,
