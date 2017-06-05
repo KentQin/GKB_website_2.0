@@ -1,3 +1,8 @@
+/*
+ * This reducer controls contributionArray state in redux store
+ */
+
+
 import {SET_CONTRIBUTION_ARRAY} from '../actions/types';
 import {REMOVE_CONTRIBUTION} from '../actions/types';
 
