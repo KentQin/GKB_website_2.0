@@ -196,6 +196,7 @@ database connected to great
 webpack built 865acd360d562fcabbb5 in 34617ms
 ```
 
+If system does not find any npm package, please install it.
 
 ## Philosophy
 
