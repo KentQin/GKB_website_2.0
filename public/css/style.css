@@ -240,19 +240,24 @@ body{
 }
 
 .btn-nav{
-    color:white;
-    background-color: rgba(250,250,250,0.3);
+    color:dimgrey;
+    background-color: white;
     border: none;
     border-radius:0;
     width:100%;
+    opacity: 0.8;
 }
 
+.no-bg {
+    background: transparent;
+}
 .btn-nav:hover{
     color:#e8ffd0;
     background-color: rgba(250,250,250,0.4);
     border: none;
     border-radius:0;
     width:100%;
+    opacity: 1;
 }
 
 .btn-login{
