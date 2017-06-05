@@ -27,7 +27,7 @@ class NavBar extends React.Component {
 
 
         return(
-            <div>{ !isAuthenticated && guestNav}</div>
+            <div className ="no-click-through">{ !isAuthenticated && guestNav}</div>
         );
     }
 }

@@ -253,7 +253,7 @@ class MyGoogleSuggest extends Component {
             >
 
 
-                <div className="col-lg-6">
+                <div className="col-lg-6 no-click-through">
                     <div className="input-group search-bar-box">
                         <input
                             type="text"

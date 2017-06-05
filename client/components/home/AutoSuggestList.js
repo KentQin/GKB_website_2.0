@@ -27,7 +27,7 @@ class AutoSuggestList extends React.Component {
 
         }
         return(
-            <div className="auto_list">
+            <div className="auto_list no-click-through">
                 {items}
             </div>
         )
