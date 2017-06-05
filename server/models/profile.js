@@ -1,3 +1,8 @@
+/*
+ * profile contains 1 fields
+ * img: this is an json object, data is the buffer of the profile file, contentType indicates the file's type, jpeg, png, etc.
+ */
+
 import mongoose from 'mongoose';
 
 var Schema = mongoose.Schema;

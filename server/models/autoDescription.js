@@ -1,3 +1,7 @@
+/*
+ * autoDescriptionSchema contains 3 fields
+ */
+
 import mongoose from 'mongoose';
 
 var Schema = mongoose.Schema;
