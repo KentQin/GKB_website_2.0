@@ -19,7 +19,6 @@ export function setSearchResultList(array) {
 export function updateShowSearchResult(description) {
     return dispatch => {
         return axios.post('/api/searchBar/addDescription', description).then(res =>{
-            console.log("both in "+JSON.stringify(res));
             const descriptionArray = res.data.descriptionArray;
             const contributionArray = res.data.contributionArray;
             dispatch(setSearchResultList(descriptionArray));

@@ -88,6 +88,7 @@ class SearchResultList extends React.Component {
                                                              user_id = {user_id}
                                                              preThumbUp = {thumbUp}
                                                              discription={array[i].doc.description_content}
+                                                             updateShowSearchResultLike={this.props.updateShowSearchResultLike}
                                                             />
                     </td></tr>
                 );
@@ -160,6 +161,7 @@ SearchResultList.propTypes = {
     descriptionArray: React.PropTypes.object.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
+    updateShowSearchResultLike: React.PropTypes.func.isRequired,
     addToFavoritesAction: React.PropTypes.func.isRequired,
     updateContributionArray: React.PropTypes.func.isRequired
 }

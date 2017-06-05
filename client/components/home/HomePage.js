@@ -16,6 +16,7 @@ import {setContributionArray } from '../../actions/setContributionArray';
 import { setGoButtonResultsArray } from '../../actions/goButtonResults'
 import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
 import { updateContributionArray } from '../../actions/updateContributionArray';
+import { updateShowSearchResultLike } from '../../actions/updateShowSearchResultLike';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
 import AutoSuggestList from './AutoSuggestList';
@@ -115,6 +116,7 @@ class HomePage extends React.Component {
                                                        login={this.props.login}
                                                        setDescriptionArray={this.props.setDescriptionArray}
                                                        updateShowSearchResult={this.props.updateShowSearchResult}
+                                                       updateShowSearchResultLike={this.props.updateShowSearchResultLike}
                                                        updateContributionArray={this.props.updateContributionArray}
                                                        user_id={this.props.login.user._id}
                                                        addToFavoritesAction={this.props.addToFavoritesAction}
@@ -134,6 +136,7 @@ HomePage.propTypes = {
     updateCoordsRequest: React.PropTypes.func.isRequired,
     setDescriptionArray: React.PropTypes.func.isRequired,
     updateShowSearchResult: React.PropTypes.func.isRequired,
+    updateShowSearchResultLike: React.PropTypes.func.isRequired,
     setGoButtonResultsArray: React.PropTypes.func.isRequired,
     setContributionArray: React.PropTypes.func.isRequired,
     addToFavoritesAction: React.PropTypes.func.isRequired,
@@ -155,6 +158,7 @@ export default connect(mapStateToProps, { logout,
                                         setShowSearchResult,
                                         setDescriptionArray,
                                         updateShowSearchResult,
+                                        updateShowSearchResultLike,
                                         updateContributionArray,
                                         setContributionArray,
                                         setGoButtonResultsArray,
