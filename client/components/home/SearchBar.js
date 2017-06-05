@@ -1,3 +1,7 @@
+/*
+ *  This is the search bar rendered in the top of homepage
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 

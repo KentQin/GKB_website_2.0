@@ -1,3 +1,7 @@
+/*
+ * Landing page is the first view when a user visit this applicaiton
+ */
+
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 import NavBar from '../home/NavBar';
@@ -13,8 +17,6 @@ import MapContainer from '../googleMaps/MapContainer'
 
 class landingPage extends React.Component{
     render(){
-
-        //const { isAuthenticated } = this.props.login;
 
         return(
             <div className="jumbotron">

@@ -1,3 +1,8 @@
+/*
+ * HomePage component contains GoogleAutoSuggest, SearchResutList and AutoSuggestList
+ * This component connect to redux store as a container component
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import Profile from '../userProfile/Profile';

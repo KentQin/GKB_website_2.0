@@ -1,3 +1,7 @@
+/*
+ * This is component contains two part, Signup and Login button
+ */
+
 import React from 'react';
 import { Link } from 'react-router';
 

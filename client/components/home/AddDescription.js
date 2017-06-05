@@ -1,3 +1,8 @@
+/*
+ * This is add description component
+ * It is contained by SearchResultLit
+ */
+
 import React from 'react';
 import {Link} from 'react-router';
 import { connect } from 'react-redux';

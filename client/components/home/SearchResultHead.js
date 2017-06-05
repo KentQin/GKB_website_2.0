@@ -1,3 +1,7 @@
+/*
+ * SearchResultHead is a UI component, only render the data sent from SearchResultList
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import place from '../img/ic-place-black-48-dp.png';
