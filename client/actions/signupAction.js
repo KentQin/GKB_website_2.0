@@ -3,7 +3,6 @@ import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
 import { SET_CURRENT_USER_SIGNUP } from '../actions/types';
 
-// pure redux function, action creator
 export function setCurrentUser(user) {
     return {
         type: SET_CURRENT_USER_SIGNUP,

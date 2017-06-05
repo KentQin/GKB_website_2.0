@@ -1,3 +1,7 @@
+/*
+ * This is the container component of AutoSuggestItem
+ */
+
 import React from 'react';
 import AutoSuggestItem from './AutoSuggestItem'
 

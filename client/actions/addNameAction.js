@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { SET_CURRENT_USER_ADD_NAME } from '../actions/types';
 
-// pure redux function, action creator
 export function setCurrentUser(user) {
     return {
         type: SET_CURRENT_USER_ADD_NAME,

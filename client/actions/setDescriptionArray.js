@@ -9,8 +9,6 @@ export function setDescription(array) {
 
 export function setDescriptionArray(array) {
     return dispatch => {
-        // console.log("*******************");
-        // console.log(array);
         dispatch(setDescription(array));
 
     }

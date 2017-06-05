@@ -1,5 +1,8 @@
-import {SET_GOOGLE_RESULTS} from '../actions/types';
+/*
+ * This reducer controls setGoogleResults state in redux store
+ */
 
+import {SET_GOOGLE_RESULTS} from '../actions/types';
 
 const initialState = {
     googleResults: {}
@@ -9,10 +12,8 @@ export default (state = initialState, action) => {
 
     switch (action.type) {
 
-        //called by login page
         case SET_GOOGLE_RESULTS:
             return {
-                //action object contains user
                 googleResults: action.data
             }
 

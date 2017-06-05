@@ -1,3 +1,7 @@
+/*
+ * This component provide a link for users quickly turn to Signup Page
+ */
+
 import React from 'react';
 import { Link } from 'react-router';
 import logo from '../img/welcome-icon.png';

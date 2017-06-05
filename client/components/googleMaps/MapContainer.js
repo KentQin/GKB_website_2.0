@@ -1,6 +1,10 @@
+/*
+ * This component is the top component, it contains the map, and all the other components are under this one.
+ */
+
 import React, {Component} from "react"
-import { withGoogleMap, GoogleMap, InfoWindow, Marker, Polyline } from "react-google-maps";
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { withGoogleMap, GoogleMap, Marker, Polyline } from "react-google-maps";
+import { Router, Route, browserHistory } from 'react-router';
 import LoginPage from '../login/LoginPage';
 import SignupPage from '../signup/SignupPage';
 import ResetPasswordPage from '../resetpwd/ResetPasswordPage';
@@ -13,8 +17,6 @@ import AccountSetting from '../userProfile/AccountSettingPage';
 import SearchHistory from '../userProfile/SearchHistoryPage';
 import MyFavourites from '../userProfile/FavouritesPage';
 import Landing from '../landing/landingPage';
-import HomeLogin from '../login/HomeLogin';
-import HomeSignup from '../signup/HomeSignup';
 import MyContributions from '../userProfile/ContributionPage';
 
 class MapContainer extends Component {
@@ -41,11 +43,7 @@ class MapContainer extends Component {
 
     componentWillMount() {
       console.log("in componentDidMount woohooo");
-      var pos_out;
       var this2 = this;
-
-      var url = 'http://freegeoip.net/json/'
-      var options = { url: url};
 
       var rest = require('rest');
 
@@ -54,26 +52,6 @@ class MapContainer extends Component {
           console.log('response: ', parsedData.latitude);
            this2.setState({lat: parsedData.latitude, longt: parsedData.longitude})
       });
-      // if (navigator.geolocation) {
-      //   console.log("in navigator: ");
-      //    navigator.geolocation.getCurrentPosition(function(position) {
-      //       var pos = {
-      //         lat: position.coords.latitude,
-      //         lng: position.coords.longitude
-      //       };
-      //
-      //
-      //       this2.setState({lat: pos.lat, longt: pos.lng})
-      //
-      //       console.log("lat:  ",this2.state.lat);
-      //       console.log("in MApContainer pos your location:", pos);
-      //     }, function() {
-      //       console.log("in geolocation");
-      //     });
-      // } else {
-      //     // Browser doesn't support Geolocation
-      //     console.log("false. in geolocation. Your browser doesn't support geolocation.")
-      // }
 
     }
 
@@ -81,9 +59,7 @@ class MapContainer extends Component {
 
       var lat;
       var longt;
-      //console.log("lat: " + lat + "longt: " + longt);
       const {user} = this.props.login
-      //var lat, longt
       if (user != null) {
         if (user.coords != null) {
             console.log("we are here in coords");
@@ -165,8 +141,6 @@ class MapContainer extends Component {
         }]
       }
 
-      //console.log("path_Arr: ", path_arr);
-      //console.log("markers: ", markers);
 
       const GettingStartedGoogleMap = withGoogleMap(props => {
         return (
@@ -183,8 +157,6 @@ class MapContainer extends Component {
                   <Route path="home" component={HomePage}/>
                   <Route path="login" component={LoginPage}/>
                   <Route path="signup" component={SignupPage}/>
-                  <Route path="homelogin" component={HomeLogin}/>
-                  <Route path="homesignup" component={HomeSignup}/>
                   <Route path="resetpassword" component={ResetPasswordPage}/>
                   <Route path="emailsentpage" component={EmailSentPage}/>
                   <Route path="welcome" component={WelcomePage}/>

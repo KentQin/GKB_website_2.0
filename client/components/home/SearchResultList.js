@@ -1,3 +1,8 @@
+/*
+ * SearchResultList is the container component for SearchResultHead and SearchResultItem
+ * It connect to redux store, fetch the newest searchResult State and transfer to SearchResultHead and SearchResultItem
+ */
+
 import React from 'react';
 import SearchResultItem from './SearchResultItem'
 import SearchResultHead from './SearchResultHead'

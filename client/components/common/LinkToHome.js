@@ -1,3 +1,8 @@
+/*
+ * This is a small react component, it takes a small block and provides a link back to the homepage
+ * It is used by many components.
+ */
+
 import React from 'react';
 import { Link } from 'react-router';
 

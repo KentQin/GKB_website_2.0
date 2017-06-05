@@ -1,3 +1,9 @@
+/*
+ * This react component is responsible for handing Outer Authentication, like Google, Facebook and Twitter.
+ * It is used by Login component and Signup component.
+ * This component imports firebase to implement the core function.
+ */
+
 import React from 'react';
 import firebase from '../../../server/firebase';
 import { connect } from 'react-redux';
@@ -30,7 +36,6 @@ class OuterAuth extends React.Component {
         });
 
         this.props.userLoginSocialRequest(this.state).then(
-            //const {user} = this.props.login;
             // after server response then...
             // if successful
             (res) => {

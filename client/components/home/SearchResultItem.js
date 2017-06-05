@@ -1,8 +1,10 @@
+/*
+ * SearchResultItem is a UI component, only render the data sent from SearchResultList
+ */
+
 import React from 'react';
 import thumbSrc from '../img/thumb.png';
 import thumbUpSrc from '../img/thumbUp.png';
-import star from '../img/star.png';
-import classNames from 'classnames';
 import defaultPhoto from '../img/default-profile-picture.jpg';
 import axios from 'axios';
 import lodash from 'lodash';

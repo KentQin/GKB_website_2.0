@@ -1,3 +1,7 @@
+/*
+ * User provide authentication information in this component
+ */
+
 import React from 'react';
 import { Link } from 'react-router';
 import classnames from 'classnames';

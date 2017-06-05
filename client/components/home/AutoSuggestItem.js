@@ -1,3 +1,7 @@
+/*
+ * All the auto suggested items are rendered in this component
+ */
+
 import React from 'react';
 import {Link} from 'react-router';
 import { searchBarRequest } from '../../actions/searchBarAction';
@@ -52,11 +56,6 @@ class AutoSuggestItem extends React.Component {
                   console.log("we are back in searchHistory clientside");
 
                   const token = res.data.token;
-                  // get token from server side, and store the token into session storage
-                  // sessionStorage.removeItem('loginToken');
-                  // sessionStorage.setItem('loginToken', token);
-                  // setAuthorizationToken(token);
-                  // decode token, get user msg from it
                   console.log('decode token: ',token);
                   var userData = token
                   if (userData._id == null) {

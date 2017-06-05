@@ -1,3 +1,7 @@
+/*
+ * LoginPage is the container component for LoginForm and WelcomeToSignup
+ */
+
 import React from 'react';
 import LoginForm from './LoginForm';
 import WelToSignup from './WelToSignup';
