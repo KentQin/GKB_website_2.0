@@ -9,7 +9,6 @@ import jwt from 'jsonwebtoken';
 import { setCurrentUser } from './actions/authAction';
 import {setContributionArray} from './actions/authAction';
 import MapContainer from './components/googleMaps/MapContainer'
-import lodash from 'lodash';
 
 /*
 * createStore(reducer, [preloadedState], enhancer)
@@ -41,7 +40,6 @@ if (sessionStorage.loginToken) {
 }
 
 if(!sessionStorage.length) {
-// 这个调用能触发目标事件，从而达到共享数据的目的
     localStorage.setItem('getSessionStorage',true)
     console.log("set getSessionStorage")
 }
@@ -53,7 +51,6 @@ window.addEventListener('storage', function(e) {
     const newSession = localStorage.getItem('getSessionStorage');
     console.log("newSession",newSession);
 
-    // 如果是已经登入的页面 写入当前的sessionstorage到localstorage
     if(newSession && sessionStorage.loginToken) {
 
 
@@ -102,17 +99,3 @@ render(
     , document.getElementById('app')
 );
 
-
-// render(
-//     <Provider store={store}>
-//         <Router history={browserHistory}>
-//             <Route path="/" component={LoginPage}/>
-//             <Route path="/login" component={LoginPage}/>
-//             <Route path="/signup" component={SignupPage}/>
-//             <Route path="/resetpassword" component={ResetPasswordPage}/>
-//             <Route path="/emailsentpage" component={EmailSentPage}/>
-//             <Route path="/welcome" component={InitialPage}/>
-//             <Route path="/newpwd" component={NewPwdPage}/>
-//         </Router>
-//     </Provider>
-// , document.getElementById('app'));

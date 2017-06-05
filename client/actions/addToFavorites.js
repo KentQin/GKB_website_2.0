@@ -36,8 +36,5 @@ export function addToFavoritesAction(favorite) {
             dispatch(setFavoriteAction(favoriteData));
             dispatch(setCurrentUser(user));
         });
-
-        // dispatch(updateSearchResultList(conf));
-
     }
 }

@@ -19,14 +19,9 @@ class DropzoneDemo extends React.Component {
     }
 
     onDrop(acceptedFile) {
-        // var req = request.post('/api/users/addProfilePic');
-        // acceptedFiles.forEach((file)=> {
-        //     req.attach(file.name, file);
-        // });
-        // req.end(callback);
+
         const img = acceptedFile[0]
-        // console.log('Received imgFile: ', img)
-        // console.log('Received imgFile: ', img.type);
+
         let header = {
             'content-type': 'multipart/form-data'
         }
@@ -37,19 +32,10 @@ class DropzoneDemo extends React.Component {
         const {accountType} = this.props.user;
         const {proImg} = this.props.user;
         console.log('proImg:',proImg);
-        // console.log(email);
-        // console.log(accountType);
         data.append('my_file', img);
         data.append('email',email);
         data.append('accountType',accountType);
         this.props.addProImgAction(data);
-        // axios.post('/api/addProfilePic', data ,{headers:header}).then(res =>{
-        //     const token = res.data.token;
-        //     // get token from server side, and store the token into session storage
-        //     console.log('decode: ',jwt.decode(token));
-        //     // dispatch action 'setCurrentUser' to change state;
-        // });
-
 
     }
 
@@ -57,8 +43,6 @@ class DropzoneDemo extends React.Component {
 
     render() {
         const {proImg} = this.props.user;
-        //console.log(proImg);
-        //console.log(lodash.isEmpty(proImg));
         if(lodash.isEmpty(proImg)){
             var userProfile = defaultPhoto;
         }else{
@@ -89,6 +73,4 @@ DropzoneDemo.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
 
-
-//export default DropzoneDemo;
 export default DropzoneDemo;

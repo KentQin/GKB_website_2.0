@@ -18,7 +18,6 @@ class OverviewContent extends React.Component{
             <div className="middle-block">
                 <h4 className="setting-content-title">Overview/Profile</h4>
                 <div className="setting-content-photo">
-                    {/*<Dropzone className="setting-content-photo-area"/>*/}
                 </div>
                <table className="table">
                     <tr>

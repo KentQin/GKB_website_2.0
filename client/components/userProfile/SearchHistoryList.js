@@ -1,10 +1,7 @@
 import React from 'react';
-import SearchHistoryEntryList from './SearchHistoryEntryList';
 import {connect} from 'react-redux';
 import moment from 'moment';
-import rest from 'rest'
-import curl from 'curlrequest';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import { Link } from 'react-router'
 class SearchHistoryList extends React.Component{
@@ -22,9 +19,6 @@ class SearchHistoryList extends React.Component{
         console.log("link click in searchHistory")
         console.log("searchStr", searchStr)
         const {user} = this.props.login;
-        // // console.log("this props landingpage flag: ", this.props.landingPageFlag);
-        // // var flag = this.props.landingPageFlag;
-        // // console.log("search term to jena: ", suggest.terms[0].value);
         this.setState({errors: {} });
         var toSend;
         if (user._id == null) {
@@ -48,12 +42,10 @@ class SearchHistoryList extends React.Component{
             .then(
                 // after server response then...
                 // if successful
-                //var userUpdated = this.props.login.user;
                 (res) => {
                     console.log("we are back in searchHistory clientside");
 
                     const token = res.data.token;
-                    // console.log('token: ' ,token);
                     // get token from server side, and store the token into session storage
                     // sessionStorage.removeItem('loginToken');
                     // sessionStorage.setItem('loginToken', token);
@@ -101,12 +93,6 @@ class SearchHistoryList extends React.Component{
                         this.props.setShowSearchResult(conf);
                     }
 
-
-
-                    // if (this.props.landingPageFlag == true) {
-                    //     console.log("just before routing to mapContainer")
-                    //     browserHistory.push('/home');
-                    // }
                     browserHistory.push('/home');
 
                 },
@@ -136,7 +122,6 @@ class SearchHistoryList extends React.Component{
                                 user.autoDescription = null
                             }
 
-                            //const descriptionArray = err.response.descriptionArray
                             // Changing thw whole functionality. For now let descriptionArray is null
                             var descriptionArray = err.response.data.descriptionArray;
                             const conf = {
@@ -154,10 +139,6 @@ class SearchHistoryList extends React.Component{
                                 this.props.setDescriptionArray({});
                             }
                             this.props.updateCoordsRequest(user);
-                            // if (this.props.landingPageFlag == true) {
-                            //     console.log("just before routing to mapContainer")
-                            //     browserHistory.push('/home');
-                            // }
                             browserHistory.push('/home');
                         },
                         (err) => {
@@ -215,16 +196,6 @@ class SearchHistoryList extends React.Component{
                     </div>
 
                 )
-                // console.log(currentDate+','+searchHistory[i].formatedDate);
-                // items.push(
-                //     <div key={j} className="entry-block">
-                //         <div className="search-entry-date col-md-offset-1 col-md-4">
-                //             <p>{searchHistory[i].formatedDate}
-                //             </p>
-                //         </div>
-                //     </div>
-                // )
-                // j++;
 
             } else {
                 currentDate = searchHistory[i].formatedDate;
@@ -234,8 +205,6 @@ class SearchHistoryList extends React.Component{
                             <p>{searchHistory[i].formatedDate}
                             </p>
                         </div>
-                        {/*<SearchHistoryEntryList entryArray = {searchHistory[i].search}/>*/}
-                        {/*<h5 className="search-history-date-title">data</h5>*/}
                         <div className="search-entry-content col-md-11">
                             <Link onClick={this.linkClick.bind(this, searchString)}>{searchHistory[i].searchStr}
                                 <input className="checkbox-on-entry" name="cb" id="cb" type="checkbox"/>
@@ -270,10 +239,8 @@ SearchHistoryList.propTypes = {
 
 function mapStateToProps(state) {
     console.log('mapStateToProps: ',state.login);
-    //console.log('mapStateToPropsCoords: ',state.coords);
     return {
-        login: state.login,
-        //coords: state.coords
+        login: state.login
     };
 }
 

@@ -35,9 +35,6 @@ class SearchResultItem extends React.Component {
                     des_id :this.props.des_id,
                     user_id :this.props.user_id
                 };
-
-                //this.props.updateLike(addLikeRequest);
-
                 axios.post('/api/searchBar/addLike', addLikeRequest).then(res =>{
                     //const description = res.data;
                     console.log("*************");
@@ -51,8 +48,6 @@ class SearchResultItem extends React.Component {
                     }else{
                         alert("alread liked this one");
                     }
-                    // return res.data;
-                    // dispatch(setSearchResultList(descriptionArray));
                 });
 
             }
@@ -80,8 +75,6 @@ class SearchResultItem extends React.Component {
             const base64 = (Buffer.from(proImg.data).toString('base64'));
             userProfile = 'data:'+proImg.contentType+';base64,'+base64;
         }else{
-            // console.log("********************");
-            // console.log(this.props.proImg);
             userProfile = defaultPhoto;
         }
 

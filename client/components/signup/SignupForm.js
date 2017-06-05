@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import classnames from 'classnames';
 import validateInput from '../../../server/shared/validations/signup';
 
@@ -40,8 +39,6 @@ class SignupForm extends React.Component {
         // receive userSignupRequest from SingupPage, and send this.state to userSignupRequest
         // in actual, userSignupRequest is a function, action creator,
         // it will read this.state as param, and dispatch an action
-        // console.log("Singup Form say: ", this.props );
-        // console.log("Singup Form get: ", this.props.userSignupRequest, " from Signup Page");
         e.preventDefault();
 
         // only when form info is valid, we make the request
@@ -103,9 +100,6 @@ class SignupForm extends React.Component {
                     {errors.confirmPassword && <span className="help-block">{errors.confirmPassword}</span> }
                 </div>
                 <button type="submit" className="btn btn-default btn-login">Submit</button>
-                {/*<div className="form-group">*/}
-                    {/*<Link to="/login" >Return to Login</Link>*/}
-                {/*</div>*/}
             </form>
         );
     }

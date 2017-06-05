@@ -415,7 +415,7 @@ body{
     height: 100%;
     width: 100%;
     padding-top:20px;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 
@@ -759,9 +759,7 @@ a.list-group-item:hover {
     height: 149px;
     border: solid 1px aliceblue;
     background-color: #E0FFFF;
-    background-color: var(--white);
     box-shadow: 0 2px 3px 0 rgba(56, 60, 79, 0.37);
-    box-shadow: 0 2px 3px 0 var(--charcoal-grey-37);
 }
 
 .empty_result_box{

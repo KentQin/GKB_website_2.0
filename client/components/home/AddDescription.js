@@ -1,8 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
 import { connect } from 'react-redux';
-import axios from 'axios';
-
 
 class AddDescription extends React.Component{
 
@@ -26,7 +24,6 @@ class AddDescription extends React.Component{
     }
 
     onClickSubmit() {
-        // console.log("Submit!!!!!!!!!!!")
         const content = this.state.content;
         const { _id } = this.props.contributor;
         const { placeFullAddr} = this.props.placeInfo;
@@ -42,25 +39,8 @@ class AddDescription extends React.Component{
             coords: user.coords
         }
 
-        const this_user = {
-            user_id: _id,
-            user_name: userName
-        }
-        // console.log(this.props);
         this.props.updateShowSearchResult(description).then(this.props.hideAddWindow())
-            // .then(this.props.updateContributionArray(this_user));
 
-        // axios.post('/api/searchBar/addDescription', description).then(res =>{
-        //     console.log('ans from server')
-        //     this.props.hideAddWindow();
-            // toSend = {
-            //     searchStr: suggest.terms[0].value,
-            //     id: user.id,
-            //     fulladdr: suggest.description
-            // }
-            // this.props.searchBarRequest(toSend).then(
-            // );
-        // })
     }
 
     render(){

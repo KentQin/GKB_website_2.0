@@ -1,7 +1,5 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 import firebase from '../../../server/firebase';
-import Dropzone from '../DropZone'
 import { connect } from 'react-redux';
 
 class OuterAuth extends React.Component {
@@ -157,13 +155,10 @@ OuterAuth.contextTypes = {
 }
 
 function mapStateToProps(state) {
-    //console.log('mapStateToProps: ',state.login);
     return {
         login: state.login
     };
 }
 
-//export default DropzoneDemo;
 export default connect(mapStateToProps, {})(OuterAuth);
 
-// export default OuterAuth;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 class SearchBar extends React.Component{
@@ -53,7 +52,6 @@ class SearchBar extends React.Component{
               // if server response any error message, set it into state errors
               (err) => {
                   console.log("Login Form: login failed");
-                  //console.log(err.response.data);
                   this.setState({ errors: err.response.data});
                   console.log("this.state.errors: ", this.state.errors);
               });
@@ -67,7 +65,6 @@ class SearchBar extends React.Component{
 
     render(){
         const { errors } = this.state;
-        //<input type="text" className="form-control" ref={'name'+item} value={"Place"+item} onChange={SearchBar.onTouch}/>
         return(
             <div>
                 <div className="col-lg-6">

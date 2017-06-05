@@ -1,5 +1,5 @@
 import { SET_DESCRIPTION_ARRAY } from '../actions/types';
-// pure redux function, action creator
+
 export function setDescription(array) {
     return {
         type: SET_DESCRIPTION_ARRAY,

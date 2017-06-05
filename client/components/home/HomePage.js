@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Profile from '../userProfile/Profile';
 import NavBar from './NavBar';
 import { logout } from '../../actions/authAction';
-import SearchBar from './SearchBar';
 import { searchBarRequest } from '../../actions/searchBarAction';
 import { updateCoordsRequest} from '../../actions/updateCoords';
 import { setShowSearchResult } from '../../actions/setShowSearchResult';
@@ -12,12 +11,9 @@ import {setContributionArray } from '../../actions/setContributionArray';
 import { setGoButtonResultsArray } from '../../actions/goButtonResults'
 import { updateShowSearchResult } from '../../actions/updateShowSearchResult';
 import { updateContributionArray } from '../../actions/updateContributionArray';
-//import { updateLike } from '../../actions/updateLike';
-//import { addLikeRequest } from '../../actions/addLikeAction';
 import GoogleAutoSuggest from '../googleMaps/GoogleAutoSuggest';
 import SearchResultList from './SearchResultList';
 import AutoSuggestList from './AutoSuggestList';
-import { searchBarTestGoAction } from '../../actions/searchBarTestGoAction'
 import { addToFavoritesAction } from '../../actions/addToFavorites'
 
 class HomePage extends React.Component {
@@ -67,22 +63,8 @@ class HomePage extends React.Component {
         })
     }
 
-    // showSearchResult(){
-    //     console.log("Show search result*************************************");
-    //     this.setState({
-    //         showSearchResult: !this.showSearchResult
-    //     })
-    // }
-
-    // <SearchBar searchBarRequest={this.props.searchBarRequest}
-    //            searchBarTestGoAction = {this.props.searchBarTestGoAction}
-    //            showSearchResult={this.showSearchResult}/>
-    // showSearchResult={this.showSearchResult}
-
     render() {
         const { isAuthenticated } = this.props.login;
-        // const { showSearchResult } = this.props.login.user;
-        //const { showSearchResult } = this.props.searchResult.searchResultPageConfig;
         const searchResult = this.props.searchResult;
 
         var searchResultFlag;
@@ -107,7 +89,6 @@ class HomePage extends React.Component {
 
         return (
             <div className="container loginPage float_on_the_map_outer">
-                {/*<div>*/}
                 <NavBar login = {this.props.login} logout={ this.props.logout} hideProfile={this.hideProfile} />
 
                 {isAuthenticated && <Profile login = {this.props.login} />}
@@ -129,16 +110,13 @@ class HomePage extends React.Component {
                                                        login={this.props.login}
                                                        setDescriptionArray={this.props.setDescriptionArray}
                                                        updateShowSearchResult={this.props.updateShowSearchResult}
-                                                                                      updateContributionArray={this.props.updateContributionArray}
-                                                       //updateLike = {this.props.updateLike}
+                                                       updateContributionArray={this.props.updateContributionArray}
                                                        user_id={this.props.login.user._id}
                                                        addToFavoritesAction={this.props.addToFavoritesAction}
                                                        hideSearchResult={this.hideSearchResult}
                                                         />}
 
                 {this.state.showAutoSuggest && <AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>}
-                {/*<AutoSuggestList goButtonResultsArray={goButtonResultsArray}/>*/}
-                {/*</div>*/}
             </div>
         )
     }
