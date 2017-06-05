@@ -73,7 +73,7 @@ class SearchResultHead extends React.Component{
                 <div id="search-result-modal">
                     <div className="search-result-bar">
                         <div className="search-result-content">
-                            <div className="close_search" > <button className="btn" onClick={this.closeSearchResult}>《 </button></div>
+                            <div className="close_search" > <button className="btn no-bg" onClick={this.closeSearchResult}>《 </button></div>
                             <div className="photo-gallery col-md-5">
                                 <img src={imgSrc}/>
                             </div>

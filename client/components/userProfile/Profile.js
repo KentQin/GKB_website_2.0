@@ -7,6 +7,11 @@ import {userProfilePicUploadRequest} from '../../actions/addUserProfilePicAction
 import { logout } from '../../actions/authAction';
 import { connect } from 'react-redux';
 
+/*
+ * This component renders 2 components to form the complete user profile
+ * This is used by map
+ * It connects to redux store and pass the data as props to other components
+ */
 class Profile extends React.Component {
 
     constructor(props){

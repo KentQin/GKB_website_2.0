@@ -9,6 +9,10 @@ import { setShowSearchResult } from '../../actions/setShowSearchResult';
 import { setDescriptionArray }from '../../actions/setDescriptionArray';
 import { googlePlaceSearchRequest } from '../../actions/googlePlaceSearch.js';
 
+/*
+ * This component renders components to form a complete search history page
+ * This is used by user profile
+ */
 
 class SearchHistory extends React.Component{
     render(){

@@ -2,6 +2,10 @@ import React from 'react';
 import LinkToHome from '../common/LinkToHome';
 import FavouriteList from './FavouriteList';
 
+/*
+ * This component renders the complete favourite list of a user
+ */
+
 class Favourites extends React.Component{
     render(){
 

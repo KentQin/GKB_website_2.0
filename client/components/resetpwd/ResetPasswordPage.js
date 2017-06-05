@@ -5,6 +5,11 @@ import { connect } from 'react-redux';
 import { resetpwdRequest } from '../../actions/resetpswdAction';
 import LinkToHome from './../common/LinkToHome';
 
+/*
+ * This component renders 2 components that forms reset password page
+ * It uses the state from redux store
+ */
+
 class ResetPasswordPage extends React.Component{
     render(){
 

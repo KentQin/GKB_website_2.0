@@ -2,6 +2,10 @@ import React from 'react';
 import SearchHistory from './SearchHistory';
 import { connect } from 'react-redux';
 
+/*
+ * This component renders the complete search history page
+ * This is used by user profile
+ */
 
 class SearchHistoryPage extends React.Component{
     render(){

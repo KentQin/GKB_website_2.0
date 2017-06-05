@@ -2,6 +2,11 @@ import React from 'react';
 import EmailSent from './EmailSent';
 import LinkToHome from './../common/LinkToHome';
 
+/*
+ * This component renders the emailsendform
+ * It is rendered on top of the map
+ */
+
 class EmailSentPage extends React.Component{
     render(){
         return(
