@@ -120,6 +120,8 @@ class AutoSuggestItem extends React.Component {
                           const data = res.data.obj;
                           console.log("the data we got back from google searchHistory clicked: ", data)
                           user.coords = {lat: data.lat, longt: data.lng};
+                          // no direction for this
+                          user.directions = null
                           console.log("err  response: ", err.response)
                           if (err.response.data.searchHistory) {
                               console.log("err.response.searchHistory: ", err.response.data.searchHistory)
@@ -129,6 +131,8 @@ class AutoSuggestItem extends React.Component {
                           if (err.response.data.autoDescription) {
                               console.log("err.response.autoDescription searchHistory: ", err.response.data.autoDescription)
                               user.autoDescription = err.response.data.autoDescription;
+                          } else {
+                              user.autoDescription = null
                           }
 
                           //const descriptionArray = err.response.descriptionArray
