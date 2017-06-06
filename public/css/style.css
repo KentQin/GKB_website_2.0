@@ -1114,8 +1114,12 @@ a.list-group-item:hover {
     box-shadow: 1px 0px 3px 0px rgba(0,0,0,0.5);
 }
 
+.landing-search-bar{
+    position: absolute;
+    left: 25%;
+    width: 100%;
+}
 .landing-search-bar>div>div{
-    margin-left: 25%;
     margin-right: 25%;
 }
 
@@ -1272,7 +1276,7 @@ search-entry-date{
     text-align: center;
     background: transparent;
     height: 450px;
-    width: 50%;
+    width: 638px;
     overflow: scroll;
     margin-left: 20px;
 
