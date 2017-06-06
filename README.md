@@ -52,11 +52,11 @@ $ npm install
 
 ## Setup
 
-1. First you need to setup your config file in ./server/config.js to insert your google maps api keys and dev mode. If dev mode is true, database in server will be connected using ssh, whereas if dev mode is false database will be connected locally.
+1. First you need to setup your config file in ./server/config.js to insert your google maps api keys and dev mode. If dev mode is true, database in server will be connected using ssh (put in your porivate key in ./server/database.js), whereas if dev mode is false database will be connected locally.
 2. Then set up firebase API keys in ./server/firebase.js
-3. Insert google maps API key in the const variable MY_API_KEY in the file ./client/components/GoogleAutoSuggest.js
-3. Then you need to setup your nodemailer email transport service in ./server/mailServer.js
-4. There will be 2 files naming, index.js and index.css. These 2 files have to be copied into the /node_modules/react-google-places-suggest/
+3. Insert google maps API key in the const variable MY_API_KEY in the file ./client/components/googleMaps/GoogleAutoSuggest.js
+4. Then you need to setup your nodemailer email transport service in ./server/mailServer.js
+5. There will be 2 files naming, index.js and index.css. These 2 files have to be copied into the /node_modules/react-google-places-suggest/
 
 ## File structure
 client Folder: all front-end files.
