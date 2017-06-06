@@ -42,6 +42,20 @@ page](https://github.com/jedireza/drywall/wiki/bcrypt-Installation-Trouble).
 We use [`nodemailer`](https://nodemailer.com/about/) for email transport.
 
 
+## Database
+
+MongoDb is stored in the server. All the collections are present in the server. 
+The data related to GKB is stored in the database named "mydb". To connect to the database from the server itself is straighforward, using mongoose. Whereas connecting to the database from local systems or anyother server, you will have to use mongoose with ssh-tunnel.
+
+  The Users collection will get populated only when a person registers with the GKB application, be it email or facebook or gmail or twitter. The person’s email, password with one way hash encryption will be populated from whatever is sent from the system. The field accountType will either be local or facebook/gmaill/twitter depending on the way the user logs in. SearchHistory, an array storing addresses of places (google or OSM), will get populated every time a user searches for a place successfully. Favorites, an array storing addresses of places (google or OSM), will get updated every time a user clicks on the heart my favorite button on the search result page. The username will be the name a user gives when he/she first signs up with the application. ProImg, an object with 2 fields, is where the profile photo a user is stored. 
+
+  User Contributions Collection is one collection where all the contributions made by users in the application will get stored. User_id is the automated generated mongoDB id from the Users collection. User_name is the username of the user. placeFullAddr is the complete address of the place to which the user is contributing. Description is the, up to 140 characters, contribution text by the user. Likes is the number of times people click on the thumbs up button. The contributions of a place on the results page will be ordered per the number of likes in descending order. Date is the date on which the user has contributed. The system filters out the contributions according to the placeFullAddr which can be either from google places collection or osm places collection. 
+
+  Before we get into the Jena/Nominatim Place collection, I would like to introduce what jena and nominatim is. Jena is a service which is used to read and write RDF models. OSM data in this world is in the form of one of the RDF types and that is the reason we use jena to query for osm places. Nominatim (from the Latin, 'by name') is a tool to search OSM data by name and address and to generate synthetic addresses of OSM points (reverse geocoding). It can be found at nominatim.openstreetmap.org
+
+  The final collection in our model is the AutoDescriptions collection. This is not a dynamic entity. This is static, i.e. it is populated once in the beginning and then used often. OSM data with their automated description is present in this collection. The automated description is generated with the help of Wikipedia. Surprisingly, not all OSM entities have automated descriptions. Whenever the system is successful, querying for osm data from the nominatim service, this collection will be accessed to see if there is any auto description for that particular osm_id. If there is no auto description, GKB will simply display “No computer generated description avaliable”.
+
+
 ## Installation
 
 ```bash
