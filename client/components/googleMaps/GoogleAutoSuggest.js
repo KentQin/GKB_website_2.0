@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { addSearchHistory } from '../../actions/addSearchHistory';
 
-const MY_API_KEY = "AIzaSyCsfUc4ZnjVQaNFNdV-pqxG34BQSerYn_w"
+const MY_API_KEY = ""
 
 class MyGoogleSuggest extends Component {
     constructor(props){
